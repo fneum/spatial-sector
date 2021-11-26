@@ -1,0 +1,26 @@
+name:
+  spatial-sector
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - python
+  - pip
+  - ipython
+  - pre-commit
+  - yaml
+  - pypsa
+  - snakemake-minimal
+  - matplotlib
+  - seaborn
+  - cartopy
+  - jupyter
+  - jupyterlab
+  - plotly
+  - pandas
+  - numpy
+
+  - pip:
+    - vresutils==0.3.1

@@ -1,0 +1,306 @@
+\section{Model Overview}
+
+Not all of the sectors are at the full nodal resolution, and some demand for
+some sectors is distributed to nodes using heuristics that need to be corrected.
+Some networks are copper-plated to reduce computational times.
+
+\section{Electricity Sector}
+
+Electricity supply and demand follows the electricity generation and
+transmission model PyPSA-Eur, except that hydrogen storage is integrated into
+the hydrogen supply, demand and network, and PyPSA-Eur-Sec includes CHPs.
+
+
+\subsection{Electricity Demand}
+
+distribution electricity demand for
+industry uses the geographical data from
+the Hotmaps Industrial Database.
+
+subtracts existing electrified heating from
+the existing electricity demand, so that power-to-heat can be optimised
+separately.
+Building heating demand: nodal, distributed in each country based on population.
+
+The remaining electricity demand for households and services is distributed
+inside each country proportional to GDP and population.
+
+\subsection{Electricity Supply}
+
+OCGT CCGT
+
+hydro
+
+run of river
+
+\subsection{Electricity Storage}
+
+battery
+
+Distinguish costs for home battery storage and inverter from utility-scale battery costs.
+
+pumped-hydro
+
+\subsection{Electricity Transport}
+
+clusters down the electricity transmission substations in each European country
+based on the k-means algorithm
+
+ENTSO-E
+
+TYNDP
+
+\section{Transport Sector}
+
+\subsection{Land Transport}
+
+Land transport is separated by energy carrier (fossil, hydrogen fuel cell
+electric vehicle, and electric vehicle), but still needs to be separated into
+heavy and light vehicles (the data is there, just not the code yet).
+
+\subsection{Aviation}
+
+kerosene
+
+\subsection{Shipping}
+
+hydrogen liquefaction costs for hydrogen demand in shipping
+
+\section{Industry Sector}
+
+Demand
+
+Based on materials demand from JRC-IDEES and other sources such as the USGS for ammonia.
+
+Industry is split into many sectors, including iron and steel, ammonia, other basic chemicals, cement, non-metalic minerals, alumuninium, other non-ferrous metals, pulp, paper and printing, food, beverages and tobacco, and other more minor sectors.
+
+Inside each country the industrial demand is distributed using the Hotmaps Industrial Database.
+
+Supply
+
+Process switching (e.g. from blast furnaces to direct reduction and electric arc furnaces for steel) is defined exogenously.
+
+Fuel switching for process heat is mostly also done exogenously.
+
+Solid biomass is used for up to 500 Celsius, mostly in paper and pulp and food and beverages.
+
+Higher temperatures are met with methane.
+
+\subsection{Iron and Steel}
+
+\subsection{Chemicals Industry}
+
+basic chemicals: HVC (high-value chemicals), chlorine, methanol and ammonia
+
+specify reuse, primary production, and mechanical and chemical recycling fraction of platics
+
+Ammonia production data is taken from the USGS
+
+\subsection{Non-metallic Mineral Products}
+
+Cement
+
+Ceramics
+
+Glass
+
+\subsection{Non-ferrous Metals}
+
+Aluminium
+
+\subsection{Other Industry Subsectors}
+
+energy demands and CO2 emissions for the agriculture, forestry and fishing sector
+
+\section{Heating Sector}
+
+\subsection{Heating Demand}
+
+Heat demand is split into:
+
+urban central: large-scale district heating networks in urban areas with dense
+heat demand
+
+residential/services urban decentral: heating for individual buildings in urban
+areas
+
+residential/services rural: heating for individual buildings in rural areas,
+agriculture heat uses
+
+Building heating demand: nodal, distributed in each country based on population.
+
+
+\subsection{Heating Supply}
+
+Oil and gas boilers
+
+Heat pumps
+
+Either air-to-water or ground-to-water heat pumps are implemented.
+
+They have coefficient of performance (COP) based on either the external air or the soil hourly temperature.
+
+Ground-source heat pumps are only allowed in rural areas because of space constraints.
+
+Only air-source heat pumps are allowed in urban areas. This is a conservative
+assumption, since there are many possible sources of low-temperature heat that
+could be tapped in cities (waste water, rivers, lakes, seas, etc.).
+
+Resistive heaters
+
+Large Combined Heat and Power (CHP) plants
+
+https://doi.org/10.1016/j.energy.2018.10.044
+
+PyPSA-Eur-Sec includes CHP plants fuelled by methane, hydrogen and solid biomass from waste and residues.
+
+Hydrogen CHPs are fuel cells.
+
+Methane and biomass CHPs are based on back pressure plants operating with a
+fixed ratio of electricity to heat output. The methane CHP is modelled on the
+Danish Energy Agency (DEA) “Gas turbine simple cycle (large)” while the solid
+biomass CHP is based on the DEA’s “09b Wood Pellets Medium”.
+
+The efficiencies of each are given on the back pressure line, where the back
+pressure coefficient $c_b$ is the electricity output divided by the heat output.
+The plants are not allowed to deviate from the back pressure line and are
+implement as Link objects with a fixed ratio of heat to electricity output.
+
+Micro-CHP for individual buildings
+
+Waste heat from Fuel Cells, Methanation and Fischer-Tropsch plants
+
+Solar thermal collectors
+
+District heating!
+
+\subsection{Heat Storage}
+
+Thermal energy storage using hot water tanks
+Small for decentral applications.
+Big water pit storage for district heating.
+
+\section{Wind}
+
+\subsection{Wind Potentials}
+
+\subsection{Wind Time Series}
+
+\section{Solar}
+
+\subsection{Solar Potentials}
+
+utility PV
+
+Installable potentials for rooftop PV are included with an assumption of 1 kWp
+per person.
+
+Solar thermal
+
+\subsection{Solar Time series}
+
+\citeS{zappa2019}
+
+\section{Hydrogen}
+
+\subsection{Hydrogen Demand}
+
+Stationary fuel cell CHP.
+
+Transport applications.
+
+Industry (ammonia, precursor to hydrocarbons for chemicals and iron/steel).
+
+\subsection{Hydrogen Supply}
+
+Steam Methane Reforming (SMR), SMR+CCS, electrolysers.
+
+\subsection{Hydrogen Transport}
+
+retrofitting
+
+new pipelines
+
+\subsection{Hydrogen Storage}
+
+cavern storage
+
+steel tanks
+
+\section{Methane}
+
+\subsection{Methane Demand}
+
+Can be used in boilers, in CHPs, in industry for high temperature heat, in OCGT.
+
+Not used in transport because of engine slippage.
+
+\subsection{Methane Supply}
+
+Fossil, biogas, Sabatier (hydrogen to methane), HELMETH (directly power to
+methane with efficient heat integration).
+
+\subsection{Methane Transport}
+
+Scigrid Gas dataset
+
+single node for Europe, since future demand is so low and no bottlenecks are expected.
+
+\section{Oil-based Products}
+
+\subsection{Oil-based Product Demand}
+
+Transport fuels, agriculture machinery and naphtha as a feedstock for the
+chemicals industry.
+
+\subsection{Oil-based Product Supply}
+
+Fossil or Fischer-Tropsch.
+
+\subsection{Oil-based Product Transport}
+
+Liquid hydrocarbons: single node for Europe, since transport costs for liquids are low.
+
+
+\section{Biomass}
+
+\subsection{Biomass Potentials}
+
+Only wastes and residues from the JRC ENSPRESO biomass dataset.
+
+nodal where biomass potential is regionally disaggregated 
+
+Use JRC ENSPRESO database to spatially disaggregate biomass potentials to
+PyPSA-Eur regions based on overlaps with NUTS2 regions from ENSPRESO
+(proportional to area)
+
+\subsection{Biomass Demand}
+
+Solid biomass provides process heat up to 500 Celsius in industry, as well as
+feeding CHP plants in district heating networks.
+
+solid biomass is used in the paper and pulp as well as food, beverages and
+tobacco industries, where required temperatures are lower (see
+DOI:10.1002/er.3436 and DOI:10.1007/s12053-017-9571-y).
+
+\subsection{Biomass Transport}
+
+solid biomass has to be consumed locally
+
+biogas can be upgraded and then transported via methane network
+
+
+\section{Carbon dioxide capture, usage and sequestration (CCU/S)}
+
+Carbon dioxide can be captured from industry process emissions, emissions
+related to industry process heat, combined heat and power plants, and directly
+from the air (DAC).
+
+Carbon dioxide can be used as an input for methanation and Fischer-Tropsch
+fuels, or it can be sequestered underground.
+
+CO2: single node for Europe, but a transport and storage cost is added for sequestered CO2. Optionally: nodal, with CO2 transport via pipelines.
+
+\section{Mathematical Model Formulation}
+
+\section{Techno-Economic Assumptions}
