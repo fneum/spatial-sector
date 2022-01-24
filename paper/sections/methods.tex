@@ -1,0 +1,76 @@
+The model uses linear optimisation to minimise total annual operational and
+investment costs subject to technical and physical constraints, assuming perfect
+competition and perfect foresight over one year of 3-hourly operation. Apart
+from existing electricity transmission and hydroelectric facilities, no other
+existing assets are assumed (so-called `greenfield optimisation'), so that the
+model represents an ideal steady state.  Cost assumptions are taken, where
+possible, from predictions for the year 2030 by the Danish Energy Agency
+\cite{dea2019}. The model is implemented in the free software framework Python
+for Power System Analysis (PyPSA) \cite{PyPSA}.
+
+In this section the main assumptions used in the model PyPSA-Eur-Sec are
+presented. PyPSA-Eur-Sec builds upon the model from \cite{brown2018}, which
+covered electricity, heating in buildings and ground transport in Europe with
+one node per country. PyPSA-Eur-Sec adds biomass on the supply side, and
+industry, aviation and shipping on the demand side. Unavoidable process
+emissions, as well as the need for feedstocks for the chemicals industry and
+dense hydrocarbon fuels for aviation, necessitate careful management of the
+carbon cycle, including carbon capture from industry, biomass combustion and
+directly from the air.
+
+Figure \ref{fig:energy_map} gives an overview of the supply, transmission,
+storage and demand sectors implemented in the European sector-coupled model
+PyPSA-Eur-Sec. Generator capacities (for onshore wind, offshore wind, solar
+photovoltaic (PV), biomass and natural gas), storage capacities (for batteries,
+hydrogen, methane, liquid hydrocarbons, carbon dioxide and hot water tanks),
+heating capacities (for heat pumps, resistive heaters, gas boilers, combined
+heat and power (CHP) plants and solar thermal collector units), carbon capture
+(from industry, CHP plants and directly from the air), energy converters
+(electrolyzers, methanation, Fischer-Tropsch) and transmission capacities for
+electricity and hydrogen are all subject to optimisation, as well as the
+operational dispatch of each unit in each hour. Demand curves for the different
+sectors, the ratio of district heating to decentralised heating, the number of
+electric vehicles, methane storage and hydroelectricity capacities (for
+reservoir and run-of-river generators and pumped hydro storage) are exogenous to
+the model.
+
+The European transmission network model is based on the open model PyPSA-Eur
+presented in \cite{HORSCH2018207}. The state of the network in 2018 is plotted
+in Figure \ref{fig:today}. The full European transmission network is clustered
+down to 181 representative nodes based on the methodology used in
+\cite{Hoersch2017}, thereby preserving the most important transmission corridors
+that cause bottlenecks. The linearised optimal power flow uses a cycle-based
+formulation from \cite{HORSCH2018126} that significantly improves computational
+performance; as transmission lines are expanded, impedances are updated
+iteratively until convergence is achieved.
+
+The sector-coupling model is based on the open model PyPSA-Eur-Sec from
+\cite{BROWN2018720} which added to the electricity-only model of
+\cite{Schlachtberger2017} both land transport as well as space and water heating
+in the residential and commercial sectors. In the model presented in this
+contribution, biomass, industry demand (separately for sectors including iron
+and steel, concrete, chemicals) and transport fuels for aviation and shipping
+have also been included.
+
+For biomass, only waste and residues from agriculture and forestry are
+permitted, using the most conservative potential estimates from the JRC-EU-TIMES
+model \cite{jrcbiomass2015}. This results in 352~TWh per year of biogas and
+1261~TWh per year of solid biomass residues and waste for the whole of Europe.
+
+For industry, we change some industrial processes to low-emission ones (e.g.
+switching to hydrogen for direct reduction of iron ore \cite{Vogl_2018}), allow
+more recycling of steel and aluminium \cite{circular_economy}, switch fuel
+sources for process heat, use synthetic fuels for ammonia and organic chemicals,
+and allow carbon capture. It is assumed that no plastic or other non-energy
+product is sequestered in landfill, but that all carbon in plastics eventually
+makes its way back to the atmosphere, either through combustion or decay; this
+approach is stricter than other models \cite{in-depth_2018}.
+
+Since the model is still being refined, the results in this contribution are
+only preliminary. Planned refinements include more precise placement of biomass
+resources and industry demand within each country, the option to convert the
+existing natural gas transmission network to carry 100\% hydrogen (currently the
+hydrogen network is built based on the optimal topology between the nodes
+regardless of the existing network) and more scenarios for circular economy
+concepts, different biomass potentials, different levels of carbon sequestration
+and non-zero import volumes for synthetic fuels.

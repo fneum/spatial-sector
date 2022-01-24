@@ -4,6 +4,50 @@ Not all of the sectors are at the full nodal resolution, and some demand for
 some sectors is distributed to nodes using heuristics that need to be corrected.
 Some networks are copper-plated to reduce computational times.
 
+overnight scenario
+
+no pathway
+
+weather year 2013
+
+High resolution multi-sectoral approach: Developing the most advanced open source modeling system with regard to spatial, sectoral, technological and temporal resolution
+- All energy infrastructures in one optimisation problem (electricity, gas, heat, industry)
+- Detailed transmission grid representation in EU-wide model 
+- Detailed representation of demand sectors: Industry, buildings, transport
+- so that the variability of demand and variable renewable supply can be represented, and so that existing grid bottlenecks are visible.
+
+Energy sector coupling, storage and conversion is modelled to connect
+electricity, heating (individual buildings, district heating and industry),
+transport and gas (methane, hydrogen and carbon dioxide) in the different
+sectors (buildings, transport and industry).
+
+The spatial resolution of the model can be customised by the user. It can be set
+at electricity substation level, based on administrative boundaries such as
+NUTS2 or country-level, or to a custom number of nodes to enhance computational
+performance. The spatial resolution of the input data varies: conventional power
+plant locations are known exactly, as are large industrial facilities; wind and
+solar time series are regionalised based on the underlying ERA5 reanalysis data
+(around 20km by 20km); heat and transport demand at NUTS3; electricity demand
+time series are at TSO control region level.
+
+The electricity transmission
+network is represented at substation level based on maps released by the
+European Network of Transmission System Operators for Electricity (ENTSO-E). It
+includes all existing high-voltage line capacities between substations, as well
+as planned projects in the Ten Year Network Development Plan (TYNDP). In total
+around 3650 substations and 6000 transmission lines are modelled.
+
+Electricity can be converted to heat via heat pumps or resistive heaters; to
+hydrogen gas, or further to methane and liquid hydrocarbons; or to work in
+various demand devices. Methane can be reformed to hydrogen, and most fuels can
+be used for electricity generation in turbines, fuel cells or engines.
+
+Energy/material storage can be optimised in PyPSA-Eur-Sec including conventional
+pumped hydro storage, electrochemical storage like Lithium ion batteries,
+storage of gases including methane, hydrogen and carbon dioxide, storage of
+liquid fuels, as well as thermal energy storage in the form of hot water both in
+individual buildings and in district heating networks.
+
 \section{Electricity Sector}
 
 Electricity supply and demand follows the electricity generation and
@@ -25,32 +69,90 @@ Building heating demand: nodal, distributed in each country based on population.
 The remaining electricity demand for households and services is distributed
 inside each country proportional to GDP and population.
 
+hourly electricity demand for every country from ENTSO-E via OPSD interface
+
 \subsection{Electricity Supply}
 
 OCGT CCGT
 
-hydro
+hydro dams, PHS and run of river
+- capacities are fixed at 2015 values
+- inflow modelled based on runoff data from ERA5 and scaled using EIA annual hydropower generation statistics
 
-run of river
+solar photovoltaics (rooftop and utility-scale installations)
+
+onshore and offshore wind
+
+CHP (with gas or biomass)
+- back-pressure plants with heat production proportional to electricity output
+
+costs, lifetimes and efficiencies in SX.
+
+powerplantmatching for existing power plants
+
+For conventional electricity generators PyPSA-Eur-Sec uses the open
+powerplantmatching database comprising all existing conventional electricity
+generators for coal, gas, oil, nuclear and hydroelectricity. Exact locations,
+fuel types, capacities, build dates and planned decommission dates are included.
+
+Renewable generators include onshore and offshore wind, utility-scale and
+rooftop solar PV, biomass (multiple feedstocks), hydroelectricity (dams,
+run-of-river and pumped storage) as well as solar thermal collectors for
+building heating. For countries where open data is available, the existing
+capacities in each region are known. The model also allows to build new
+capacities based on available land and on the weather resource. Time series for
+wind, solar and precipitation availability are derived from the ERA5 weather
+reanalysis dataset. They are converted to power plant data using the open source
+atlite library. Hydroelectric inflow time series are derived from run-off data.
 
 \subsection{Electricity Storage}
 
 battery
+- distinguish costs for home battery storage and inverter from utility-scale battery costs.
 
-Distinguish costs for home battery storage and inverter from utility-scale battery costs.
+pumped-hydro (PHS)
+- with fixed capacities
 
-pumped-hydro
+hydrogen storage
 
 \subsection{Electricity Transport}
 
-clusters down the electricity transmission substations in each European country
-based on the k-means algorithm
-
 ENTSO-E
+- high-voltage transmission lines at and above 220 kV
+- HVDC links
 
-TYNDP
+Ten Year Network Development Plant (TYNDP)
+- planned projections
+
+Clustering
+- clusters down the electricity transmission substations in each European country
+- based on the k-means algorithm to a variable number of nodes (here: 181 regions)
+- move all to 380 kV
+- remove stubs
+- 125\% length factor
+- weighted cost takes into account fraction that is underwater
+
+To approximate $N-1$ contingency constraints (to protect against overloading if any one
+transmission line fails) lines may only be loaded up to 70\% of their nominal rating
+- no dynamic line rating included
+
+linearised power flow equations are considered (KCL and KVL) using an
+efficient cycle-based formulation of KVL
+
+distribution grid topology is not included
+- only the total exchange capacity between distribution and transmission level
+- rooftop PV, heat pupms, resistive heater, home batteries and electric vehicles connect to low-voltage level
+- everything else connects directly to the transmission grid
 
 \section{Transport Sector}
+
+annual energy demands from road and rail transport, aviation and navigation/shipping form JRC IDEES \citeS{IDEES}
+
+Transport and mobility comprises light and heavy road, rail, shipping and
+aviation transport. For road and rail, electrification, fuel cell vehicles and
+liquid fuels are available. For shipping and aviation, only hydrogen and liquid
+fuels are available. Battery electric vehicles for passenger transport can be
+enables with demand response as well as vehicle-to-grid capabilities.
 
 \subsection{Land Transport}
 
@@ -58,63 +160,534 @@ Land transport is separated by energy carrier (fossil, hydrogen fuel cell
 electric vehicle, and electric vehicle), but still needs to be separated into
 heavy and light vehicles (the data is there, just not the code yet).
 
+Split between 85\% electric and 15\% FCEV (not differentiated between light and heavy).
+
+for electrified land transport, country-specific factors are computed by comparing
+current car FEC per km (average for Europe 0.7 kWh/km) to the 0.18 kWh/km assumed for
+battery-to-wheels efficiency in electric vehicles
+
+weekly profiles for km driven provided by the Germand Federal Highway Research Institute (BASt)
+are used to obtain hourly time series for each European country taking into account local time
+Furthermore, a temperature dependence is included in the time series to account for heating/cooling
+demand in transport. For temperatures below/above 15C/20C temperature coefficients of .98\%/C and 0.63\%/C are assumed \cite{brown2018}
+
+assume
+- battery of 50 kWh
+- charging capacity of 11 kW
+- 90\% charging efficiency
+
+V2G
+- half of BEV can shift dis-/charging time to facilitate system operation
+- these BEVs can also provide vehicle-to-grid (V2G) services
+
+The BEV state of charge is forced to be higher than 75\% at 7am every day
+to ensure that the batteries are close to full in the morning peak usage.
+This also restricts BEV demand to be shifted within a day and prevent EV
+batteries from becoming seasonal storage
+
+The percentage of BEV connected to the grid at any time is inversely proportional
+to the transport demand profile, which translates into an average/minimum availability of 80\%/62\%.
+(conservative compared to literature: average parking times of European fleet of vehicles at 92\%
+
+battery cost of BEV is not included in the model since it is assumed that EV owners buy
+them to satisfy their mobility needs
+
 \subsection{Aviation}
 
-kerosene
+kerosene from Fischer-Tropsch (synthetic or fossil origin)
 
 \subsection{Shipping}
 
 hydrogen liquefaction costs for hydrogen demand in shipping
 
+Assuming liquid hydrogen.
+
+Should switch to methanol or ammonia
+
+See wording in
+\url{https://ec.europa.eu/clima/sites/clima/files/eu-climate-action/docs/impact_en.pdf}
+
+`` This estimate is based on an estimate of international navigation emissions
+based on bunker fuels sold in the EU, comparable to the memo item as reported in
+the EU greenhouse gas inventory reported to the UNFCCC.''
+
+
 \section{Industry Sector}
+
+Industry demand is split into a dozen different sectors, with the major ones
+being iron and steel, cement and basic chemicals. The location of existing
+industrial facilities is based on the Horizon-2020-funded project hotmaps.
+Demand for materials can either be met using existing conventional routes, such
+as blast furnaces for iron and rotary kilns for cement, or with new processes,
+such as hydrogen direct reduction for iron or kilns equipped with CCS and/or
+oxyfuel for cement. Basic chemicals can use green hydrogen as a feedstock rather
+than fossil fuels, for example for ammonia production, or using Fischer-Tropsch
+naphtha in steam crackers for High Value Chemicals.
+
+\begin{figure}
+    \caption{Final consumption of energy and non-energy feedstocks in industry today (left bar) and
+    our future scenario in 2050 (right bar)}
+\end{figure}
+
+\begin{figure}
+    \caption{Process emissions in industry today (left bar) and in 2050 (right bar)}
+\end{figure}
+
+\begin{table}[t]
+    \centering
+    \setlength{\tabcolsep}{6pt}
+    \begin{tabular}{@{} p{5cm}r @{}}
+      \toprule
+      Material & Production [Mt/a] \\
+      \midrule
+      steel & 174 \\
+      cement & 186 \\
+      glass & 44 \\
+      ceramics and other NMM & 360 \\
+      ammonia & 18 \\
+      other basic chemicals & 74 \\
+      other chemicals & 28 \\
+      pulp & 39 \\
+      paper & 94 \\
+    \end{tabular}
+    \caption{Industrial production for main products in 2015.}
+    \label{tab:industryproduction}
+  \end{table}
+  
+  
+emissions
+- energy-related
+- process-related
+
+For process-related emissions need alternative manufacturing process
+or higher rates of recycling such that less virgin material is needed
+
+largest sectors (according to FEC)
+- iron and steel
+- chemicals
+- non-metallic mineral products
+- pulp paper printing
+- food beverages tobacco
+- non-ferrous metals
 
 Demand
 
-Based on materials demand from JRC-IDEES and other sources such as the USGS for ammonia.
+For the industry energy demand, we assume the same
+production of materials as today, but with process switching, fuel switching to
+low-emission alternatives as well as carbon capture for use or sequestration
+(CCU/S).
 
-Industry is split into many sectors, including iron and steel, ammonia, other basic chemicals, cement, non-metalic minerals, alumuninium, other non-ferrous metals, pulp, paper and printing, food, beverages and tobacco, and other more minor sectors.
+Process switching includes, for example, moving primary production of
+steel from blast furnace reduction to direct reduction with hydrogen, or
+switching to an oxyfuel process in cement manufacture.
 
-Inside each country the industrial demand is distributed using the Hotmaps Industrial Database.
+Fuel switching means
+replacing mechanical processes and process heat applications that use fossil
+fuels with low-emission alternatives such as electricity, biomass or synthetic
+fuels such as hydrogen or methane.
+
+Feedstocks for the chemicals industry are
+also converted to non-fossil alternatives.
+
+To determine where fuel switching can take place we use the breakdown of energy
+usage for each process within each sector provided by the JRC-IDEES database
+\citeS{IDEES}.
+
+Where there are fossil and electrified alternatives for the same
+process (e.g. in glass manufacture or drying in industry XX) we assume that the
+process is completely electrified.
+
+Where process heat is required (steam
+process?) our approach depends on the temperature required
+\citeS{Naegler2015,Rehfeldt2018}. Processes that require temperatures below
+500\deg{}C are supplied with solid biomass, since we assume that residues and
+wastes are not suitable for high-temperature applications. We see solid biomass
+use primarily in the pulp and paper industry, where it is already widespread,
+and in food, beverages and tobacco, where it replaces natural gas. Industries
+which require high temperatures (above 500\deg{}C), such as metals, chemicals
+and non-metalic minerals are either electified where processes already exist, or
+the heat is provided with synthetic methane.
+
+what is currently supplied with electricity (lighting, air compressors, motor drives, fans, pumps)
+and low-enthalpy heat demand are directly added to electricity and heat buses
+
+Industry heat demand can be supplied via DH or is added to services heat demand.
+Can be supplied by other processes producing heat as byproduct (DAC, FT)
+
+For EU-28 plus NO, CH, IL Rehfeldt estimated that from 2015 industrial heat demand
+45\% is above 500 \deg{} C, 30\% 100-500 \deg{}C, 25\% below 100 \deg{} C
+
+Naegler similarly:
+48\% is above 400 \deg{} C, 27\% 100-400 \deg{}C, 25\% below 100 \deg{} C
+
+Because of high share of high-temperature process heat demand
+- no geothermal
+- no solar thermal supply
+
+process heat supplied by methane, biomass, electricity depending on sector
+
+Based on materials demand from JRC-IDEES and other sources such as the USGS for
+ammonia.
+
+Industry is split into many sectors, including iron and steel, ammonia, other
+basic chemicals, cement, non-metalic minerals, alumuninium, other non-ferrous
+metals, pulp, paper and printing, food, beverages and tobacco, and other more
+minor sectors.
+
+Inside each country the industrial demand is distributed using the Hotmaps
+Industrial Database.
+
+Hotmaps open database includes cement, basic chemicals, glass, iron and steel, non-ferrous metals,
+non-metallic minerals, paper, refineries. Enables regional analyses, calculation of
+site-specific energy demand, waste heat potentials, emissions, market shares,
+process-specific evaluations
+
+calculate energy demands and process emissions per unit of material based on JRC-IDEES
+
+material output per country from JRC IDEES, ammonia production statistics,
+Eurostat energy balances, national statistics from Switzerland to calculate total energy demand
+and process emissions by sector
+
+material output assumed to stay constant (exception recycling)
 
 Supply
 
-Process switching (e.g. from blast furnaces to direct reduction and electric arc furnaces for steel) is defined exogenously.
+Process switching (e.g. from blast furnaces to direct reduction and electric arc
+furnaces for steel) is defined exogenously.
 
 Fuel switching for process heat is mostly also done exogenously.
 
-Solid biomass is used for up to 500 Celsius, mostly in paper and pulp and food and beverages.
+Solid biomass is used for up to 500 Celsius, mostly in paper and pulp and food
+and beverages.
 
 Higher temperatures are met with methane.
 
+
+
 \subsection{Iron and Steel}
+
+70\% from scrap, rest from direct reduction with 1.7 MWh H2 / t steel + electric arc (process emissions 0.03 t COs / t steel)
+
+Two routes today to manufacture steel in Europe
+- primary/integrated steelworks (60\% of steel production)
+- secondary/electric arc furnaces (40\%) \url{http://www.sciencedirect.com/science/article/pii/S0360544216310295}
+
+Primary - Integrated steelworks
+- use blast furnaces in which coke is used to reduce iron ore into molten iron
+\begin{equation}
+    \ce{FE2O3 + 3CO -> 2Fe + 3CO2}
+\end{equation}
+\begin{equation}
+    \ce{FeO + 3CO -> Fe + 3CO2}
+\end{equation}
+- this is then converted to steel
+- The primary route implies large process emissions (0.22 tCO2/t steel)
+
+Secondary - electric arc furnaces (EAF)
+- use EAF to melt scrap metal
+- this limits CO2 emissions to burning of graphite electrodes \url{http://www.umweltbundesamt.de/en/publikationen/comparative-analysis-of-options-potential-for}
+- 0.03 tCO2/t steel
+
+DRI - Direct Reduced Iron
+\begin{equation}
+    \ce{FE2O3+H2 -> 2FeO + H2O}
+\end{equation}
+\begin{equation}
+    \ce{FeO + H2 -> Fe + H2O}
+\end{equation}
+- this is processed in EAF and circumvents associated process emissions
+- today, DRI uses methane as reduction agent but we assume this to be substituted with hydrogen
+- needs 1.7 MWh H2 / t steel \citeS{vogl2018} and 0.322 MWh elec / t steel \url{https://ssabwebsitecdn.azureedge.net/-/media/hybrit/files/hybrit_brochure.pdf}
+
+share of steel produced by hydrogen-based DRI + EAF is exogenous: 30\%
+integrated steelworks: 0\%
+scrap + EAF: 70\%
+
+replace integrated steelworks with DRI + EAF
+
+NB: DRI already done with hydrogen in Trinidad and in Abu Dhabi (where CO2 from
+SMR is captured and used for enhanced oil recovery) H2 Future, HYBRIT, SALCOS
+
+\citeS{circular_economy} circular economy practices have potential of expanding
+the share of secondary route to 85\% just by increasing the amount and quality of scrap metal
+
+process emissions from lime (added to remove impurity?), graphite anodes AND
+from carbon added to get steel alloy  \citeS{vogl2018}
+
+EAF not good for flat steel in automotive
+
+NB: derived gases not included in model, since take from blast furnace top
+gases, originating in coke
+
+Why not add CCS to existing plants? Hard for some reason \citeS{kuramochi2012}.
+
+For the remaining subprocesses in this sector:
+- methane as energy source for smelting process
+- activities associated with furnaces, refining and rolling, product finishing are electrified
 
 \subsection{Chemicals Industry}
 
+wide range of diverse industries ranging from:
+- basic organics compounds (olefins, alcohols, aromatics)
+- basic inorcanic compounds (ammonia, chlorine)
+- polymers (plastics)
+- end-user products (cosmetics, pharmaceutics)
+
+chemicals industry consumes lots of fossil-fuel based feedstocks \citeS{Levi_2018}
+
 basic chemicals: HVC (high-value chemicals), chlorine, methanol and ammonia
 
-specify reuse, primary production, and mechanical and chemical recycling fraction of platics
+Recycling!
+- specify reuse, primary production, and mechanical and chemical recycling
+fraction of platics \citeS{circular_economy}
+
+synthetic naphtha for primary production
 
 Ammonia production data is taken from the USGS
+
+Natural gas dominates in Europe as source for hydrogen for Haber-Bosch process.
+Replace with electrolytic/clean hydrogen.
+
+
+ammonia production from USGS (United States Geological Survey) statistics
+
+Assumptions for existing ammonia energy demand from XX and for electrolytic
+process from XX.
+
+hydrogen can be combined with Nitrogen to obtain ammonia in the Haber-Bosch process \citeS{Levi_2018}
+\begin{equation}
+    \ce{N2 + 3H2 -> 2NH3}
+\end{equation}
+Currently, H2 for ammonia industry in Europe is from SMR, in the model can be SMR, SMR CC, electrolysers
+CO2 often captured from SMR for urea production (20\% of fertilizer in Europe,
+but 50-60 in China and India) and food and beverages
+with electrolytic-H2 we have 6.5 MWh \ce{H2} / t \ce{NH3} and 1.17 MWh elec / t \ce{NH3} (Wang, 2018 Joule)
+
+chlorine, aromatics, olefins
+
+ammonia is subtracted from basic chemicals in IDEES database.
+
+
+ALL of liquid hydrocarbon feedstock from FT naphtha.
+- LPG, diesel oil, residual fuel oil
+
+We assume that all of carbon eventually finds its way from product into
+atmosphere. But this is wierd, since there is no release from landfill, plastics
+are not biodegradable. If they are burned as waste, we should use a
+waste-to-energy plant, which we currently don't have in the model.
+
+\citeS{lechtenbohmer2016} has 14.8 MWh FT-naphtha per ton of HVC, and 2.7 MWh per
+ton for processing; 3.1 tCO$_2$/tHVC are captured from flue gases.
+
+TODO: We have much smaller emissions, are we accounting for heating as well as
+process emission? I guess with methane we do...
+
+share of synthetic vs fossil-fuel based methane and naphtha is endogenous
+
+transformation of energy-consuming processes:
+- FEC in steam processing is converted to methane since requires temperature above 500 \deg{} C \citeS{Rehfeldt2018}
+- remaining processes are electrified using the current efficiency  of microwave for high-enthalpy heat processing,
+  electric furnaces, electric process cooling and electric generic processes
+
+process emissions from feedstock in the chemical industry represent 0.369 tCO2 / t ethylene eq.
+- we consider process emissions for all the material output
+- conservative, because it assumes that all plastic-embedded CO2 will eventually be released into the atmosphere
+- plastic disposal in landfilling will avoid, or at least delay, associated CO2 emissions
 
 \subsection{Non-metallic Mineral Products}
 
 Cement
 
+waste and solid biomass; capture of CO2 emissions
+
+cement manufacturing involves large process and energy emissions
+
+calcination of limestone to chemically reactive calcium oxide (known as lime)
+involves process emissions of 0.54 t \ce{CO2} / t cement
+\begin{equation}
+    \ce{CaCO3 -> CaO + CO2}
+\end{equation}
+
+mitigation strategies (new raw materials, recovering unused cement from concrete at end of life \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en})
+are at a very early development stage and have not been considered
+
+Keep current share of biomass; replace fossil fuels for process heat with
+synthetic methane (exact share determined by the model)
+
+assume that FEC (except electricity, low-temperature heat and biomass consumption)
+is supplied by methane which can deliver the required high-temperature heat
+
+NB: CH4 burns differently in kiln, not straightforward, see IEEE paper
+\citeS{akhtar2013}
+
+process emissions are captured and, for net-zero emission scenarios, 
+they need to be compensated by negative emissions
+
+Do post-combustion carbon capture on emissions and account for heat and
+electricity for capture with aqueous amine solution. The classic amine process
+based on monoethanolamine (MEA) Some suggest need CHP for this. DEA input
+assumptions in 2030 are 0.72 MWh/tCO$_2$ heat and 0.022 MWh/tCO$_2$ electricity
+per outputed tonne of CO$_2$ assuming a capture rate of 90\%. Additional
+electricity for CO$_2$ compression to 150 bar and dehydration is 0.085
+MWh/tCO$_2$.
+
+Alternative: use oxyfuel so you get concentrated CO$_2$. No heat requirement,
+electricity only used for O$_2$ air separation unit (ASU) of 0.08 MWh/tCO$_2$
+and 0.17 MWh/tCO$_2$ for post treatment (unlike post-combustion capture, output
+is impure, so have to remove O$_2$ and N$_2$ by cryogenic distillation). Can
+avoid ASU by using O$_2$ from electrolysis. Electricity use higher than
+post-combustion, but don't have big heat requirement.
+
+Beware biomass share in IDEES-Industry is higher for EU28 (2920 ktoe in 2015)
+than in IDEES-EnergyBalance (906 ktoe). This is because IDEES is putting waste
+(including non-renewable waste) together with biomass under biomass.
+
+\citeS{kuramochi2012}: The major difference between centralized power plants and
+industrial plants such as cement plants is that the former have large quantities
+of low-grade heat that can be used for solvent regeneration, whereas the latter
+generally do not [42].
+
+
+Can use oxyfuel for cement to make CCS easier. Already being done, can retrofit
+to older plant
+\url{https://engineered.thyssenkrupp.com/en/oxyfuel-a-climate-neutral-cement-production-is-getting-closer/}
+
+NEED oxyfuel, otherwise CCS requirements are too high.
+
+TODO: How much O$_2$ from electrolysis? How much O$_2$ required by cement per
+ton? For current combustion materials, around 0.17 tO$_2$/tCement => 29
+MtO$_2$/a needed, but have 672 MtO$_2$/a from electrolysis; H2 for steel and
+ammonia probably is enough to provide O$_2$ for oxyfuel cement (see private.org
+- have plenty of O2 from electrolysis)
+
+NB: for assessments of electricity for oxyfuel cement, deduct unneeded ASU (air
+separation unit via cryogenic distillation) since don't need 200-300 kWh/tO$_2$
+(consistent with 50-60 EUR/tO$_2$ price).
+
+NB: cement production is used to using solid fuels. Natural gas needs some
+aadjustment of firing mechanisms
+\url{https://doi.org/10.1109/CITCON.2013.6525276}.
+
+Some people push electric kilns for heat, but considered less mature than gas
+and certainly less than solid
+
+CemZero project
+\url{https://group.vattenfall.com/what-we-do/roadmap-to-fossil-freedom/industry-decarbonisation/cementa},
+apparently poo-pooed here \url{https://www.cementa.se/sv/cemzero}.
+
+
+\citeS{lechtenbohmer2016} has electrification of cement with 0.9~MWh\el/tCLinker
+(12\% efficiency improvement in thermal demand compared to 2010)
+
+
+
 Ceramics
+
+complete electrification because many already electrified processes:
+- microwave drying and sintering of raw materials,
+- electric kilns for primary production processes
+- electric furnaces for the product finishing
+- FEC 0.44 MWh/t ceramics
+- process emissions: 0.03 tCO2/t ceramic
+
 
 Glass
 
+Electrify everything.
+- electric melting tanks
+- electric annealing
+- electricity demand 2.07 MWh/t of glass \citeS{lechtenbohmer2016}
+
+
+\citeS{lechtenbohmer2016} also has big efficiency improvement with 0.85~MWh\el/tGlass.
+
 \subsection{Non-ferrous Metals}
+
+includes
+- base metals (aluminium, copper, lead, zink)
+- precious metals (gold, silver)
+- technology metals (molybdenum, cobalt, silicon)
 
 Aluminium
 
+80\% recycling, for rest: methane for high-enthalpy heat (bauxite to alumina) followed by electrolysis (process emissions 1.5 t CO2 / t Al)
+
+more than half of the FEC of this sector
+
+Two alternative production routes today to manufacture aluminium in Europe today
+- primary route: 40\%
+- secondary route: 60\%
+- exogenous: increase by 2050 to 80\% \citeS{Friedrichsen_2018} and \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en}
+
+Primary route:
+- two energy-intensive processes
+- production of alumina from bauxite (aluminium ore)
+- electrolysis to transfrom alumina to aluminium via the Hall-H\'{e}roult process
+\begin{equation}
+    \ce{2Al2O3 + 3C -> 4Al + 3CO2}
+\end{equation}
+- primary route requires high-enthalpy heat to produce alumina - supplied by methane
+- 1.5 tCO2/t aluminium
+- inert anodes might be commercially available in 2030 avoiding processe emissions \citeS{Friedrichsen_2018} but not considered
+
+Secondary route:
+- scrap aluminium is remelted
+- energy demand is 10\% of primary route and process emissions are avoided
+- assuming all subprocesses in this route electrified: 1.7 MWh elec / t aluminium
+
+Other non-ferrous metals, electrification of entire manufacturing process is assumed
+- 3.2 MWh / t lead equivalent
+
 \subsection{Other Industry Subsectors}
 
-energy demands and CO2 emissions for the agriculture, forestry and fishing sector
+energy demands and CO2 emissions for the agriculture, forestry and fishing
+sector
+
+pulp, paper, printing:
+
+Already high share of biomass. Keep and add biomass for paper production, since
+temperatures required are low.
+
+food, beverages, tobacco
+
+textiles and leather
+
+machinery equipment
+
+
+transport equipment
+
+wood and wood products
+
+otherwise
+
+low- and mid-temperature process heat in these industries is assumed to be supplied by biomass
+while the remaining processes are electrified
+
+Comparison
+
+\begin{itemize}
+    \item synergies paper (still see benefit of transmission, but MUCH bigger electrolysis with industry/aviation/shipping)
+    \item JRC papers (Herib Blanco etc.)
+    \item FZJ steel paper
+    \item PAC (uses solid biomass for non-energy requirements in chemicals industry, only 270 TWh in 2050, because of circular economy; phases out waste incineration)
+    \item LTS from commission \citeS{in-depth_2018}
+    \item Material Economics reports \citeS{circular_economy,me2019}
+\end{itemize}
 
 \section{Heating Sector}
 
 \subsection{Heating Demand}
+
+building heating is aggregated at each node both for individual buildings and district heating.
+Demand time series are based on a degree-day representation and improvements to
+the thermal envelopes of buildings to reduce demand can also be endogenously
+optimised. Supply options in individual buildings include gas and oil boilers,
+air- and ground-sourced heat pumps, resistive heaters, solar thermal collectors
+and small thermal energy storage. At district heating level more options are
+available: combined heat and power (CHP) plants consuming gas, coal and biomass
+with and without CCS, large-scale heat pumps, pit thermal storage, gas and oil
+boilers, resistive heating and fuel cells.
 
 Heat demand is split into:
 
@@ -129,6 +702,29 @@ agriculture heat uses
 
 Building heating demand: nodal, distributed in each country based on population.
 
+annual heat demands per country retrieved from JRC-IDEES
+
+converted to daily heat demand based on population weighted Heating Degree Day (HDD)
+- heating proportional to difference between ambient temperature (from ERA5) and threshold temperature of 15\deg{}C
+- daily space heat is distributed to the hours of the day following BDEW heat demand profiles
+- these differ for weekdays and weekends and between residential and services demand
+- hot water demand constant throughout the day
+
+total heating demand X TWhth/a
+
+pronounced seasonal variation
+
+For each country
+- heat demand split between low and high population density areas
+- urban areas can be supplied with district heating (DH) systems
+- 60\% of urban heat demand covered by DH
+- 15\% pauschal district heating system losses
+
+Cooling demand
+- supplied by electricity and included in electricity demand
+
+space heating demand reduced by building retrofitting
+- exogenously fixed at 29\% reduction
 
 \subsection{Heating Supply}
 
@@ -164,7 +760,7 @@ biomass CHP is based on the DEA’s “09b Wood Pellets Medium”.
 The efficiencies of each are given on the back pressure line, where the back
 pressure coefficient $c_b$ is the electricity output divided by the heat output.
 The plants are not allowed to deviate from the back pressure line and are
-implement as Link objects with a fixed ratio of heat to electricity output.
+implement with a fixed ratio of heat to electricity output.
 
 Micro-CHP for individual buildings
 
@@ -174,17 +770,101 @@ Solar thermal collectors
 
 District heating!
 
+no individual solar thermal?
+
+CHP with CCS, mostly solid biomass
+
+waste heat from industry?
+
+for efficiency improvements, use Lisa thermal envelope retrofitting, currently
+determined exogenously with 29\% reduction compared to 2015 (check) XX cite
+Lisa's paper \url{https://arxiv.org/abs/2012.01831}
+
+urban central (DH)
+- central air-sourced heat pumps 
+- heat resistors
+- gas boilers
+- solar thermal collectors
+- CHP units using methane or solid biomass (back pressure)
+- waste heat from fuel cells, methanation, Fischer-Tropsch
+
+decentral
+- individual ground- and air-sourced heat pumps
+- heat resistors
+- gas boilers
+
+only air-sourced heat pumps is conservative assumption since many possible sources of
+low-temperature heat in cities (wastewater, rivers, lakes, seas, ground)
+
+Coefficient of performance (COP)
+- depends on ambient or ground temparature
+- difference between source and sink temperatures
+
+\begin{equation}
+    \Delta T = T_{sink} - T_{source}
+\end{equation}
+
+Air-sourced heat pumps (ASHP)
+\begin{equation}
+    COP = 6.81 + 0.121 \Delta T + 0.000630 \Delta T^2
+\end{equation}
+
+Ground-sourced heat pumps (GSHP)
+\begin{equation}
+    COP = 8.77 + 0.150 \Delta T + 0.000734 \Delta T^2
+\end{equation}
+
+Sink water temperature $T_{sink}$ is 55\deg{}C
+
+Source temperature from ERA5
+
 \subsection{Heat Storage}
 
-Thermal energy storage using hot water tanks
-Small for decentral applications.
-Big water pit storage for district heating.
+Thermal energy storage (TES) using hot water tanks
+- Small water tanks for decentral applications
+- Big water pit storage for district heating.
+
+thermal energy density 46.8 kWhth/m3 corresponding to temperature difference of 40 K
+
+decay of thermal energy $1-\exp(-\sfrac{1}{24\tau})$
+
+with time constant of $\tau=180$ days for central TES and $\tau=3$ days for individual TES
+
+charging and discharging efficiencies are 90\% due to pipe losses
 
 \section{Wind}
 
 \subsection{Wind Potentials}
 
+limited potential:
+
+available land in every region
+
+according to Corine Land Cover (CLC) database (Table which ones are allowed)
+
+excluding Natura 2000 protected areas
+
+Offshore:
+
+- bathymetry dataset GEBCO
+- areas with sea depth below 50 m (no floating offshore wind)
+- near-shore (distance less than 30km) AC connection, far-shore, DC connected
+- costs include AC-DC conversion
+
+X MW/sqkm conversion factor
+
+20\% of the available land define potential 
+
 \subsection{Wind Time Series}
+
+capacity factor time series modelled by converting wind speeds from ERA5 reanalysis into wind
+generation, following the methodology described in
+
+ERA5: hourly resolution, 30 km spatial resolution
+
+atlite: open-source tool
+
+capacity layout proportional to mean capacity factors is assumed for every region
 
 \section{Solar}
 
@@ -192,77 +872,184 @@ Big water pit storage for district heating.
 
 utility PV
 
+X MW/sqkm
+
+9\% of the available land define potential 
+
 Installable potentials for rooftop PV are included with an assumption of 1 kWp
-per person.
+per person (0.1 kW/m2 and 10 m2/person)
 
 Solar thermal
+- from reanalysis ERA5
 
 \subsection{Solar Time series}
 
+from satellite irradiance data (SARAH-2)
+
 \citeS{zappa2019}
+
+\begin{table}
+    \caption{Land types considered suitable for every technology from Corine Land Cover database}
+    \small
+    \begin{tabularx}{\textwidth}{lX}
+        \toprule
+        Solar-PV & artificial surfaces (1-11), agriculture land except for those
+        areas already occupied by agriculture with significant natural
+        vegetation and agro-forestry areas (12-20), natural grasslands (26), bare rocks (31),
+        sparsely vegetated areas (32) \\ \midrule
+        Onshore wind & agriculture areas (12-22), forests (23-25), scrubs and herbaceous vegetation associations (26-29), bare rocks (31), sparsely vegetated areas (32) \\ \midrule
+        Offshore wind & sea and ocean (44) \\ \bottomrule
+    \end{tabularx}
+\end{table}
 
 \section{Hydrogen}
 
 \subsection{Hydrogen Demand}
 
 Stationary fuel cell CHP.
+- to convert electricity to hydrogen (and heat as byproduct)
+- to balance renewable fluctuations
 
-Transport applications.
+Transport applications (shipping, heavy-duty transport)
+- exogenously fixed
 
-Industry (ammonia, precursor to hydrocarbons for chemicals and iron/steel).
+Industry (ammonia, precursor to hydrocarbons for chemicals and iron/steel direct reduced iron (DRI)).
+
+produce synthetic methane and hydrocarbons
 
 \subsection{Hydrogen Supply}
 
-Steam Methane Reforming (SMR), SMR+CCS, electrolysers.
+Steam Methane Reforming (SMR)
+\begin{equation}
+    \ce{ CH4 + H2O -> CO + 3H2 }
+\end{equation}
+combined with water-gas shift reaction
+\begin{equation}
+    \ce{CO + H2O -> CO2 + H2}
+\end{equation}
+
+
+SMR+CCS
+
+electrolysers
+- assuming alkaline electrolysers
+- lower cost, higher installed capacity
+- compared to polymer electrolyte membrane (PEM) electrolysis
+
+Split between the different options is optimised.
+
 
 \subsection{Hydrogen Transport}
 
 retrofitting
+- methane network
 
 new pipelines
+- based on routes of electricity and methane transmission networks
+- capacities built if cost-effective (e.g. no suitable retrofitting option available)
 
 \subsection{Hydrogen Storage}
 
-cavern storage
+hydrogen can be stored
 
-steel tanks
+overground steel tanks
+
+underground cavern storage
+- potentials taken from Caglayan
+- mapped onto each region
+- exclude caverns in the sea or within 50 km of the shore
+- to avoid environmental problems associated with brine solution disposal
+
+underground storage is around x times cheaper than steel tanks
 
 \section{Methane}
 
 \subsection{Methane Demand}
 
-Can be used in boilers, in CHPs, in industry for high temperature heat, in OCGT.
+Can be used in gas boilers, in CHPs (w/wo carbon capture), in industry for high temperature heat, in OCGT/CCGT power plants.
 
 Not used in transport because of engine slippage.
 
 \subsection{Methane Supply}
 
-Fossil, biogas, Sabatier (hydrogen to methane), HELMETH (directly power to
-methane with efficient heat integration).
+Fossil
+- LNG terminals (existing and planned)
+- entry-points (Russian pipelines)
+- gas extraction sites (e.g. Norway)
+
+biogas
+- upgrad to methane
+
+Sabatier
+- hydrogen and captured \co{} to methane
+- methanation
+\begin{equation}
+    \ce{CO2 + 4H2 -> CH4 + 2H2O}
+\end{equation}
+
+HELMETH
+- direct power to methane with efficient heat integration
+
+The share of synthetic, bio-based and fossil-based methane is an optimisation result
 
 \subsection{Methane Transport}
 
 Scigrid Gas dataset
+- direction of pipelines taken into account
 
-single node for Europe, since future demand is so low and no bottlenecks are expected.
+single node for Europe
+- assumed to be transported without cost
+- since future demand is predicted to be low and no bottlenecks are expected
+- nevertheless, capacities and routes of gas transmission network used as options to retrofit to hydrogen pielines
+
+selected runs with gas network infrastructure
+- abundant transport capacities even if H2 retrofitting to demand
+
+Gas transport has recently been included in the model. Existing natural gas
+networks are represented based on the Scigrid-Gas dataset, which is in turn
+based on the ENTSOG map and other open sources. This network can be expanded, or
+converted for hydrogen usage. Hydrogen networks can either reuse existing
+methane pipelines or new hydrogen pipelines can be built. For carbon dioxide
+transport, a pipeline network is also planned. The following graphics show the
+existing gas network in the model, as well as an optimal newly-built hydrogen
+network.
 
 \section{Oil-based Products}
 
 \subsection{Oil-based Product Demand}
 
-Transport fuels, agriculture machinery and naphtha as a feedstock for the
-chemicals industry.
+Transport fuel in aviation (kerosene)
+
+agriculture machinery
+
+naphtha as a feedstock for the chemicals industry
 
 \subsection{Oil-based Product Supply}
 
-Fossil or Fischer-Tropsch.
+Fossil oil
+
+Fischer-Tropsch process
+- with hydrogen and captured \co{}
+- produces oil and waste heat
+\begin{equation}
+    \ce{$n$CO + ($2n$ + 1)H2 -> C_$n$H_{2n+2} + $n$H2O}
+\end{equation}
+
 
 \subsection{Oil-based Product Transport}
 
-Liquid hydrocarbons: single node for Europe, since transport costs for liquids are low.
+Liquid hydrocarbons:
+- single node for Europe
+- since transport costs for liquids are low
 
 
 \section{Biomass}
+
+Biomass resources are available for different potential assessments (low,
+medium, high) for many different feedstocks and NUTS2 resolution based on the
+JRC’s ENSPRESO database. They can be used in electricity generation with and
+without CCS, as well as to provide low- to medium-temperature process heat in
+industry.
 
 \subsection{Biomass Potentials}
 
@@ -274,33 +1061,238 @@ Use JRC ENSPRESO database to spatially disaggregate biomass potentials to
 PyPSA-Eur regions based on overlaps with NUTS2 regions from ENSPRESO
 (proportional to area)
 
+Biomass supply potentials for each European country are taken from the database
+of the Joint Research Centre (JRC) of the European Commission
+\citeS{jrcbiomass2015}.
+
+Only residues from agriculture and forestry as well as
+biodegradable municipal waste are considered as energy feedstocks. Fuel crops
+are avoided because they compete with scarce land for food production, while
+primary wood as well as wood chips and pellets are avoided because of concerns
+about sustainability \citeS{BENTSEN20171211}.
+
+The JRC provides potentials in low,
+medium and high availability scenarios, which depend on supply and competition
+with other uses of each feedstock. In PyPSA the medium availability scenario for
+2030 is used, assuming no biomass import from outside Europe.
+
+Manure and sludge waste are available to the model as biogas (upgraded to
+biomethane), while other wastes and residues are classified as solid biomass and
+available for combustion in combined-heat-and-power plants (CHP) and for medium
+temperature heat (lower than 500\deg{}C) applications in industry.
+
+The technical
+characteristics for the solid biomass CHP are taken from the Danish Energy
+Agency Technology Database \citeS{dea2016} assumptions for a medium-sized back
+pressure CHP with wood pellet feedstock; this has very similar costs and
+efficiencies to CHPs with feedstocks of straw and wood chips.
+
+In 2015 the EU28 energy
+usage was 180~TWh of biogas, 1063~TWh of solid biofuels, 109~TWh renewable
+municipal waste and 159~TWh of liquid biofuels. Our model contains roughly a
+doubling of the biogas production from 2015 and similar amounts of solid
+biofuels, but a shift from energy crops and primary wood to residues and wastes.
+
+Since most liquid biofuels come from energy crops today, these do not appear in
+PyPSA-Eur-Sec. Zappa et al (2019) \citeS{zappa2019} uses the same JRC database
+but in addition to the feedstocks we use, they also allow roundwood chips and
+pellets, as well as grassy, willow and poplar energy crops.
+
+Don't have biomass gasification, but do allow carbon capture for usage or
+sequestration from bioenergy plants.
+
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{lllr}
+      \toprule
+      Source & JRC code & use in model & Potential [PJ/a] \\
+      \midrule
+      Energy crop: sugar beet bioethanol & MINBIOCRP21 & not used & 882.5 \\
+      Energy crop: rape seed and other oil crops & MINBIORPS1 & not used & 949.3 \\
+      Energy crop: starchy crops & MINBIOCRP11 & not used & 288.0 \\
+      Energy crop: grassy & MINBIOCRP31 & not used & 1777.6 \\
+      Energy crop: willow & MINBIOCRP41 & not used & 317.7\\
+      Energy crop: poplar & MINBIOCRP41a & not used & 96.6 \\
+      Wet and dry manure & MINBIOGAS1 & biogas  & 1237.6 \\
+      Primary agricultural residues & MINBIOAGRW1 & solid biomass &  1120.6\\
+      Roundwood fuelwood & MINBIOWOO & not used & 273.2 \\
+      Roundwood chips and pellets & MINBIOWOOa & not used & 2087.1\\
+      Forestry energy residue & MINBIOFSR1 & solid biomass & 1955.0 \\
+      Secondary forestry residues: woodchips & MINBIOWOO1 & solid biomass & 432.2 \\
+      Secondary forestry residues: sawdust & MINBIOWOO1a & solid biomass & 152.0 \\
+      Forestry residues from landscape care & MINBIOFSR1a & solid biomass & 320.5\\
+      Biodegradable municipal waste  & MINBIOMUN1 & solid biomass & 565.1 \\
+      Biodegradable sludge & MINBIOSLU1 & biogas  & 34.9 \\ \bottomrule
+    \end{tabular}
+    \caption{Biomass classification from the JRC \cite{jrcbiomass2015}, usage in PyPSA-Eur-Sec, and potentials in JRC's medium availability scenario for 2030. XX Move to Appendix.}
+    \label{tab:biomass}
+  \end{table}
+
+
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{lr}
+      \toprule
+      Source & Potential [TWh/a] \\
+      \midrule
+      not used & 1853 \\
+      biogas & 353 \\
+      solid biomass & 1263 \\ \bottomrule
+    \end{tabular}
+    \caption{Total biomass potentials and usage in model.}
+    \label{tab:biomasstwh}
+  \end{table}
+
 \subsection{Biomass Demand}
 
-Solid biomass provides process heat up to 500 Celsius in industry, as well as
+Solid biomass provides process heat up to 500 \deg Celsius in industry, as well as
 feeding CHP plants in district heating networks.
 
-solid biomass is used in the paper and pulp as well as food, beverages and
+solid biomass is used as heat supply in the paper and pulp as well as food, beverages and
 tobacco industries, where required temperatures are lower (see
 DOI:10.1002/er.3436 and DOI:10.1007/s12053-017-9571-y).
 
 \subsection{Biomass Transport}
 
-solid biomass has to be consumed locally
+solid biomass has to be consumed locally (check!)
 
 biogas can be upgraded and then transported via methane network
+
+neglect of transport not expected to have a large impact since most countries have biomass demand
+for industry lower than internal potential
 
 
 \section{Carbon dioxide capture, usage and sequestration (CCU/S)}
 
+Carbon management becomes important in net-zero scenarios. PyPSA-Eur-Sec
+includes carbon capture from electricity generators and industrial facilities,
+carbon dioxide storage and transport, the usage of carbon dioxide in synthetic
+hydrocarbons, as well as the ultimate sequestration of carbon dioxide
+underground. The major depleted hydrocarbon fields and saline aquifers in Europe
+have recently been included in the model.
+
+carbon is tracked through system: up to 90\% of industrial emissions can be captured
+
+direct air capture DAC
+
+synthetic methane and liquid hydrocarbons
+
+transport and sequestration is 20 EUR/t Co2
+
+yearly sequestration limit to 200 MtCO2 / a
+
+management of the carbon cycle
+
+Carbon capture is needed in the model both to capture and sequester process
+emissions with a fossil origin, such as those from calcination of fossil
+limestone in the cement industry, as well as to provide carbon for the
+production of hydrocarbons for dense transport fuels and as a chemical
+feedstock, for example for the plastics industry.
+
 Carbon dioxide can be captured from industry process emissions, emissions
-related to industry process heat, combined heat and power plants, and directly
-from the air (DAC).
+related to industry process heat (methane and biomass), combined heat and power plants, and directly
+from the air wit direct air capture (DAC).
+
+DAC includes
+- adsorption phase with inputs electricity and heat to assist adsorption process and regenerate adsorbent
+- compression of \co{} prior to storage which consumes electricity and rejects heat
+
+process emissions captured at 95\% capture rate at cost as in cement industry
+
+SMR, CHP, biomass and methane demand in industry the model can decide w/wo carbon capture
+
+these capacities are co-optimised
 
 Carbon dioxide can be used as an input for methanation and Fischer-Tropsch
-fuels, or it can be sequestered underground.
+fuels/naphtha, or it can be sequestered underground.
+
+Can also be sequestered:
+- 20 \euro/tCO2 for transport and sequestration
+- 2-14 USD/tCO2 for pipe transport IEA
+- 10 USD/tCO2 for underground sequestration
+- limit is 200 Mt (rather conservative but enough to capture process emissions)
+
+% plot
+unavoidable process emissions
 
 CO2: single node for Europe, but a transport and storage cost is added for sequestered CO2. Optionally: nodal, with CO2 transport via pipelines.
 
+Why net-zero target for CO$_2$? Since don't include LULUCF or non-CO$_2$ (waste management and agriculture), which balance each other in EU analysis
+
+CCU/S needed for synthetic fuels AND to deal with process emissions (from e.g.
+cement)
+
+
+
+need for feedstocks in chemicals industry and dense hydrocarbon fuels for aviation
+
+we have capture on
+
+- industrial process emissions, using same assumptions as the cement kiln
+example described above from DEA  (90\% capture rate, 0.72 MWh/tCO$_2$ heat and
+0.1 MWh/tCO$_2$ electricity, including compression and dehydration) - heat is
+taken from urban heat buses, electricity from public grid - steam methane
+reforming - biomass CHPs, using DEA assumptions for post-combustion capture on a
+small CHP in 2030 (90\% capture rate, 0.72 MWh/tCO$_2$ heat and 0.11 MWh/tCO$_2$
+electricity, including compression and dehydration) - heat and electricity is
+taken from CHP output - direct air capture (2 MWh/tCO$_2$ heat, 0.47 MWh/tCO$_2$
+electricity including compression and dehydration) - heat is taken from urban
+heat buses (even though T is below 100 C), electricity from public grid; waste
+heat from compression is used for amine washing
+
+TODO: as of 210202: electricity and heat demand of process emission CC ignored
+(only capital costs are used); also for fuel-based emissions, simple 10\% of
+fuel is taken
+
+127 MtCO2/a fossil-origin process emissions in industry (limestone for cement,
+soda ash and graphite electrodes); need sequestration for this otherwise not
+net-zero.
+
+For FT-fuels demand need 0.27*1391 = 376 MtCO2/a. This comes from BECCU and
+industry CCU with synfuels. Could also come from waste + CCU.
+
+
+Comparison of heat/electricity requirements for capture:
+
+\citeS{kuramochi2012} 5.2: Can integrate low-grade steam from power plants with
+CO2 capture from cement
+
+``In the case of post-combustion CO 2 capture, a CHP plant will likely be built
+together with the CO 2 capture unit because this is the only way to generate
+steam efficiently for CO 2 capture solvent regeneration.''
+
+Beware: need to take account of heat need for regenerating CO2 capture solvent.
+In power plants, can use waste heat, but in industrial plants there is less
+low-grade heat (need ~110 C). \citeS{kuramochi2012}
+
+Need around 3.9 GJ/tCO2 heat for regeneration of aqueous MEA ~ 1 MWh/tCO2
+\citeS{zhang2016}. Solid biomass has 0.3 tCO2/MWh\th => need 0.3 MWh heat for
+each MWh\th of solid biomass => heat output is hugely reduced!!! Unless we have
+oxyfuel biomass combustion...
+
+Breyer \url{https://link.springer.com/content/pdf/10.1007/s11027-019-9847-y.pdf}
+has 1.2 MWh/tCO2 heat at 100 C and 0.2 MWh\el/tCO2 electricity for DAC.
+Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
+
+
+
 \section{Mathematical Model Formulation}
 
+\newgeometry{margin=2cm}
+\begin{landscape}
+
+    
+
 \section{Techno-Economic Assumptions}
+
+Net-zero expected in 2035-2060, so take 2030 costs to be conservative, and also because of pathway (if want in 2050, much of infrastructure is built 2030-2050). NB: Even though total cost may be high, we're mostly focused on comparative study.
+
+\begin{small}
+\input{../results/tables/costs.tex}
+\end{small}    
+
+\end{landscape}
+
+\restoregeometry

@@ -22,7 +22,7 @@
 
 % unused
 % \renewcommand*\familydefault{\sfdefault} % biolinum
-% \usepackage[margin=3.5cm]{geometry}
+%\usepackage[pass]{geometry}
 % \usepackage[latin1]{inputenc}
 % \usepackage{amsfonts}
 % \usepackage{amssymb}
@@ -36,6 +36,8 @@
 \usepackage{booktabs}
 \usepackage{epstopdf}
 \usepackage{xfrac}
+\usepackage{tabularx}
+\usepackage{mhchem}
 \usepackage{bm}
 \usepackage[colorlinks]{hyperref}
 \usepackage[nameinlink,sort&compress,capitalise,noabbrev]{cleveref}
@@ -44,6 +46,11 @@
 \usepackage{blindtext}
 \usepackage[parfill]{parskip}
 % \usepackage[toc,title,page]{appendix}	
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{pdflscape}
 
 \usepackage[resetlabels,labeled]{multibib}
 \newcites{S}{Supplementary References}
@@ -70,24 +77,37 @@
 % \def\card{\text{card}\,}
 % \def\x{\boldsymbol{\mathsf{x}}}
 
+\def\co{CO${}_2$}
+\def\el{${}_{\textrm{el}}$}
+\def\th{${}_{\textrm{th}}$}
+\def\deg{${}^\circ$}
+
 % \urlstyle{sf}
 
 \usepackage{xcolor}
 \usepackage{framed}
 \definecolor{shadecolor}{rgb}{.95,.95,.95}
 
+\usepackage{tocloft}
+\cftsetindents{section}{1em}{2.75em}
+
 \begin{document}
+
 
 \begin{frontmatter}
 
-	\title{High-Resolution Sector Coupling}
+	\title{Balancing Public Acceptance against Cost in the European Energy Transition}
 	
 	\author[tubaddress]{Fabian Neumann\corref{correspondingauthor}}
-	\ead{fneum@mail.tu-berlin.de}
+	\ead{f.neumann@tu-berlin.de}
+	\author[tubaddress]{Elisabeth Zeyen}
 	\author{...}
+	\author[aarhus,aarhus2]{Marta Victoria}
 	\author[tubaddress]{Tom Brown}
 	% \cortext[correspondingauthor]{}
 	\address[tubaddress]{Department of Digital Transformation in Energy Systems, Institute of Energy Technology, Technische Universität Berlin, Fakultät III, Einsteinufer 25 (TA 8), 10587 Berlin, Germany}
+	\address[aarhus]{Department of Mechanical and Production Engineering, Aarhus University, Inge Lehmanns Gade 10, 8000 Aarhus, Denmark}
+	\address[aarhus2]{iCLIMATE Interdisciplinary Centre for Climate Change, Aarhus University}
 
 	\begin{abstract}
 		\input{sections/abstract.tex} 
@@ -106,11 +126,10 @@
 
 \end{frontmatter}
 
-
-% \begin{small}
-% 	\tableofcontents
-% \end{small}
-
+\begin{small}
+	\tableofcontents
+\end{small}
+~\\
 
 \addcontentsline{toc}{section}{Context \& Scale}
 \begin{shaded}
@@ -121,22 +140,26 @@
  
 \section*{Introduction}
 \label{sec:intro}
+\addcontentsline{toc}{section}{\nameref{sec:intro}}
 
 \input{sections/introduction.tex}
 
 \section*{Results}
 \label{sec:results}
+\addcontentsline{toc}{section}{\nameref{sec:results}}
 
 \input{sections/results.tex}
 
 
 \section*{Discussion}
 \label{sec:discussion}
+\addcontentsline{toc}{section}{\nameref{sec:discussion}}
 
 \input{sections/discussion.tex}
 
 \section*{Experimental Procedures}
 \label{sec:methods}
+\addcontentsline{toc}{section}{\nameref{sec:methods}}
 
 \begin{small}
 \input{sections/methods.tex}
@@ -157,19 +180,19 @@
 % following https://casrai.org/credit/
 
 \textbf{Author XY}:
-Conceptualization
-Data curation
-Formal Analysis
-Funding acquisition
-Investigation
-Methodology
-Project administration
-Resources
-Software
-Supervision
-Validation
-Visualization
-Writing - original draft
+Conceptualization --
+Data curation --
+Formal Analysis --
+Funding acquisition --
+Investigation --
+Methodology --
+Project administration --
+Resources --
+Software --
+Supervision --
+Validation --
+Visualization --
+Writing - original draft --
 Writing - review \& editing
 
 
