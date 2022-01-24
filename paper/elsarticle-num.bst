@@ -1,21 +1,21 @@
 %%
 %% This is file `elsarticle-num.bst' (Version 2.1),
-%% 
+%%
 %% Copyright 2007-2019 Elsevier Ltd
-%% 
+%%
 %% This file is part of the 'Elsarticle Bundle'.
 %% ---------------------------------------------
-%% 
+%%
 %% It may be distributed under the conditions of the LaTeX Project Public
 %% License, either version 1.2 of this license or (at your option) any
 %% later version.  The latest version of this license is in
 %%    http://www.latex-project.org/lppl.txt
 %% and version 1.2 or later is part of all distributions of LaTeX
 %% version 1999/12/01 or later.
-%% 
-%% 
+%%
+%%
 %% $Id: elsarticle-num.bst 174 2019-04-05 09:50:32Z rishi $
-%% 
+%%
 %% $URL: http://lenova.river-valley.com/svn/elsarticle/trunk/elsarticle-num.bst $
 %%
 %% ----------------------------------------
@@ -1174,9 +1174,9 @@ FUNCTION {article}
   if$
   format.journal.pages
   format.note output
-  pages empty$  
+  pages empty$
 	  { format.date "year" output.check }
-    'skip$ 
+    'skip$
   if$
   fin.entry
   write.url

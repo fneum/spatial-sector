@@ -4,7 +4,6 @@
 dconf
 results
 *.ipynb_checkpoints
-*.ipynb
 summary
 *.nc
 *.log
@@ -12,6 +11,7 @@ summary
 *.png
 *_*
 losses.pdf
+notebooks/backups*
 
 dconf/
 ## Core latex/pdflatex auxiliary files:
