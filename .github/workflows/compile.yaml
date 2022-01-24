@@ -18,6 +18,7 @@ jobs:
           root_file: spatial-sector.aux
           compiler: bibtex
           working_directory: paper/
+          args:
       - name: pdflatex 2
         uses: dante-ev/latex-action@latest
         with:
