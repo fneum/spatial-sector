@@ -5,11 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: xu-cheng/latex-action@v2.3.1
+      - uses: xu-cheng/latex-action@v2
         with:
           root_file: spatial-sector.tex
           working_directory: paper/
-      - uses: actions/upload-artifact@v2.3.1
+      - uses: actions/upload-artifact@v2
         with:
           name: PDF
           path: paper/spatial-sector.pdf
