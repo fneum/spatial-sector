@@ -5,11 +5,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: xu-cheng/latex-action@v2
+      - name: pdflatex 1
+        uses: dante-ev/latex-action@latest
         with:
           root_file: spatial-sector.tex
           working_directory: paper/
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: bibtex
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: spatial-sector.aux
+          compiler: bibtex
+          working_directory: paper/
+      - name: pdflatex 2
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: spatial-sector.tex
+          compiler: pdflatex
+          working_directory: paper/
+          args: -interaction=nonstopmode -shell-escape
       - uses: actions/upload-artifact@v2
         with:
-          name: PDF
+          name: paper
           path: paper/spatial-sector.pdf
