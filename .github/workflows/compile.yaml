@@ -1,0 +1,15 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: xu-cheng/latex-action@v2.3.1
+        with:
+          root_file: spatial-sector.tex
+          working_directory: paper/
+      - uses: actions/upload-artifact@v2.3.1
+        with:
+          name: PDF
+          path: paper/spatial-sector.pdf
