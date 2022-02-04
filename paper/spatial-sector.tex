@@ -37,7 +37,7 @@
 \usepackage{epstopdf}
 \usepackage{xfrac}
 \usepackage{tabularx}
-\usepackage{mhchem}
+\usepackage[version=4]{mhchem}
 \usepackage{bm}
 \usepackage[colorlinks]{hyperref}
 \usepackage[nameinlink,sort&compress,capitalise,noabbrev]{cleveref}
@@ -47,16 +47,31 @@
 \usepackage[parfill]{parskip}
 % \usepackage[toc,title,page]{appendix}
 
+\usepackage{siunitx}
+\sisetup{
+	range-units = single,
+	per-mode = symbol
+}
+\DeclareSIUnit\year{a}
+\DeclareSIUnit{\tco}{t_{\ce{CO2}}}
+\DeclareSIUnit{\sieuro}{\mbox{\euro}}
+\DeclareSIUnit{\twh}{{\tera\watt\hour}}
+\DeclareSIUnit{\mwh}{{\mega\watt\hour}}
+
+\newcommand{\co}{\ce{CO2}~}
+
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{threeparttable}
 \usepackage{pdflscape}
 
+\usepackage[export]{adjustbox}
+
 \usepackage[resetlabels,labeled]{multibib}
 \newcites{S}{Supplementary References}
 \bibliographystyleS{elsarticle-num}
 
-%\graphicspath{{../../playgrounds/sensitivity-global/notebooks/graphics/}}
+\graphicspath{{../results/graphics/}, {../../../playgrounds/pr/pypsa-eur-sec/results/}}
 
 % \usepackage[
 % 	type={CC},
@@ -77,7 +92,7 @@
 % \def\card{\text{card}\,}
 % \def\x{\boldsymbol{\mathsf{x}}}
 
-\def\co{CO${}_2$}
+%\def\co{CO${}_2$}
 \def\el{${}_{\textrm{el}}$}
 \def\th{${}_{\textrm{th}}$}
 \def\deg{${}^\circ$}
@@ -101,7 +116,6 @@
 	\author[tubaddress]{Fabian Neumann\corref{correspondingauthor}}
 	\ead{f.neumann@tu-berlin.de}
 	\author[tubaddress]{Elisabeth Zeyen}
-	\author{...}
 	\author[aarhus,aarhus2]{Marta Victoria}
 	\author[tubaddress]{Tom Brown}
 	% \cortext[correspondingauthor]{}
@@ -207,7 +221,8 @@ PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthe
 % tidy with https://flamingtempura.github.io/bibtex-tidy/
 \addcontentsline{toc}{section}{References}
 \renewcommand{\ttdefault}{\sfdefault}
-\bibliography{library}
+%\bibliography{library}
+\bibliography{/home/fneum/zotero}
 
 % supplementary information
 
@@ -235,6 +250,7 @@ PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthe
 
 \addcontentsline{toc}{section}{Supplementary References}
 \renewcommand{\ttdefault}{\sfdefault}
-\bibliographyS{library}
+%\bibliographyS{library}
+\bibliographyS{/home/fneum/zotero}
 
 \end{document}
