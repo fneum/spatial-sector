@@ -1,5 +1,53 @@
 \section{Model Overview}
 
+\begin{figure}
+    \centering
+    \includegraphics[]{../graphics/multisector_figure.pdf}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{clustered electricity network}
+        % \includegraphics[width=\textwidth]{20211218-181-lv/maps/elec_s_181_lv1.0__\coL0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030-today.pdf}
+        \includegraphics[width=\textwidth]{network-s.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{gas network}
+        \includegraphics[width=\textwidth]{gas-network-today-map.pdf}
+    \end{subfigure}
+    \caption{Clustered transmission networks.}
+    \label{fig:clustered-networks}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{electricity demand}
+        \includegraphics[width=\textwidth]{demand-map-electricity.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{hydrogen demand}
+        \includegraphics[width=\textwidth]{demand-map-H2.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{methane demand}
+        \includegraphics[width=\textwidth]{demand-map-gas.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{heat demand}
+        \includegraphics[width=\textwidth]{demand-map-heat.pdf}
+    \end{subfigure}
+    \caption{Spatial final energy demand diversity.}
+    \label{fig:demand}
+\end{figure}
+
 Not all of the sectors are at the full nodal resolution, and some demand for
 some sectors is distributed to nodes using heuristics that need to be corrected.
 Some networks are copper-plated to reduce computational times.
@@ -73,6 +121,11 @@ hourly electricity demand for every country from ENTSO-E via OPSD interface
 
 \subsection{Electricity Supply}
 
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{powerplants.pdf}
+    \caption{Powerplants.}
+\end{SCfigure}
+
 OCGT CCGT
 
 hydro dams, PHS and run of river
@@ -88,7 +141,7 @@ CHP (with gas or biomass)
 
 costs, lifetimes and efficiencies in SX.
 
-powerplantmatching for existing power plants
+powerplantmatching for existing power plants \citeS{gotzensPerformingEnergy}
 
 For conventional electricity generators PyPSA-Eur-Sec uses the open
 powerplantmatching database comprising all existing conventional electricity
@@ -116,6 +169,12 @@ pumped-hydro (PHS)
 hydrogen storage
 
 \subsection{Electricity Transport}
+
+\begin{figure}
+    \includegraphics[width=\textwidth, center]{network.pdf}
+    \label{fig:network}
+    \caption{ENTSO-E transmission network}
+\end{figure}
 
 ENTSO-E
 - high-voltage transmission lines at and above 220 kV
@@ -204,15 +263,14 @@ Assuming liquid hydrogen.
 
 Should switch to methanol or ammonia
 
-See wording in
-\url{https://ec.europa.eu/clima/sites/clima/files/eu-climate-action/docs/impact_en.pdf}
-
 `` This estimate is based on an estimate of international navigation emissions
 based on bunker fuels sold in the EU, comparable to the memo item as reported in
 the EU greenhouse gas inventory reported to the UNFCCC.''
 
 
 \section{Industry Sector}
+
+\citeS{graichenKlimaneutraleIndustrie,rootzenExploringLimits2013}
 
 Industry demand is split into a dozen different sectors, with the major ones
 being iron and steel, cement and basic chemicals. The location of existing
@@ -224,21 +282,28 @@ oxyfuel for cement. Basic chemicals can use green hydrogen as a feedstock rather
 than fossil fuels, for example for ammonia production, or using Fischer-Tropsch
 naphtha in steam crackers for High Value Chemicals.
 
-\begin{figure}
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{fec_industry_today_tomorrow.pdf}
     \caption{Final consumption of energy and non-energy feedstocks in industry today (left bar) and
     our future scenario in 2050 (right bar)}
-\end{figure}
+\end{SCfigure}
 
-\begin{figure}
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{process-emissions.pdf}
     \caption{Process emissions in industry today (left bar) and in 2050 (right bar)}
-\end{figure}
+\end{SCfigure}
+
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
+    \caption{Distribution of industries.}
+\end{SCfigure}
 
 \begin{table}[t]
     \centering
     \setlength{\tabcolsep}{6pt}
     \begin{tabular}{@{} p{5cm}r @{}}
       \toprule
-      Material & Production [Mt/a] \\
+      Material & Production [\si{\mega\tonne\per\year}] \\
       \midrule
       steel & 174 \\
       cement & 186 \\
@@ -299,12 +364,12 @@ process is completely electrified.
 
 Where process heat is required (steam
 process?) our approach depends on the temperature required
-\citeS{Naegler2015,Rehfeldt2018}. Processes that require temperatures below
-500\deg{}C are supplied with solid biomass, since we assume that residues and
+\citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}. Processes that require temperatures below
+\SI{500}{\celsius} are supplied with solid biomass, since we assume that residues and
 wastes are not suitable for high-temperature applications. We see solid biomass
 use primarily in the pulp and paper industry, where it is already widespread,
 and in food, beverages and tobacco, where it replaces natural gas. Industries
-which require high temperatures (above 500\deg{}C), such as metals, chemicals
+which require high temperatures (above \SI{500}{\celsius}), such as metals, chemicals
 and non-metalic minerals are either electified where processes already exist, or
 the heat is provided with synthetic methane.
 
@@ -315,10 +380,10 @@ Industry heat demand can be supplied via DH or is added to services heat demand.
 Can be supplied by other processes producing heat as byproduct (DAC, FT)
 
 For EU-28 plus NO, CH, IL Rehfeldt estimated that from 2015 industrial heat demand
-45\% is above 500 \deg{} C, 30\% 100-500 \deg{}C, 25\% below 100 \deg{} C
+45\% is above \SI{500}{\celsius}, 30\% \SIrange{100}{500}{\celsius}, 25\% below \SI{100}{\celsius}
 
-Naegler similarly:
-48\% is above 400 \deg{} C, 27\% 100-400 \deg{}C, 25\% below 100 \deg{} C
+\citeS{naeglerQuantificationEuropean2015} similarly:
+48\% is above \SI{400}{\celsius}, 27\% \SIrange{100}{400}{\celsius}, 25\% below \SI{100}{\celsius}
 
 Because of high share of high-temperature process heat demand
 - no geothermal
@@ -362,31 +427,33 @@ and beverages.
 
 Higher temperatures are met with methane.
 
-
+\citeS{neuwirthFuturePotential2022}
 
 \subsection{Iron and Steel}
+
+\citeS{toktarovaInteractionElectrified2022, mandovaPossibilitiesCO22018, suopajarviUseBiomass2018,voglPhasingOut2021, bhaskarDecarbonizingPrimary}
 
 70\% from scrap, rest from direct reduction with 1.7 MWh H2 / t steel + electric arc (process emissions 0.03 t COs / t steel)
 
 Two routes today to manufacture steel in Europe
 - primary/integrated steelworks (60\% of steel production)
-- secondary/electric arc furnaces (40\%) \url{http://www.sciencedirect.com/science/article/pii/S0360544216310295}
+- secondary/electric arc furnaces (40\%) \citeS{lechtenbohmerDecarbonisingEnergy2016}
 
 Primary - Integrated steelworks
 - use blast furnaces in which coke is used to reduce iron ore into molten iron
 \begin{equation}
-    \ce{FE2O3 + 3CO -> 2Fe + 3CO2}
+    \ce{FE2O3 + 3CO -> 2Fe + 3\co}
 \end{equation}
 \begin{equation}
-    \ce{FeO + 3CO -> Fe + 3CO2}
+    \ce{FeO + 3CO -> Fe + 3\co}
 \end{equation}
 - this is then converted to steel
-- The primary route implies large process emissions (0.22 tCO2/t steel)
+- The primary route implies large process emissions (0.22 t\co/t steel)
 
 Secondary - electric arc furnaces (EAF)
 - use EAF to melt scrap metal
-- this limits CO2 emissions to burning of graphite electrodes \url{http://www.umweltbundesamt.de/en/publikationen/comparative-analysis-of-options-potential-for}
-- 0.03 tCO2/t steel
+- this limits \co emissions to burning of graphite electrodes \citeS{Friedrichsen_2018}
+- 0.03 t\co/t steel
 
 DRI - Direct Reduced Iron
 \begin{equation}
@@ -397,7 +464,7 @@ DRI - Direct Reduced Iron
 \end{equation}
 - this is processed in EAF and circumvents associated process emissions
 - today, DRI uses methane as reduction agent but we assume this to be substituted with hydrogen
-- needs 1.7 MWh H2 / t steel \citeS{vogl2018} and 0.322 MWh elec / t steel \url{https://ssabwebsitecdn.azureedge.net/-/media/hybrit/files/hybrit_brochure.pdf}
+- needs 1.7 MWh H2 / t steel \citeS{voglAssessmentHydrogen2018} and 0.322 MWh elec / t steel \url{https://ssabwebsitecdn.azureedge.net/-/media/hybrit/files/hybrit_brochure.pdf}
 
 share of steel produced by hydrogen-based DRI + EAF is exogenous: 30\%
 integrated steelworks: 0\%
@@ -405,21 +472,21 @@ scrap + EAF: 70\%
 
 replace integrated steelworks with DRI + EAF
 
-NB: DRI already done with hydrogen in Trinidad and in Abu Dhabi (where CO2 from
+NB: DRI already done with hydrogen in Trinidad and in Abu Dhabi (where \co from
 SMR is captured and used for enhanced oil recovery) H2 Future, HYBRIT, SALCOS
 
 \citeS{circular_economy} circular economy practices have potential of expanding
 the share of secondary route to 85\% just by increasing the amount and quality of scrap metal
 
 process emissions from lime (added to remove impurity?), graphite anodes AND
-from carbon added to get steel alloy  \citeS{vogl2018}
+from carbon added to get steel alloy  \citeS{voglAssessmentHydrogen2018}
 
 EAF not good for flat steel in automotive
 
 NB: derived gases not included in model, since take from blast furnace top
 gases, originating in coke
 
-Why not add CCS to existing plants? Hard for some reason \citeS{kuramochi2012}.
+Why not add CCS to existing plants? Hard for some reason \citeS{kuramochiComparativeAssessment2012}.
 
 For the remaining subprocesses in this sector:
 - methane as energy source for smelting process
@@ -427,19 +494,23 @@ For the remaining subprocesses in this sector:
 
 \subsection{Chemicals Industry}
 
+\citeS{elserTakingEuropean, FuturePetrochemicals, nicholsonManufacturingEnergy2021, meysAchievingNetzero2021, thunmanCircularUse2019, introzziDECHEMAGesellschaft, meysCircularEconomy2020, guWastePlastics2017, boulamantiProductionCosts2017}
+
 wide range of diverse industries ranging from:
 - basic organics compounds (olefins, alcohols, aromatics)
 - basic inorcanic compounds (ammonia, chlorine)
 - polymers (plastics)
 - end-user products (cosmetics, pharmaceutics)
 
-chemicals industry consumes lots of fossil-fuel based feedstocks \citeS{Levi_2018}
+chemicals industry consumes lots of fossil-fuel based feedstocks \citeS{leviMappingGlobal2018}
 
 basic chemicals: HVC (high-value chemicals), chlorine, methanol and ammonia
 
 Recycling!
 - specify reuse, primary production, and mechanical and chemical recycling
-fraction of platics \citeS{circular_economy}
+fraction of platics
+
+\citeS{circular_economy, kullmannCombiningWorlds2021,kullmannImpactsMaterial,carolinaliljenstromDataSeparate, fuhrPlastikatlasDaten2019,conversioMaterialFlow2020}
 
 synthetic naphtha for primary production
 
@@ -454,13 +525,13 @@ ammonia production from USGS (United States Geological Survey) statistics
 Assumptions for existing ammonia energy demand from XX and for electrolytic
 process from XX.
 
-hydrogen can be combined with Nitrogen to obtain ammonia in the Haber-Bosch process \citeS{Levi_2018}
+hydrogen can be combined with Nitrogen to obtain ammonia in the Haber-Bosch process \citeS{leviMappingGlobal2018}
 \begin{equation}
     \ce{N2 + 3H2 -> 2NH3}
 \end{equation}
 Currently, H2 for ammonia industry in Europe is from SMR, in the model can be SMR, SMR CC, electrolysers
-CO2 often captured from SMR for urea production (20\% of fertilizer in Europe,
-but 50-60 in China and India) and food and beverages
+\co often captured from SMR for urea production (20\% of fertilizer in Europe,
+but 50-60\% in China and India) and food and beverages
 with electrolytic-H2 we have 6.5 MWh \ce{H2} / t \ce{NH3} and 1.17 MWh elec / t \ce{NH3} (Wang, 2018 Joule)
 
 chlorine, aromatics, olefins
@@ -476,8 +547,8 @@ atmosphere. But this is wierd, since there is no release from landfill, plastics
 are not biodegradable. If they are burned as waste, we should use a
 waste-to-energy plant, which we currently don't have in the model.
 
-\citeS{lechtenbohmer2016} has 14.8 MWh FT-naphtha per ton of HVC, and 2.7 MWh per
-ton for processing; 3.1 tCO$_2$/tHVC are captured from flue gases.
+\citeS{lechtenbohmerDecarbonisingEnergy2016} has 14.8 MWh FT-naphtha per ton of HVC, and 2.7 MWh per
+ton for processing; 3.1 t\co/tHVC are captured from flue gases.
 
 TODO: We have much smaller emissions, are we accounting for heating as well as
 process emission? I guess with methane we do...
@@ -485,27 +556,29 @@ process emission? I guess with methane we do...
 share of synthetic vs fossil-fuel based methane and naphtha is endogenous
 
 transformation of energy-consuming processes:
-- FEC in steam processing is converted to methane since requires temperature above 500 \deg{} C \citeS{Rehfeldt2018}
+- FEC in steam processing is converted to methane since requires temperature above \SI{500}{\celsius} \citeS{rehfeldtBottomupEstimation2018}
 - remaining processes are electrified using the current efficiency  of microwave for high-enthalpy heat processing,
   electric furnaces, electric process cooling and electric generic processes
 
-process emissions from feedstock in the chemical industry represent 0.369 tCO2 / t ethylene eq.
+process emissions from feedstock in the chemical industry represent 0.369 t\co / t ethylene eq.
 - we consider process emissions for all the material output
-- conservative, because it assumes that all plastic-embedded CO2 will eventually be released into the atmosphere
-- plastic disposal in landfilling will avoid, or at least delay, associated CO2 emissions
+- conservative, because it assumes that all plastic-embedded \co will eventually be released into the atmosphere
+- plastic disposal in landfilling will avoid, or at least delay, associated \co emissions
 
 \subsection{Non-metallic Mineral Products}
 
 Cement
 
-waste and solid biomass; capture of CO2 emissions
+\citeS{fennellDecarbonizingCement2021}
+
+waste and solid biomass; capture of \co emissions
 
 cement manufacturing involves large process and energy emissions
 
 calcination of limestone to chemically reactive calcium oxide (known as lime)
-involves process emissions of 0.54 t \ce{CO2} / t cement
+involves process emissions of 0.54 t \ce{\co} / t cement
 \begin{equation}
-    \ce{CaCO3 -> CaO + CO2}
+    \ce{CaCO3 -> CaO + \co}
 \end{equation}
 
 mitigation strategies (new raw materials, recovering unused cement from concrete at end of life \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en})
@@ -518,7 +591,7 @@ assume that FEC (except electricity, low-temperature heat and biomass consumptio
 is supplied by methane which can deliver the required high-temperature heat
 
 NB: CH4 burns differently in kiln, not straightforward, see IEEE paper
-\citeS{akhtar2013}
+\citeS{akhtarCoalNatural2013}
 
 process emissions are captured and, for net-zero emission scenarios,
 they need to be compensated by negative emissions
@@ -526,14 +599,14 @@ they need to be compensated by negative emissions
 Do post-combustion carbon capture on emissions and account for heat and
 electricity for capture with aqueous amine solution. The classic amine process
 based on monoethanolamine (MEA) Some suggest need CHP for this. DEA input
-assumptions in 2030 are 0.72 MWh/tCO$_2$ heat and 0.022 MWh/tCO$_2$ electricity
-per outputed tonne of CO$_2$ assuming a capture rate of 90\%. Additional
-electricity for CO$_2$ compression to 150 bar and dehydration is 0.085
-MWh/tCO$_2$.
+assumptions in 2030 are 0.72 MWh/t\co heat and 0.022 MWh/t\co electricity
+per outputed tonne of \co assuming a capture rate of 90\%. Additional
+electricity for \co compression to 150 bar and dehydration is 0.085
+MWh/t\co.
 
-Alternative: use oxyfuel so you get concentrated CO$_2$. No heat requirement,
-electricity only used for O$_2$ air separation unit (ASU) of 0.08 MWh/tCO$_2$
-and 0.17 MWh/tCO$_2$ for post treatment (unlike post-combustion capture, output
+Alternative: use oxyfuel so you get concentrated \co. No heat requirement,
+electricity only used for O$_2$ air separation unit (ASU) of 0.08 MWh/t\co
+and 0.17 MWh/t\co for post treatment (unlike post-combustion capture, output
 is impure, so have to remove O$_2$ and N$_2$ by cryogenic distillation). Can
 avoid ASU by using O$_2$ from electrolysis. Electricity use higher than
 post-combustion, but don't have big heat requirement.
@@ -542,7 +615,7 @@ Beware biomass share in IDEES-Industry is higher for EU28 (2920 ktoe in 2015)
 than in IDEES-EnergyBalance (906 ktoe). This is because IDEES is putting waste
 (including non-renewable waste) together with biomass under biomass.
 
-\citeS{kuramochi2012}: The major difference between centralized power plants and
+\citeS{kuramochiComparativeAssessment2012}: The major difference between centralized power plants and
 industrial plants such as cement plants is that the former have large quantities
 of low-grade heat that can be used for solvent regeneration, whereas the latter
 generally do not [42].
@@ -566,7 +639,7 @@ separation unit via cryogenic distillation) since don't need 200-300 kWh/tO$_2$
 
 NB: cement production is used to using solid fuels. Natural gas needs some
 aadjustment of firing mechanisms
-\url{https://doi.org/10.1109/CITCON.2013.6525276}.
+\citeS{akhtarCoalNatural2013}.
 
 Some people push electric kilns for heat, but considered less mature than gas
 and certainly less than solid
@@ -576,7 +649,7 @@ CemZero project
 apparently poo-pooed here \url{https://www.cementa.se/sv/cemzero}.
 
 
-\citeS{lechtenbohmer2016} has electrification of cement with 0.9~MWh\el/tCLinker
+\citeS{lechtenbohmerDecarbonisingEnergy2016} has electrification of cement with 0.9~MWh\el/tCLinker
 (12\% efficiency improvement in thermal demand compared to 2010)
 
 
@@ -588,18 +661,21 @@ complete electrification because many already electrified processes:
 - electric kilns for primary production processes
 - electric furnaces for the product finishing
 - FEC 0.44 MWh/t ceramics
-- process emissions: 0.03 tCO2/t ceramic
+- process emissions: 0.03 t\co/t ceramic
 
+\cite{furszyferdelrioDecarbonizingCeramics2022a}
 
 Glass
 
 Electrify everything.
 - electric melting tanks
 - electric annealing
-- electricity demand 2.07 MWh/t of glass \citeS{lechtenbohmer2016}
+- electricity demand 2.07 MWh/t of glass \citeS{lechtenbohmerDecarbonisingEnergy2016}
+
+\cite{furszyferdelrioDecarbonizingGlass2022}
 
 
-\citeS{lechtenbohmer2016} also has big efficiency improvement with 0.85~MWh\el/tGlass.
+\citeS{lechtenbohmerDecarbonisingEnergy2016} also has big efficiency improvement with 0.85~MWh\el/tGlass.
 
 \subsection{Non-ferrous Metals}
 
@@ -610,7 +686,7 @@ includes
 
 Aluminium
 
-80\% recycling, for rest: methane for high-enthalpy heat (bauxite to alumina) followed by electrolysis (process emissions 1.5 t CO2 / t Al)
+80\% recycling, for rest: methane for high-enthalpy heat (bauxite to alumina) followed by electrolysis (process emissions 1.5 t \co / t Al)
 
 more than half of the FEC of this sector
 
@@ -624,10 +700,10 @@ Primary route:
 - production of alumina from bauxite (aluminium ore)
 - electrolysis to transfrom alumina to aluminium via the Hall-H\'{e}roult process
 \begin{equation}
-    \ce{2Al2O3 + 3C -> 4Al + 3CO2}
+    \ce{2Al2O3 + 3C -> 4Al + 3\co}
 \end{equation}
 - primary route requires high-enthalpy heat to produce alumina - supplied by methane
-- 1.5 tCO2/t aluminium
+- 1.5 t\co/t aluminium
 - inert anodes might be commercially available in 2030 avoiding processe emissions \citeS{Friedrichsen_2018} but not considered
 
 Secondary route:
@@ -640,7 +716,7 @@ Other non-ferrous metals, electrification of entire manufacturing process is ass
 
 \subsection{Other Industry Subsectors}
 
-energy demands and CO2 emissions for the agriculture, forestry and fishing
+energy demands and \co emissions for the agriculture, forestry and fishing
 sector
 
 pulp, paper, printing:
@@ -648,7 +724,7 @@ pulp, paper, printing:
 Already high share of biomass. Keep and add biomass for paper production, since
 temperatures required are low.
 
-food, beverages, tobacco
+food, beverages, tobacco \citeS{sovacoolDecarbonizingFood2021}
 
 textiles and leather
 
@@ -667,10 +743,10 @@ while the remaining processes are electrified
 Comparison
 
 \begin{itemize}
-    \item synergies paper (still see benefit of transmission, but MUCH bigger electrolysis with industry/aviation/shipping)
-    \item JRC papers (Herib Blanco etc.)
+    \item synergies paper (still see benefit of transmission, but MUCH bigger electrolysis with industry/aviation/shipping) \citeS{brownSynergiesSector2018}
+    \item JRC papers (Herib Blanco etc.) \citeS{blancoPotentialHydrogen2018,blancoPotentialPowertoMethane2018}
     \item FZJ steel paper
-    \item PAC (uses solid biomass for non-energy requirements in chemicals industry, only 270 TWh in 2050, because of circular economy; phases out waste incineration)
+    \item PAC (uses solid biomass for non-energy requirements in chemicals industry, only 270 TWh in 2050, because of circular economy; phases out waste incineration) \citeS{caneurope/eebBuildingParis}
     \item LTS from commission \citeS{in-depth_2018}
     \item Material Economics reports \citeS{circular_economy,me2019}
 \end{itemize}
@@ -689,6 +765,8 @@ available: combined heat and power (CHP) plants consuming gas, coal and biomass
 with and without CCS, large-scale heat pumps, pit thermal storage, gas and oil
 boilers, resistive heating and fuel cells.
 
+\citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
+
 Heat demand is split into:
 
 urban central: large-scale district heating networks in urban areas with dense
@@ -705,7 +783,7 @@ Building heating demand: nodal, distributed in each country based on population.
 annual heat demands per country retrieved from JRC-IDEES
 
 converted to daily heat demand based on population weighted Heating Degree Day (HDD)
-- heating proportional to difference between ambient temperature (from ERA5) and threshold temperature of 15\deg{}C
+- heating proportional to difference between ambient temperature (from ERA5) and threshold temperature of \SI{15}{\celsius}
 - daily space heat is distributed to the hours of the day following BDEW heat demand profiles
 - these differ for weekdays and weekends and between residential and services demand
 - hot water demand constant throughout the day
@@ -746,7 +824,7 @@ Resistive heaters
 
 Large Combined Heat and Power (CHP) plants
 
-https://doi.org/10.1016/j.energy.2018.10.044
+\citeS{dahlCostSensitivity2019, madedduCOReduction2020}
 
 PyPSA-Eur-Sec includes CHP plants fuelled by methane, hydrogen and solid biomass from waste and residues.
 
@@ -778,7 +856,7 @@ waste heat from industry?
 
 for efficiency improvements, use Lisa thermal envelope retrofitting, currently
 determined exogenously with 29\% reduction compared to 2015 (check) XX cite
-Lisa's paper \url{https://arxiv.org/abs/2012.01831}
+Lisa's paper \citeS{zeyenMitigatingHeat2021,lombardiWeatherinducedVariability2022}
 
 urban central (DH)
 - central air-sourced heat pumps
@@ -814,7 +892,7 @@ Ground-sourced heat pumps (GSHP)
     COP = 8.77 + 0.150 \Delta T + 0.000734 \Delta T^2
 \end{equation}
 
-Sink water temperature $T_{sink}$ is 55\deg{}C
+Sink water temperature $T_{sink}$ is \SI{55}{\celsius}
 
 Source temperature from ERA5
 
@@ -832,9 +910,145 @@ with time constant of $\tau=180$ days for central TES and $\tau=3$ days for indi
 
 charging and discharging efficiencies are 90\% due to pipe losses
 
-\section{Wind}
+\section{Renewables Potentials}
 
-\subsection{Wind Potentials}
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+        \begin{subfigure}[t]{0.49\textwidth}
+            \centering
+        \includegraphics[width=\textwidth]{windspeeds.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{irradiation.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{temperatures.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{runoff.png}
+    \end{subfigure}
+    % }
+    \caption{weather data}
+    \label{fig:weather-data}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+        \begin{subfigure}[t]{0.49\textwidth}
+            \centering
+        \includegraphics[width=\textwidth]{cf-raw-ts-onshore wind.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-raw-ts-offshore wind.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-raw-ts-solar PV.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-raw-ts-run of river.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cop-ts-air-sourced heat pump.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cop-ts-ground-sourced heat pump.pdf}
+    \end{subfigure}
+    % }
+    \caption{weather data}
+    \label{fig:weather-data}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-onwind.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-offwind-dc.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-solar.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-solar thermal.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-air-sourced heat pump.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cf-ground-sourced heat pump.pdf}
+    \end{subfigure}
+    % }
+    \caption{weather data}
+    \label{fig:weather-data}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{solar}
+        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{wind}
+        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
+    \end{subfigure}
+    % }
+    \caption{Available energy density}
+    \label{fig:energy-density}
+\end{figure}
+
+\newgeometry{margin=2cm}
+\begin{landscape}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.5\textwidth}
+            \centering
+        \caption{solar land eligibility}
+        \includegraphics[width=\textwidth]{eligibility-solar-250-20.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \caption{onshore wind land eligibility}
+        \includegraphics[width=\textwidth]{eligibility-onwind-250-20.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \caption{offshore wind land eligibility}
+        \includegraphics[width=\textwidth]{eligibility-offwind-250-20.pdf}
+    \end{subfigure}
+    %}
+    \caption{Land eligibility}
+    \label{fig:eligibility}
+\end{figure}
+
+
+\end{landscape}
+\restoregeometry
+
+\subsection{Onshore Wind Potentials}
 
 limited potential:
 
@@ -844,6 +1058,16 @@ according to Corine Land Cover (CLC) database (Table which ones are allowed)
 
 excluding Natura 2000 protected areas
 
+
+
+X MW/sqkm conversion factor
+
+20\% of the available land define potential
+
+\cite{mckennaHighresolutionLargescale2022,Ryberg2018}
+
+\subsection{Offshore Wind Potentials}
+
 Offshore:
 
 - bathymetry dataset GEBCO
@@ -851,22 +1075,8 @@ Offshore:
 - near-shore (distance less than 30km) AC connection, far-shore, DC connected
 - costs include AC-DC conversion
 
-X MW/sqkm conversion factor
-
-20\% of the available land define potential
-
-\subsection{Wind Time Series}
-
-capacity factor time series modelled by converting wind speeds from ERA5 reanalysis into wind
-generation, following the methodology described in
-
-ERA5: hourly resolution, 30 km spatial resolution
-
-atlite: open-source tool
-
-capacity layout proportional to mean capacity factors is assumed for every region
-
-\section{Solar}
+floating
+\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}
 
 \subsection{Solar Potentials}
 
@@ -879,14 +1089,28 @@ X MW/sqkm
 Installable potentials for rooftop PV are included with an assumption of 1 kWp
 per person (0.1 kW/m2 and 10 m2/person)
 
+\citeS{bodisHighresolutionGeospatial2019}
+
 Solar thermal
 - from reanalysis ERA5
 
-\subsection{Solar Time series}
+\section{Renewables Time Series}
+
+\subsection{Wind Time Series}
+
+capacity factor time series modelled by converting wind speeds from ERA5 reanalysis into wind
+generation, following the methodology described in
+
+ERA5: hourly resolution, 30 km spatial resolution
+
+atlite: open-source tool
+
+capacity layout proportional to mean capacity factors is assumed for every region
+
+
+\subsection{Solar Time Series}
 
 from satellite irradiance data (SARAH-2)
-
-\citeS{zappa2019}
 
 \begin{table}
     \caption{Land types considered suitable for every technology from Corine Land Cover database}
@@ -901,6 +1125,12 @@ from satellite irradiance data (SARAH-2)
         Offshore wind & sea and ocean (44) \\ \bottomrule
     \end{tabularx}
 \end{table}
+
+\subsection{Heat Pump Time Series}
+
+\citeS{nouvelEuropeanMapping2015, staffellReviewDomestic2012}
+
+\subsection{Hydro Time Series}
 
 \section{Hydrogen}
 
@@ -925,7 +1155,7 @@ Steam Methane Reforming (SMR)
 \end{equation}
 combined with water-gas shift reaction
 \begin{equation}
-    \ce{CO + H2O -> CO2 + H2}
+    \ce{CO + H2O -> \co + H2}
 \end{equation}
 
 
@@ -950,6 +1180,33 @@ new pipelines
 
 \subsection{Hydrogen Storage}
 
+\begin{SCfigure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{caverns.pdf}
+    \label{fig:caverns}
+    \caption{Caverns}
+\end{SCfigure}
+
+\begin{figure}
+    \centering
+    \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cavern-potentials-nearshore.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cavern-potentials-onshore.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cavern-potentials-offshore.pdf}
+    \end{subfigure}
+    }
+    \caption{Cavern storage potentials}
+    \label{fig:clustered-caverns}
+\end{figure}
+
 hydrogen can be stored
 
 overground steel tanks
@@ -959,6 +1216,8 @@ underground cavern storage
 - mapped onto each region
 - exclude caverns in the sea or within 50 km of the shore
 - to avoid environmental problems associated with brine solution disposal
+
+\citeS{caglayanTechnicalPotential2019}
 
 underground storage is around x times cheaper than steel tanks
 
@@ -981,18 +1240,25 @@ biogas
 - upgrad to methane
 
 Sabatier
-- hydrogen and captured \co{} to methane
+- hydrogen and captured \co to methane
 - methanation
 \begin{equation}
-    \ce{CO2 + 4H2 -> CH4 + 2H2O}
+    \ce{\co + 4H2 -> CH4 + 2H2O}
 \end{equation}
 
 HELMETH
 - direct power to methane with efficient heat integration
+- \citeS{gruberPowertoGasThermal2018}
 
 The share of synthetic, bio-based and fossil-based methane is an optimisation result
 
 \subsection{Methane Transport}
+
+\begin{figure}
+    \includegraphics[width=1\textwidth,center]{gas_network.pdf}
+    \label{fig:gas-raw}
+    \caption{Gas network}
+\end{figure}
 
 Scigrid Gas dataset
 - direction of pipelines taken into account
@@ -1029,7 +1295,7 @@ naphtha as a feedstock for the chemicals industry
 Fossil oil
 
 Fischer-Tropsch process
-- with hydrogen and captured \co{}
+- with hydrogen and captured \co
 - produces oil and waste heat
 \begin{equation}
     \ce{$n$CO + ($2n$ + 1)H2 -> C_$n$H_{2n+2} + $n$H2O}
@@ -1053,6 +1319,29 @@ industry.
 
 \subsection{Biomass Potentials}
 
+\begin{figure}
+    \centering
+    \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        % \caption{electricity demand}
+        \includegraphics[width=\textwidth]{biomass-solid biomass.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        % \caption{hydrogen demand}
+        \includegraphics[width=\textwidth]{biomass-biogas.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        % \caption{methane demand}
+        \includegraphics[width=\textwidth]{biomass-not included.pdf}
+    \end{subfigure}
+    }
+    \caption{Biomass potentials.}
+    \label{fig:biomass-potentials}
+\end{figure}
+
 Only wastes and residues from the JRC ENSPRESO biomass dataset.
 
 nodal where biomass potential is regionally disaggregated
@@ -1069,7 +1358,7 @@ Only residues from agriculture and forestry as well as
 biodegradable municipal waste are considered as energy feedstocks. Fuel crops
 are avoided because they compete with scarce land for food production, while
 primary wood as well as wood chips and pellets are avoided because of concerns
-about sustainability \citeS{BENTSEN20171211}.
+about sustainability \citeS{bentsenCarbonDebt2017}.
 
 The JRC provides potentials in low,
 medium and high availability scenarios, which depend on supply and competition
@@ -1079,7 +1368,7 @@ with other uses of each feedstock. In PyPSA the medium availability scenario for
 Manure and sludge waste are available to the model as biogas (upgraded to
 biomethane), while other wastes and residues are classified as solid biomass and
 available for combustion in combined-heat-and-power plants (CHP) and for medium
-temperature heat (lower than 500\deg{}C) applications in industry.
+temperature heat (lower than \SI{500}{\celsius}) applications in industry.
 
 The technical
 characteristics for the solid biomass CHP are taken from the Danish Energy
@@ -1094,7 +1383,7 @@ doubling of the biogas production from 2015 and similar amounts of solid
 biofuels, but a shift from energy crops and primary wood to residues and wastes.
 
 Since most liquid biofuels come from energy crops today, these do not appear in
-PyPSA-Eur-Sec. Zappa et al (2019) \citeS{zappa2019} uses the same JRC database
+PyPSA-Eur-Sec. Zappa et al (2019) \citeS{zappa100Renewable2019} uses the same JRC database
 but in addition to the feedstocks we use, they also allow roundwood chips and
 pellets, as well as grassy, willow and poplar energy crops.
 
@@ -1106,7 +1395,7 @@ sequestration from bioenergy plants.
     \small
     \begin{tabular}{lllr}
       \toprule
-      Source & JRC code & use in model & Potential [PJ/a] \\
+      Source & JRC code & use in model & Potential [\si{\peta\joule\per\year}] \\
       \midrule
       Energy crop: sugar beet bioethanol & MINBIOCRP21 & not used & 882.5 \\
       Energy crop: rape seed and other oil crops & MINBIORPS1 & not used & 949.3 \\
@@ -1135,7 +1424,7 @@ sequestration from bioenergy plants.
     \small
     \begin{tabular}{lr}
       \toprule
-      Source & Potential [TWh/a] \\
+      Source & Potential [\si{\twh\per\year}] \\
       \midrule
       not used & 1853 \\
       biogas & 353 \\
@@ -1147,12 +1436,12 @@ sequestration from bioenergy plants.
 
 \subsection{Biomass Demand}
 
-Solid biomass provides process heat up to 500 \deg Celsius in industry, as well as
+Solid biomass provides process heat up to \SI{500}{\celsius} in industry, as well as
 feeding CHP plants in district heating networks.
 
 solid biomass is used as heat supply in the paper and pulp as well as food, beverages and
 tobacco industries, where required temperatures are lower (see
-DOI:10.1002/er.3436 and DOI:10.1007/s12053-017-9571-y).
+\citeS{naeglerQuantificationEuropean2015} and \citeS{rehfeldtBottomupEstimation2018}).
 
 \subsection{Biomass Transport}
 
@@ -1179,9 +1468,9 @@ direct air capture DAC
 
 synthetic methane and liquid hydrocarbons
 
-transport and sequestration is 20 EUR/t Co2
+transport and sequestration is \SI{20}{\sieuro\per\tco}
 
-yearly sequestration limit to 200 MtCO2 / a
+yearly sequestration limit to 200 Mt\co / a
 
 management of the carbon cycle
 
@@ -1197,7 +1486,7 @@ from the air wit direct air capture (DAC).
 
 DAC includes
 - adsorption phase with inputs electricity and heat to assist adsorption process and regenerate adsorbent
-- compression of \co{} prior to storage which consumes electricity and rejects heat
+- compression of \co prior to storage which consumes electricity and rejects heat
 
 process emissions captured at 95\% capture rate at cost as in cement industry
 
@@ -1209,17 +1498,17 @@ Carbon dioxide can be used as an input for methanation and Fischer-Tropsch
 fuels/naphtha, or it can be sequestered underground.
 
 Can also be sequestered:
-- 20 \euro/tCO2 for transport and sequestration
-- 2-14 USD/tCO2 for pipe transport IEA
-- 10 USD/tCO2 for underground sequestration
+- 20 \euro/t\co for transport and sequestration
+- 2-14 USD/t\co for pipe transport IEA
+- 10 USD/t\co for underground sequestration
 - limit is 200 Mt (rather conservative but enough to capture process emissions)
 
 % plot
 unavoidable process emissions
 
-CO2: single node for Europe, but a transport and storage cost is added for sequestered CO2. Optionally: nodal, with CO2 transport via pipelines.
+\co: single node for Europe, but a transport and storage cost is added for sequestered \co. Optionally: nodal, with \co transport via pipelines.
 
-Why net-zero target for CO$_2$? Since don't include LULUCF or non-CO$_2$ (waste management and agriculture), which balance each other in EU analysis
+Why net-zero target for \co? Since don't include LULUCF or non-\co (waste management and agriculture), which balance each other in EU analysis
 
 CCU/S needed for synthetic fuels AND to deal with process emissions (from e.g.
 cement)
@@ -1231,54 +1520,150 @@ need for feedstocks in chemicals industry and dense hydrocarbon fuels for aviati
 we have capture on
 
 - industrial process emissions, using same assumptions as the cement kiln
-example described above from DEA  (90\% capture rate, 0.72 MWh/tCO$_2$ heat and
-0.1 MWh/tCO$_2$ electricity, including compression and dehydration) - heat is
+example described above from DEA  (90\% capture rate, 0.72 MWh/t\co heat and
+0.1 MWh/t\co electricity, including compression and dehydration) - heat is
 taken from urban heat buses, electricity from public grid - steam methane
 reforming - biomass CHPs, using DEA assumptions for post-combustion capture on a
-small CHP in 2030 (90\% capture rate, 0.72 MWh/tCO$_2$ heat and 0.11 MWh/tCO$_2$
+small CHP in 2030 (90\% capture rate, 0.72 MWh/t\co heat and 0.11 MWh/t\co
 electricity, including compression and dehydration) - heat and electricity is
-taken from CHP output - direct air capture (2 MWh/tCO$_2$ heat, 0.47 MWh/tCO$_2$
+taken from CHP output - direct air capture (2 MWh/t\co heat, 0.47 MWh/t\co
 electricity including compression and dehydration) - heat is taken from urban
-heat buses (even though T is below 100 C), electricity from public grid; waste
+heat buses (even though T is below \SI{100}{\celsius}), electricity from public grid; waste
 heat from compression is used for amine washing
 
 TODO: as of 210202: electricity and heat demand of process emission CC ignored
 (only capital costs are used); also for fuel-based emissions, simple 10\% of
 fuel is taken
 
-127 MtCO2/a fossil-origin process emissions in industry (limestone for cement,
+127 Mt\co/a fossil-origin process emissions in industry (limestone for cement,
 soda ash and graphite electrodes); need sequestration for this otherwise not
 net-zero.
 
-For FT-fuels demand need 0.27*1391 = 376 MtCO2/a. This comes from BECCU and
+For FT-fuels demand need 0.27*1391 = 376 Mt\co/a. This comes from BECCU and
 industry CCU with synfuels. Could also come from waste + CCU.
 
 
 Comparison of heat/electricity requirements for capture:
 
-\citeS{kuramochi2012} 5.2: Can integrate low-grade steam from power plants with
-CO2 capture from cement
+\citeS{kuramochiComparativeAssessment2012} 5.2: Can integrate low-grade steam from power plants with
+\co capture from cement
 
-``In the case of post-combustion CO 2 capture, a CHP plant will likely be built
-together with the CO 2 capture unit because this is the only way to generate
-steam efficiently for CO 2 capture solvent regeneration.''
+``In the case of post-combustion \co capture, a CHP plant will likely be built
+together with the \co capture unit because this is the only way to generate
+steam efficiently for \co capture solvent regeneration.''
 
-Beware: need to take account of heat need for regenerating CO2 capture solvent.
+Beware: need to take account of heat need for regenerating \co capture solvent.
 In power plants, can use waste heat, but in industrial plants there is less
-low-grade heat (need ~110 C). \citeS{kuramochi2012}
+low-grade heat (need ~110 C). \citeS{kuramochiComparativeAssessment2012}
 
-Need around 3.9 GJ/tCO2 heat for regeneration of aqueous MEA ~ 1 MWh/tCO2
-\citeS{zhang2016}. Solid biomass has 0.3 tCO2/MWh\th => need 0.3 MWh heat for
+Need around 3.9 GJ/t\co heat for regeneration of aqueous MEA ~ 1 MWh/t\co
+\citeS{zhangParametricStudy2016}. Solid biomass has 0.3 t\co/MWh\th => need 0.3 MWh heat for
 each MWh\th of solid biomass => heat output is hugely reduced!!! Unless we have
 oxyfuel biomass combustion...
 
-Breyer \url{https://link.springer.com/content/pdf/10.1007/s11027-019-9847-y.pdf}
-has 1.2 MWh/tCO2 heat at 100 C and 0.2 MWh\el/tCO2 electricity for DAC.
+Breyer \citeS{breyerCarbonDioxide2020}
+has 1.2 MWh/t\co heat at \SI{100}{\celsius} and 0.2 MWh\el/t\co electricity for DAC.
 Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
 
+\citeS{fasihiTechnoeconomicAssessment2019, martin-robertsCarbonCapture2021}
 
 
 \section{Mathematical Model Formulation}
+
+\section{Other}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{electricity}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total electricity-D-2013.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{heat}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat-D-2013.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{hydrogen}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2-D-2013.pdf}
+    \end{subfigure}
+    %}
+    \caption{Daily time series}
+    \label{fig:eligibility}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{methane}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-gas-D-2013.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{oil}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-oil-D-2013.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{stored \co}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-co2 stored-D-2013.pdf}
+    \end{subfigure}
+    %}
+    \caption{Daily time series}
+    \label{fig:eligibility}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{electricity}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total electricity--2013-02.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{heat}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat--2013-02.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{hydrogen}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2-2013-02.pdf}
+    \end{subfigure}
+    %}
+    \caption{hourly time series}
+    \label{fig:eligibility}
+\end{figure}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{methane}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-gas-2013-02.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{oil}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-oil-2013-02.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{stored \co}
+        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-co2 stored-2013-02.pdf}
+    \end{subfigure}
+    %}
+    \caption{hourly time series}
+    \label{fig:eligibility}
+\end{figure}
 
 \newgeometry{margin=2cm}
 \begin{landscape}

@@ -13,12 +13,13 @@ repos:
 #   hooks:
 #   - id: reuse
 - repo: https://github.com/psf/black
-  rev: 20.8b1
+  rev: 21.12b0
   hooks:
   - id: black
+  - id: black-jupyter
 - repo: https://github.com/aflc/pre-commit-jupyter
   rev: v1.2.1
   hooks:
   - id: jupyter-notebook-cleanup
-#   args:
-    #- --remove-kernel-metadata
+  #args:
+  #- --remove-kernel-metadata

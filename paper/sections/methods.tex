@@ -6,7 +6,7 @@ existing assets are assumed (so-called `greenfield optimisation'), so that the
 model represents an ideal steady state.  Cost assumptions are taken, where
 possible, from predictions for the year 2030 by the Danish Energy Agency
 \cite{dea2019}. The model is implemented in the free software framework Python
-for Power System Analysis (PyPSA) \cite{PyPSA}.
+for Power System Analysis (PyPSA) \cite{brownPyPSAPython2018}.
 
 In this section the main assumptions used in the model PyPSA-Eur-Sec are
 presented. PyPSA-Eur-Sec builds upon the model from \cite{brown2018}, which
@@ -18,7 +18,7 @@ dense hydrocarbon fuels for aviation, necessitate careful management of the
 carbon cycle, including carbon capture from industry, biomass combustion and
 directly from the air.
 
-Figure \ref{fig:energy_map} gives an overview of the supply, transmission,
+Figure gives an overview of the supply, transmission,
 storage and demand sectors implemented in the European sector-coupled model
 PyPSA-Eur-Sec. Generator capacities (for onshore wind, offshore wind, solar
 photovoltaic (PV), biomass and natural gas), storage capacities (for batteries,
@@ -35,18 +35,17 @@ reservoir and run-of-river generators and pumped hydro storage) are exogenous to
 the model.
 
 The European transmission network model is based on the open model PyPSA-Eur
-presented in \cite{HORSCH2018207}. The state of the network in 2018 is plotted
-in Figure \ref{fig:today}. The full European transmission network is clustered
+presented in \cite{horschPyPSAEurOpen2018}. The state of the network in 2018 is plotted. The full European transmission network is clustered
 down to 181 representative nodes based on the methodology used in
 \cite{Hoersch2017}, thereby preserving the most important transmission corridors
 that cause bottlenecks. The linearised optimal power flow uses a cycle-based
-formulation from \cite{HORSCH2018126} that significantly improves computational
+formulation from \cite{horschLinearOptimal2018} that significantly improves computational
 performance; as transmission lines are expanded, impedances are updated
 iteratively until convergence is achieved.
 
 The sector-coupling model is based on the open model PyPSA-Eur-Sec from
-\cite{BROWN2018720} which added to the electricity-only model of
-\cite{Schlachtberger2017} both land transport as well as space and water heating
+\cite{brownSynergiesSector2018} which added to the electricity-only model of
+\cite{schlachtbergerBenefitsCooperation2017} both land transport as well as space and water heating
 in the residential and commercial sectors. In the model presented in this
 contribution, biomass, industry demand (separately for sectors including iron
 and steel, concrete, chemicals) and transport fuels for aviation and shipping
@@ -58,7 +57,7 @@ model \cite{jrcbiomass2015}. This results in 352~TWh per year of biogas and
 1261~TWh per year of solid biomass residues and waste for the whole of Europe.
 
 For industry, we change some industrial processes to low-emission ones (e.g.
-switching to hydrogen for direct reduction of iron ore \cite{Vogl_2018}), allow
+switching to hydrogen for direct reduction of iron ore \cite{voglAssessmentHydrogen2018}), allow
 more recycling of steel and aluminium \cite{circular_economy}, switch fuel
 sources for process heat, use synthetic fuels for ammonia and organic chemicals,
 and allow carbon capture. It is assumed that no plastic or other non-energy

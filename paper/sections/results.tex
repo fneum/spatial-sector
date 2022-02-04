@@ -1,6 +1,6 @@
-\subsection{Grid reinforcement restriction}
+\subsection*{Grid reinforcement restriction}
 
-Figure \ref{fig:lv} shows the composition of total yearly system costs
+Figure shows the composition of total yearly system costs
 (including all investment and operational costs) as we vary the allowed
 grid expansion, from no expansion (only today's grid) to
 a doubling of today's grid capacities (the model optimises where new
@@ -14,7 +14,7 @@ here. The costs of today's system are \euro700~billion per year,
 computed with the same assumptions, which is only slightly less than
 these net-zero emission systems.
 
-As the grid is expanded in Figure \ref{fig:lv}, total costs decrease
+As the grid is expanded, total costs decrease
 slightly, despite the increasing costs of the grid. The grid enables
 renewable resources with better capacity factors to be integrated from
 further away, resulting in lower capacity needs for solar and
@@ -23,7 +23,7 @@ resulting in lower hydrogen demand for balancing power and heat.  The
 total cost benefit of a doubling of grid capacity is around
 \euro44~billion per year, but over half of the benefit (\euro26~billion per year) is available already at a 25\% expansion (similar to the level seen in the TYNDP \cite{TYNDP2016}).
 
-Figure \ref{fig:map} shows the spatial distribution of the investments
+Figure shows the spatial distribution of the investments
 for the case of a 25\% expansion. While solar capacity is spread
 relatively evenly around the continent, both onshore and offshore wind
 are concentrated around the North Sea and British Isles. New
@@ -35,7 +35,7 @@ Electrolyzer capacities for power-to-hydrogen see a massive scale-up,
 from several dozen MW today to 1048~GW in this scenario (note that
 several 100~MW electrolyzer facilities are already in planning for the
 2020s). Their locations correlate strongly with wind capacities,
-particularly offshore wind, see Figure \ref{fig:h2}. A new network
+particularly offshore wind. A new network
 transports hydrogen from these sites of production to the rest of
 Europe where hydrogen is consumed by industry (for ammonia, organic
 chemicals and steel production), for heavy-duty transport and in fuel
@@ -57,11 +57,27 @@ efficient power-to-methane conversion (methanation integrated with a
 solid oxide electrolyzer) but does not choose to build it because of
 its high capital costs compared to the direct hydrogen route.
 
-\subsection{Onshore wind restriction}
+\subsection*{Onshore wind restriction}
+
+\begin{figure}
+    \centering
+    \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{lv-sensitivity.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{onw-sensitivity.pdf}
+    \end{subfigure}
+    }
+    \caption{weather data}
+    \label{fig:weather-data}
+\end{figure}
 
 If we take the case with no grid expansion and restrict the installable
 potentials of onshore down to zero, costs rise by an additional \euro~42~billion
-per year (see Figure \ref{fig:onw}). The model substitutes onshore wind for
+per year. The model substitutes onshore wind for
 higher investment in offshore and solar generators. Because offshore capacities
 are concentrated near coastlines, and grid capacity is restricted, total
 spending on hydrogen electrolyzers and networks also increases to absorb the
