@@ -5,3 +5,4 @@ image.cmap: viridis
 axes.grid : false
 legend.frameon : false
 savefig.bbox : tight
+mathtext.default : regular
