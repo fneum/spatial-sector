@@ -73,6 +73,15 @@
 
 \graphicspath{{../results/graphics/}, {../../../playgrounds/pr/pypsa-eur-sec/results/}}
 
+\newcommand{\onwrun}{20211218-181-onw}
+\newcommand{\gasrun}{20211218-181-gas}
+\newcommand{\decrun}{20211218-181-decentral}
+\newcommand{\lvrun}{20211218-181-lv}
+\newcommand{\hyrun}{20211218-181-h2}
+\newcommand{\gasrunscen}{20211218-181-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030}
+\newcommand{\runelec}{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030}
+\newcommand{\runhy}{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030}
+
 % \usepackage[
 % 	type={CC},
 % 	modifier={by},
@@ -158,10 +167,6 @@
 
 \input{sections/introduction.tex}
 
-\section*{Results}
-\label{sec:results}
-\addcontentsline{toc}{section}{\nameref{sec:results}}
-
 \input{sections/results.tex}
 
 
@@ -170,6 +175,12 @@
 \addcontentsline{toc}{section}{\nameref{sec:discussion}}
 
 \input{sections/discussion.tex}
+
+\section*{Conclusion}
+\label{sec:conclusion}
+\addcontentsline{toc}{section}{\nameref{sec:conclusion}}
+
+\input{sections/conclusion.tex}
 
 \section*{Experimental Procedures}
 \label{sec:methods}

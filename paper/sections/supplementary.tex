@@ -9,21 +9,14 @@
     \centering
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        \caption{clustered electricity network}
-        % \includegraphics[width=\textwidth]{20211218-181-lv/maps/elec_s_181_lv1.0__\coL0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030-today.pdf}
-        \includegraphics[width=\textwidth]{network-s.pdf}
+        % \caption{clustered electricity network}
+        \includegraphics[width=\textwidth]{electricity-network-today-map.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        \caption{gas network}
+        % \caption{gas network}
         \includegraphics[width=\textwidth]{gas-network-today-map.pdf}
     \end{subfigure}
-    \caption{Clustered transmission networks.}
-    \label{fig:clustered-networks}
-\end{figure}
-
-\begin{figure}
-    \centering
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         % \caption{electricity demand}
@@ -44,8 +37,13 @@
         % \caption{heat demand}
         \includegraphics[width=\textwidth]{demand-map-heat.pdf}
     \end{subfigure}
-    \caption{Spatial final energy demand diversity.}
-    \label{fig:demand}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \includegraphics[height=0.25\textheight]{total-annual-demand.pdf}
+        \includegraphics[height=0.25\textheight]{ts-demand.pdf}
+    \end{subfigure}
+    \caption{Final energy demand diversity.}
+    \label{fig:demand-space}
 \end{figure}
 
 Not all of the sectors are at the full nodal resolution, and some demand for
@@ -95,6 +93,10 @@ pumped hydro storage, electrochemical storage like Lithium ion batteries,
 storage of gases including methane, hydrogen and carbon dioxide, storage of
 liquid fuels, as well as thermal energy storage in the form of hot water both in
 individual buildings and in district heating networks.
+
+compared to electricity, heating and transport are strongly peaked
+- heating is strongly seasonal but also with synoptic variations
+- transport has strong daily periodicity
 
 \section{Electricity Sector}
 
@@ -313,7 +315,7 @@ naphtha in steam crackers for High Value Chemicals.
       other basic chemicals & 74 \\
       other chemicals & 28 \\
       pulp & 39 \\
-      paper & 94 \\
+      paper & 94 \\ \bottomrule
     \end{tabular}
     \caption{Industrial production for main products in 2015.}
     \label{tab:industryproduction}
@@ -510,7 +512,7 @@ Recycling!
 - specify reuse, primary production, and mechanical and chemical recycling
 fraction of platics
 
-\citeS{circular_economy, kullmannCombiningWorlds2021,kullmannImpactsMaterial,carolinaliljenstromDataSeparate, fuhrPlastikatlasDaten2019,conversioMaterialFlow2020}
+\citeS{circular_economy, kullmannCombiningWorlds2021,kullmannImpactsMaterial,kullmannValueRecycling,carolinaliljenstromDataSeparate, fuhrPlastikatlasDaten2019,conversioMaterialFlow2020}
 
 synthetic naphtha for primary production
 
@@ -766,6 +768,8 @@ with and without CCS, large-scale heat pumps, pit thermal storage, gas and oil
 boilers, resistive heating and fuel cells.
 
 \citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
+
+all space and water heating in the residential and services sectors is considered
 
 Heat demand is split into:
 
@@ -1578,17 +1582,17 @@ Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{electricity}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total electricity-D-2013.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total electricity-D-2013.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{heat}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat-D-2013.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat-D-2013.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{hydrogen}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2-D-2013.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2-D-2013.pdf}
     \end{subfigure}
     %}
     \caption{Daily time series}
@@ -1601,17 +1605,17 @@ Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{methane}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-gas-D-2013.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-gas-D-2013.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{oil}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-oil-D-2013.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-oil-D-2013.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{stored \co}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-co2 stored-D-2013.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-co2 stored-D-2013.pdf}
     \end{subfigure}
     %}
     \caption{Daily time series}
@@ -1625,17 +1629,17 @@ Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{electricity}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total electricity--2013-02.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total electricity--2013-02.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{heat}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat--2013-02.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat--2013-02.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{hydrogen}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2-2013-02.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2--2013-02.pdf}
     \end{subfigure}
     %}
     \caption{hourly time series}
@@ -1648,17 +1652,17 @@ Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{methane}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-gas-2013-02.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-gas--2013-02.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{oil}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-oil-2013-02.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-oil--2013-02.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{stored \co}
-        \includegraphics[width=\textwidth]{elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-co2 stored-2013-02.pdf}
+        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-co2 stored--2013-02.pdf}
     \end{subfigure}
     %}
     \caption{hourly time series}

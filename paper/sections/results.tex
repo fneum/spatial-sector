@@ -1,4 +1,14 @@
-\subsection*{Grid reinforcement restriction}
+\section*{Cost of Electricity Grid Reinforcement Restrictions}
+\label{sec:lv}
+\addcontentsline{toc}{section}{\nameref{sec:lv}}
+
+
+
+The volume limit is given in fractions of today's grid volume: a
+line volume limit of 1.0 means no new capacity is allowed beyond today's grid
+(since the model cannot remove existing lines); a limit of 1.25 means the total
+grid capacity can grow by 25\% (25\% is similar to the planned extra capacity in
+the European network operators' Ten Year Network Development Plan (TYNDP)\cite{TYNDP2016})
 
 Figure shows the composition of total yearly system costs
 (including all investment and operational costs) as we vary the allowed
@@ -57,39 +67,6 @@ efficient power-to-methane conversion (methanation integrated with a
 solid oxide electrolyzer) but does not choose to build it because of
 its high capital costs compared to the direct hydrogen route.
 
-\subsection*{Onshore wind restriction}
-
-\begin{figure}
-    \centering
-    \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{lv-sensitivity.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{onw-sensitivity.pdf}
-    \end{subfigure}
-    }
-    \caption{weather data}
-    \label{fig:weather-data}
-\end{figure}
-
-If we take the case with no grid expansion and restrict the installable
-potentials of onshore down to zero, costs rise by an additional \euro~42~billion
-per year. The model substitutes onshore wind for
-higher investment in offshore and solar generators. Because offshore capacities
-are concentrated near coastlines, and grid capacity is restricted, total
-spending on hydrogen electrolyzers and networks also increases to absorb the
-offshore generation.
-
-Just as in the case of restricted line volumes, the rise in costs is non-linear:
-if we restrict to 25\% of the onshore potential (around 100~GW for Germany),
-costs rise by only \euro~14~billion per year. 25\% of the onshore wind potential
-represents a possible social compromise between total system cost, and public
-acceptance concerns about onshore wind development.
-
-
 50\% more power grid volume (expansion of 162 TWkm) and 260 TWkm of hydrogen grid
 
 25\% more power grid volume (expansion of 81 TWkm) and 282 TWkm of hydrogen grid
@@ -106,6 +83,62 @@ total cost benefit of extra grid: 47 billion euro per year
 
 over half of the benefit is available at 25\% grid expansion (like TYNDP)
 
+
+\newgeometry{top=0.5cm, bottom=1.5cm}
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{Sensitivity of electricity transmission grid expansion limits}
+        \includegraphics[width=\textwidth]{lv-sensitivity.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Cost without grid reinforcement}
+        \includegraphics[width=\textwidth, trim=0cm 0cm 7cm 0cm, clip]{\lvrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-costs-all_2030.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Cost with 50\% higher grid volume}
+        \includegraphics[width=\textwidth, trim=0cm 0cm 7cm 0cm, clip]{\lvrun/maps/elec_s_181_lv1.5__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-costs-all_2030.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Hydrogen network without grid reinforcment}
+        \includegraphics[width=\textwidth]{\lvrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-h2_network_2030.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Hydrogen network with 50\% higher grid volume}
+        \includegraphics[width=\textwidth]{\lvrun/maps/elec_s_181_lv1.5__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-h2_network_2030.pdf}
+    \end{subfigure}
+    % }
+    \caption{Sensitivity of electricity transmission grid expansion limits.}
+    \label{fig:lv-restriction}
+\end{figure}
+\restoregeometry
+
+
+\section*{Cost of Onshore Wind Potential Restrictions}
+\label{sec:onw}
+\addcontentsline{toc}{section}{\nameref{sec:onw}}
+
+
+If we take the case with no grid expansion and restrict the installable
+potentials of onshore down to zero, costs rise by an additional \euro~42~billion
+per year. The model substitutes onshore wind for
+higher investment in offshore and solar generators. Because offshore capacities
+are concentrated near coastlines, and grid capacity is restricted, total
+spending on hydrogen electrolyzers and networks also increases to absorb the
+offshore generation.
+
+Just as in the case of restricted line volumes, the rise in costs is non-linear:
+if we restrict to 25\% of the onshore potential (around 100~GW for Germany),
+costs rise by only \euro~14~billion per year. 25\% of the onshore wind potential
+represents a possible social compromise between total system cost, and public
+acceptance concerns about onshore wind development.
+
 Without onshore wind, solar rooftop and offshore potentials are maxxed out
 - If all sectors included and Europe self-sufficient, effect of installable potentials is critical
 
@@ -119,9 +152,49 @@ sociallly-acceptable potentials
 - costs rise by 122 billion per year as we eliminate onshore wind
 - rise is only 45 billion per year if we allow a quarter of technical potential (120 GW in Germany)
 
+
+\newgeometry{top=0.5cm, bottom=1.5cm}
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{Sensitivity of onshore wind expansion limits}
+        \includegraphics[width=\textwidth]{onw-sensitivity.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Cost without onshore wind}
+        \includegraphics[width=\textwidth, trim=0cm 0cm 7cm 0cm, clip]{\onwrun/maps/elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2030.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Cost with full onshore wind potential}
+        \includegraphics[width=\textwidth, trim=0cm 0cm 7cm 0cm, clip]{\onwrun/maps/elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0.5-costs-all_2030.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Hydrogen network without onshore wind}
+        \includegraphics[width=\textwidth]{\onwrun/maps/elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2030.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{Hydrogen network with full onshore wind potential}
+        \includegraphics[width=\textwidth]{\onwrun/maps/elec_s_181_lv1.25__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0.5-h2_network_2030.pdf}
+    \end{subfigure}
+    % }
+    \caption{Sensitivity of onshore wind expansion limits.}
+    \label{fig:onw-restriction}
+\end{figure}
+\restoregeometry
+
+\section*{Benefit of a Hydrogen Network with Repurposed Gas Pipelines}
+\label{sec:h2}
+\addcontentsline{toc}{section}{\nameref{sec:h2}}
+
 The cost of hydrogen network 6-8 billion per year
 
-Net benefit is much higher: 21-48 billion per year (2.7-4.8\%)
+Net benefit is much higher: 30-53 billion per year (2.7-4.8\%)
 
 hydrogen network is robustly beneficial infrastructure, with strongest benefits when there is no power grid expansion
 
@@ -129,3 +202,15 @@ Compare power grid to H2 network:
 - both are important for costs
 - but power grid expansion brings more cost benefit
 - hydrogen network can partially substitute transmission expansion, but at higher system cost
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sensitivity-h2.pdf}
+    \end{subfigure}
+    % }
+    \caption{Sensitivity of hydrogen network infrastructure.}
+    \label{fig:h2-restriction}
+\end{figure}

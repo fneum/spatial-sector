@@ -10,6 +10,12 @@ may make it harder to reach greenhouse gas reduction targets in time,
 or cause rising costs through the substitution with other
 technologies.
 
+2050 scenarios for EU: power demand doubles, mostly met by VRE
+
+This collides with low acceptance for power grid expansion and onshore wind
+
+Offshore wind can certainly help, but still needed to transport the electricity to loads inland
+
 general:
 \cite{
     mckennaScenicnessAssessment2021,
@@ -28,10 +34,7 @@ general:
     europeancommission.directorategeneralforenergy.METISStudy2021,
     deutschNoRegretHydrogen,
     tafarteQuantifyingTrade,
-    lehmannManagingSpatial,
-}
-
-\cite{}
+    lehmannManagingSpatial}
 
 PV cost
 \cite{jaxa-rozenSourcesUncertainty2021,victoriaSolarPhotovoltaics2021,xiaoPlummetingCosts2021}
@@ -44,13 +47,13 @@ industry). For this purpose we use a capacity expansion model of the
 European energy system, PyPSA-Eur-Sec, which, in contrast to previous
 studies \cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,IEESWV,connollySmartEnergy2016,lofflerDesigningModel2017,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020},
 combines a fully sector-coupled approach with a high-resolution grid
-model (181 nodes) so that it can capture the grid bottlenecks that
+model (181 regions) so that it can capture the grid bottlenecks that
 constrain the integration of renewable energy.  We successively
 constrain the allowed onshore wind and new overhead grid projects down
 to zero to examine the effects on total system cost and the
 composition of technologies in the system.
 
-We find that the overall system costs are not significantly affected
+We find that the overall system costs are not overly affected
 by restrictions on onshore wind and transmission. The high level of
 synthetic fuel production and exchange between the nodes, which is
 necessary for industry, transport and backup electricity and heating
@@ -64,29 +67,28 @@ production. The limited rise in system costs relies on a new network
 of underground hydrogen storage and pipelines in Europe, which help to balance
 generation from renewables in time and space.
 
-To explore the effects of acceptance we carry out two principal investigations
-on the model:
-\begin{enumerate}
-\item {\bf Grid reinforcement restriction:} The model is allowed to build new
-transmission capacity (high voltage alternating current (HVAC) and direct
-current (HVDC)) wherever is optimal in the network, but the total volume of new
-capacity (sum of capacity of each new line in MW multiplied by its length in km)
-is limited. The volume limit is given in fractions of today's grid volume: a
-line volume limit of 1.0 means no new capacity is allowed beyond today's grid
-(since the model cannot remove existing lines); a limit of 1.25 means the total
-grid capacity can grow by 25\% (25\% is similar to the planned extra capacity in
-the European network operators' Ten Year Network Development Plan (TYNDP)
-\cite{TYNDP2016}).
-\item {\bf Onshore wind potential restriction:} Each node has a maximum
-installable capacity of onshore wind, based on land use restrictions (e.g. no
-wind turbines in cities) and minimum distances to buildings. This gives a
-maximum social-technological potential, corresponding to about 400~GW for
-Germany. This potential is successively restricted down to zero at each node, to
-examine the effect on the results. For this investigation, no grid expansion
-beyond today is assumed.
-\end{enumerate}
+Need to co-optimise balancing solutions with generation. Optimising separately won't work.
 
-\nameref{sec:discussion}
+PyPSA-Eur-Sec represents all energy flows and bottlenecks in energy networks
+
+couple all energy sectors (power, heat, transport, industry)
+
+To explore the effects of acceptance, we carry out three principal investigations
+on the model:
+
+\begin{enumerate}
+\item \nameref{sec:lv}: The model is allowed to build new electricity
+transmission infrastructure wherever is cost-optimal, but the total volume of new
+transmission capacity (sum of line length times capacity, TWkm) is limited.
+
+\item \nameref{sec:onw}: Each node has a maximum installable capacity of onshore
+wind, based on land use restrictions. This gives a maximum social-technological
+potential, corresponding to about \SI{480}{\giga\watt} for Germany. This potential is
+successively restricted down to zero at each node. For this investigation, a
+compromise electricity grid expansion by 25\% compared to today is assumed.
+
+\item \nameref{sec:h2}:
+\end{enumerate}
 
 All investigations are carried out with a constraint that carbon dioxide
 emissions balance out to zero over the year (see for
@@ -108,30 +110,52 @@ Can a hydrogen network replace electricity transmission network expansion in a c
 Can we substitute for the electricity grid by producing eleoctrolytic hydrogen
 and transport it through new or repurposed hydrogen pipeline network?
 
-2050 scenarios for EU: power demand doubles, mostly met by VRE
-
-This collides with low acceptance for power grid expansion and onshore wind
-
-Offshore wind can certainly help, but still needed to transport the electricity to loads inland
-
-Need spatial resolution to see grid bottlenecks and infrastructure trade-offs
-one node per country or continent won't work
-
-Need to co-optimise balancing solutions with generation. Optimising separately won't work.
-
-PyPSA-Eur-Sec represents all energy flows and bottlenecks in energy networks
-
-couple all energy sectors (power, heat, transport, industry)
-
-reduce net CO2 emissions to zero
-
-smaller bidding zones and widespread dynamic pricing
-
-examine effect of limiting power grid expansion, onshore wind potentials, hydrogen grid
-
 There are difficult periods in winter with
 - low wind and solar (high prices)
 - high space heating demand
 - low air temperatures, which are bad for air-sourced heat pump performance
 - less smart solution: backup gas boilers
 - smart solution: building retrofiting, TES in district heating, CHP
+
+\newgeometry{top=0.5cm, bottom=1.5cm}
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{clustered electricity network}
+        \includegraphics[width=\textwidth]{electricity-network-today-map.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{gas network}
+        \includegraphics[width=\textwidth]{gas-network-today-map.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{electricity demand}
+        \includegraphics[width=\textwidth]{demand-map-electricity.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{hydrogen demand}
+        \includegraphics[width=\textwidth]{demand-map-H2.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{methane demand}
+        \includegraphics[width=\textwidth]{demand-map-gas.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        % \caption{heat demand}
+        \includegraphics[width=\textwidth]{demand-map-heat.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \includegraphics[height=0.18\textheight]{total-annual-demand.pdf}
+        \includegraphics[height=0.18\textheight]{ts-demand.pdf}
+    \end{subfigure}
+    \caption{Final energy demand diversity.}
+    \label{fig:demand-space}
+\end{figure}
+\restoregeometry
