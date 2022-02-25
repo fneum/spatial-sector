@@ -16,6 +16,31 @@ This collides with low acceptance for power grid expansion and onshore wind
 
 Offshore wind can certainly help, but still needed to transport the electricity to loads inland
 
+- trade-offs with unpopular infrastructure
+- triangle: transmission, h2 grid, onshore wind
+- h2 grid vs. transmission grid
+	- contrast H2 network w/wo grid expansion
+	- contrast no grid expansion w/wo H2 network
+- framing: is h2 grid necessary / useful
+- framing: question of social potentials not cost
+- refer to European hydrogen backbone report
+- focus on substition options of infrastructure (electricity and hydrogen) with onshore wind as important sensitivity
+
+- examine benefits of hydrogen network in high-VRE net-zero scenarios for Europe
+- use PyPSA-Eur-Sec 181-region model with all energy sectors represented
+- hydrogen network reduces total systems costs by 2.4-4.8\%
+- X\% uses retrofitted gas network pipelines
+- benefits highest when grid expansion restricted and onshore potentials limited
+- hydrogen network reduces cost of system configurations with higher public acceptance
+
+interplay of electricity and hydrogen transmission grids
+
+Electricity transmission network expansion has suffered many delays in
+Europe in recent decades, despite its importance for integrating
+renewable electricity into the energy system. But could a hydrogen
+network that reuses the existing fossil gas network offer a replacement
+for balancing variations in wind and solar energy across the continent?
+
 general:
 \cite{
     mckennaScenicnessAssessment2021,
@@ -38,6 +63,22 @@ general:
 
 PV cost
 \cite{jaxa-rozenSourcesUncertainty2021,victoriaSolarPhotovoltaics2021,xiaoPlummetingCosts2021}
+
+
+We examine these questions in the high resolution (181 nodes)
+all-energy-sector open-source model of the European energy system,
+PyPSA-Eur-Sec. The model is detailed enough to capture existing
+bottlenecks and long time series, and has been highly optimised to run
+sector-coupled capacity-expansion simulations. Scenarios are run for the
+year 2050 assuming zero net greenhouse gas emissions, while varying the
+allowed expansion of the electricity and hydrogen grids respectively. A
+hydrogen network can take over and exceed the electricity grid in terms
+of the amount of energy transported over long distances, balancing
+renewables both in space (with the network) and time (with underground
+storage). The presence of the hydrogen network can reduce system costs
+by up to 10%. It is planned to also examine the impact of assumptions
+about domestic versus imported hydrogen-based chemicals like ammonia and
+methanol on the different grid topologies.
 
 In this contribution we examine the trade-off between costs and public
 acceptance for onshore wind and overhead transmission lines in highly
@@ -116,6 +157,10 @@ There are difficult periods in winter with
 - low air temperatures, which are bad for air-sourced heat pump performance
 - less smart solution: backup gas boilers
 - smart solution: building retrofiting, TES in district heating, CHP
+
+H2 and power: are not complements but their cost reductions are largely additive!
+
+
 
 \newgeometry{top=0.5cm, bottom=1.5cm}
 \begin{figure}
