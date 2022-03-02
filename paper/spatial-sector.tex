@@ -47,6 +47,9 @@
 \usepackage[parfill]{parskip}
 % \usepackage[toc,title,page]{appendix}
 
+
+\usepackage[prependcaption,textsize=footnotesize]{todonotes}
+
 \usepackage{siunitx}
 \sisetup{
 	range-units = single,
@@ -57,6 +60,7 @@
 \DeclareSIUnit{\sieuro}{\mbox{\euro}}
 \DeclareSIUnit{\twh}{{\tera\watt\hour}}
 \DeclareSIUnit{\mwh}{{\mega\watt\hour}}
+\DeclareSIUnit{\kwh}{{\kilo\watt\hour}}
 
 \newcommand{\co}{\ce{CO2}~}
 
@@ -148,6 +152,8 @@
 	\end{highlights}
 
 \end{frontmatter}
+
+\listoftodos[TODOs]
 
 \begin{small}
 	\tableofcontents

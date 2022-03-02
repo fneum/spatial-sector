@@ -1,4 +1,5 @@
 \section{Model Overview}
+\label{sec:si:model-overview}
 
 \begin{figure}
     \centering
@@ -7,44 +8,73 @@
 
 \begin{figure}
     \centering
+\begin{subfigure}[t]{0.49\textwidth}
+    \centering
+    % \caption{clustered electricity network}
+    \includegraphics[width=\textwidth]{electricity-network-today-map.pdf}
+\end{subfigure}
+\begin{subfigure}[t]{0.49\textwidth}
+    \centering
+    % \caption{gas network}
+    \includegraphics[width=\textwidth]{gas-network-today-map.pdf}
+\end{subfigure}
+\caption{Clustered electricity and gas transmission networks.}
+\label{fig:clustered-networks}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.25\textheight]{total-annual-demand.pdf}
+    \includegraphics[height=0.25\textheight]{ts-demand.pdf}
+    \caption{Final energy demand temporal diversity.}
+    \label{fig:demand-time}
+\end{figure}
+
+\newgeometry{top=0.5cm, bottom=1.5cm}
+\begin{figure}
+    \centering
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        % \caption{clustered electricity network}
-        \includegraphics[width=\textwidth]{electricity-network-today-map.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        % \caption{gas network}
-        \includegraphics[width=\textwidth]{gas-network-today-map.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        % \caption{electricity demand}
+        \caption{electricity demand}
+        \label{fig:demand-space:electricity}
         \includegraphics[width=\textwidth]{demand-map-electricity.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        % \caption{hydrogen demand}
+        \caption{hydrogen demand}
+        \label{fig:demand-space:hydrogen}
         \includegraphics[width=\textwidth]{demand-map-H2.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        % \caption{methane demand}
+        \caption{methane demand}
+        \label{fig:demand-space:methane}
         \includegraphics[width=\textwidth]{demand-map-gas.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        % \caption{heat demand}
+        \caption{heat demand}
+        \label{fig:demand-space:heat}
         \includegraphics[width=\textwidth]{demand-map-heat.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        \includegraphics[height=0.25\textheight]{total-annual-demand.pdf}
-        \includegraphics[height=0.25\textheight]{ts-demand.pdf}
+        \caption{oil demand}
+        \label{fig:demand-space:oil}
+        \includegraphics[width=\textwidth]{demand-map-oil.pdf}
     \end{subfigure}
-    \caption{Final energy demand diversity.}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{solid biomass demand}
+        \label{fig:demand-space:biomass}
+        \includegraphics[width=\textwidth]{demand-map-solid biomass.pdf}
+    \end{subfigure}
+    \caption{Final energy demand spatial diversity.}
     \label{fig:demand-space}
 \end{figure}
+\restoregeometry
+
+
 
 Not all of the sectors are at the full nodal resolution, and some demand for
 some sectors is distributed to nodes using heuristics that need to be corrected.
@@ -76,17 +106,10 @@ solar time series are regionalised based on the underlying ERA5 reanalysis data
 (around 20km by 20km); heat and transport demand at NUTS3; electricity demand
 time series are at TSO control region level.
 
-The electricity transmission
-network is represented at substation level based on maps released by the
-European Network of Transmission System Operators for Electricity (ENTSO-E). It
-includes all existing high-voltage line capacities between substations, as well
-as planned projects in the Ten Year Network Development Plan (TYNDP). In total
-around 3650 substations and 6000 transmission lines are modelled.
-
 Electricity can be converted to heat via heat pumps or resistive heaters; to
 hydrogen gas, or further to methane and liquid hydrocarbons; or to work in
 various demand devices. Methane can be reformed to hydrogen, and most fuels can
-be used for electricity generation in turbines, fuel cells or engines.
+be used for electricity generation in turbines or fuel cells.
 
 Energy/material storage can be optimised in PyPSA-Eur-Sec including conventional
 pumped hydro storage, electrochemical storage like Lithium ion batteries,
@@ -99,178 +122,231 @@ compared to electricity, heating and transport are strongly peaked
 - transport has strong daily periodicity
 
 \section{Electricity Sector}
+\label{sec:si:electricity}
 
-Electricity supply and demand follows the electricity generation and
-transmission model PyPSA-Eur, except that hydrogen storage is integrated into
-the hydrogen supply, demand and network, and PyPSA-Eur-Sec includes CHPs.
-
+Modelling of electricity supply and demand in Europe largely follows the open
+electricity generation and transmission model PyPSA-Eur
+\citeS{horschPyPSAEurOpen2018}. PyPSA-Eur processes publicly available data on
+the topology of the power transmission network, historical time series of
+weather observations and electricity consumption, conventional power plants, and
+renewable potentials.
 
 \subsection{Electricity Demand}
+\label{sec:si:electricity:demand}
 
-distribution electricity demand for
-industry uses the geographical data from
-the Hotmaps Industrial Database.
+Hourly electricity demand at country-level for the reference year 2013 published
+by ENTSO-E is retrieved via the interface of the Open Power System Data (OPSD)
+initiative \citeS{}. Existing electrified heating is subtracted from this
+demand, so that power-to-heat options can be optimised separately. Furthermore,
+current industry electricity demand is subtracted and handled separately
+considering further electrification in the industry sector (see XXX).
 
-subtracts existing electrified heating from
-the existing electricity demand, so that power-to-heat can be optimised
-separately.
-Building heating demand: nodal, distributed in each country based on population.
-
-The remaining electricity demand for households and services is distributed
-inside each country proportional to GDP and population.
-
-hourly electricity demand for every country from ENTSO-E via OPSD interface
+For the distribution of electricity demand for industry we leverage geographical
+data from the industrial database developed within the Hotmaps project \citeS{}.
+The remaining electricity demand for households and services is heuristically
+distributed inside each country to 40\% proportional to population density and
+to 60\% proportional to gross domestic product based on regression performed for
+\citeS{horschPyPSAEurOpen2018}. The total spatial distribution of electricity
+demands is shown in \cref{fig:demand-space:electricity}.
 
 \subsection{Electricity Supply}
 
 \begin{SCfigure}
-    \includegraphics[width=0.7\textwidth]{powerplants.pdf}
     \caption{Powerplants.}
+    \label{fig:powerplants}
+    \includegraphics[width=0.7\textwidth]{powerplants.pdf}
 \end{SCfigure}
 
-OCGT CCGT
+For conventional electricity generators, PyPSA-Eur-Sec uses the open
+\textit{powerplantmatching} tool, which merges datasets from a variety of
+sources \citeS{gotzensPerformingEnergy}. As shown in \cref{fig:powerplants}, it
+provides data on the power plants about their location, technology and fuel
+type, age, and capacity, inlcuding hard coal, lignite, oil, open and combined
+cycle gas turbines (OCGT and CCGT), and nuclear generators. Furthermore,
+existing run-of-river, pumped-hydro storage plants, and hydro-electric dams, are
+also part of the dataset, for which inflow is modelled based on runoff data from
+reanalysis weather data and and scaled hydropower generation statistics (see
+XXX). In general, we suppose these to be non-extendable due to assumed
+geographical constraints.
 
-hydro dams, PHS and run of river
-- capacities are fixed at 2015 values
-- inflow modelled based on runoff data from ERA5 and scaled using EIA annual hydropower generation statistics
+Expandable renewable generators include onshore and offshore wind, utility-scale
+and rooftop solar photovoltaics, biomass from multiple feedstocks. The model
+decides to build new capacities based on available land and on the weather
+resource (see XXX). Because the continent-wide avaialbility of data on the
+locations of wind and solar installations is fragmentary, we disregard already
+existing wind and solar capacities. Moreover, new OCGT and CCGT as well as gas or biomass-fueled combined heat and power (CHP) generators may be built.
 
-solar photovoltaics (rooftop and utility-scale installations)
+back-pressure plants with heat production proportional to electricity output
 
-onshore and offshore wind
-
-CHP (with gas or biomass)
-- back-pressure plants with heat production proportional to electricity output
-
-costs, lifetimes and efficiencies in SX.
-
-powerplantmatching for existing power plants \citeS{gotzensPerformingEnergy}
-
-For conventional electricity generators PyPSA-Eur-Sec uses the open
-powerplantmatching database comprising all existing conventional electricity
-generators for coal, gas, oil, nuclear and hydroelectricity. Exact locations,
-fuel types, capacities, build dates and planned decommission dates are included.
-
-Renewable generators include onshore and offshore wind, utility-scale and
-rooftop solar PV, biomass (multiple feedstocks), hydroelectricity (dams,
-run-of-river and pumped storage) as well as solar thermal collectors for
-building heating. For countries where open data is available, the existing
-capacities in each region are known. The model also allows to build new
-capacities based on available land and on the weather resource. Time series for
-wind, solar and precipitation availability are derived from the ERA5 weather
-reanalysis dataset. They are converted to power plant data using the open source
-atlite library. Hydroelectric inflow time series are derived from run-off data.
+Specific techno-economic assumptions, like costs, lifetimes and efficiencies are
+included in \cref{sec:si:costs}.
 
 \subsection{Electricity Storage}
+\label{sec:si:electricity:storage}
 
-battery
-- distinguish costs for home battery storage and inverter from utility-scale battery costs.
+Electric energy can be stored in batteries (home, utility-scale, electric
+vehicles), existing pumped-hydro storage (PHS), hydrogen storage and other
+synthetically produced energy carriers (like methane and oil). For stationary
+batteries we distinguish costs for inverters and for storage at home or
+utility-scale. With these assumptions, home battery storage is about 40\% more
+expensive than utility-scale battery storage (see \cref{sec:si:costs}). The
+batteries' energy and power capacities can be independently sized.
 
-pumped-hydro (PHS)
-- with fixed capacities
-
-hydrogen storage
+To store electricity, hydrogen may be produced by water electrolysis (see \cref{sec:si:h2:supply}),
+stored in overground steel tanks or underground salt caverns (see see \cref{sec:si:h2:storage}), and
+re-electrified in a utility-scale fuel cell. Synthetic methane can be
+re-electrified through an open cycle gas turbine (OCGT) or a combined heat and
+power (CHP) plant.
 
 \subsection{Electricity Transport}
+\label{sec:si:electricity:transport}
 
 \begin{figure}
     \includegraphics[width=\textwidth, center]{network.pdf}
-    \label{fig:network}
+    \label{fig:base-network}
     \caption{ENTSO-E transmission network}
 \end{figure}
 
-ENTSO-E
-- high-voltage transmission lines at and above 220 kV
-- HVDC links
+% topology
 
-Ten Year Network Development Plant (TYNDP)
-- planned projections
+The topology of the European electricity transmission network is represented at
+substation level based on maps released in the interactive ENTSO-E map \citeS{}
+using a modified version of the GridKit \citeS{} tool. As displayed in
+\cref{fig:base-network}, the dataset includes HVAC ines at and above 220 kV
+across the mulitple synchronous zones of the ENTSO-E area, but excludes Turkey
+and North-African countries which are also synchronised to the continental
+European grid, interconnections to Russia, Belarus and Ukraine as well as small
+island networks with less than four nodes at transmission level, such as Cyprus,
+Crete and Malta. In total, the network encompasses around 3000 substations, 6600
+HVAC lines and around 70 HVDC links, some of which are planned projects from the
+Ten Year Network Development Plant (TYNDP) that are not yet in operation
+\citeS{}.
 
-Clustering
-- clusters down the electricity transmission substations in each European country
-- based on the k-means algorithm to a variable number of nodes (here: 181 regions)
-- move all to 380 kV
-- remove stubs
-- 125\% length factor
-- weighted cost takes into account fraction that is underwater
+% unclustered model regions
 
-To approximate $N-1$ contingency constraints (to protect against overloading if any one
-transmission line fails) lines may only be loaded up to 70\% of their nominal rating
-- no dynamic line rating included
+The transmission network topology determines the basic regions of the
+PyPSA-Eur-Sec model. Each substation has an associated Voronoi cell that
+describes the region that is closer to the substation than to any other
+substation except for country borders, which are kept to retain the integrity of
+country totals. Exemplary Voronoi cells are illustrated in \cref{fig:voronoi}.
+We use these as geographical catchment area for demands, renewable resource
+potentials, and power plants, assuming that supply and demand always connect to
+the closest substation. The Voronoi cells are also computed for offshore regions
+based on the countries' Exclusive Economic Zones (EEZs) and the adjacent onshore
+substations.
 
-linearised power flow equations are considered (KCL and KVL) using an
-efficient cycle-based formulation of KVL
+\begin{SCfigure}
+    \caption{Exemplary Voronoi cells of the transmission network's substations.}
+    \includegraphics[width=0.55\textwidth]{voronoi}
+    \label{fig:voronoi}
+\end{SCfigure}
 
-distribution grid topology is not included
-- only the total exchange capacity between distribution and transmission level
-- rooftop PV, heat pupms, resistive heater, home batteries and electric vehicles connect to low-voltage level
-- everything else connects directly to the transmission grid
+% physical modelling
+
+Capacities and electrical characteristics of transmission lines and substations,
+such as impedances and thermal ratings\todo{summer or winter ratings?}, are
+inferred from standard types for each voltage level from \citeS{}. For each HVAC
+line, we further restrict line loading to 70\% of the nominal rating to
+approximate $N-1$ security, which protects the system against overloading if any
+one transmission line fails. This conservative security margin is commonly
+applied in the industry \citeS{}. Dynamic line rating is not considered. Power
+flow is modelled through lossless linearised power flow equations using an
+efficient cycle-based formulation of Kirchhoff's voltage law
+\citeS{horschLinearOptimal2018}.
+
+% clustering
+
+Solving the capacity expansion optimisation for the whole European energy system
+at full network resolution is to large to be solved in reasonable time.
+Therefore, we simplify the network topology by lowering the spatial resolution.
+We initially remove the network's radial paths, i.e.~nodes with only one
+connection, by linking remote resources to adjacent nodes and transforming the
+network to a uniform voltage level of \SI{380}{\kilo\volt}. We also aggregate
+generators of the same kind that connect to the same substation. Based on these
+initial simplification, the network resolution is further reduced to a variable
+number of nodes, in this case to 181 regions, by using a \textit{k-means}
+clustering algorithm, which uses regional electricity consumption as weights
+\citeS{frysztackiStrongEffect2021, Hoersch2017}. Only substations within the
+same country can be aggregated. The equivalent lines connecting the clustered
+regions are determined by the aggregated electro-technical characteristics of
+original transmission lines. Their weighted cost takes into consideration the
+underwater fraction of the lines and adds 25\% to the crow-fly distance to
+approximate routing constraints.
+
+% distribution grid
+
+Contrary to the transmission level, the grid topology at the distribition level
+(at and below \SI{110}{\kilo\volt}) is not included. Only the total power
+exchange capacity between transmission and distribution level is co-optimised.
+Costs of \SI{500}{\sieuro\per\kilo\watt} are assumed as well as lossless
+distribution. Rooftop PV, heat pumps, resistive heaters, home batteries,
+electric vehicles and electricity demands are connected to the low-voltage
+level. All other remaining technologies connect directly to the transmission
+grid. In this way, distribution grid capacity is developed if it is beneficial
+to balance the local mismatch between supply and demand.
 
 \section{Transport Sector}
-
-annual energy demands from road and rail transport, aviation and navigation/shipping form JRC IDEES \citeS{IDEES}
+\label{sec:si:transport}
 
 Transport and mobility comprises light and heavy road, rail, shipping and
-aviation transport. For road and rail, electrification, fuel cell vehicles and
-liquid fuels are available. For shipping and aviation, only hydrogen and liquid
-fuels are available. Battery electric vehicles for passenger transport can be
-enables with demand response as well as vehicle-to-grid capabilities.
+aviation transport. Annual energy demands for this sector are derived from the
+JRC-IDEES database \citeS{IDEES}.
 
 \subsection{Land Transport}
+\label{sec:si:transport:land}
 
-Land transport is separated by energy carrier (fossil, hydrogen fuel cell
-electric vehicle, and electric vehicle), but still needs to be separated into
-heavy and light vehicles (the data is there, just not the code yet).
+The diffusion of battery electric vehicles (BEV) and fuel cell electric vehicles
+(FCEV) in land transport is exogenously defined. For 2050, we assume that 85\%
+of land transport is electrified and 15\% uses hydrogen fuel cells. No more
+internal combustion engines exist.
 
-Split between 85\% electric and 15\% FCEV (not differentiated between light and heavy).
+The energy savings gained by electrifying road transport, are computed through
+country-specific factors that compare the current final energy consumption of
+cars per distance travelled (average for Europe
+\SI{0.7}{\kilo\watt\hour\per\kilo\metre}, \citeS{}) to the
+\SI{0.18}{\kilo\watt\hour\per\kilo\metre} assumed for the battery-to-wheel
+efficiency of electric vehicles.
 
-for electrified land transport, country-specific factors are computed by comparing
-current car FEC per km (average for Europe 0.7 kWh/km) to the 0.18 kWh/km assumed for
-battery-to-wheels efficiency in electric vehicles
+Weekly profiles of distances travelled published by the Germand Federal Highway
+Research Institute (BASt) \citeS{} are used to generate hourly time series for
+each European country taking into account their local time. Furthermore, a
+temperature dependence is included in the time series to account for
+heating/cooling demand in transport. For temperatures below \SI{15}{\celsius}
+and above \SI{20}{\celsius} temperature coefficients of
+\SI{0.98}{\percent\per\celsius} and \SI{0.63}{\percent\per\celsius} are assumed
+\citeS{brown2018}
 
-weekly profiles for km driven provided by the Germand Federal Highway Research Institute (BASt)
-are used to obtain hourly time series for each European country taking into account local time
-Furthermore, a temperature dependence is included in the time series to account for heating/cooling
-demand in transport. For temperatures below/above 15C/20C temperature coefficients of .98\%/C and 0.63\%/C are assumed \cite{brown2018}
-
-assume
-- battery of 50 kWh
-- charging capacity of 11 kW
-- 90\% charging efficiency
-
-V2G
-- half of BEV can shift dis-/charging time to facilitate system operation
-- these BEVs can also provide vehicle-to-grid (V2G) services
-
-The BEV state of charge is forced to be higher than 75\% at 7am every day
-to ensure that the batteries are close to full in the morning peak usage.
-This also restricts BEV demand to be shifted within a day and prevent EV
-batteries from becoming seasonal storage
-
-The percentage of BEV connected to the grid at any time is inversely proportional
-to the transport demand profile, which translates into an average/minimum availability of 80\%/62\%.
-(conservative compared to literature: average parking times of European fleet of vehicles at 92\%
-
-battery cost of BEV is not included in the model since it is assumed that EV owners buy
-them to satisfy their mobility needs
+For battery electric vehicles, we assume a storage capacity of
+\SI{50}{\kilo\watt\hour}, a charging capacity of \SI{11}{\kilo\watt} and a 90\%
+charging efficiency. We assume that half of the BEV fleet can shift their
+charging time and participate in vehicle-to-grid (V2G) services to facilitate
+system operation. The BEV state of charge is forced to be higher than 75\% at
+7am every day to ensure that the batteries are sufficiently charged for the peak
+usage in the morning. This also restricts BEV demand to be shifted within a day
+and prevent EV batteries from becoming seasonal storage. The percentage of BEV
+connected to the grid at any time is inversely proportional to the transport
+demand profile, which translates into an average/minimum availability of
+80\%/62\% of the time. These values are conservative compared to most of the
+literature, where average parking times of the European vehicle fleet is
+estimated at 92\% \citeS{}. The battery cost of BEV is not included in the model
+since it is assumed that BEV owners buy them to primarily satisfy their mobility
+needs.
 
 \subsection{Aviation}
+\label{sec:si:transport:aviation}
 
-kerosene from Fischer-Tropsch (synthetic or fossil origin)
+The aviation sector consumes kerosene that is synthetically produced or of
+fossil origin (see XXX).
 
 \subsection{Shipping}
+\label{sec:si:transport:shipping}
 
-hydrogen liquefaction costs for hydrogen demand in shipping
-
-Assuming liquid hydrogen.
-
-Should switch to methanol or ammonia
-
-`` This estimate is based on an estimate of international navigation emissions
-based on bunker fuels sold in the EU, comparable to the memo item as reported in
-the EU greenhouse gas inventory reported to the UNFCCC.''
-
+The shipping sector consumes liquid hydrogen.
+The liquefaction costs for hydrogen are taken into account (see XXX).
+Other fuel options, like methanol or ammonia, are currently not considered.
 
 \section{Industry Sector}
+\label{sec:si:industry}
 
 \citeS{graichenKlimaneutraleIndustrie,rootzenExploringLimits2013}
 
@@ -288,16 +364,19 @@ naphtha in steam crackers for High Value Chemicals.
     \includegraphics[width=0.7\textwidth]{fec_industry_today_tomorrow.pdf}
     \caption{Final consumption of energy and non-energy feedstocks in industry today (left bar) and
     our future scenario in 2050 (right bar)}
+    \label{fig:fec-industry}
 \end{SCfigure}
 
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{process-emissions.pdf}
-    \caption{Process emissions in industry today (left bar) and in 2050 (right bar)}
+    \caption{Process emissions in industry today (top bar) and in 2050 (bottom bar)}
+    \label{fig:process-emissions}
 \end{SCfigure}
 
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
     \caption{Distribution of industries.}
+    \label{fig:hotmaps}
 \end{SCfigure}
 
 \begin{table}[t]
@@ -432,6 +511,7 @@ Higher temperatures are met with methane.
 \citeS{neuwirthFuturePotential2022}
 
 \subsection{Iron and Steel}
+\label{sec:si:industry:steel}
 
 \citeS{toktarovaInteractionElectrified2022, mandovaPossibilitiesCO22018, suopajarviUseBiomass2018,voglPhasingOut2021, bhaskarDecarbonizingPrimary}
 
@@ -495,6 +575,7 @@ For the remaining subprocesses in this sector:
 - activities associated with furnaces, refining and rolling, product finishing are electrified
 
 \subsection{Chemicals Industry}
+\label{sec:si:industry:chemicals}
 
 \citeS{elserTakingEuropean, FuturePetrochemicals, nicholsonManufacturingEnergy2021, meysAchievingNetzero2021, thunmanCircularUse2019, introzziDECHEMAGesellschaft, meysCircularEconomy2020, guWastePlastics2017, boulamantiProductionCosts2017}
 
@@ -568,6 +649,7 @@ process emissions from feedstock in the chemical industry represent 0.369 t\co /
 - plastic disposal in landfilling will avoid, or at least delay, associated \co emissions
 
 \subsection{Non-metallic Mineral Products}
+\label{sec:si:industry:nmmp}
 
 Cement
 
@@ -665,7 +747,7 @@ complete electrification because many already electrified processes:
 - FEC 0.44 MWh/t ceramics
 - process emissions: 0.03 t\co/t ceramic
 
-\cite{furszyferdelrioDecarbonizingCeramics2022a}
+\citeS{furszyferdelrioDecarbonizingCeramics2022a}
 
 Glass
 
@@ -674,12 +756,13 @@ Electrify everything.
 - electric annealing
 - electricity demand 2.07 MWh/t of glass \citeS{lechtenbohmerDecarbonisingEnergy2016}
 
-\cite{furszyferdelrioDecarbonizingGlass2022}
+\citeS{furszyferdelrioDecarbonizingGlass2022}
 
 
 \citeS{lechtenbohmerDecarbonisingEnergy2016} also has big efficiency improvement with 0.85~MWh\el/tGlass.
 
 \subsection{Non-ferrous Metals}
+\label{sec:si:industry:nfm}
 
 includes
 - base metals (aluminium, copper, lead, zink)
@@ -717,6 +800,7 @@ Other non-ferrous metals, electrification of entire manufacturing process is ass
 - 3.2 MWh / t lead equivalent
 
 \subsection{Other Industry Subsectors}
+\label{sec:si:industry:other}
 
 energy demands and \co emissions for the agriculture, forestry and fishing
 sector
@@ -754,165 +838,114 @@ Comparison
 \end{itemize}
 
 \section{Heating Sector}
+\label{sec:si:heat}
 
-\subsection{Heating Demand}
+\subsection{Heat Demand}
+\label{sec:si:heat:demand}
 
-building heating is aggregated at each node both for individual buildings and district heating.
-Demand time series are based on a degree-day representation and improvements to
-the thermal envelopes of buildings to reduce demand can also be endogenously
-optimised. Supply options in individual buildings include gas and oil boilers,
-air- and ground-sourced heat pumps, resistive heaters, solar thermal collectors
-and small thermal energy storage. At district heating level more options are
-available: combined heat and power (CHP) plants consuming gas, coal and biomass
-with and without CCS, large-scale heat pumps, pit thermal storage, gas and oil
-boilers, resistive heating and fuel cells.
+Building heating considering space and water heating in the residential and
+services sectors is resolved for each region, both for individual buildings and
+district heating systems, which include different supply options.
+
+Annual heat demands per country are retrieved from JRC-IDEES \citeS{IDEES} for
+the year 2011 and split into space and water heating. The space heating demand
+is reduced by retrofitting measures that improve the buildings' thermal
+envelopes. This reduction is exogenously fixed at 29\%
+\citeS{zeyenMitigatingHeat2021,lombardiWeatherinducedVariability2022}. For space
+heating, the annual demands are converted to daily values based on the
+population-weighted Heating Degree Day (HDD) using the \textit{atlite} tool
+\citeS{}, where space heat demand is proportional to the difference between the
+daily average ambient temperature (read from ERA5 \citeS{}) and a threshold
+temperature above which space heat demand is zero. A threshold temperature of
+\SI{15}{\celsius} is assumed. The daily space heat demand is distributed to the
+hours of the day following heat demand profiles from BDEW \citeS{}. These differ
+for weekdays and weekends/holidays and between residential and services demand.
+Hot water demand is assumed to be constant throughout the year.
+
+For every country, heat demand is split between low and high population density
+areas. These country-level totals are then distributed to each region in
+proportion to their rural and urban populations respectively. Urban areas with
+dense heat demand can be supplied with large-scale district heating systems. We
+assume that by 2050, 60\% of urban heat demand is supplied by district heating
+networks. Lump-sum losses of 15\% are assumed in district heating systems.
+
+Cooling demand is supplied by electricity and included in the electricity
+demand. Cooling demand is assumed to remain at current levels.
+
+As shown in \cref{fig:demand-time}, total heat demand is similar to the total
+electricity demand but features much more pronounced seasonal variations. The
+total building heating demand adds up to \SI{3084}{\twh\per\year} of which 78\%
+occurs in urban areas.
 
 \citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
 
-all space and water heating in the residential and services sectors is considered
+\subsection{Heat Supply}
+\label{sec:si:heat:supply}
 
-Heat demand is split into:
-
-urban central: large-scale district heating networks in urban areas with dense
-heat demand
-
-residential/services urban decentral: heating for individual buildings in urban
-areas
-
-residential/services rural: heating for individual buildings in rural areas,
-agriculture heat uses
-
-Building heating demand: nodal, distributed in each country based on population.
-
-annual heat demands per country retrieved from JRC-IDEES
-
-converted to daily heat demand based on population weighted Heating Degree Day (HDD)
-- heating proportional to difference between ambient temperature (from ERA5) and threshold temperature of \SI{15}{\celsius}
-- daily space heat is distributed to the hours of the day following BDEW heat demand profiles
-- these differ for weekdays and weekends and between residential and services demand
-- hot water demand constant throughout the day
-
-total heating demand X TWhth/a
-
-pronounced seasonal variation
-
-For each country
-- heat demand split between low and high population density areas
-- urban areas can be supplied with district heating (DH) systems
-- 60\% of urban heat demand covered by DH
-- 15\% pauschal district heating system losses
-
-Cooling demand
-- supplied by electricity and included in electricity demand
-
-space heating demand reduced by building retrofitting
-- exogenously fixed at 29\% reduction
-
-\subsection{Heating Supply}
-
-Oil and gas boilers
-
-Heat pumps
-
-Either air-to-water or ground-to-water heat pumps are implemented.
-
-They have coefficient of performance (COP) based on either the external air or the soil hourly temperature.
-
+Different supply options are available depending on whether demand is met
+centrally through district heating systems or decentrally through appliances in
+individual buidlings. Supply options in individual buildings include gas and oil
+boilers, air- and ground-sourced heat pumps, resistive heaters, and solar
+thermal collectors. For large-scale district heating systems more options are
+available: combined heat and power (CHP) plants consuming gas or biomass from
+waste and residues with and without CCS, large-scale air-sourced
+heat pumps, gas and oil boilers, resistive heaters and fuel cell CHPs.
+Additionally, waste heat from the Fischer-Tropsch and Sabatier processes for the
+production of synthetic hydrocarbons can supply district heating systems.
 Ground-source heat pumps are only allowed in rural areas because of space constraints.
-
-Only air-source heat pumps are allowed in urban areas. This is a conservative
+Thus, only air-source heat pumps are allowed in urban areas. This is a conservative
 assumption, since there are many possible sources of low-temperature heat that
-could be tapped in cities (waste water, rivers, lakes, seas, etc.).
+could be tapped in cities (e.g.~waste water, ground water, or natural bodies of water).
+Costs, lifetimes and efficiencies for these technologies are listed in \cref{sec:si:costs}.
 
-Resistive heaters
+% CHPs
 
-Large Combined Heat and Power (CHP) plants
+CHPs are based on back pressure plants operating with a fixed ratio of
+electricity to heat output. The efficiencies of each are given on the back
+pressure line, where the back pressure coefficient $c_b$ is the electricity
+output divided by the heat output. For biomass CHP, we assume $c_b=0.46$,
+whereas for gas CHP, we assume $c_b=1$.
+
+% heat pumps
+
+The coefficient of performance (COP) of air- and ground-sourced heat pumps
+depends on the ambient or soil temperature respectively. Hence, the COP is a
+time-varying parameter. Generally, the COP will be lower during winter when
+temperatures are low. Because the ambient temperature is more volatile than the
+soil temperature, the COP of ground-sourced heat pumps is less variable.
+Moreover, the COP depends on the difference between the source and sink
+temperatures
+\begin{equation}
+    \Delta T = T_{sink} - T_{source}.
+\end{equation}
+For the sink water temperature $T_{sink}$ we assume \SI{55}{\celsius} For the
+time- and location-dependent source temperatures $T_{source}$, we rely on the
+ERA5 reanalysis weather data \citeS{}. The temperature differences are converted
+into COP time series using results from a regression analysis performed in
+\citeS{staffellReviewDomestic2012}. For air-sourced heat pumps (ASHP), we use
+the function
+\begin{equation}
+    COP(\Delta T) = 6.81 + 0.121 \Delta T + 0.000630 \Delta T^2;
+\end{equation}
+for ground-sourced heat pumps (GSHP), we use the function
+\begin{equation}
+    COP(\Delta T) = 8.77 + 0.150 \Delta T + 0.000734 \Delta T^2.
+\end{equation}
+The resulting time series are displayed in \cref{fig:cfs-ts}.
+The spatial diversity of heat pump coefficients is shown in \cref{fig:cfs-maps}.
 
 \citeS{dahlCostSensitivity2019, madedduCOReduction2020}
 
-PyPSA-Eur-Sec includes CHP plants fuelled by methane, hydrogen and solid biomass from waste and residues.
-
-Hydrogen CHPs are fuel cells.
-
-Methane and biomass CHPs are based on back pressure plants operating with a
-fixed ratio of electricity to heat output. The methane CHP is modelled on the
-Danish Energy Agency (DEA) “Gas turbine simple cycle (large)” while the solid
-biomass CHP is based on the DEA’s “09b Wood Pellets Medium”.
-
-The efficiencies of each are given on the back pressure line, where the back
-pressure coefficient $c_b$ is the electricity output divided by the heat output.
-The plants are not allowed to deviate from the back pressure line and are
-implement with a fixed ratio of heat to electricity output.
-
-Micro-CHP for individual buildings
-
-Waste heat from Fuel Cells, Methanation and Fischer-Tropsch plants
-
-Solar thermal collectors
-
-District heating!
-
-no individual solar thermal?
-
-CHP with CCS, mostly solid biomass
-
-waste heat from industry?
-
-for efficiency improvements, use Lisa thermal envelope retrofitting, currently
-determined exogenously with 29\% reduction compared to 2015 (check) XX cite
-Lisa's paper \citeS{zeyenMitigatingHeat2021,lombardiWeatherinducedVariability2022}
-
-urban central (DH)
-- central air-sourced heat pumps
-- heat resistors
-- gas boilers
-- solar thermal collectors
-- CHP units using methane or solid biomass (back pressure)
-- waste heat from fuel cells, methanation, Fischer-Tropsch
-
-decentral
-- individual ground- and air-sourced heat pumps
-- heat resistors
-- gas boilers
-
-only air-sourced heat pumps is conservative assumption since many possible sources of
-low-temperature heat in cities (wastewater, rivers, lakes, seas, ground)
-
-Coefficient of performance (COP)
-- depends on ambient or ground temparature
-- difference between source and sink temperatures
-
-\begin{equation}
-    \Delta T = T_{sink} - T_{source}
-\end{equation}
-
-Air-sourced heat pumps (ASHP)
-\begin{equation}
-    COP = 6.81 + 0.121 \Delta T + 0.000630 \Delta T^2
-\end{equation}
-
-Ground-sourced heat pumps (GSHP)
-\begin{equation}
-    COP = 8.77 + 0.150 \Delta T + 0.000734 \Delta T^2
-\end{equation}
-
-Sink water temperature $T_{sink}$ is \SI{55}{\celsius}
-
-Source temperature from ERA5
-
 \subsection{Heat Storage}
+\label{sec:si:heat:storage}
 
-Thermal energy storage (TES) using hot water tanks
-- Small water tanks for decentral applications
-- Big water pit storage for district heating.
-
-thermal energy density 46.8 kWhth/m3 corresponding to temperature difference of 40 K
-
-decay of thermal energy $1-\exp(-\sfrac{1}{24\tau})$
-
-with time constant of $\tau=180$ days for central TES and $\tau=3$ days for individual TES
-
-charging and discharging efficiencies are 90\% due to pipe losses
+Thermal energy storage (TES) is available in large water pits associated with
+district heating networks and small water tanks for individual, decentral
+applications. A thermal energy density 46.8~kWh$_{\text{th}}$/m$^3$ is assumed,
+corresponding to temperature difference of \SI{40}{\kelvin}. The decay of
+thermal energy $1-\exp(-\sfrac{1}{24\tau})$ is assumed to have a time constant
+of $\tau=180$ days for central TES and $\tau=3$ days for individual TES. The
+charging and discharging efficiencies are 90\% due to pipe losses.
 
 \section{Renewables Potentials}
 
@@ -938,6 +971,25 @@ charging and discharging efficiencies are 90\% due to pipe losses
     % }
     \caption{weather data}
     \label{fig:weather-data}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{solar}
+        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{wind}
+        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
+    \end{subfigure}
+    % }
+    \caption{Available energy density for wind and utility-scale solar PV energy generation.}
+    \label{fig:energy-density}
 \end{figure}
 
 \begin{figure}
@@ -968,8 +1020,8 @@ charging and discharging efficiencies are 90\% due to pipe losses
         \includegraphics[width=\textwidth]{cop-ts-ground-sourced heat pump.pdf}
     \end{subfigure}
     % }
-    \caption{weather data}
-    \label{fig:weather-data}
+    \caption{Capacity factor time series of renewable energy sources.}
+    \label{fig:cfs-ts}
 \end{figure}
 
 \begin{figure}
@@ -1000,27 +1052,10 @@ charging and discharging efficiencies are 90\% due to pipe losses
         \includegraphics[width=\textwidth]{cf-ground-sourced heat pump.pdf}
     \end{subfigure}
     % }
-    \caption{weather data}
-    \label{fig:weather-data}
+    \caption{Regional distribution of capacity factors of renewable energy sources.}
+    \label{fig:cfs-maps}
 \end{figure}
 
-\begin{figure}
-    \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{solar}
-        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{wind}
-        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
-    \end{subfigure}
-    % }
-    \caption{Available energy density}
-    \label{fig:energy-density}
-\end{figure}
 
 \newgeometry{margin=2cm}
 \begin{landscape}
@@ -1044,7 +1079,7 @@ charging and discharging efficiencies are 90\% due to pipe losses
         \includegraphics[width=\textwidth]{eligibility-offwind-250-20.pdf}
     \end{subfigure}
     %}
-    \caption{Land eligibility}
+    \caption{Land eligibility.}
     \label{fig:eligibility}
 \end{figure}
 
@@ -1052,35 +1087,50 @@ charging and discharging efficiencies are 90\% due to pipe losses
 \end{landscape}
 \restoregeometry
 
+
+\begin{table}
+    \caption{Land types considered suitable for every technology from Corine Land Cover database}
+    \small
+    \begin{tabularx}{\textwidth}{lX}
+        \toprule
+        Solar PV & artificial surfaces (1-11), agriculture land except for those
+        areas already occupied by agriculture with significant natural
+        vegetation and agro-forestry areas (12-20), natural grasslands (26), bare rocks (31),
+        sparsely vegetated areas (32) \\ \midrule
+        Onshore wind & agriculture areas (12-22), forests (23-25), scrubs and herbaceous vegetation associations (26-29), bare rocks (31), sparsely vegetated areas (32) \\ \midrule
+        Offshore wind & sea and ocean (44) \\ \bottomrule
+    \end{tabularx}
+    \label{tab:eligibility}
+\end{table}
+
+Eligibile areas for developing renewable infrastructure are calculated per technology and substation's Voronoi cell using the \textit{atlite} tool \citeS{}.
+
+The land available for wind and utility-scale solar PV capacities in a particular region is constrained by eligible codes of the CORINE land use database \citeS{} and is further restricted by distance criteria
+and the natural protection areas specified in the Natura 2000 dataset \citeS{}. These criteria are summarised in XXX.
+
+Moreover, offshore wind farms may not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO bathymetry dataset \citeS{}.
+This currently disreagards the possibility of floating wind turbines \citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}.
+
+To express the potential in terms of installable capacities, the available areas are multiplied with allowed deployment densities,
+which we consider to be a fraction of the technology's technical deployment density to preempt public acceptance issues.
+
 \subsection{Onshore Wind Potentials}
-
-limited potential:
-
-available land in every region
-
-according to Corine Land Cover (CLC) database (Table which ones are allowed)
-
-excluding Natura 2000 protected areas
-
-
 
 X MW/sqkm conversion factor
 
 20\% of the available land define potential
 
-\cite{mckennaHighresolutionLargescale2022,Ryberg2018}
+\citeS{mckennaHighresolutionLargescale2022,Ryberg2018}
 
 \subsection{Offshore Wind Potentials}
 
 Offshore:
 
-- bathymetry dataset GEBCO
-- areas with sea depth below 50 m (no floating offshore wind)
 - near-shore (distance less than 30km) AC connection, far-shore, DC connected
 - costs include AC-DC conversion
 
-floating
-\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}
+wake effects
+
 
 \subsection{Solar Potentials}
 
@@ -1095,100 +1145,121 @@ per person (0.1 kW/m2 and 10 m2/person)
 
 \citeS{bodisHighresolutionGeospatial2019}
 
-Solar thermal
-- from reanalysis ERA5
-
 \section{Renewables Time Series}
 
-\subsection{Wind Time Series}
+The location-dependent renewables availability time series are generated based
+on two historical weather datasets. We retrieve wind sepeeds at
+\SI{100}{\metre}, surface roughness, soil and air temperatures, and surface
+run-off from rainfall or melting snow from the global ERA5 reanalysis dataset
+provided by the ECMWF \citeS{}. It provides hourly values for each of these
+parameters since 1950 on a $0.25^{\circ} \times 0.25^{\circ}$ grid. In Germany,
+such a weather cell expands approximately \SI{20}{\kilo\metre} from east to west
+and \SI{31}{km} from north to south. For the direct and diffuse solar
+irradiance, we use the satellite-aided SARAH-2 dataset, which assesses cloud
+cover in more detail than the ERA5 dataset. It features values from 1983 to 2015
+at an even higher resolution with a $0.05^{\circ} \times 0.05^{\circ}$ grid and
+30-minute intervals \citeS{}. In general, the reference weather year can be
+freely chosen for the optimisation, but in this contribution all analyses are
+based on the year 2013, which is regarded as characteristic year for both wind
+and solar resources (e.g. \citeS{}).
 
-capacity factor time series modelled by converting wind speeds from ERA5 reanalysis into wind
-generation, following the methodology described in
+Models for wind turbines, solar panels, heat pumps and the inflow into hydro
+basins convert the weather data to hourly time series for capacity factors and
+performance coefficients. Using power curves of typical wind turbines\todo{which
+wind turbine types offshore onshore}, wind speeds scaled to the according hub
+height are mapped to power outputs. The solar photovoltaic panels' output is
+calculated based on the incidence angle of solar irradiation, the panel's tilt
+angle, and conversion efficiency. The creation of heat pump time series follows
+regression analyses that map soil or air temperatures to the coefficient of
+performance (COP) \citeS{nouvelEuropeanMapping2015, staffellReviewDomestic2012}.
+The open-source library \textit{atlite} \citeS{} provides functionality to
+perform all these calculations efficiently. Finally, the obtained time series
+are aggregated to each region heuristically in proportion to each grid cell's
+mean capacity factor. This assumes a capacity layout proportional to mean
+capacity factors.
 
-ERA5: hourly resolution, 30 km spatial resolution
+Hydroelectric inflow time series are derived from run-off data.
 
-atlite: open-source tool
+Solar thermal
 
-capacity layout proportional to mean capacity factors is assumed for every region
-
-
-\subsection{Solar Time Series}
-
-from satellite irradiance data (SARAH-2)
-
-\begin{table}
-    \caption{Land types considered suitable for every technology from Corine Land Cover database}
-    \small
-    \begin{tabularx}{\textwidth}{lX}
-        \toprule
-        Solar-PV & artificial surfaces (1-11), agriculture land except for those
-        areas already occupied by agriculture with significant natural
-        vegetation and agro-forestry areas (12-20), natural grasslands (26), bare rocks (31),
-        sparsely vegetated areas (32) \\ \midrule
-        Onshore wind & agriculture areas (12-22), forests (23-25), scrubs and herbaceous vegetation associations (26-29), bare rocks (31), sparsely vegetated areas (32) \\ \midrule
-        Offshore wind & sea and ocean (44) \\ \bottomrule
-    \end{tabularx}
-\end{table}
-
-\subsection{Heat Pump Time Series}
-
-\citeS{nouvelEuropeanMapping2015, staffellReviewDomestic2012}
-
-\subsection{Hydro Time Series}
+In combination with the capacity potentials derived from the assumed land use restrictions,
+the time-averaged capacity factors are used to display in \cref{fig:energy-density} the energy that could be produced from wind and solar energy in the different regions of Europe.
 
 \section{Hydrogen}
+\label{sec:si:h2}
 
 \subsection{Hydrogen Demand}
+\label{sec:si:h2:demand}
 
-Stationary fuel cell CHP.
-- to convert electricity to hydrogen (and heat as byproduct)
-- to balance renewable fluctuations
-
-Transport applications (shipping, heavy-duty transport)
-- exogenously fixed
-
-Industry (ammonia, precursor to hydrocarbons for chemicals and iron/steel direct reduced iron (DRI)).
-
-produce synthetic methane and hydrocarbons
+Hydrogen is consumed in the industry sector to produced ammonia and direct
+reduced iron (DRI) (see \cref{sec:si:industry:steel}). Hydrogen is also consumed
+to produce synthetic methane and liquid hydrocarbons (see
+\cref{sec:si:methane:supply} and \cref{sec:si:oil:supply}) which have multiple
+uses in industry and other sectors. For transport applications, the consumption
+of hydrogen is exogenously fixed. It is used in heavy-duty land transport (see
+\cref{sec:si:transport:land}) and as liquified hydrogen in the navigation sector
+(see \cref{sec:si:transport:shipping}). Furthermore, stationary fuel cells may
+re-electrify hydrogen (with waste heat as a byproduct) to balance renewable
+fluctuations.
 
 \subsection{Hydrogen Supply}
+\label{sec:si:h2:supply}
 
-Steam Methane Reforming (SMR)
+Today, most hydrogen is produced from natural gas by steam methane reforming
+(SMR)
 \begin{equation}
     \ce{ CH4 + H2O -> CO + 3H2 }
 \end{equation}
-combined with water-gas shift reaction
+combined with a water-gas shift reaction
 \begin{equation}
-    \ce{CO + H2O -> \co + H2}
+    \ce{CO + H2O -> CO2 + H2}.
 \end{equation}
+We consider this route of production with and without carbon capture (CC),
+assuming a capture rate of 90\%. These routes are also referred to as blue and
+grey hydrogen. The methane input can be of fossil or synthetic origin.
 
+Furthermore, we consider water electrolysis (green hydrogen) which uses electric
+energy to split water into hydrogen and oxygen
+\begin{equation}
+    \ce{2H2O -> 2 H2 + O2}.
+\end{equation}
+For the electrolysis, we assume alkaline electrolysers since they have lower
+cost \citeS{} and higher cumulative installed capacity \citeS{} than polymer
+electrolyte membrane (PEM) electrolysers. Waste heat from electrolysis is not
+leveraged in the model.
 
-SMR+CCS
-
-electrolysers
-- assuming alkaline electrolysers
-- lower cost, higher installed capacity
-- compared to polymer electrolyte membrane (PEM) electrolysis
-
-Split between the different options is optimised.
-
+The split between these three different technology
+options and their installed capacities are a result of the optimisation
+depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 
 \subsection{Hydrogen Transport}
+\label{sec:si:h2:transport}
 
-retrofitting
-- methane network
+Hydrogen can be transported in pipelines. These can be retrofitted natural gas
+pipelines or completely new pipelines. The cost of retrofitting a gas pipeline
+is about half that of building a new hydrogen pipeline. These costs include the
+cost for new compressors but neglect the energy demand for compression.
 
-new pipelines
-- based on routes of electricity and methane transmission networks
-- capacities built if cost-effective (e.g. no suitable retrofitting option available)
+The endogenous retrofitting of gas pipelines to hydrogen pipelines is
+implemented in a way, such that for every unit of gas pipeline decommissioned,
+60\% of its nominal capacity are available for hydrogen transport on the
+respective route, following assumptions from the European Hydrogen Backbone
+report \citeS{EuropeanHydrogen}\todo{check this assumption in EHB}. When the gas network is not resolved, this
+value denotes the potential for repurposed hydrogen pipelines.
+
+New pipelines can be built additionally on all routes where there currently is a
+gas or electricity network connection. These new pipelines will be built where
+no sufficient retrofitting options are available. The capacities of new and
+repurposed pipelines are a result of the optimisation.
 
 \subsection{Hydrogen Storage}
+\label{sec:si:h2:storage}
 
 \begin{SCfigure}
     \centering
     \includegraphics[width=0.7\textwidth]{caverns.pdf}
-    \label{fig:caverns}
     \caption{Caverns}
+    \label{fig:caverns}
 \end{SCfigure}
 
 \begin{figure}
@@ -1211,52 +1282,52 @@ new pipelines
     \label{fig:clustered-caverns}
 \end{figure}
 
-hydrogen can be stored
-
-overground steel tanks
-
-underground cavern storage
-- potentials taken from Caglayan
-- mapped onto each region
-- exclude caverns in the sea or within 50 km of the shore
-- to avoid environmental problems associated with brine solution disposal
-
-\citeS{caglayanTechnicalPotential2019}
-
-underground storage is around x times cheaper than steel tanks
+Hydrogen can be stored in overground steel tanks or underground salt caverns.
+The annuitised cost for cavern storage is around 30 times lower than for storage
+in steel tanks including compression. For underground storage potentials for
+hydrogen in European salt caverns we take data from Caglayan et
+al.~\citeS{caglayanTechnicalPotential2019} (\cref{fig:caverns} and map it to
+each of the 181 model regions (\cref{fig:clustered-caverns}). We include only
+those caverns that are located on land and within 50 km of the shore
+(nearshore). We impose this restriction to circumvent environmental problems
+associated with brine water disposal \citeS{caglayanTechnicalPotential2019}. The
+storage potential is abundant and the constraining factor is more where they
+exist and less how large the energy storage potentials are.
 
 \section{Methane}
+\label{sec:si:methane}
 
 \subsection{Methane Demand}
+\label{sec:si:methane:demand}
 
-Can be used in gas boilers, in CHPs (w/wo carbon capture), in industry for high temperature heat, in OCGT/CCGT power plants.
-
-Not used in transport because of engine slippage.
+Methane is used in individual and large-scale gas boilers, in CHP plants with
+and without carbon capture, in OCGT and CCGT power plants, and in some industry
+subsectors for the provision of high temperature heat (see
+\cref{sec:si:industry}) Methane is not used in the transport sector because of
+engine slippage.
 
 \subsection{Methane Supply}
+\label{sec:si:methane:supply}
 
-Fossil
-- LNG terminals (existing and planned)
-- entry-points (Russian pipelines)
-- gas extraction sites (e.g. Norway)
-
-biogas
-- upgrad to methane
-
-Sabatier
-- hydrogen and captured \co to methane
-- methanation
+Besides methane from fossil origins, the model also considers biogenic and
+synthetic sources. If gas infrastructure is regionally resolved (see
+\cref{sec:si:methane:transport}), fossil gas can enter the system only at
+existing and planned LNG terminals, pipeline entry-points, and intra-European
+gas extraction sites (see \cref{fig:gas-raw}), which are retrieved from the
+SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022} and the GEM Wiki
+\citeS{}. Biogas can be upgraded to methane (see \cref{sec:si:bio:potentials}).
+Synthetic methane can be produced by processing hydrogen and captures \co in the
+Sabatier reaction
 \begin{equation}
-    \ce{\co + 4H2 -> CH4 + 2H2O}
+    \ce{CO2 + 4H2 -> CH4 + 2H2O}.
 \end{equation}
-
-HELMETH
-- direct power to methane with efficient heat integration
-- \citeS{gruberPowertoGasThermal2018}
-
-The share of synthetic, bio-based and fossil-based methane is an optimisation result
+Direct power-to-methane conversion with efficient heat integration developed in
+the HELMETH project is also an option \citeS{gruberPowertoGasThermal2018}. The
+share of synthetic, biogenic and fossil methane is an optimisation result
+depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 
 \subsection{Methane Transport}
+\label{sec:si:methane:transport}
 
 \begin{figure}
     \includegraphics[width=1\textwidth,center]{gas_network.pdf}
@@ -1264,56 +1335,57 @@ The share of synthetic, bio-based and fossil-based methane is an optimisation re
     \caption{Gas network}
 \end{figure}
 
-Scigrid Gas dataset
-- direction of pipelines taken into account
+The existing European gas transmission network is represented based on the
+SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022}, as shown in
+\cref{fig:gas-raw}. This dataset is based on compiled and merged data from the
+ENTSOG map \citeS{} and other publicly available data sources. It includes data
+on the capacity, diameter, pressure, length, and directionality of pipelines.
+Missing capacity data is conservatively inferred from the pipe diameter
+following conversion factors derived from \cite{EuropeanHydrogen}. The gas
+network is clustered to the model's 181 regions (see
+\cref{fig:clustered-networks}). Gas pipelines can be endogenously expanded or
+repurposed for hydrogen transport (see \cref{sec:si:h2:transport}). Gas flows
+are represented by a lossless transport model.
 
-single node for Europe
-- assumed to be transported without cost
-- since future demand is predicted to be low and no bottlenecks are expected
-- nevertheless, capacities and routes of gas transmission network used as options to retrofit to hydrogen pielines
-
-selected runs with gas network infrastructure
-- abundant transport capacities even if H2 retrofitting to demand
-
-Gas transport has recently been included in the model. Existing natural gas
-networks are represented based on the Scigrid-Gas dataset, which is in turn
-based on the ENTSOG map and other open sources. This network can be expanded, or
-converted for hydrogen usage. Hydrogen networks can either reuse existing
-methane pipelines or new hydrogen pipelines can be built. For carbon dioxide
-transport, a pipeline network is also planned. The following graphics show the
-existing gas network in the model, as well as an optimal newly-built hydrogen
-network.
+The results presented in the main body of the article regard the gas
+transmission network only to determine the retofitting potentials for hydrogen
+pipelines. These assume methane to be transported without cost or capacity
+constraints, since future demand is predicted to be low compared to available
+transport capacities even if a certain share is repurposed for hydrogen
+transport such that no bottlenecks are expected. Selected runs with gas network
+infrastructure included are presented in \cref{sec:si:detailed}.
 
 \section{Oil-based Products}
+\label{sec:si:oil}
 
 \subsection{Oil-based Product Demand}
+\label{sec:si:demand}
 
-Transport fuel in aviation (kerosene)
-
-agriculture machinery
-
-naphtha as a feedstock for the chemicals industry
+Naphtha is used as a feedstock in the chemicals industry (see
+\cref{sec:si:industry:chemicals}). Furthermore, kerosene is used as transport
+fuel in the aviation sector (see \cref{sec:si:transport:aviation}).
+Non-electrified agriculture machinery also consumes gasoline.
 
 \subsection{Oil-based Product Supply}
+\label{sec:si:oil:supply}
 
-Fossil oil
-
-Fischer-Tropsch process
-- with hydrogen and captured \co
-- produces oil and waste heat
+In addition to fossil origins, oil-based products can be synthetically produced
+by processing hydrogen and captured \co in Fischer-Tropsch plants
 \begin{equation}
-    \ce{$n$CO + ($2n$ + 1)H2 -> C_$n$H_{2n+2} + $n$H2O}
+    \ce{$n$CO + ($2n$ + 1)H2 -> C_$n$H_{2n+2} + $n$H2O}.
 \end{equation}
-
+with costs as included in \cref{sec:si:costs}. The waste heat from the
+Fischer-Tropsch process is supplied to district heating networks.
 
 \subsection{Oil-based Product Transport}
+\label{sec:si:oil:transport}
 
-Liquid hydrocarbons:
-- single node for Europe
-- since transport costs for liquids are low
-
+Liquid hydrocarbons are assumed to be transported freely among the model region
+since future demand is predicted to be low, transport costs for liquids are low
+and no bottlenecks are expected.
 
 \section{Biomass}
+\label{sec:si:bio}
 
 Biomass resources are available for different potential assessments (low,
 medium, high) for many different feedstocks and NUTS2 resolution based on the
@@ -1322,6 +1394,7 @@ without CCS, as well as to provide low- to medium-temperature process heat in
 industry.
 
 \subsection{Biomass Potentials}
+\label{sec:si:bio:potentials}
 
 \begin{figure}
     \centering
@@ -1348,6 +1421,8 @@ industry.
 
 Only wastes and residues from the JRC ENSPRESO biomass dataset.
 
+\cref{fig:biomass-potentials}
+
 nodal where biomass potential is regionally disaggregated
 
 Use JRC ENSPRESO database to spatially disaggregate biomass potentials to
@@ -1366,10 +1441,10 @@ about sustainability \citeS{bentsenCarbonDebt2017}.
 
 The JRC provides potentials in low,
 medium and high availability scenarios, which depend on supply and competition
-with other uses of each feedstock. In PyPSA the medium availability scenario for
+with other uses of each feedstock. The medium availability scenario for
 2030 is used, assuming no biomass import from outside Europe.
 
-Manure and sludge waste are available to the model as biogas (upgraded to
+Manure and sludge waste are available to the model as biogas (that is upgraded to
 biomethane), while other wastes and residues are classified as solid biomass and
 available for combustion in combined-heat-and-power plants (CHP) and for medium
 temperature heat (lower than \SI{500}{\celsius}) applications in industry.
@@ -1380,6 +1455,8 @@ Agency Technology Database \citeS{dea2016} assumptions for a medium-sized back
 pressure CHP with wood pellet feedstock; this has very similar costs and
 efficiencies to CHPs with feedstocks of straw and wood chips.
 
+A summary of the feedstocks and use in the model is shown in \cref{tab:biomass}; the respective regional distribution of potentials in \cref{fig:biomass-potentials}.
+
 In 2015 the EU28 energy
 usage was 180~TWh of biogas, 1063~TWh of solid biofuels, 109~TWh renewable
 municipal waste and 159~TWh of liquid biofuels. Our model contains roughly a
@@ -1387,86 +1464,54 @@ doubling of the biogas production from 2015 and similar amounts of solid
 biofuels, but a shift from energy crops and primary wood to residues and wastes.
 
 Since most liquid biofuels come from energy crops today, these do not appear in
-PyPSA-Eur-Sec. Zappa et al (2019) \citeS{zappa100Renewable2019} uses the same JRC database
-but in addition to the feedstocks we use, they also allow roundwood chips and
-pellets, as well as grassy, willow and poplar energy crops.
+PyPSA-Eur-Sec.
 
-Don't have biomass gasification, but do allow carbon capture for usage or
-sequestration from bioenergy plants.
+Carbon capture and sequestration of bioenergy \co emissions, results in net negative emissions.
+Carbon capture and use of bioenergy \co emissions results in net neutral emissions.
 
-\begin{table}[t]
+\begin{table}
     \centering
     \small
-    \begin{tabular}{lllr}
-      \toprule
-      Source & JRC code & use in model & Potential [\si{\peta\joule\per\year}] \\
-      \midrule
-      Energy crop: sugar beet bioethanol & MINBIOCRP21 & not used & 882.5 \\
-      Energy crop: rape seed and other oil crops & MINBIORPS1 & not used & 949.3 \\
-      Energy crop: starchy crops & MINBIOCRP11 & not used & 288.0 \\
-      Energy crop: grassy & MINBIOCRP31 & not used & 1777.6 \\
-      Energy crop: willow & MINBIOCRP41 & not used & 317.7\\
-      Energy crop: poplar & MINBIOCRP41a & not used & 96.6 \\
-      Wet and dry manure & MINBIOGAS1 & biogas  & 1237.6 \\
-      Primary agricultural residues & MINBIOAGRW1 & solid biomass &  1120.6\\
-      Roundwood fuelwood & MINBIOWOO & not used & 273.2 \\
-      Roundwood chips and pellets & MINBIOWOOa & not used & 2087.1\\
-      Forestry energy residue & MINBIOFSR1 & solid biomass & 1955.0 \\
-      Secondary forestry residues: woodchips & MINBIOWOO1 & solid biomass & 432.2 \\
-      Secondary forestry residues: sawdust & MINBIOWOO1a & solid biomass & 152.0 \\
-      Forestry residues from landscape care & MINBIOFSR1a & solid biomass & 320.5\\
-      Biodegradable municipal waste  & MINBIOMUN1 & solid biomass & 565.1 \\
-      Biodegradable sludge & MINBIOSLU1 & biogas  & 34.9 \\ \bottomrule
-    \end{tabular}
-    \caption{Biomass classification from the JRC \cite{jrcbiomass2015}, usage in PyPSA-Eur-Sec, and potentials in JRC's medium availability scenario for 2030. XX Move to Appendix.}
+    \begin{tabularx}{\textwidth}{lXr}
+        \toprule
+        Application & Source & Potential [\si{\twh\per\year}] \\
+        \midrule
+        solid biomass & primary agricultural residues; forest energy residue; secondary forestry residues: woodchips, sawdust; forestry residues from landscape care; biodegradable municipal waste & 1186 \\
+        biogas & wet and dry manure; biodegradable sludge & 346\\
+        not used & energy crops: sugar beet bioethanol, rape seed and other oil crops, starchy crops, grassy, willow, poplar; roundwood fuelwood; roundwood chips and pellets & 1661 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Use of biomass potentials according to classifications from the JRC \cite{jrcbiomass2015} in the medium availability scenario for 2030.}
     \label{tab:biomass}
-  \end{table}
+\end{table}
 
-
-\begin{table}[t]
-    \centering
-    \small
-    \begin{tabular}{lr}
-      \toprule
-      Source & Potential [\si{\twh\per\year}] \\
-      \midrule
-      not used & 1853 \\
-      biogas & 353 \\
-      solid biomass & 1263 \\ \bottomrule
-    \end{tabular}
-    \caption{Total biomass potentials and usage in model.}
-    \label{tab:biomasstwh}
-  \end{table}
 
 \subsection{Biomass Demand}
+\label{sec:si:bio:demand}
 
-Solid biomass provides process heat up to \SI{500}{\celsius} in industry, as well as
-feeding CHP plants in district heating networks.
-
-solid biomass is used as heat supply in the paper and pulp as well as food, beverages and
-tobacco industries, where required temperatures are lower (see
-\citeS{naeglerQuantificationEuropean2015} and \citeS{rehfeldtBottomupEstimation2018}).
+Solid biomass provides process heat up to \SI{500}{\celsius} in industry and can
+also feed CHP plants in district heating networks. As noted in
+\cref{sec:si:industry}, solid biomass is used as heat supply in the paper and
+pulp and food, beverages and tobacco industries, where required temperatures are
+lower \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}.
 
 \subsection{Biomass Transport}
+\label{sec:si:bio:transport}
 
-solid biomass has to be consumed locally (check!)
-
-biogas can be upgraded and then transported via methane network
-
-neglect of transport not expected to have a large impact since most countries have biomass demand
-for industry lower than internal potential
-
+Solid biomass is assumed to be transported freely among the modelled regions.
+Biogas can be upgraded and then transported via the methane network. If the
+methane network is neglected, also biogas can be moved without cost or
+constraints.
 
 \section{Carbon dioxide capture, usage and sequestration (CCU/S)}
+\label{sec:si:carbon-management}
 
 Carbon management becomes important in net-zero scenarios. PyPSA-Eur-Sec
 includes carbon capture from electricity generators and industrial facilities,
 carbon dioxide storage and transport, the usage of carbon dioxide in synthetic
 hydrocarbons, as well as the ultimate sequestration of carbon dioxide
-underground. The major depleted hydrocarbon fields and saline aquifers in Europe
-have recently been included in the model.
+underground.
 
-carbon is tracked through system: up to 90\% of industrial emissions can be captured
 
 direct air capture DAC
 
@@ -1476,7 +1521,9 @@ transport and sequestration is \SI{20}{\sieuro\per\tco}
 
 yearly sequestration limit to 200 Mt\co / a
 
-management of the carbon cycle
+carbon cycle
+
+carbon is tracked through system
 
 Carbon capture is needed in the model both to capture and sequester process
 emissions with a fossil origin, such as those from calcination of fossil
@@ -1492,7 +1539,7 @@ DAC includes
 - adsorption phase with inputs electricity and heat to assist adsorption process and regenerate adsorbent
 - compression of \co prior to storage which consumes electricity and rejects heat
 
-process emissions captured at 95\% capture rate at cost as in cement industry
+process emissions captured at 90\% capture rate at cost as in cement industry
 
 SMR, CHP, biomass and methane demand in industry the model can decide w/wo carbon capture
 
@@ -1507,7 +1554,6 @@ Can also be sequestered:
 - 10 USD/t\co for underground sequestration
 - limit is 200 Mt (rather conservative but enough to capture process emissions)
 
-% plot
 unavoidable process emissions
 
 \co: single node for Europe, but a transport and storage cost is added for sequestered \co. Optionally: nodal, with \co transport via pipelines.
@@ -1516,8 +1562,6 @@ Why net-zero target for \co? Since don't include LULUCF or non-\co (waste manage
 
 CCU/S needed for synthetic fuels AND to deal with process emissions (from e.g.
 cement)
-
-
 
 need for feedstocks in chemicals industry and dense hydrocarbon fuels for aviation
 
@@ -1573,8 +1617,154 @@ Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
 
 
 \section{Mathematical Model Formulation}
+\label{sec:si:math}
 
-\section{Other}
+\section{Cost of Grid Reinforcement and Onshore Wind Potential Restrictions}
+\label{sec:si:sensitivity-lv-onw}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{Sensitivity of electricity transmission grid expansion limits}
+        \includegraphics[width=\textwidth]{lv-sensitivity.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \caption{Sensitivity of onshore wind expansion limits}
+        \includegraphics[width=\textwidth]{onw-sensitivity.pdf}
+    \end{subfigure}
+    \caption{Sensitivity of electricity transmission grid expansion limits and onshore wind restrictions.}
+    \label{fig:lv-onw-restriction}
+\end{figure}
+
+\begin{SCfigure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{sensitivity-h2.pdf}
+    \caption{Sensitivity of hydrogen network infrastructure.}
+    \label{fig:h2-restriction}
+\end{SCfigure}
+
+\subsection{Cost of Electricity Grid Reinforcement Restrictions}
+\label{sec:si:lv}
+
+The volume limit is given in fractions of today's grid volume: a
+line volume limit of 1.0 means no new capacity is allowed beyond today's grid
+(since the model cannot remove existing lines); a limit of 1.25 means the total
+grid capacity can grow by 25\% (25\% is similar to the planned extra capacity in
+the European network operators' Ten Year Network Development Plan (TYNDP)\cite{TYNDP2016})
+
+Figure shows the composition of total yearly system costs
+(including all investment and operational costs) as we vary the allowed
+grid expansion, from no expansion (only today's grid) to
+a doubling of today's grid capacities (the model optimises where new
+capacity is placed).
+
+The total costs are dominated by investments in generation from wind
+and solar, and conversion from power to heat (primarily heat pumps)
+and to hydrogen and liquid hydrocarbons (for transport fuels and as a
+feedstock for the chemicals industry). Vehicle costs are not included
+here. The costs of today's system are \euro700~billion per year,
+computed with the same assumptions, which is only slightly less than
+these net-zero emission systems.
+
+As the grid is expanded, total costs decrease
+slightly, despite the increasing costs of the grid. The grid enables
+renewable resources with better capacity factors to be integrated from
+further away, resulting in lower capacity needs for solar and
+wind. The grid also allows renewable variations to be smoothed in space,
+resulting in lower hydrogen demand for balancing power and heat.  The
+total cost benefit of a doubling of grid capacity is around
+\euro44~billion per year, but over half of the benefit (\euro26~billion per year) is available already at a 25\% expansion (similar to the level seen in the TYNDP \cite{TYNDP2016}).
+
+Figure shows the spatial distribution of the investments
+for the case of a 25\% expansion. While solar capacity is spread
+relatively evenly around the continent, both onshore and offshore wind
+are concentrated around the North Sea and British Isles. New
+transmission capacity is concentrated in HVDC lines that help the
+integration of wind in these regions, and the transport of wind energy
+to inland locations.
+
+Electrolyzer capacities for power-to-hydrogen see a massive scale-up,
+from several dozen MW today to 1048~GW in this scenario (note that
+several 100~MW electrolyzer facilities are already in planning for the
+2020s). Their locations correlate strongly with wind capacities,
+particularly offshore wind. A new network
+transports hydrogen from these sites of production to the rest of
+Europe where hydrogen is consumed by industry (for ammonia, organic
+chemicals and steel production), for heavy-duty transport and in fuel
+cells for power and heat backup. Of the huge hydrogen production
+(2949~TWh/a), most of it (1722~TWh/a) goes to Fischer-Tropsch fuels
+for organic chemicals and transport fuels, 615~TWh/a to fuel cell CHPs
+in district heating networks, and the rest to industry and transport.
+The hydrogen network plays a dominant role transporting energy around
+Europe when grid expansion is restricted: more energy is moved further
+in the hydrogen network (209~TWhkm/h) than either the HVAC
+(99~TWhkm/h) or HVDC (3.3~TWhkm/h) networks.
+
+Methane production is limited to biogas (352~TWh/a) and some fossil
+gas (388~TWh/a), the latter of whose emissions are offset by bioenergy
+with carbon capture and direct air capture with sequestration.
+Methane is used for process heat in some industry applications and as
+a heating backup for power-to-heat units. The model has the option of
+efficient power-to-methane conversion (methanation integrated with a
+solid oxide electrolyzer) but does not choose to build it because of
+its high capital costs compared to the direct hydrogen route.
+
+50\% more power grid volume (expansion of 162 TWkm) and 260 TWkm of hydrogen grid
+
+25\% more power grid volume (expansion of 81 TWkm) and 282 TWkm of hydrogen grid
+
+no more power grid volume and 308 TWkm of hydrogen grid
+
+direct system costs bit higher than today's system
+
+systems without grid expansion are feasible, but more costly
+
+as grid is expanded, costs reduce from solar, PtX and H2 network, more offshore wind
+
+total cost benefit of extra grid: 47 billion euro per year
+
+over half of the benefit is available at 25\% grid expansion (like TYNDP)
+
+
+
+
+
+
+
+\subsection{Cost of Onshore Wind Potential Restrictions}
+\label{sec:si:onw}
+
+If we take the case with no grid expansion and restrict the installable
+potentials of onshore down to zero, costs rise by an additional \euro~42~billion
+per year. The model substitutes onshore wind for
+higher investment in offshore and solar generators. Because offshore capacities
+are concentrated near coastlines, and grid capacity is restricted, total
+spending on hydrogen electrolyzers and networks also increases to absorb the
+offshore generation.
+
+Just as in the case of restricted line volumes, the rise in costs is non-linear:
+if we restrict to 25\% of the onshore potential (around 100~GW for Germany),
+costs rise by only \euro~14~billion per year. 25\% of the onshore wind potential
+represents a possible social compromise between total system cost, and public
+acceptance concerns about onshore wind development.
+
+Without onshore wind, solar rooftop and offshore potentials are maxxed out
+- If all sectors included and Europe self-sufficient, effect of installable potentials is critical
+
+Without onshore wind, hydrogen network looks much different:
+- with: British Isles and North Sea dominate hydrogen production
+- without: Southern Europe becomes much larger exporter of hydrogen
+
+Technical potentials for onshore wind respect land usage, but do not represent
+sociallly-acceptable potentials
+- technical potential of 480 GW in Germany is unlikely to be built
+- costs rise by 122 billion per year as we eliminate onshore wind
+- rise is only 45 billion per year if we allow a quarter of technical potential (120 GW in Germany)
+
+\section{Detailed Results of Least-Cost Solution with Gas Network}
+\label{sec:si:detailed}
 
 competition of H2 and gas flow? can gas network be completely removed?
 
@@ -1608,7 +1798,7 @@ onshore wind sensitivities
     \end{subfigure}
     %}
     \caption{Daily time series}
-    \label{fig:eligibility}
+    \label{fig:output-ts-1}
 \end{figure}
 
 \begin{figure}
@@ -1631,7 +1821,7 @@ onshore wind sensitivities
     \end{subfigure}
     %}
     \caption{Daily time series}
-    \label{fig:eligibility}
+    \label{fig:output-ts-2}
 \end{figure}
 
 
@@ -1655,7 +1845,7 @@ onshore wind sensitivities
     \end{subfigure}
     %}
     \caption{hourly time series}
-    \label{fig:eligibility}
+    \label{fig:output-ts-3}
 \end{figure}
 
 \begin{figure}
@@ -1678,7 +1868,7 @@ onshore wind sensitivities
     \end{subfigure}
     %}
     \caption{hourly time series}
-    \label{fig:eligibility}
+    \label{fig:output-ts-4}
 \end{figure}
 
 \newgeometry{margin=2cm}
@@ -1687,6 +1877,7 @@ onshore wind sensitivities
 
 
 \section{Techno-Economic Assumptions}
+\label{sec:si:costs}
 
 Net-zero expected in 2035-2060, so take 2030 costs to be conservative, and also because of pathway (if want in 2050, much of infrastructure is built 2030-2050). NB: Even though total cost may be high, we're mostly focused on comparative study.
 
