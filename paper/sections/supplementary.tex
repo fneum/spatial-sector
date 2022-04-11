@@ -360,6 +360,9 @@ oxyfuel for cement. Basic chemicals can use green hydrogen as a feedstock rather
 than fossil fuels, for example for ammonia production, or using Fischer-Tropsch
 naphtha in steam crackers for High Value Chemicals.
 
+Fossil fuels are used for process heat in the chemicals industry, but also as a feedstock for chemicals like
+ammonia (NH3), ethylene (C2H4) and methanol (CH3OH)
+
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{fec_industry_today_tomorrow.pdf}
     \caption{Final consumption of energy and non-energy feedstocks in industry today (left bar) and
@@ -523,11 +526,15 @@ Two routes today to manufacture steel in Europe
 
 Primary - Integrated steelworks
 - use blast furnaces in which coke is used to reduce iron ore into molten iron
+- coke is used as a reducing agent in blast furnaces for smelting iron ore
 \begin{equation}
-    \ce{FE2O3 + 3CO -> 2Fe + 3\co}
+    \ce{Fe2O3 + 3CO -> 2Fe + 3CO2}
 \end{equation}
 \begin{equation}
-    \ce{FeO + 3CO -> Fe + 3\co}
+    \ce{FeO + 3CO -> Fe + 3CO2}
+\end{equation}
+\begin{equation}
+    \ce{2Fe2O3 + 3C -> 4Fe + 3CO2}
 \end{equation}
 - this is then converted to steel
 - The primary route implies large process emissions (0.22 t\co/t steel)
@@ -597,6 +604,7 @@ fraction of platics
 
 synthetic naphtha for primary production
 
+
 Ammonia production data is taken from the USGS
 
 Natural gas dominates in Europe as source for hydrogen for Haber-Bosch process.
@@ -608,6 +616,7 @@ ammonia production from USGS (United States Geological Survey) statistics
 Assumptions for existing ammonia energy demand from XX and for electrolytic
 process from XX.
 
+Ammonia, used for fertiliser, can be made from hydrogen and nytrogen using the Haber-Bosch-Process
 hydrogen can be combined with Nitrogen to obtain ammonia in the Haber-Bosch process \citeS{leviMappingGlobal2018}
 \begin{equation}
     \ce{N2 + 3H2 -> 2NH3}
@@ -624,6 +633,8 @@ ammonia is subtracted from basic chemicals in IDEES database.
 
 ALL of liquid hydrocarbon feedstock from FT naphtha.
 - LPG, diesel oil, residual fuel oil
+
+Ethylene, used for plastics, can be made by steam cracking from naphtha or ethane or via methanol-to-olefin processes
 
 We assume that all of carbon eventually finds its way from product into
 atmosphere. But this is wierd, since there is no release from landfill, plastics
@@ -664,6 +675,14 @@ involves process emissions of 0.54 t \ce{\co} / t cement
 \begin{equation}
     \ce{CaCO3 -> CaO + \co}
 \end{equation}
+
+cement is used in construction to make concrete
+
+Co2 is emitted from fossil fuels to provide process heat and from the calcination reaction ofr fossil limestone.
+
+This is the biggest source of process emissions in industry in Europe.
+
+Unless alternatives can be found for cement, can do CCS or CCU
 
 mitigation strategies (new raw materials, recovering unused cement from concrete at end of life \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en})
 are at a very early development stage and have not been considered
