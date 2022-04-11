@@ -1,0 +1,111 @@
+\section{Carbon dioxide capture, usage and sequestration (CCU/S)}
+\label{sec:si:carbon-management}
+
+Carbon management becomes important in net-zero scenarios. PyPSA-Eur-Sec
+includes carbon capture from electricity generators and industrial facilities,
+carbon dioxide storage and transport, the usage of carbon dioxide in synthetic
+hydrocarbons, as well as the ultimate sequestration of carbon dioxide
+underground.
+
+
+direct air capture DAC
+
+synthetic methane and liquid hydrocarbons
+
+transport and sequestration is \SI{20}{\sieuro\per\tco}
+
+yearly sequestration limit to 200 Mt\co / a
+
+carbon cycle
+
+carbon is tracked through system
+
+Carbon capture is needed in the model both to capture and sequester process
+emissions with a fossil origin, such as those from calcination of fossil
+limestone in the cement industry, as well as to provide carbon for the
+production of hydrocarbons for dense transport fuels and as a chemical
+feedstock, for example for the plastics industry.
+
+Carbon dioxide can be captured from industry process emissions, emissions
+related to industry process heat (methane and biomass), combined heat and power plants, and directly
+from the air wit direct air capture (DAC).
+
+DAC includes
+- adsorption phase with inputs electricity and heat to assist adsorption process and regenerate adsorbent
+- compression of \co prior to storage which consumes electricity and rejects heat
+
+process emissions captured at 90\% capture rate at cost as in cement industry
+
+SMR, CHP, biomass and methane demand in industry the model can decide w/wo carbon capture
+
+these capacities are co-optimised
+
+Carbon dioxide can be used as an input for methanation and Fischer-Tropsch
+fuels/naphtha, or it can be sequestered underground.
+
+Can also be sequestered:
+- 20 \euro/t\co for transport and sequestration
+- 2-14 USD/t\co for pipe transport IEA
+- 10 USD/t\co for underground sequestration
+- limit is 200 Mt (rather conservative but enough to capture process emissions)
+
+unavoidable process emissions
+
+\co: single node for Europe, but a transport and storage cost is added for sequestered \co. Optionally: nodal, with \co transport via pipelines.
+
+Why net-zero target for \co? Since don't include LULUCF or non-\co (waste management and agriculture), which balance each other in EU analysis
+
+CCU/S needed for synthetic fuels AND to deal with process emissions (from e.g.
+cement)
+
+need for feedstocks in chemicals industry and dense hydrocarbon fuels for aviation
+
+we have capture on
+
+- industrial process emissions, using same assumptions as the cement kiln
+example described above from DEA  (90\% capture rate, 0.72 MWh/t\co heat and
+0.1 MWh/t\co electricity, including compression and dehydration) - heat is
+taken from urban heat buses, electricity from public grid - steam methane
+reforming - biomass CHPs, using DEA assumptions for post-combustion capture on a
+small CHP in 2030 (90\% capture rate, 0.72 MWh/t\co heat and 0.11 MWh/t\co
+electricity, including compression and dehydration) - heat and electricity is
+taken from CHP output - direct air capture (2 MWh/t\co heat, 0.47 MWh/t\co
+electricity including compression and dehydration) - heat is taken from urban
+heat buses (even though T is below \SI{100}{\celsius}), electricity from public grid; waste
+heat from compression is used for amine washing
+
+TODO: as of 210202: electricity and heat demand of process emission CC ignored
+(only capital costs are used); also for fuel-based emissions, simple 10\% of
+fuel is taken
+
+127 Mt\co/a fossil-origin process emissions in industry (limestone for cement,
+soda ash and graphite electrodes); need sequestration for this otherwise not
+net-zero.
+
+For FT-fuels demand need 0.27*1391 = 376 Mt\co/a. This comes from BECCU and
+industry CCU with synfuels. Could also come from waste + CCU.
+
+
+Comparison of heat/electricity requirements for capture:
+
+\citeS{kuramochiComparativeAssessment2012} 5.2: Can integrate low-grade steam from power plants with
+\co capture from cement
+
+``In the case of post-combustion \co capture, a CHP plant will likely be built
+together with the \co capture unit because this is the only way to generate
+steam efficiently for \co capture solvent regeneration.''
+
+Beware: need to take account of heat need for regenerating \co capture solvent.
+In power plants, can use waste heat, but in industrial plants there is less
+low-grade heat (need ~110 C). \citeS{kuramochiComparativeAssessment2012}
+
+Need around 3.9 GJ/t\co heat for regeneration of aqueous MEA ~ 1 MWh/t\co
+\citeS{zhangParametricStudy2016}. Solid biomass has 0.3 t\co/MWh\th => need 0.3 MWh heat for
+each MWh\th of solid biomass => heat output is hugely reduced!!! Unless we have
+oxyfuel biomass combustion...
+
+Breyer \citeS{breyerCarbonDioxide2020}
+has 1.2 MWh/t\co heat at \SI{100}{\celsius} and 0.2 MWh\el/t\co electricity for DAC.
+Dittmeyer has energy requirements twice as high... DEA is closer to Dittmeyer
+
+\citeS{fasihiTechnoeconomicAssessment2019, martin-robertsCarbonCapture2021}

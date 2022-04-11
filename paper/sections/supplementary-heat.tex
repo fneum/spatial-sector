@@ -1,0 +1,109 @@
+\section{Heating Sector}
+\label{sec:si:heat}
+
+\subsection{Heat Demand}
+\label{sec:si:heat:demand}
+
+Building heating considering space and water heating in the residential and
+services sectors is resolved for each region, both for individual buildings and
+district heating systems, which include different supply options.
+
+Annual heat demands per country are retrieved from JRC-IDEES \citeS{IDEES} for
+the year 2011 and split into space and water heating. The space heating demand
+is reduced by retrofitting measures that improve the buildings' thermal
+envelopes. This reduction is exogenously fixed at 29\%
+\citeS{zeyenMitigatingHeat2021,lombardiWeatherinducedVariability2022}. For space
+heating, the annual demands are converted to daily values based on the
+population-weighted Heating Degree Day (HDD) using the \textit{atlite} tool
+\citeS{}, where space heat demand is proportional to the difference between the
+daily average ambient temperature (read from ERA5 \citeS{}) and a threshold
+temperature above which space heat demand is zero. A threshold temperature of
+\SI{15}{\celsius} is assumed. The daily space heat demand is distributed to the
+hours of the day following heat demand profiles from BDEW \citeS{}. These differ
+for weekdays and weekends/holidays and between residential and services demand.
+Hot water demand is assumed to be constant throughout the year.
+
+For every country, heat demand is split between low and high population density
+areas. These country-level totals are then distributed to each region in
+proportion to their rural and urban populations respectively. Urban areas with
+dense heat demand can be supplied with large-scale district heating systems. We
+assume that by 2050, 60\% of urban heat demand is supplied by district heating
+networks. Lump-sum losses of 15\% are assumed in district heating systems.
+
+Cooling demand is supplied by electricity and included in the electricity
+demand. Cooling demand is assumed to remain at current levels.
+
+As shown in \cref{fig:demand-time}, total heat demand is similar to the total
+electricity demand but features much more pronounced seasonal variations. The
+total building heating demand adds up to \SI{3084}{\twh\per\year} of which 78\%
+occurs in urban areas.
+
+\citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
+
+\subsection{Heat Supply}
+\label{sec:si:heat:supply}
+
+Different supply options are available depending on whether demand is met
+centrally through district heating systems or decentrally through appliances in
+individual buidlings. Supply options in individual buildings include gas and oil
+boilers, air- and ground-sourced heat pumps, resistive heaters, and solar
+thermal collectors. For large-scale district heating systems more options are
+available: combined heat and power (CHP) plants consuming gas or biomass from
+waste and residues with and without CCS, large-scale air-sourced
+heat pumps, gas and oil boilers, resistive heaters and fuel cell CHPs.
+Additionally, waste heat from the Fischer-Tropsch and Sabatier processes for the
+production of synthetic hydrocarbons can supply district heating systems.
+Ground-source heat pumps are only allowed in rural areas because of space constraints.
+Thus, only air-source heat pumps are allowed in urban areas. This is a conservative
+assumption, since there are many possible sources of low-temperature heat that
+could be tapped in cities (e.g.~waste water, ground water, or natural bodies of water).
+Costs, lifetimes and efficiencies for these technologies are listed in \cref{sec:si:costs}.
+
+% CHPs
+
+CHPs are based on back pressure plants operating with a fixed ratio of
+electricity to heat output. The efficiencies of each are given on the back
+pressure line, where the back pressure coefficient $c_b$ is the electricity
+output divided by the heat output. For biomass CHP, we assume $c_b=0.46$,
+whereas for gas CHP, we assume $c_b=1$.
+
+% heat pumps
+
+The coefficient of performance (COP) of air- and ground-sourced heat pumps
+depends on the ambient or soil temperature respectively. Hence, the COP is a
+time-varying parameter. Generally, the COP will be lower during winter when
+temperatures are low. Because the ambient temperature is more volatile than the
+soil temperature, the COP of ground-sourced heat pumps is less variable.
+Moreover, the COP depends on the difference between the source and sink
+temperatures
+\begin{equation}
+    \Delta T = T_{sink} - T_{source}.
+\end{equation}
+For the sink water temperature $T_{sink}$ we assume \SI{55}{\celsius} For the
+time- and location-dependent source temperatures $T_{source}$, we rely on the
+ERA5 reanalysis weather data \citeS{}. The temperature differences are converted
+into COP time series using results from a regression analysis performed in
+\citeS{staffellReviewDomestic2012}. For air-sourced heat pumps (ASHP), we use
+the function
+\begin{equation}
+    COP(\Delta T) = 6.81 + 0.121 \Delta T + 0.000630 \Delta T^2;
+\end{equation}
+for ground-sourced heat pumps (GSHP), we use the function
+\begin{equation}
+    COP(\Delta T) = 8.77 + 0.150 \Delta T + 0.000734 \Delta T^2.
+\end{equation}
+The resulting time series are displayed in \cref{fig:cfs-ts}.
+The spatial diversity of heat pump coefficients is shown in \cref{fig:cfs-maps}.
+
+\citeS{dahlCostSensitivity2019, madedduCOReduction2020}
+
+\subsection{Heat Storage}
+\label{sec:si:heat:storage}
+
+Thermal energy storage (TES) is available in large water pits associated with
+district heating networks and small water tanks for individual, decentral
+applications. A thermal energy density 46.8~kWh$_{\text{th}}$/m$^3$ is assumed,
+corresponding to temperature difference of \SI{40}{\kelvin}. The decay of
+thermal energy $1-\exp(-\sfrac{1}{24\tau})$ is assumed to have a time constant
+of $\tau=180$ days for central TES and $\tau=3$ days for individual TES. The
+charging and discharging efficiencies are 90\% due to pipe losses.

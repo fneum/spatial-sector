@@ -1,0 +1,510 @@
+\section{Industry Sector}
+\label{sec:si:industry}
+
+\citeS{graichenKlimaneutraleIndustrie,rootzenExploringLimits2013}
+
+Industry demand is split into a dozen different sectors, with the major ones
+being iron and steel, cement and basic chemicals. The location of existing
+industrial facilities is based on the Horizon-2020-funded project hotmaps.
+Demand for materials can either be met using existing conventional routes, such
+as blast furnaces for iron and rotary kilns for cement, or with new processes,
+such as hydrogen direct reduction for iron or kilns equipped with CCS and/or
+oxyfuel for cement. Basic chemicals can use green hydrogen as a feedstock rather
+than fossil fuels, for example for ammonia production, or using Fischer-Tropsch
+naphtha in steam crackers for High Value Chemicals.
+
+Fossil fuels are used for process heat in the chemicals industry, but also as a feedstock for chemicals like
+ammonia (NH3), ethylene (C2H4) and methanol (CH3OH)
+
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{fec_industry_today_tomorrow.pdf}
+    \caption{Final consumption of energy and non-energy feedstocks in industry today (left bar) and
+    our future scenario in 2050 (right bar)}
+    \label{fig:fec-industry}
+\end{SCfigure}
+
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{process-emissions.pdf}
+    \caption{Process emissions in industry today (top bar) and in 2050 (bottom bar)}
+    \label{fig:process-emissions}
+\end{SCfigure}
+
+\begin{SCfigure}
+    \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
+    \caption{Distribution of industries.}
+    \label{fig:hotmaps}
+\end{SCfigure}
+
+\begin{table}[t]
+    \centering
+    \setlength{\tabcolsep}{6pt}
+    \begin{tabular}{@{} p{5cm}r @{}}
+      \toprule
+      Material & Production [\si{\mega\tonne\per\year}] \\
+      \midrule
+      steel & 174 \\
+      cement & 186 \\
+      glass & 44 \\
+      ceramics and other NMM & 360 \\
+      ammonia & 18 \\
+      other basic chemicals & 74 \\
+      other chemicals & 28 \\
+      pulp & 39 \\
+      paper & 94 \\ \bottomrule
+    \end{tabular}
+    \caption{Industrial production for main products in 2015.}
+    \label{tab:industryproduction}
+  \end{table}
+
+
+emissions
+- energy-related
+- process-related
+
+For process-related emissions need alternative manufacturing process
+or higher rates of recycling such that less virgin material is needed
+
+largest sectors (according to FEC)
+- iron and steel
+- chemicals
+- non-metallic mineral products
+- pulp paper printing
+- food beverages tobacco
+- non-ferrous metals
+
+Demand
+
+For the industry energy demand, we assume the same
+production of materials as today, but with process switching, fuel switching to
+low-emission alternatives as well as carbon capture for use or sequestration
+(CCU/S).
+
+Process switching includes, for example, moving primary production of
+steel from blast furnace reduction to direct reduction with hydrogen, or
+switching to an oxyfuel process in cement manufacture.
+
+Fuel switching means
+replacing mechanical processes and process heat applications that use fossil
+fuels with low-emission alternatives such as electricity, biomass or synthetic
+fuels such as hydrogen or methane.
+
+Feedstocks for the chemicals industry are
+also converted to non-fossil alternatives.
+
+To determine where fuel switching can take place we use the breakdown of energy
+usage for each process within each sector provided by the JRC-IDEES database
+\citeS{IDEES}.
+
+Where there are fossil and electrified alternatives for the same
+process (e.g. in glass manufacture or drying in industry XX) we assume that the
+process is completely electrified.
+
+Where process heat is required (steam
+process?) our approach depends on the temperature required
+\citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}. Processes that require temperatures below
+\SI{500}{\celsius} are supplied with solid biomass, since we assume that residues and
+wastes are not suitable for high-temperature applications. We see solid biomass
+use primarily in the pulp and paper industry, where it is already widespread,
+and in food, beverages and tobacco, where it replaces natural gas. Industries
+which require high temperatures (above \SI{500}{\celsius}), such as metals, chemicals
+and non-metalic minerals are either electified where processes already exist, or
+the heat is provided with synthetic methane.
+
+what is currently supplied with electricity (lighting, air compressors, motor drives, fans, pumps)
+and low-enthalpy heat demand are directly added to electricity and heat buses
+
+Industry heat demand can be supplied via DH or is added to services heat demand.
+Can be supplied by other processes producing heat as byproduct (DAC, FT)
+
+For EU-28 plus NO, CH, IL Rehfeldt estimated that from 2015 industrial heat demand
+45\% is above \SI{500}{\celsius}, 30\% \SIrange{100}{500}{\celsius}, 25\% below \SI{100}{\celsius}
+
+\citeS{naeglerQuantificationEuropean2015} similarly:
+48\% is above \SI{400}{\celsius}, 27\% \SIrange{100}{400}{\celsius}, 25\% below \SI{100}{\celsius}
+
+Because of high share of high-temperature process heat demand
+- no geothermal
+- no solar thermal supply
+
+process heat supplied by methane, biomass, electricity depending on sector
+
+Based on materials demand from JRC-IDEES and other sources such as the USGS for
+ammonia.
+
+Industry is split into many sectors, including iron and steel, ammonia, other
+basic chemicals, cement, non-metalic minerals, alumuninium, other non-ferrous
+metals, pulp, paper and printing, food, beverages and tobacco, and other more
+minor sectors.
+
+Inside each country the industrial demand is distributed using the Hotmaps
+Industrial Database.
+
+Hotmaps open database includes cement, basic chemicals, glass, iron and steel, non-ferrous metals,
+non-metallic minerals, paper, refineries. Enables regional analyses, calculation of
+site-specific energy demand, waste heat potentials, emissions, market shares,
+process-specific evaluations
+
+calculate energy demands and process emissions per unit of material based on JRC-IDEES
+
+material output per country from JRC IDEES, ammonia production statistics,
+Eurostat energy balances, national statistics from Switzerland to calculate total energy demand
+and process emissions by sector
+
+material output assumed to stay constant (exception recycling)
+
+Supply
+
+Process switching (e.g. from blast furnaces to direct reduction and electric arc
+furnaces for steel) is defined exogenously.
+
+Fuel switching for process heat is mostly also done exogenously.
+
+Solid biomass is used for up to 500 Celsius, mostly in paper and pulp and food
+and beverages.
+
+Higher temperatures are met with methane.
+
+\citeS{neuwirthFuturePotential2022}
+
+\subsection{Iron and Steel}
+\label{sec:si:industry:steel}
+
+\citeS{toktarovaInteractionElectrified2022, mandovaPossibilitiesCO22018, suopajarviUseBiomass2018,voglPhasingOut2021, bhaskarDecarbonizingPrimary}
+
+70\% from scrap, rest from direct reduction with 1.7 MWh H2 / t steel + electric arc (process emissions 0.03 t COs / t steel)
+
+Two routes today to manufacture steel in Europe
+- primary/integrated steelworks (60\% of steel production)
+- secondary/electric arc furnaces (40\%) \citeS{lechtenbohmerDecarbonisingEnergy2016}
+
+Primary - Integrated steelworks
+- use blast furnaces in which coke is used to reduce iron ore into molten iron
+- coke is used as a reducing agent in blast furnaces for smelting iron ore
+\begin{equation}
+    \ce{Fe2O3 + 3CO -> 2Fe + 3CO2}
+\end{equation}
+\begin{equation}
+    \ce{FeO + 3CO -> Fe + 3CO2}
+\end{equation}
+\begin{equation}
+    \ce{2Fe2O3 + 3C -> 4Fe + 3CO2}
+\end{equation}
+- this is then converted to steel
+- The primary route implies large process emissions (0.22 t\co/t steel)
+
+Secondary - electric arc furnaces (EAF)
+- use EAF to melt scrap metal
+- this limits \co emissions to burning of graphite electrodes \citeS{Friedrichsen_2018}
+- 0.03 t\co/t steel
+
+DRI - Direct Reduced Iron
+\begin{equation}
+    \ce{FE2O3+H2 -> 2FeO + H2O}
+\end{equation}
+\begin{equation}
+    \ce{FeO + H2 -> Fe + H2O}
+\end{equation}
+- this is processed in EAF and circumvents associated process emissions
+- today, DRI uses methane as reduction agent but we assume this to be substituted with hydrogen
+- needs 1.7 MWh H2 / t steel \citeS{voglAssessmentHydrogen2018} and 0.322 MWh elec / t steel \url{https://ssabwebsitecdn.azureedge.net/-/media/hybrit/files/hybrit_brochure.pdf}
+
+share of steel produced by hydrogen-based DRI + EAF is exogenous: 30\%
+integrated steelworks: 0\%
+scrap + EAF: 70\%
+
+replace integrated steelworks with DRI + EAF
+
+NB: DRI already done with hydrogen in Trinidad and in Abu Dhabi (where \co from
+SMR is captured and used for enhanced oil recovery) H2 Future, HYBRIT, SALCOS
+
+\citeS{circular_economy} circular economy practices have potential of expanding
+the share of secondary route to 85\% just by increasing the amount and quality of scrap metal
+
+process emissions from lime (added to remove impurity?), graphite anodes AND
+from carbon added to get steel alloy  \citeS{voglAssessmentHydrogen2018}
+
+EAF not good for flat steel in automotive
+
+NB: derived gases not included in model, since take from blast furnace top
+gases, originating in coke
+
+Why not add CCS to existing plants? Hard for some reason \citeS{kuramochiComparativeAssessment2012}.
+
+For the remaining subprocesses in this sector:
+- methane as energy source for smelting process
+- activities associated with furnaces, refining and rolling, product finishing are electrified
+
+\subsection{Chemicals Industry}
+\label{sec:si:industry:chemicals}
+
+\citeS{elserTakingEuropean, FuturePetrochemicals, nicholsonManufacturingEnergy2021, meysAchievingNetzero2021, thunmanCircularUse2019, introzziDECHEMAGesellschaft, meysCircularEconomy2020, guWastePlastics2017, boulamantiProductionCosts2017}
+
+wide range of diverse industries ranging from:
+- basic organics compounds (olefins, alcohols, aromatics)
+- basic inorcanic compounds (ammonia, chlorine)
+- polymers (plastics)
+- end-user products (cosmetics, pharmaceutics)
+
+chemicals industry consumes lots of fossil-fuel based feedstocks \citeS{leviMappingGlobal2018}
+
+basic chemicals: HVC (high-value chemicals), chlorine, methanol and ammonia
+
+Recycling!
+- specify reuse, primary production, and mechanical and chemical recycling
+fraction of platics
+
+\citeS{circular_economy, kullmannCombiningWorlds2021,kullmannImpactsMaterial,kullmannValueRecycling,carolinaliljenstromDataSeparate, fuhrPlastikatlasDaten2019,conversioMaterialFlow2020}
+
+synthetic naphtha for primary production
+
+
+Ammonia production data is taken from the USGS
+
+Natural gas dominates in Europe as source for hydrogen for Haber-Bosch process.
+Replace with electrolytic/clean hydrogen.
+
+
+ammonia production from USGS (United States Geological Survey) statistics
+
+Assumptions for existing ammonia energy demand from XX and for electrolytic
+process from XX.
+
+Ammonia, used for fertiliser, can be made from hydrogen and nytrogen using the Haber-Bosch-Process
+hydrogen can be combined with Nitrogen to obtain ammonia in the Haber-Bosch process \citeS{leviMappingGlobal2018}
+\begin{equation}
+    \ce{N2 + 3H2 -> 2NH3}
+\end{equation}
+Currently, H2 for ammonia industry in Europe is from SMR, in the model can be SMR, SMR CC, electrolysers
+\co often captured from SMR for urea production (20\% of fertilizer in Europe,
+but 50-60\% in China and India) and food and beverages
+with electrolytic-H2 we have 6.5 MWh \ce{H2} / t \ce{NH3} and 1.17 MWh elec / t \ce{NH3} (Wang, 2018 Joule)
+
+chlorine, aromatics, olefins
+
+ammonia is subtracted from basic chemicals in IDEES database.
+
+
+ALL of liquid hydrocarbon feedstock from FT naphtha.
+- LPG, diesel oil, residual fuel oil
+
+Ethylene, used for plastics, can be made by steam cracking from naphtha or ethane or via methanol-to-olefin processes
+
+We assume that all of carbon eventually finds its way from product into
+atmosphere. But this is wierd, since there is no release from landfill, plastics
+are not biodegradable. If they are burned as waste, we should use a
+waste-to-energy plant, which we currently don't have in the model.
+
+\citeS{lechtenbohmerDecarbonisingEnergy2016} has 14.8 MWh FT-naphtha per ton of HVC, and 2.7 MWh per
+ton for processing; 3.1 t\co/tHVC are captured from flue gases.
+
+TODO: We have much smaller emissions, are we accounting for heating as well as
+process emission? I guess with methane we do...
+
+share of synthetic vs fossil-fuel based methane and naphtha is endogenous
+
+transformation of energy-consuming processes:
+- FEC in steam processing is converted to methane since requires temperature above \SI{500}{\celsius} \citeS{rehfeldtBottomupEstimation2018}
+- remaining processes are electrified using the current efficiency  of microwave for high-enthalpy heat processing,
+  electric furnaces, electric process cooling and electric generic processes
+
+process emissions from feedstock in the chemical industry represent 0.369 t\co / t ethylene eq.
+- we consider process emissions for all the material output
+- conservative, because it assumes that all plastic-embedded \co will eventually be released into the atmosphere
+- plastic disposal in landfilling will avoid, or at least delay, associated \co emissions
+
+\subsection{Non-metallic Mineral Products}
+\label{sec:si:industry:nmmp}
+
+Cement
+
+\citeS{fennellDecarbonizingCement2021}
+
+waste and solid biomass; capture of \co emissions
+
+cement manufacturing involves large process and energy emissions
+
+calcination of limestone to chemically reactive calcium oxide (known as lime)
+involves process emissions of 0.54 t \ce{\co} / t cement
+\begin{equation}
+    \ce{CaCO3 -> CaO + \co}
+\end{equation}
+
+cement is used in construction to make concrete
+
+Co2 is emitted from fossil fuels to provide process heat and from the calcination reaction ofr fossil limestone.
+
+This is the biggest source of process emissions in industry in Europe.
+
+Unless alternatives can be found for cement, can do CCS or CCU
+
+mitigation strategies (new raw materials, recovering unused cement from concrete at end of life \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en})
+are at a very early development stage and have not been considered
+
+Keep current share of biomass; replace fossil fuels for process heat with
+synthetic methane (exact share determined by the model)
+
+assume that FEC (except electricity, low-temperature heat and biomass consumption)
+is supplied by methane which can deliver the required high-temperature heat
+
+NB: CH4 burns differently in kiln, not straightforward, see IEEE paper
+\citeS{akhtarCoalNatural2013}
+
+process emissions are captured and, for net-zero emission scenarios,
+they need to be compensated by negative emissions
+
+Do post-combustion carbon capture on emissions and account for heat and
+electricity for capture with aqueous amine solution. The classic amine process
+based on monoethanolamine (MEA) Some suggest need CHP for this. DEA input
+assumptions in 2030 are 0.72 MWh/t\co heat and 0.022 MWh/t\co electricity
+per outputed tonne of \co assuming a capture rate of 90\%. Additional
+electricity for \co compression to 150 bar and dehydration is 0.085
+MWh/t\co.
+
+Alternative: use oxyfuel so you get concentrated \co. No heat requirement,
+electricity only used for O$_2$ air separation unit (ASU) of 0.08 MWh/t\co
+and 0.17 MWh/t\co for post treatment (unlike post-combustion capture, output
+is impure, so have to remove O$_2$ and N$_2$ by cryogenic distillation). Can
+avoid ASU by using O$_2$ from electrolysis. Electricity use higher than
+post-combustion, but don't have big heat requirement.
+
+Beware biomass share in IDEES-Industry is higher for EU28 (2920 ktoe in 2015)
+than in IDEES-EnergyBalance (906 ktoe). This is because IDEES is putting waste
+(including non-renewable waste) together with biomass under biomass.
+
+\citeS{kuramochiComparativeAssessment2012}: The major difference between centralized power plants and
+industrial plants such as cement plants is that the former have large quantities
+of low-grade heat that can be used for solvent regeneration, whereas the latter
+generally do not [42].
+
+
+Can use oxyfuel for cement to make CCS easier. Already being done, can retrofit
+to older plant
+\url{https://engineered.thyssenkrupp.com/en/oxyfuel-a-climate-neutral-cement-production-is-getting-closer/}
+
+NEED oxyfuel, otherwise CCS requirements are too high.
+
+TODO: How much O$_2$ from electrolysis? How much O$_2$ required by cement per
+ton? For current combustion materials, around 0.17 tO$_2$/tCement => 29
+MtO$_2$/a needed, but have 672 MtO$_2$/a from electrolysis; H2 for steel and
+ammonia probably is enough to provide O$_2$ for oxyfuel cement (see private.org
+- have plenty of O2 from electrolysis)
+
+NB: for assessments of electricity for oxyfuel cement, deduct unneeded ASU (air
+separation unit via cryogenic distillation) since don't need 200-300 kWh/tO$_2$
+(consistent with 50-60 EUR/tO$_2$ price).
+
+NB: cement production is used to using solid fuels. Natural gas needs some
+aadjustment of firing mechanisms
+\citeS{akhtarCoalNatural2013}.
+
+Some people push electric kilns for heat, but considered less mature than gas
+and certainly less than solid
+
+CemZero project
+\url{https://group.vattenfall.com/what-we-do/roadmap-to-fossil-freedom/industry-decarbonisation/cementa},
+apparently poo-pooed here \url{https://www.cementa.se/sv/cemzero}.
+
+
+\citeS{lechtenbohmerDecarbonisingEnergy2016} has electrification of cement with 0.9~MWh\el/tCLinker
+(12\% efficiency improvement in thermal demand compared to 2010)
+
+
+
+Ceramics
+
+complete electrification because many already electrified processes:
+- microwave drying and sintering of raw materials,
+- electric kilns for primary production processes
+- electric furnaces for the product finishing
+- FEC 0.44 MWh/t ceramics
+- process emissions: 0.03 t\co/t ceramic
+
+\citeS{furszyferdelrioDecarbonizingCeramics2022a}
+
+Glass
+
+Electrify everything.
+- electric melting tanks
+- electric annealing
+- electricity demand 2.07 MWh/t of glass \citeS{lechtenbohmerDecarbonisingEnergy2016}
+
+\citeS{furszyferdelrioDecarbonizingGlass2022}
+
+
+\citeS{lechtenbohmerDecarbonisingEnergy2016} also has big efficiency improvement with 0.85~MWh\el/tGlass.
+
+\subsection{Non-ferrous Metals}
+\label{sec:si:industry:nfm}
+
+includes
+- base metals (aluminium, copper, lead, zink)
+- precious metals (gold, silver)
+- technology metals (molybdenum, cobalt, silicon)
+
+Aluminium
+
+80\% recycling, for rest: methane for high-enthalpy heat (bauxite to alumina) followed by electrolysis (process emissions 1.5 t \co / t Al)
+
+more than half of the FEC of this sector
+
+Two alternative production routes today to manufacture aluminium in Europe today
+- primary route: 40\%
+- secondary route: 60\%
+- exogenous: increase by 2050 to 80\% \citeS{Friedrichsen_2018} and \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en}
+
+Primary route:
+- two energy-intensive processes
+- production of alumina from bauxite (aluminium ore)
+- electrolysis to transfrom alumina to aluminium via the Hall-H\'{e}roult process
+\begin{equation}
+    \ce{2Al2O3 + 3C -> 4Al + 3\co}
+\end{equation}
+- primary route requires high-enthalpy heat to produce alumina - supplied by methane
+- 1.5 t\co/t aluminium
+- inert anodes might be commercially available in 2030 avoiding processe emissions \citeS{Friedrichsen_2018} but not considered
+
+Secondary route:
+- scrap aluminium is remelted
+- energy demand is 10\% of primary route and process emissions are avoided
+- assuming all subprocesses in this route electrified: 1.7 MWh elec / t aluminium
+
+Other non-ferrous metals, electrification of entire manufacturing process is assumed
+- 3.2 MWh / t lead equivalent
+
+\subsection{Other Industry Subsectors}
+\label{sec:si:industry:other}
+
+energy demands and \co emissions for the agriculture, forestry and fishing
+sector
+
+pulp, paper, printing:
+
+Already high share of biomass. Keep and add biomass for paper production, since
+temperatures required are low.
+
+food, beverages, tobacco \citeS{sovacoolDecarbonizingFood2021}
+
+textiles and leather
+
+machinery equipment
+
+
+transport equipment
+
+wood and wood products
+
+otherwise
+
+low- and mid-temperature process heat in these industries is assumed to be supplied by biomass
+while the remaining processes are electrified
+
+Comparison
+
+\begin{itemize}
+    \item synergies paper (still see benefit of transmission, but MUCH bigger electrolysis with industry/aviation/shipping) \citeS{brownSynergiesSector2018}
+    \item JRC papers (Herib Blanco etc.) \citeS{blancoPotentialHydrogen2018,blancoPotentialPowertoMethane2018}
+    \item FZJ steel paper
+    \item PAC (uses solid biomass for non-energy requirements in chemicals industry, only 270 TWh in 2050, because of circular economy; phases out waste incineration) \citeS{caneurope/eebBuildingParis}
+    \item LTS from commission \citeS{in-depth_2018}
+    \item Material Economics reports \citeS{circular_economy,me2019}
+\end{itemize}

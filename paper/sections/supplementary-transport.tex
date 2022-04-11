@@ -1,0 +1,59 @@
+\section{Transport Sector}
+\label{sec:si:transport}
+
+Transport and mobility comprises light and heavy road, rail, shipping and
+aviation transport. Annual energy demands for this sector are derived from the
+JRC-IDEES database \citeS{IDEES}.
+
+\subsection{Land Transport}
+\label{sec:si:transport:land}
+
+The diffusion of battery electric vehicles (BEV) and fuel cell electric vehicles
+(FCEV) in land transport is exogenously defined. For 2050, we assume that 85\%
+of land transport is electrified and 15\% uses hydrogen fuel cells. No more
+internal combustion engines exist.
+
+The energy savings gained by electrifying road transport, are computed through
+country-specific factors that compare the current final energy consumption of
+cars per distance travelled (average for Europe
+\SI{0.7}{\kilo\watt\hour\per\kilo\metre}, \citeS{}) to the
+\SI{0.18}{\kilo\watt\hour\per\kilo\metre} assumed for the battery-to-wheel
+efficiency of electric vehicles.
+
+Weekly profiles of distances travelled published by the Germand Federal Highway
+Research Institute (BASt) \citeS{} are used to generate hourly time series for
+each European country taking into account their local time. Furthermore, a
+temperature dependence is included in the time series to account for
+heating/cooling demand in transport. For temperatures below \SI{15}{\celsius}
+and above \SI{20}{\celsius} temperature coefficients of
+\SI{0.98}{\percent\per\celsius} and \SI{0.63}{\percent\per\celsius} are assumed
+\citeS{brown2018}
+
+For battery electric vehicles, we assume a storage capacity of
+\SI{50}{\kilo\watt\hour}, a charging capacity of \SI{11}{\kilo\watt} and a 90\%
+charging efficiency. We assume that half of the BEV fleet can shift their
+charging time and participate in vehicle-to-grid (V2G) services to facilitate
+system operation. The BEV state of charge is forced to be higher than 75\% at
+7am every day to ensure that the batteries are sufficiently charged for the peak
+usage in the morning. This also restricts BEV demand to be shifted within a day
+and prevent EV batteries from becoming seasonal storage. The percentage of BEV
+connected to the grid at any time is inversely proportional to the transport
+demand profile, which translates into an average/minimum availability of
+80\%/62\% of the time. These values are conservative compared to most of the
+literature, where average parking times of the European vehicle fleet is
+estimated at 92\% \citeS{}. The battery cost of BEV is not included in the model
+since it is assumed that BEV owners buy them to primarily satisfy their mobility
+needs.
+
+\subsection{Aviation}
+\label{sec:si:transport:aviation}
+
+The aviation sector consumes kerosene that is synthetically produced or of
+fossil origin (see XXX).
+
+\subsection{Shipping}
+\label{sec:si:transport:shipping}
+
+The shipping sector consumes liquid hydrogen.
+The liquefaction costs for hydrogen are taken into account (see XXX).
+Other fuel options, like methanol or ammonia, are currently not considered.

@@ -1,0 +1,163 @@
+\section{Electricity Sector}
+\label{sec:si:electricity}
+
+Modelling of electricity supply and demand in Europe largely follows the open
+electricity generation and transmission model PyPSA-Eur
+\citeS{horschPyPSAEurOpen2018}. PyPSA-Eur processes publicly available data on
+the topology of the power transmission network, historical time series of
+weather observations and electricity consumption, conventional power plants, and
+renewable potentials.
+
+\subsection{Electricity Demand}
+\label{sec:si:electricity:demand}
+
+Hourly electricity demand at country-level for the reference year 2013 published
+by ENTSO-E is retrieved via the interface of the Open Power System Data (OPSD)
+initiative \citeS{}. Existing electrified heating is subtracted from this
+demand, so that power-to-heat options can be optimised separately. Furthermore,
+current industry electricity demand is subtracted and handled separately
+considering further electrification in the industry sector (see XXX).
+
+For the distribution of electricity demand for industry we leverage geographical
+data from the industrial database developed within the Hotmaps project \citeS{}.
+The remaining electricity demand for households and services is heuristically
+distributed inside each country to 40\% proportional to population density and
+to 60\% proportional to gross domestic product based on regression performed for
+\citeS{horschPyPSAEurOpen2018}. The total spatial distribution of electricity
+demands is shown in \cref{fig:demand-space:electricity}.
+
+\subsection{Electricity Supply}
+
+\begin{SCfigure}
+    \caption{Powerplants.}
+    \label{fig:powerplants}
+    \includegraphics[width=0.7\textwidth]{powerplants.pdf}
+\end{SCfigure}
+
+For conventional electricity generators, PyPSA-Eur-Sec uses the open
+\textit{powerplantmatching} tool, which merges datasets from a variety of
+sources \citeS{gotzensPerformingEnergy}. As shown in \cref{fig:powerplants}, it
+provides data on the power plants about their location, technology and fuel
+type, age, and capacity, inlcuding hard coal, lignite, oil, open and combined
+cycle gas turbines (OCGT and CCGT), and nuclear generators. Furthermore,
+existing run-of-river, pumped-hydro storage plants, and hydro-electric dams, are
+also part of the dataset, for which inflow is modelled based on runoff data from
+reanalysis weather data and and scaled hydropower generation statistics (see
+XXX). In general, we suppose these to be non-extendable due to assumed
+geographical constraints.
+
+Expandable renewable generators include onshore and offshore wind, utility-scale
+and rooftop solar photovoltaics, biomass from multiple feedstocks. The model
+decides to build new capacities based on available land and on the weather
+resource (see XXX). Because the continent-wide avaialbility of data on the
+locations of wind and solar installations is fragmentary, we disregard already
+existing wind and solar capacities. Moreover, new OCGT and CCGT as well as gas or biomass-fueled combined heat and power (CHP) generators may be built.
+
+back-pressure plants with heat production proportional to electricity output
+
+Specific techno-economic assumptions, like costs, lifetimes and efficiencies are
+included in \cref{sec:si:costs}.
+
+\subsection{Electricity Storage}
+\label{sec:si:electricity:storage}
+
+Electric energy can be stored in batteries (home, utility-scale, electric
+vehicles), existing pumped-hydro storage (PHS), hydrogen storage and other
+synthetically produced energy carriers (like methane and oil). For stationary
+batteries we distinguish costs for inverters and for storage at home or
+utility-scale. With these assumptions, home battery storage is about 40\% more
+expensive than utility-scale battery storage (see \cref{sec:si:costs}). The
+batteries' energy and power capacities can be independently sized.
+
+To store electricity, hydrogen may be produced by water electrolysis (see \cref{sec:si:h2:supply}),
+stored in overground steel tanks or underground salt caverns (see see \cref{sec:si:h2:storage}), and
+re-electrified in a utility-scale fuel cell. Synthetic methane can be
+re-electrified through an open cycle gas turbine (OCGT) or a combined heat and
+power (CHP) plant.
+
+\subsection{Electricity Transport}
+\label{sec:si:electricity:transport}
+
+\begin{figure}
+    \includegraphics[width=\textwidth, center]{network.pdf}
+    \label{fig:base-network}
+    \caption{ENTSO-E transmission network}
+\end{figure}
+
+% topology
+
+The topology of the European electricity transmission network is represented at
+substation level based on maps released in the interactive ENTSO-E map \citeS{}
+using a modified version of the GridKit \citeS{} tool. As displayed in
+\cref{fig:base-network}, the dataset includes HVAC ines at and above 220 kV
+across the mulitple synchronous zones of the ENTSO-E area, but excludes Turkey
+and North-African countries which are also synchronised to the continental
+European grid, interconnections to Russia, Belarus and Ukraine as well as small
+island networks with less than four nodes at transmission level, such as Cyprus,
+Crete and Malta. In total, the network encompasses around 3000 substations, 6600
+HVAC lines and around 70 HVDC links, some of which are planned projects from the
+Ten Year Network Development Plant (TYNDP) that are not yet in operation
+\citeS{}.
+
+% unclustered model regions
+
+The transmission network topology determines the basic regions of the
+PyPSA-Eur-Sec model. Each substation has an associated Voronoi cell that
+describes the region that is closer to the substation than to any other
+substation except for country borders, which are kept to retain the integrity of
+country totals. Exemplary Voronoi cells are illustrated in \cref{fig:voronoi}.
+We use these as geographical catchment area for demands, renewable resource
+potentials, and power plants, assuming that supply and demand always connect to
+the closest substation. The Voronoi cells are also computed for offshore regions
+based on the countries' Exclusive Economic Zones (EEZs) and the adjacent onshore
+substations.
+
+\begin{SCfigure}
+    \caption{Exemplary Voronoi cells of the transmission network's substations.}
+    \includegraphics[width=0.55\textwidth]{voronoi}
+    \label{fig:voronoi}
+\end{SCfigure}
+
+% physical modelling
+
+Capacities and electrical characteristics of transmission lines and substations,
+such as impedances and thermal ratings\todo{summer or winter ratings?}, are
+inferred from standard types for each voltage level from \citeS{}. For each HVAC
+line, we further restrict line loading to 70\% of the nominal rating to
+approximate $N-1$ security, which protects the system against overloading if any
+one transmission line fails. This conservative security margin is commonly
+applied in the industry \citeS{}. Dynamic line rating is not considered. Power
+flow is modelled through lossless linearised power flow equations using an
+efficient cycle-based formulation of Kirchhoff's voltage law
+\citeS{horschLinearOptimal2018}.
+
+% clustering
+
+Solving the capacity expansion optimisation for the whole European energy system
+at full network resolution is to large to be solved in reasonable time.
+Therefore, we simplify the network topology by lowering the spatial resolution.
+We initially remove the network's radial paths, i.e.~nodes with only one
+connection, by linking remote resources to adjacent nodes and transforming the
+network to a uniform voltage level of \SI{380}{\kilo\volt}. We also aggregate
+generators of the same kind that connect to the same substation. Based on these
+initial simplification, the network resolution is further reduced to a variable
+number of nodes, in this case to 181 regions, by using a \textit{k-means}
+clustering algorithm, which uses regional electricity consumption as weights
+\citeS{frysztackiStrongEffect2021, Hoersch2017}. Only substations within the
+same country can be aggregated. The equivalent lines connecting the clustered
+regions are determined by the aggregated electro-technical characteristics of
+original transmission lines. Their weighted cost takes into consideration the
+underwater fraction of the lines and adds 25\% to the crow-fly distance to
+approximate routing constraints.
+
+% distribution grid
+
+Contrary to the transmission level, the grid topology at the distribition level
+(at and below \SI{110}{\kilo\volt}) is not included. Only the total power
+exchange capacity between transmission and distribution level is co-optimised.
+Costs of \SI{500}{\sieuro\per\kilo\watt} are assumed as well as lossless
+distribution. Rooftop PV, heat pumps, resistive heaters, home batteries,
+electric vehicles and electricity demands are connected to the low-voltage
+level. All other remaining technologies connect directly to the transmission
+grid. In this way, distribution grid capacity is developed if it is beneficial
+to balance the local mismatch between supply and demand.
