@@ -202,7 +202,7 @@ and no bottlenecks are expected.
 
 
 
-\subsection{Biomass Potentials}
+\subsection{Biomass Supply and Potentials}
 \label{sec:si:bio:potentials}
 
 \begin{figure}
@@ -228,59 +228,38 @@ and no bottlenecks are expected.
     \label{fig:biomass-potentials}
 \end{figure}
 
-Biomass resources are available for different potential assessments (low,
-medium, high) for many different feedstocks and NUTS2 resolution based on the
-JRC’s ENSPRESO database.
+Regional biomass supply potentials are taken from the JRC ENSPRESO database
+\citeS{jrcbiomass2015}. This dataset includes various biomass feedstocks at
+NUTS2 resolution for low, medium and high availability scenarios.  We use the
+medium availability scenario for 2030, assuming no biomass import from outside
+Europe. The data for NUTS2 regions is mapped to PyPSA-Eur-Sec model regions in
+proportion to the area overlap.
 
-Only wastes and residues from the JRC ENSPRESO biomass dataset.
+Only residues from agriculture, forestry, and biodegradable municipal
+waste are considered as energy feedstocks. Fuel crops are avoided because they
+compete with scarce land for food production, while primary wood as well as wood
+chips and pellets are avoided because of concerns about sustainability
+\citeS{bentsenCarbonDebt2017}.
+Manure and sludge waste are available to the model as biogas, whereas other
+wastes and residues are classified as solid biomass. Solid biomass resources are
+available for combustion in combined-heat-and-power (CHP) plants and for medium
+temperature heat (below \SI{500}{\celsius}) applications in industry.
+The technical characteristics for the solid biomass CHP are taken from the
+Danish Energy Agency Technology Database \citeS{dea2016} assumptions for a
+medium-sized back pressure CHP with wood pellet feedstock; this has very similar
+costs and efficiencies to CHPs with feedstocks of straw and wood chips.
 
-\cref{fig:biomass-potentials}
-
-nodal where biomass potential is regionally disaggregated
-
-Use JRC ENSPRESO database to spatially disaggregate biomass potentials to
-PyPSA-Eur regions based on overlaps with NUTS2 regions from ENSPRESO
-(proportional to area)
-
-Biomass supply potentials for each European country are taken from the database
-of the Joint Research Centre (JRC) of the European Commission
-\citeS{jrcbiomass2015}.
-
-Only residues from agriculture and forestry as well as
-biodegradable municipal waste are considered as energy feedstocks. Fuel crops
-are avoided because they compete with scarce land for food production, while
-primary wood as well as wood chips and pellets are avoided because of concerns
-about sustainability \citeS{bentsenCarbonDebt2017}.
-
-The JRC provides potentials in low,
-medium and high availability scenarios, which depend on supply and competition
-with other uses of each feedstock. The medium availability scenario for
-2030 is used, assuming no biomass import from outside Europe.
-
-Manure and sludge waste are available to the model as biogas (that is upgraded to
-biomethane), while other wastes and residues are classified as solid biomass and
-available for combustion in combined-heat-and-power plants (CHP) and for medium
-temperature heat (lower than \SI{500}{\celsius}) applications in industry.
-
-The technical
-characteristics for the solid biomass CHP are taken from the Danish Energy
-Agency Technology Database \citeS{dea2016} assumptions for a medium-sized back
-pressure CHP with wood pellet feedstock; this has very similar costs and
-efficiencies to CHPs with feedstocks of straw and wood chips.
-
-A summary of the feedstocks and use in the model is shown in \cref{tab:biomass}; the respective regional distribution of potentials in \cref{fig:biomass-potentials}.
-
-In 2015 the EU28 energy
-usage was 180~TWh of biogas, 1063~TWh of solid biofuels, 109~TWh renewable
-municipal waste and 159~TWh of liquid biofuels. Our model contains roughly a
-doubling of the biogas production from 2015 and similar amounts of solid
-biofuels, but a shift from energy crops and primary wood to residues and wastes.
-
-Since most liquid biofuels come from energy crops today, these do not appear in
-PyPSA-Eur-Sec.
-
-Carbon capture and sequestration of bioenergy \co emissions, results in net negative emissions.
-Carbon capture and use of bioenergy \co emissions results in net neutral emissions.
+A summary of which feedstocks are used in the model is shown in
+\cref{tab:biomass}; the respective regional distribution of potentials is
+included in \cref{fig:biomass-potentials}. In 2015, the EU28 biomass energy
+consumption consisted of \SI{180}{\twh} of biogas, \SI{1063}{\twh} of solid
+biofuels, \SI{109}{\twh} renewable municipal waste and \SI{159}{\twh} of liquid
+biofuels \citeS{}. In comparison, PyPSA-Eur-Sec implies a doubling of biogas
+consumption and similar amounts of solid biofuels, but a shift from energy crops
+and primary wood to residues and wastes. Zappa et al.
+\citeS{zappa100Renewable2019} additionally allowed the use of roundwood chips
+and pellets, and grassy, willow and poplar energy crops. This leads to XX times
+higher biomass potentials.
 
 \begin{table}
     \centering
@@ -298,7 +277,6 @@ Carbon capture and use of bioenergy \co emissions results in net neutral emissio
     \label{tab:biomass}
 \end{table}
 
-
 \subsection{Biomass Demand}
 \label{sec:si:bio:demand}
 
@@ -314,4 +292,4 @@ lower \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}.
 Solid biomass is assumed to be transported freely among the modelled regions.
 Biogas can be upgraded and then transported via the methane network. If the
 methane network is neglected, also biogas can be moved without cost or
-constraints.
+constraints.\todo{Is this still up-to-date? Check!}
