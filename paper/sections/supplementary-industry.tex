@@ -201,9 +201,9 @@ Integrated steelworks can be replaced by direct reduced iron (DRI) and subsequen
     \ce{FeO + H2 &-> Fe + H2O}.
 \end{align}
 This circumvents the process emissions associated with the use of coke. For
-hydrogen-based DRI we assume energy requirements of 1.7 MWh H2 / t steel
-\citeS{voglAssessmentHydrogen2018} and 0.322 MWh elec / t steel
-\url{https://ssabwebsitecdn.azureedge.net/-/media/hybrit/files/hybrit_brochure.pdf}.
+hydrogen-based DRI we assume energy requirements of 1.7 MWh$_{H_2}$/t steel
+\citeS{voglAssessmentHydrogen2018} and 0.322 MWh$_{el}$/t steel
+\citeS{}.
 
 The shares of steel produced via each of the three routes by 2050 is exogenously
 set in the model. We assume that hydrogen-based DRI plus EAF replaces integrated
@@ -234,14 +234,6 @@ outlined for hydrogen in \cref{sec:si:h2:supply}, for methane in
 \cref{sec:si:oil:supply}. The ratio between synthetic and fossil-based fuels
 used in the industry is an endogenous result of the optimisation.
 
-basic chemicals: HVC (high-value chemicals), chlorine, methanol and ammonia
-
-Recycling!
-- specify reuse, primary production, and mechanical and chemical recycling
-fraction of platics
-
-synthetic naphtha for primary production
-
 Ammonia, which is commonly used as a fertiliser, can be made from hydrogen and nitrogen using the Haber-Bosch process \citeS{leviMappingGlobal2018}.
 \begin{equation}
     \ce{N2 + 3H2 -> 2NH3}
@@ -255,7 +247,20 @@ Europe as the source for the hydrogen used in the Haber-Bosch process, but the
 model can choose among the various hydrogen supply options described in
 \cref{sec:si:h2:supply}
 
+The basic chemicals in the JRC-IDEES database comprise high-value chemicals (ethylene, propylene and BTX), chlorine, methanol and ammonia
+
+\url{https://github.com/PyPSA/pypsa-eur-sec/pull/166}
+
+synthetic naphtha for primary production
+
 chlorine, aromatics, olefins
+
+chlorine production today: 9.58 MtCl/a from DECHEMA (2017), Table 7, page 43
+MWh elec per tCl: 3.6 DECHEMA (2017), Table 6, page 43
+MWh H2 per tCl: -0.9372 DECHEMA (2017), page 43; negative since hydrogen produced in chloralkali process
+methanol production today: 1.5 MtMeOH/a from DECHEMA (2017), page 62
+MWh elec per tMeOH: 0.167 DECHEMA (2017), Table 14, page 65
+MWh CH4 per tMeOH: 10.25 DECHEMA (2017), Table 14, page 65
 
 ammonia is subtracted from basic chemicals in IDEES database.
 
@@ -272,10 +277,22 @@ transformation of energy-consuming processes:
 - remaining processes are electrified using the current efficiency  of microwave for high-enthalpy heat processing,
 electric furnaces, electric process cooling and electric generic processes
 
-process emissions from feedstock in the chemical industry represent 0.369 t\co / t ethylene eq.
-- we consider process emissions for all the material output
-- conservative, because it assumes that all plastic-embedded \co will eventually be released into the atmosphere
-- plastic disposal in landfilling will avoid, or at least delay, associated \co emissions
+The process emissions from feedstock in the chemical industry are as high as
+\SI{0.369}{\tco\per\tonne} of ethylene equivalent. We consider process emissions
+for all the material output, which is a conservative approach since it assumes
+that all plastic-embedded \co will eventually be released into the atmosphere.
+However, plastic dispolsal in landfilling will avoid, or at least delay,
+associated \co emissions.
+
+Recycling!
+- specify reuse, primary production, and mechanical and chemical recycling
+fraction of platics
+MWh elec per tHVC mechanical recycling: 0.547 % # from SI of https://doi.org/10.1016/j.resconrec.2020.105010, Table S5, for HDPE, PP, PS, PET. LDPE would be 0.756.
+MWh elec per tHVC chemical recycling: 6.9 % # Material Economics (2019), page 125; based on pyrolysis and electric steam cracking
+mechanical recycling fraction: 30\%
+chemical recycling fraction: 15\%
+plastics reuse: 10\%
+primary production: 45\%
 
 \citeS{circular_economy, kullmannCombiningWorlds2021,kullmannImpactsMaterial,kullmannValueRecycling,carolinaliljenstromDataSeparate, fuhrPlastikatlasDaten2019,conversioMaterialFlow2020}
 \citeS{elserTakingEuropean, FuturePetrochemicals, nicholsonManufacturingEnergy2021, meysAchievingNetzero2021, thunmanCircularUse2019, introzziDECHEMAGesellschaft, meysCircularEconomy2020, guWastePlastics2017, boulamantiProductionCosts2017}
@@ -351,26 +368,29 @@ The non-ferrous metal subsector includes the manufacturing of base metals
 (aluminium, copper, lead, zink), precious metals (gold, silver), and technology
 metals (molybdenum, cobalt, silicon).
 
-The manufacturing of aluminium accounts for more than half of the final energy consumption of this subsector \citeS{}.
-Two alternative processing routes are used today to manufacture aluminium in Europe.
-The primary route represents 40\% of the aluminium production, while the secondary route represents the remaining 60\%.
+The manufacturing of aluminium accounts for more than half of the final energy
+consumption of this subsector \citeS{}. Two alternative processing routes are
+used today to manufacture aluminium in Europe. The primary route represents 40\%
+of the aluminium production, while the secondary route represents the remaining
+60\%.
 
-The primary route involves two energy-intensive processes: the production of alumina from bauxite (aluminium ore)
-and the electrolysis to transform alumina into aluminium via the  Hall-H\'{e}roult process
+The primary route involves two energy-intensive processes: the production of
+alumina from bauxite (aluminium ore) and the electrolysis to transform alumina
+into aluminium via the  Hall-H\'{e}roult process
 \begin{equation}
     \ce{2Al2O3 + 3C -> 4Al + 3\co}.
 \end{equation}
-The primary route requires high-enthalpy heat \todo{How much energy?} to produce alumina which is
-supplied by methane and causes process emissions of \SI{1.5}{\tco\per\tonne}
-aluminium. According to  \citeS{Friedrichsen_2018}, inert anodes might become
-commercially available by 2030 that would eliminate the process emissions.
-However, they have not been considered in this study.
+The primary route requires high-enthalpy heat \todo{How much energy?} to produce
+alumina which is supplied by methane and causes process emissions of
+\SI{1.5}{\tco\per\tonne} aluminium. According to  \citeS{Friedrichsen_2018},
+inert anodes might become commercially available by 2030 that would eliminate
+the process emissions. However, they have not been considered in this study.
 
-In the secondary route, scrap aluminium is remelted. The energy demand for this process is
-only 10\% of the primary route and there are no associated process emissions.
-Assuming all subprocesses are electrified, the secondary route requires 1.7 MWh/t of aluminium.
-Following \citeS{Friedrichsen_2018} and \url{https://ec.europa.eu/clima/news/commission-calls-climate-neutral-europe-2050_en},
-we assume a share of recycled aluminium of 80\% by 2050.
+In the secondary route, scrap aluminium is remelted. The energy demand for this
+process is only 10\% of the primary route and there are no associated process
+emissions. Assuming all subprocesses are electrified, the secondary route
+requires 1.7 MWh/t of aluminium. Following \citeS{Friedrichsen_2018}, we assume
+a share of recycled aluminium of 80\% by 2050.
 
 For the other non-ferrous metals, we assume the electrification of the entire
 manufacturing process with an average electricity demand of 3.2 MWh/t lead
