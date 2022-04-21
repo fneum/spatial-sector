@@ -1,2 +1,157 @@
 \section{Mathematical Model Formulation}
 \label{sec:si:math}
+
+The objective is to minimise the total annual system costs that comprises both investment
+costs and operational expenditures of generation, storage, transmission and
+conversion infrastructure. To express both as annual costs, we use the annuity
+factor $(1-(1+\tau)^{-n}) / \tau$ that, like a mortgage, converts the upfront
+investment of an asset to annual payments considering its lifetime $n$ and cost
+of capital $\tau$. Thus, the objective includes on one hand the annualised
+capital costs $c_*$ for investments at bus $i$ in generator capacity
+$G_{i,r}\in\R^+$ of technology $r$, storage energy capacity $E_{i,s}\in\R^+$ of
+technology $s$, electricity transmission line capacities $P_{\ell}\in\R^+$, and
+energy conversion and transport capacities $F_k\in\R^+$ (links), as well as the variable
+operating costs $o_*$ for generator dispatch $g_{i,r,t}\in\R^+$ on the other:
+\begin{align}
+  \label{eq:objective}
+  \min_{G,E,P,F,g} \quad &\left[\sum_{i,r} c_{i,r}\cdot G_{i,r} + \sum_{i,s} c_{i,s}\cdot E_{i,s} + \sum_{\ell}c_{\ell}\cdot P_{\ell}+ \sum_{k}c_{k}\cdot F_k +\right. \\
+  & \left.  \sum_{t} w_t \cdot \left( \sum_{i,r} o_{i,r} \cdot g_{i,r,t} + \sum_k o_k \cdot f_{k,t} \right) \right].
+\end{align}
+Thereby, the representative time snapshots $t$ are weighted by the time span
+$w_t$ such that their total duration adds up to one year; \mbox{$\sum_{t\in \cT}
+w_t=365\cdot 24\text{h}=8760\text{h}$}. A bus $i$ represents both a regional
+scope and an energy carrier. Represented carriers include electricity, heat
+(various subdivisions), hydrogen, methane, oil and carbon dioxide.
+
+% constraints
+
+In addition to the cost-minimising objective function, we further impose a set
+of linear constraints that define limits on (i) the capacities of generation,
+storage, conversion and transmission infrastructure from geographical and
+technical potentials, (ii) the availability of variable renewable energy sources
+for each location and point in time (iii) the limit for \co emissions or transmission expansion, (iv)
+storage consistency equations, and (v) a multi-period linearised optimal power
+flow (LOPF) formulation. Overall, this results in a large linear problem (LP).
+
+The capacities of generation, storage, conversion and transmission
+infrastructure are constrained from above by their installable potentials and
+from below by any existing components:
+\begin{align}
+  \underline{G}_{i,r}  &  & \leq &  & G_{i,r}  &  & \leq &  & \overline{G}_{i,r}  & \qquad\forall i, r \label{eq:genlimit} \\
+  \underline{E}_{i,s}  &  & \leq &  & E_{i,s}  &  & \leq &  & \overline{E}_{i,s}  & \qquad\forall i, s \\
+  \underline{P}_{\ell} &  & \leq &  & P_{\ell} &  & \leq &  & \overline{P}_{\ell} & \qquad\forall \ell \\
+  \underline{F}_{k} &  & \leq &  & F_{k} &  & \leq &  & \overline{F}_{k} & \qquad\forall k
+\end{align}
+
+Moreover, the dispatch of generators and links may not only be constrained by their rated capacity but also by the weather-dependent availability of
+variable renewable energy or must-run conditions.
+This can be expressed as a time- and location-dependent availability
+factor $\overline{g}_{i,r,t}$/$\overline{f}_{k,t}$  and must-run factor $\underline{g}_{i,r,t}$/$\underline{f}_{k,t}$, given per unit of the nominal capacity:
+\begin{align}
+    \underline{g}_{i,r,t}  G_{i,r} &  & \leq &  & g_{i,r,t} &  & \leq &  & \overline{g}_{i,r,t} G_{i,r} & \qquad\forall i, r, t \\
+    \underline{f}_{k,t}  F_{k} &  & \leq &  & f_{k,t} &  & \leq &  & \overline{f}_{k,t} F_{i,r} & \qquad\forall k, t
+\end{align}
+The parameter $\underline{f}_{k,t}$ can also be used to define whether a link is
+bidirectional or unidirectional. For instance, for HVDC links
+$\underline{f}_{k,t}=-1$ allows power flows in either direction. On the other
+hand, a heat resistor has $\underline{f}_{k,t}=0$ since it can only convert
+electricity to heat.
+
+The dispatch of storage units is split into two positive variables;
+one each for charging $h_{i,s,t}^+$ and discharging $h_{i,s,t}^-$.
+Both are limited by the power rating $E_{i,s}$ of the storage units.
+\begin{align}
+  0 &  & \leq &  & h_{i,s,t}^+ &  & \leq &  & E_{i,s} & \qquad\forall i, s, t \label{eq:sto1} \\
+  0 &  & \leq &  & h_{i,s,t}^- &  & \leq &  & E_{i,s} & \qquad\forall i, s, t \label{eq:sto2}
+\end{align}
+This formulation does not prevent simultaneous charging and discharging,
+in order to maintain the computational benefit of a convex feasible space but
+can be counteracted by adding a small marginal cost to the storage dispatch
+variables. The energy levels $e_{i,s,t}$ of all storage units have to be
+consistent with the dispatch in all hours
+\begin{align}
+  e_{i,s,t} =\: & \eta_{i,s,0}^{w_t} \cdot e_{i,s,t-1} + w_t \cdot h_{i,s,t}^\text{inflow} - w_t \cdot h_{i,s,t}^\text{spillage} & \quad\forall i, s, t \nonumber \\
+                & + \eta_{i,s,+} \cdot w_t \cdot h_{i,s,t}^+ - \eta_{i,s,-}^{-1} \cdot w_t \cdot h_{i,s,t}^-, \label{eq:stoe}
+\end{align}
+whereby storage units can have a standing loss $\eta_{i,s,0}$, a charging efficiency $\eta_{i,s,+}$, a discharging efficiency $\eta_{i,s,-}$,
+natural inflow $h_{i,s,t}^\text{inflow}$ and spillage $h_{i,s,t}^\text{spillage}$.
+Furthermore, the storage energy levels are either assumed to be cyclic or given an initial state of charge,
+\begin{align}
+  e_{i,s,0} = e_{i,s,\abs{\mathcal{T}}} \qquad\forall i, s, or\\
+  e_{i,s,0} = e_{i,s,\text{initial}} \qquad\forall i, s,
+\end{align}
+and are constrained by their energy capacity
+\begin{align}
+  0 &  & \leq &  & e_{i,s,t} &  & \leq &  & E_{i,s} & \qquad\forall i, s, t.
+\end{align}
+% To reduce the number of decision variables, here we link the energy storage volume to
+% power ratings using a technology-specific parameter $\overline{T}_s$
+% that describes the maximum duration a storage unit can discharge at full power rating.
+
+The nodal balance constraint for supply and demand (Kirchoff's current law for electricity
+buses) requires local generators and storage units as well as incoming or
+outgoing energy flows $f_{\ell,t}$ of incident transmission lines $\ell$ to
+balance the perfectly inelastic electricity demand $d_{i,t}$ at each location
+$i$ and snapshot $t$
+\begin{align}
+    \sum_r g_{i,r,t} + \sum_s \left(h_{i,s,t}^- - h_{i,s,t}^+ \right) + \sum_\ell K_{i\ell} f_{\ell,t} + \sum_k L_{ikt} f_{k,t} = d_{i,t}  \quad \leftrightarrow \quad \lambda_{i,t} \quad \forall i,t,
+\end{align}
+where $K_{i\ell}$ is the incidence matrix of the electricity network with
+non-zero values $-1$ if line $\ell$ starts at node $i$ and $1$ if it ends at
+node $i$. $L_{ikt}$ is the lossy incidence matrix of the network with
+non-zero values $-1$ if link $k$ starts at node $i$ and $\eta_{i,k,t}$ if one of
+its terminal buses is node $i$. For a link with more than two outputs (e.g. CHP
+converts gas to heat and electricity in a fixed ratio), the respective column of
+the lossy incidence matrix has more than two non-zero entries (hypergraph). The
+efficiency may be time-dependent and greater than one for certain technologies
+(e.g. for heat pumps converting electricity and ambient heat to hot water).
+
+The Lagrange multiplier (KKT multiplier) $\lambda_{i,t}$ associated with the
+nodal balance constraint indicates the marginal price of the respective energy
+carrier and location of bus $i$ at time $t$, e.g. the local marginal price (LMP)
+of electricity at the electricity bus.
+
+The power flows $p_{\ell,t}$ are limited by their nominal capacities $P_\ell$
+\begin{align}
+	|p_{\ell,t}| \leq \overline{p}_{\ell} P_{\ell} & \qquad\forall \ell, t,
+	\label{eq:cap}
+\end{align}
+where $\overline{p}_\ell$ acts as an additional per-unit security margin on the line capacity
+to allow a buffer for the failure of single circuits ($N-1$ criterion) and reactive power flows.
+
+Kirchoff's voltage law (KVL) imposes further constraints on the flow of AC
+transmission lines and there are several ways to formulate KVL with large
+impacts on performance. Here, we use linearised load flow assumptions, where the
+voltage angle difference around every closed cycle in the electricity
+transmission network must add up to zero. Using a cycle basis $C_{\ell c}$ of
+the network graph where the independent cycles $c$ are expressed as directed
+linear combinations of lines $\ell$ \cite{horschLinearOptimal2018}, we can write
+KVL as
+\begin{align}
+    \sum_\ell C_{\ell c} \cdot x_\ell \cdot p_{\ell,t} = 0 \qquad\forall c,t
+    \label{eq:kvl}
+\end{align}
+where $x_\ell$ is the series inductive reactance of line $\ell$.
+
+We may further regard a constraint on the total annual CO$_2$ emissions $\Gamma_{\text{CO}_2}$
+to achieve sustainability goals.
+The emissions are determined from the time-weighted generator dispatch $ w_t \cdot g_{i,r,t}$ using the specific emissions $\rho_r$ of technology $r$
+and the generator efficiencies $\eta_{i,r}$
+\begin{align}
+	\sum_{i,r,t}  \rho_r \cdot \eta_{i,r}^{-1} \cdot w_t \cdot g_{i,r,t} + \sum_{i,s} \rho_s \left(e_{i,s,t=0} - e_{i,s,t=\abs{\mathcal{T}}}\right) \leq \Gamma_{\text{CO}_2}  \quad \leftrightarrow \quad \mu_{\text{CO}_2}.
+\end{align}
+In this case, the Lagrange multiplier (KKT multiplier) $\mu_{\text{CO}_2}$ denotes the shadow price of emitting an additional tonne of \co, i.e. the \co price necessary to achieve the respective \co emission reduction target.
+
+Additionally, another global constraint may be set on the volume of electricity transmission network expansion
+\begin{align}
+    \sum_\ell l_\ell \cdot P_\ell \leq \Gamma_{LV} \quad \leftrightarrow \quad \mu_{LV},
+\end{align}
+where the sum of transmission capacities $P_\ell$ multiplied by their lengths $l_\ell$ is bounded by a transmission volume cap
+$\Gamma_{LV}$. In this case, the Lagrange multiplier (KKT multiplier) $\mu_{LV}$ denotes the shadow price of a marginal increase in transmission volume.
+
+This formulation does not include pathway optimisation (i.e.~no
+sequences of investments), but searches for a cost-optimal layout corresponding
+to a given \co emission reduction level and assumes perfect foresight for
+the reference year based on which capacities are optimised. This optimisation
+problem is implemented in the open-source Python-based modelling framework
+PyPSA \cite{brownPyPSAPython2018}.
