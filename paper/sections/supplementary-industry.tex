@@ -44,13 +44,14 @@
 \citeS{graichenKlimaneutraleIndustrie,rootzenExploringLimits2013}
 
 Industry demand is split into a dozen different sectors, with the major ones
-being iron and steel, cement and basic chemicals. The location of existing
-industrial facilities is based on the Hotmaps.... \citeS{}. Demand for materials
-can either be met using existing conventional routes, such as blast furnaces for
-iron and rotary kilns for cement, or with new processes, such as hydrogen direct
-reduction for iron or kilns equipped with CCS. Basic chemicals can use green
-hydrogen as a feedstock rather than fossil fuels, for example for ammonia
-production, or using Fischer-Tropsch naphtha in steam crackers for the production of High Value
+according to final energy consumption being iron and steel, cement and basic
+chemicals. The location of existing industrial facilities is based on the
+Hotmaps.... \cref{fig:hotmaps} \citeS{}. Demand for materials can either be met
+using existing conventional routes, such as blast furnaces for iron and rotary
+kilns for cement, or with new processes, such as hydrogen direct reduction for
+iron or kilns equipped with CCS. Basic chemicals can use green hydrogen as a
+feedstock rather than fossil fuels, for example for ammonia production, or using
+Fischer-Tropsch naphtha in steam crackers for the production of High Value
 Chemicals (HVCs).
 
 Fossil fuels are used for process heat in the chemicals industry, but also as a feedstock for chemicals like
@@ -63,14 +64,6 @@ emissions
 For process-related emissions need alternative manufacturing process
 or higher rates of recycling such that less virgin material is needed
 
-largest sectors (according to FEC)
-- iron and steel
-- chemicals
-- non-metallic mineral products
-- pulp paper printing
-- food beverages tobacco
-- non-ferrous metals
-
 Demand
 
 For the industry energy demand, we assume the same
@@ -78,9 +71,14 @@ production of materials as today, but with process switching, fuel switching to
 low-emission alternatives as well as carbon capture for use or sequestration
 (CCU/S).
 
+Process switching (e.g. from blast furnaces to direct reduction and electric arc
+furnaces for steel) is defined exogenously.
+
 Process switching includes, for example, moving primary production of
 steel from blast furnace reduction to direct reduction with hydrogen, or
 switching to an oxyfuel process in cement manufacture.
+
+Fuel switching for process heat is mostly also done exogenously.
 
 Fuel switching means
 replacing mechanical processes and process heat applications that use fossil
@@ -127,6 +125,11 @@ Because of high share of high-temperature process heat demand
 
 process heat supplied by methane, biomass, electricity depending on sector
 
+Solid biomass is used for up to 500 Celsius, mostly in paper and pulp and food
+and beverages.
+
+Higher temperatures are met with methane.
+
 Based on materials demand from JRC-IDEES and other sources such as the USGS for
 ammonia.
 
@@ -136,7 +139,7 @@ metals, pulp, paper and printing, food, beverages and tobacco, and other more
 minor sectors.
 
 Inside each country the industrial demand is distributed using the Hotmaps
-Industrial Database.
+Industrial Database \cref{fig:hotmaps}.
 
 Hotmaps open database includes cement, basic chemicals, glass, iron and steel, non-ferrous metals,
 non-metallic minerals, paper, refineries. Enables regional analyses, calculation of
@@ -150,18 +153,6 @@ Eurostat energy balances, national statistics from Switzerland to calculate tota
 and process emissions by sector
 
 material output assumed to stay constant (exception recycling)
-
-Supply
-
-Process switching (e.g. from blast furnaces to direct reduction and electric arc
-furnaces for steel) is defined exogenously.
-
-Fuel switching for process heat is mostly also done exogenously.
-
-Solid biomass is used for up to 500 Celsius, mostly in paper and pulp and food
-and beverages.
-
-Higher temperatures are met with methane.
 
 \citeS{neuwirthFuturePotential2022}
 
@@ -234,65 +225,67 @@ outlined for hydrogen in \cref{sec:si:h2:supply}, for methane in
 \cref{sec:si:oil:supply}. The ratio between synthetic and fossil-based fuels
 used in the industry is an endogenous result of the optimisation.
 
-Ammonia, which is commonly used as a fertiliser, can be made from hydrogen and nitrogen using the Haber-Bosch process \citeS{leviMappingGlobal2018}.
+The basic chemicals consumption data from the JRC IDEES \cite{IDEES} database
+comprises high-value chemicals (ethylene, propylene and BTX), chlorine, methanol
+and ammonia. However, it is necessary to separate out these chemicals because
+their current and future production routes are different.
+
+Statistics for the production of ammonia, which is commonly used as a
+fertiliser, are taken from statistics provided by the United States Geological
+Survey (USGS) for every country \citeS{}. Ammonia can be made from hydrogen and
+nitrogen using the Haber-Bosch process \citeS{leviMappingGlobal2018}.
 \begin{equation}
     \ce{N2 + 3H2 -> 2NH3}
 \end{equation}
-Ammonia production for every country is taken from statistics provided by the
-United States Geological Survey (USGS) \citeS{}. The Haber-Bosch process is not
-explicitly represented in the model, such that demand for ammonia enters the
-model as a demand for hydrogen (6.5 MWh\ce{H2}/t\ce{NH3}) and electricity (1.17
-MWh$_{el}$/t\ce{NH3}) \citeS{Wang2018Joule}. Today, natural gas dominates in
-Europe as the source for the hydrogen used in the Haber-Bosch process, but the
-model can choose among the various hydrogen supply options described in
+The Haber-Bosch process is not explicitly represented in the model, such that
+demand for ammonia enters the model as a demand for hydrogen (6.5
+MWh\ce{H2}/t\ce{NH3}) and electricity (1.17 MWh$_{el}$/t\ce{NH3})
+\citeS{Wang2018Joule}. Today, natural gas dominates in Europe as the source for
+the hydrogen used in the Haber-Bosch process, but the model can choose among the
+various hydrogen supply options described in
 \cref{sec:si:h2:supply}
 
-The basic chemicals in the JRC-IDEES database comprise high-value chemicals (ethylene, propylene and BTX), chlorine, methanol and ammonia
+The total production and specific energy consumption of chlorine and methanol is
+taken from DECHEMA \citeS{introzziDECHEMAGesellschaft}. According to this
+source, the production of chlorine amounts to 9.58 Mt$_Cl$/a, which is assumed
+to require electricity at 3.6 MWh$_{el}$/t of chlorine and yield hydrogen at
+0.9372 MWh$_{H_2}$/t of chlorine in the chloralkali process. The production of
+methanol adds up to 1.5 Mt$_{MeOH}$/a, requiring electricity at 0.167 MWh$_{el}$/t
+of methanol and methane at 10.25 MWh$_{CH_4}$/t of methanol.
 
-\url{https://github.com/PyPSA/pypsa-eur-sec/pull/166}
+The production of ammonia, methanol, and chlorine production is deducted from
+the JRC IDEES basic chemicals, leaving the production totals of high-value
+chemicals. For this, we assume that the liquid hydrocarbon feedstock comes from
+synthetic or fossil-origin naphtha (14 MWh$_{naphtha}$/t of HVC, similar to
+\citeS{lechtenbohmerDecarbonisingEnergy2016}), ignoring the methanol-to-olefin
+route. Furthermore, we assume the following transformations of the
+energy-consuming processes in the production of plastics: the final energy
+consumption in steam processing is converted to methane since requires
+temperature above \SI{500}{\celsius} (4.1 MWh$_{CH_4}$/t of HVC)
+\citeS{rehfeldtBottomupEstimation2018}; and the remaining processes are
+electrified using the current efficiency of microwave for high-enthalpy heat
+processing, electric furnaces, electric process cooling and electric generic
+processes (2.85 MWh$_{el}$/t of HVC).
 
-synthetic naphtha for primary production
-
-chlorine, aromatics, olefins
-
-chlorine production today: 9.58 MtCl/a from DECHEMA (2017), Table 7, page 43
-MWh elec per tCl: 3.6 DECHEMA (2017), Table 6, page 43
-MWh H2 per tCl: -0.9372 DECHEMA (2017), page 43; negative since hydrogen produced in chloralkali process
-methanol production today: 1.5 MtMeOH/a from DECHEMA (2017), page 62
-MWh elec per tMeOH: 0.167 DECHEMA (2017), Table 14, page 65
-MWh CH4 per tMeOH: 10.25 DECHEMA (2017), Table 14, page 65
-
-ammonia is subtracted from basic chemicals in IDEES database.
-
-ALL of liquid hydrocarbon feedstock from FT naphtha.
-- LPG, diesel oil, residual fuel oil
-
-% Ethylene, used for plastics, can be made by steam cracking from naphtha or ethane or via methanol-to-olefin processes
-
-\citeS{lechtenbohmerDecarbonisingEnergy2016} has 14.8 MWh FT-naphtha per ton of HVC, and 2.7 MWh per
-ton for processing; 3.1 t\co/tHVC are captured from flue gases.
-
-transformation of energy-consuming processes:
-- FEC in steam processing is converted to methane since requires temperature above \SI{500}{\celsius} \citeS{rehfeldtBottomupEstimation2018}
-- remaining processes are electrified using the current efficiency  of microwave for high-enthalpy heat processing,
-electric furnaces, electric process cooling and electric generic processes
+Circular economy practices reduce the amount of primary feedstock needed for the
+production of plastics in the model. We assume that 30\% of plastics are
+mechanically recycled requiring 0.547 MWh$_{el}$/t of HVC
+\citeS{meysCircularEconomy2020}, 15\% of plastics are chemically recycled
+requiring 6.9 MWh$_{el}$/t of HVC based on pyrolysis and electric steam cracking
+\citeS{materialeconomicsIndustrialTransformation2019}, and 10\% of plastics are
+reused (equivalent to reduction in demand). The remaining 45\% need to be
+produced from primary feedstock. In comparison, Material Economics
+\citeS{circular_economy} presents a scenario with circular economy scenario with
+27\% primary production, 18\% mechanical recycling, 28\% chemical recycling, and
+27\% reuse. Another new-processes scenario has 33\% primary production, 14\%
+mechanical recycling, 40\% chemical recycling, and 13\% reuse.
 
 The process emissions from feedstock in the chemical industry are as high as
 \SI{0.369}{\tco\per\tonne} of ethylene equivalent. We consider process emissions
 for all the material output, which is a conservative approach since it assumes
 that all plastic-embedded \co will eventually be released into the atmosphere.
-However, plastic dispolsal in landfilling will avoid, or at least delay,
+However, plastic disposal in landfilling will avoid, or at least delay,
 associated \co emissions.
-
-Recycling!
-- specify reuse, primary production, and mechanical and chemical recycling
-fraction of platics
-MWh elec per tHVC mechanical recycling: 0.547 % # from SI of https://doi.org/10.1016/j.resconrec.2020.105010, Table S5, for HDPE, PP, PS, PET. LDPE would be 0.756.
-MWh elec per tHVC chemical recycling: 6.9 % # Material Economics (2019), page 125; based on pyrolysis and electric steam cracking
-mechanical recycling fraction: 30\%
-chemical recycling fraction: 15\%
-plastics reuse: 10\%
-primary production: 45\%
 
 \citeS{circular_economy, kullmannCombiningWorlds2021,kullmannImpactsMaterial,kullmannValueRecycling,carolinaliljenstromDataSeparate, fuhrPlastikatlasDaten2019,conversioMaterialFlow2020}
 \citeS{elserTakingEuropean, FuturePetrochemicals, nicholsonManufacturingEnergy2021, meysAchievingNetzero2021, thunmanCircularUse2019, introzziDECHEMAGesellschaft, meysCircularEconomy2020, guWastePlastics2017, boulamantiProductionCosts2017}
