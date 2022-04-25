@@ -10,18 +10,19 @@
 
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{process-emissions.pdf}
-    \caption{Process emissions in industry today (top bar) and in 2050 (bottom bar)}
+    \caption{Process emissions in industry today (top bar) and in 2050 without carbon capture (bottom bar)}
     \label{fig:process-emissions}
 \end{SCfigure}
 
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
-    \caption{Distribution of industries.}
+    \caption{Distribution of industries according to emissions data from the Hotmaps industrial sites database.}
     \label{fig:hotmaps}
 \end{SCfigure}
 
 \begin{table}[t]
     \centering
+    \small
     \setlength{\tabcolsep}{6pt}
     \begin{tabular}{@{} p{5cm}r @{}}
       \toprule
@@ -32,7 +33,9 @@
       glass & 44 \\
       ceramics and other NMM & 360 \\
       ammonia & 18 \\
-      other basic chemicals & 74 \\
+      chlorine & 10 \\
+      methanol & 2 \\
+      high-value chemicals (HVC) & 62 \\
       other chemicals & 28 \\
       pulp & 39 \\
       paper & 94 \\ \bottomrule
@@ -40,6 +43,8 @@
     \caption{Industrial production for main products in 2015.}
     \label{tab:industryproduction}
   \end{table}
+
+  % TODO: \todo{check these numbers}
 
 
 Industry demand is split into a dozen different sectors with specific energy
@@ -59,12 +64,12 @@ non-ferrous metals \cite{IDEES}.
 
 Greenhouse gas emissions associated with industry can be classified into
 energy-related and process-related emissions. Today, fossil fuels are used for
-process heat energy in the chemicals industry, but also as a feedstock for
-chemicals like ammonia (\ce{NH3}), ethylene (\ce{C2H4}) and methanol
-(\ce{CH3OH}). Energy-related emissions can be curbed by using low-emission
-energy sources. The only option to reduce process-related emissions is by using
-an alternative manufacturing process or by assuming a certain rate of recyling
-so that a lower amount of virgin material is needed.
+process heat energy in the chemicals industry, but also as a non-energy
+feedstock for chemicals like ammonia (\ce{NH3}), ethylene (\ce{C2H4}) and
+methanol (\ce{CH3OH}). Energy-related emissions can be curbed by using
+low-emission energy sources. The only option to reduce process-related emissions
+is by using an alternative manufacturing process or by assuming a certain rate
+of recyling so that a lower amount of virgin material is needed.
 
 The overarching modelling procedure can be described as follows. First, the
 energy demands and process emissions for every unit of material output are
@@ -73,18 +78,17 @@ and process switching described in the subsequent sections. Second, the 2050
 energy demands and process emissions are calculated using the
 per-unit-of-material ratios based on the industry transformations and the
 country-level material production in 2015 \citeS{IDEES}, assuming constant
-material demand. Missing or too coarsely aggregated data in the JRC-IDEES
-database \citeS{IDEES} is supplemented with additional datasets: Eurostat
-energy-balances \citeS{}, USGS \citeS{usgs} for ammonia production, DECHEMA
-\citeS{introzziDECHEMAGesellschaft} for methanol and chlorine, and national
-statistics from Switzerland \citeS{}.
+material demand as shown in \cref{tab:industryproduction}. Missing or too
+coarsely aggregated data in the JRC-IDEES database \citeS{IDEES} is supplemented
+with additional datasets: Eurostat energy-balances \citeS{}, USGS \citeS{usgs}
+for ammonia production, DECHEMA \citeS{introzziDECHEMAGesellschaft} for methanol
+and chlorine, and national statistics from Switzerland \citeS{}.
 
 Where there are fossil and electrified alternatives for the same process (e.g.
-in glass manufacture or dryi or drying) we assume that the process is completely
+in glass manufacture or drying) we assume that the process is completely
 electrified. Current electricity demands (lighting, air compressors, motor
-drives, fans, pumps) will remain electric.
-
-Where process heat is required our approach depends on the temperature required
+drives, fans, pumps) will remain electric. Where process heat is required our
+approach depends on the temperature required
 \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}.
 Processes that require temperatures below \SI{500}{\celsius} are supplied with
 solid biomass, since we assume that residues and wastes are not suitable for
@@ -101,14 +105,17 @@ et al. \citeS{naeglerQuantificationEuropean2015} estimate that 48\% is above
 \SI{400}{\celsius}, 27\% within \SIrange{100}{400}{\celsius}, 25\% below
 \SI{100}{\celsius}. Due to the high share of high-temperature process heat
 demand, we disregard geothermal and solar thermal energy as source for process
-heat.
+heat. The final consumption of energy and non-energy feedstocks in industry
+today in comparison to our future scenario in 2050 are presented in
+\cref{fig:fec-industry}.
 
-Inside each country the industrial demand is distributed using the Hotmaps
-Industrial Database (\cref{fig:hotmaps}) \citeS{}. This open database includes
-cement, basic chemicals, glass, iron and steel, non-ferrous metals, non-metallic
-minerals, paper, refineries, which enables regional analyses, calculation of
-site-specific energy demand, waste heat potentials, emissions, market shares,
-and process-specific evaluations.
+Inside each country the industrial demand is then distributed using the Hotmaps
+Industrial Database, which is illustrated in \cref{fig:hotmaps} \citeS{}. This
+open database includes georeferenced industrial sites of energy-intensive
+industry sectors in EU28, including cement, basic chemicals, glass, iron and
+steel, non-ferrous metals, non-metallic minerals, paper, refineries subsectors.
+The use of this spatial dataset enables the calculation of calculation of
+regional and process specific energy demands.
 
 % Demand for materials can either be met
 % using existing conventional routes, such as blast furnaces for iron and rotary
