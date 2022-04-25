@@ -1,4 +1,85 @@
-\section{Renewables Potentials}
+
+\section{Renewables}
+\label{sec:si:renewables}
+
+\subsection{Potentials}
+\label{sec:si:renewable-potentials}
+
+\newgeometry{margin=2cm}
+\begin{landscape}
+
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.5\textwidth}
+            \centering
+        \caption{solar land eligibility}
+        \includegraphics[width=\textwidth]{eligibility-solar-250-20.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \caption{onshore wind land eligibility}
+        \includegraphics[width=\textwidth]{eligibility-onwind-250-20.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \caption{offshore wind land eligibility}
+        \includegraphics[width=\textwidth]{eligibility-offwind-250-20.pdf}
+    \end{subfigure}
+    %}
+    \caption{Land eligibility.}
+    \label{fig:eligibility}
+\end{figure}
+
+\end{landscape}
+\restoregeometry
+
+\begin{table}
+    \caption{Land types considered suitable for every technology from Corine Land Cover database}
+    \small
+    \begin{tabularx}{\textwidth}{lX}
+        \toprule
+        Solar PV & artificial surfaces (1-11), agriculture land except for those
+        areas already occupied by agriculture with significant natural
+        vegetation and agro-forestry areas (12-20), natural grasslands (26), bare rocks (31),
+        sparsely vegetated areas (32) \\ \midrule
+        Onshore wind & agriculture areas (12-22), forests (23-25), scrubs and herbaceous vegetation associations (26-29), bare rocks (31), sparsely vegetated areas (32) \\ \midrule
+        Offshore wind & sea and ocean (44) \\ \bottomrule
+    \end{tabularx}
+    \label{tab:eligibility}
+\end{table}
+
+Eligibile areas for developing renewable infrastructure are calculated per
+technology and substation's Voronoi cell using the \textit{atlite} tool
+\citeS{} and shown in \cref{fig:eligibility}.
+
+The land available for wind and utility-scale solar PV capacities in a
+particular region is constrained by eligible codes of the CORINE land use
+database (100m resolution) \citeS{} and is further restricted by distance
+criteria and the natural protection areas specified in the Natura 2000 dataset
+\citeS{}. These criteria are summarised in \cref{tab:eligibility}. The
+installable potentials for rooftop PV are included with an assumption of 1 kWp
+per person (0.1 kW/m$^2$ and 10 m$^2$/person). Moreover, offshore wind farms may
+not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO
+bathymetry dataset \citeS{}. This currently disreagards the possibility of
+floating wind turbines
+\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}.
+For near-shore locations (less than 30 km off the shore) AC connections are
+considered, whereas for far-shore locations, DC connections including AC-DC
+converter costs are assumed. Reservoir hydropower and run-of-river capacities
+are exogenously fixed at current values and not expandable.
+
+To express the potential in terms of installable capacities, the available areas
+are multiplied with allowed deployment densities, which we consider to be a
+fraction of the technology's technical deployment density to preempt public
+acceptance issues. These densities are 3 MW/m$2$ for onshore wind, 2 MW/m$2$ for
+offshore wind, 5.1 MW/m$2$ for utility-scale solar.
+
+\citeS{mckennaHighresolutionLargescale2022,Ryberg2018,bodisHighresolutionGeospatial2019}
+
+\subsection{Time Series}
+\label{sec:si:renewable-ts}
+
 
 \begin{figure}
     \centering
@@ -24,24 +105,6 @@
     \label{fig:weather-data}
 \end{figure}
 
-
-\begin{figure}
-    \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{solar}
-        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{wind}
-        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
-    \end{subfigure}
-    % }
-    \caption{Available energy density for wind and utility-scale solar PV energy generation.}
-    \label{fig:energy-density}
-\end{figure}
 
 \begin{figure}
     \centering
@@ -108,130 +171,65 @@
 \end{figure}
 
 
-\newgeometry{margin=2cm}
-\begin{landscape}
-
 \begin{figure}
     \centering
     % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.5\textwidth}
-            \centering
-        \caption{solar land eligibility}
-        \includegraphics[width=\textwidth]{eligibility-solar-250-20.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        \caption{onshore wind land eligibility}
-        \includegraphics[width=\textwidth]{eligibility-onwind-250-20.pdf}
+        \caption{solar}
+        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        \caption{offshore wind land eligibility}
-        \includegraphics[width=\textwidth]{eligibility-offwind-250-20.pdf}
+        \caption{wind}
+        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
     \end{subfigure}
-    %}
-    \caption{Land eligibility.}
-    \label{fig:eligibility}
+    % }
+    \caption{Available energy density for wind and utility-scale solar PV energy generation.}
+    \label{fig:energy-density}
 \end{figure}
 
-
-\end{landscape}
-\restoregeometry
-
-
-\begin{table}
-    \caption{Land types considered suitable for every technology from Corine Land Cover database}
-    \small
-    \begin{tabularx}{\textwidth}{lX}
-        \toprule
-        Solar PV & artificial surfaces (1-11), agriculture land except for those
-        areas already occupied by agriculture with significant natural
-        vegetation and agro-forestry areas (12-20), natural grasslands (26), bare rocks (31),
-        sparsely vegetated areas (32) \\ \midrule
-        Onshore wind & agriculture areas (12-22), forests (23-25), scrubs and herbaceous vegetation associations (26-29), bare rocks (31), sparsely vegetated areas (32) \\ \midrule
-        Offshore wind & sea and ocean (44) \\ \bottomrule
-    \end{tabularx}
-    \label{tab:eligibility}
-\end{table}
-
-Eligibile areas for developing renewable infrastructure are calculated per technology and substation's Voronoi cell using the \textit{atlite} tool \citeS{}.
-
-The land available for wind and utility-scale solar PV capacities in a particular region is constrained by eligible codes of the CORINE land use database \citeS{} and is further restricted by distance criteria
-and the natural protection areas specified in the Natura 2000 dataset \citeS{}. These criteria are summarised in XXX.
-
-Moreover, offshore wind farms may not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO bathymetry dataset \citeS{}.
-This currently disreagards the possibility of floating wind turbines \citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}.
-
-To express the potential in terms of installable capacities, the available areas are multiplied with allowed deployment densities,
-which we consider to be a fraction of the technology's technical deployment density to preempt public acceptance issues.
-
-\subsection{Onshore Wind Potentials}
-
-X MW/sqkm conversion factor
-
-20\% of the available land define potential
-
-\citeS{mckennaHighresolutionLargescale2022,Ryberg2018}
-
-\subsection{Offshore Wind Potentials}
-
-Offshore:
-
-- near-shore (distance less than 30km) AC connection, far-shore, DC connected
-- costs include AC-DC conversion
-
-wake effects
-
-
-\subsection{Solar Potentials}
-
-utility PV
-
-X MW/sqkm
-
-9\% of the available land define potential
-
-Installable potentials for rooftop PV are included with an assumption of 1 kWp
-per person (0.1 kW/m2 and 10 m2/person)
-
-\citeS{bodisHighresolutionGeospatial2019}
-
-\section{Renewables Time Series}
-
 The location-dependent renewables availability time series are generated based
-on two historical weather datasets. We retrieve wind sepeeds at
-\SI{100}{\metre}, surface roughness, soil and air temperatures, and surface
-run-off from rainfall or melting snow from the global ERA5 reanalysis dataset
-provided by the ECMWF \citeS{}. It provides hourly values for each of these
-parameters since 1950 on a $0.25^{\circ} \times 0.25^{\circ}$ grid. In Germany,
-such a weather cell expands approximately \SI{20}{\kilo\metre} from east to west
-and \SI{31}{km} from north to south. For the direct and diffuse solar
-irradiance, we use the satellite-aided SARAH-2 dataset, which assesses cloud
-cover in more detail than the ERA5 dataset. It features values from 1983 to 2015
-at an even higher resolution with a $0.05^{\circ} \times 0.05^{\circ}$ grid and
-30-minute intervals \citeS{}. In general, the reference weather year can be
-freely chosen for the optimisation, but in this contribution all analyses are
-based on the year 2013, which is regarded as characteristic year for both wind
-and solar resources (e.g. \citeS{}).
+on two gridded historical weather datasets (\cref{fig:weather-data}). We
+retrieve wind sepeeds at \SI{100}{\metre}, surface roughness, soil and air
+temperatures, and surface run-off from rainfall or melting snow from the global
+ERA5 reanalysis dataset provided by the ECMWF \citeS{}. It provides hourly
+values for each of these parameters since 1950 on a $0.25^{\circ} \times
+0.25^{\circ}$ grid. In Germany, such a weather cell expands approximately
+\SI{20}{\kilo\metre} from east to west and \SI{31}{km} from north to south. For
+the direct and diffuse solar irradiance, we use the satellite-aided SARAH-2
+dataset, which assesses cloud cover in more detail than the ERA5 dataset. It
+features values from 1983 to 2015 at an even higher resolution with a
+$0.05^{\circ} \times 0.05^{\circ}$ grid and 30-minute intervals \citeS{}. In
+general, the reference weather year can be freely chosen for the optimisation,
+but in this contribution all analyses are based on the year 2013, which is
+regarded as characteristic year for both wind and solar resources (e.g.
+\citeS{}).
 
 Models for wind turbines, solar panels, heat pumps and the inflow into hydro
 basins convert the weather data to hourly time series for capacity factors and
-performance coefficients. Using power curves of typical wind turbines\todo{which
-wind turbine types offshore onshore}, wind speeds scaled to the according hub
-height are mapped to power outputs. The solar photovoltaic panels' output is
-calculated based on the incidence angle of solar irradiation, the panel's tilt
-angle, and conversion efficiency. The creation of heat pump time series follows
-regression analyses that map soil or air temperatures to the coefficient of
-performance (COP) \citeS{nouvelEuropeanMapping2015, staffellReviewDomestic2012}.
-The open-source library \textit{atlite} \citeS{} provides functionality to
-perform all these calculations efficiently. Finally, the obtained time series
-are aggregated to each region heuristically in proportion to each grid cell's
-mean capacity factor. This assumes a capacity layout proportional to mean
-capacity factors.
+performance coefficients. Using power curves of selected wind turbines types
+(Vestas V112 for onshore, NREL 5MW for offshore), wind speeds scaled to the
+according hub height are mapped to power outputs. For offshore wind, we
+additionally take into account wake effects by applying a uniform correction
+factor of 88.55\% to the capacity factors \citeS{}. The solar photovoltaic
+panels' output is calculated based on the incidence angle of solar irradiation,
+the panel's tilt angle, and conversion efficiency. Similarly, solar thermal
+generation is determined based on collector orientation and a clear-sky model
+based on \citeS{henningComprehensiveModel2014a}. The creation of heat pump time
+series follows regression analyses that map soil or air temperatures to the
+coefficient of performance (COP) \citeS{nouvelEuropeanMapping2015,
+staffellReviewDomestic2012}. Hydroelectric inflow time series are derived from
+run-off data from ERA5 and scaled using EIA annual hydropower generation
+statistics \citeS{}. The open-source library \textit{atlite} \citeS{} provides
+functionality to perform all these calculations efficiently. Finally, the
+obtained time series are aggregated to each region heuristically in proportion
+to each grid cell's mean capacity factor. This assumes a capacity layout
+proportional to mean capacity factors. The resulting spatial and temporal
+variability of capacity factors are shown in
+\crefrange{fig:cfs-ts}{fig:cfs-maps}.
 
-Hydroelectric inflow time series are derived from run-off data.
-
-Solar thermal
-
-In combination with the capacity potentials derived from the assumed land use restrictions,
-the time-averaged capacity factors are used to display in \cref{fig:energy-density} the energy that could be produced from wind and solar energy in the different regions of Europe.
+In combination with the capacity potentials derived from the assumed land use
+restrictions, the time-averaged capacity factors are used to display in
+\cref{fig:energy-density} the energy that could be produced from wind and solar
+energy in the different regions of Europe.
