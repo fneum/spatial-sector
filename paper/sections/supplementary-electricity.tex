@@ -16,7 +16,7 @@ by ENTSO-E is retrieved via the interface of the Open Power System Data (OPSD)
 initiative \citeS{}. Existing electrified heating is subtracted from this
 demand, so that power-to-heat options can be optimised separately. Furthermore,
 current industry electricity demand is subtracted and handled separately
-considering further electrification in the industry sector (see XXX).
+considering further electrification in the industry sector (see \cref{sec:si:industry}).
 
 For the distribution of electricity demand for industry we leverage geographical
 data from the industrial database developed within the Hotmaps project \citeS{}.
@@ -43,17 +43,19 @@ cycle gas turbines (OCGT and CCGT), and nuclear generators. Furthermore,
 existing run-of-river, pumped-hydro storage plants, and hydro-electric dams, are
 also part of the dataset, for which inflow is modelled based on runoff data from
 reanalysis weather data and and scaled hydropower generation statistics (see
-XXX). In general, we suppose these to be non-extendable due to assumed
+\cref{sec:si:renewable-ts}). In general, we suppose these to be non-extendable due to assumed
 geographical constraints.
 
 Expandable renewable generators include onshore and offshore wind, utility-scale
 and rooftop solar photovoltaics, biomass from multiple feedstocks. The model
 decides to build new capacities based on available land and on the weather
-resource (see XXX). Because the continent-wide avaialbility of data on the
-locations of wind and solar installations is fragmentary, we disregard already
-existing wind and solar capacities. Moreover, new OCGT and CCGT as well as gas or biomass-fueled combined heat and power (CHP) generators may be built.
-
-back-pressure plants with heat production proportional to electricity output
+resource (see \cref{sec:si:renewable-potentials} and
+\cref{sec:si:renewable-ts}). Because the continent-wide avaialbility of data on
+the locations of wind and solar installations is fragmentary, we disregard
+already existing wind and solar capacities. Moreover, new OCGT and CCGT as well
+as gas or biomass-fueled combined heat and power (CHP) generators may be built.
+For CHP generators we assume back-pressure operation with heat production
+proportional to electricity output.
 
 Specific techno-economic assumptions, like costs, lifetimes and efficiencies are
 included in \cref{sec:si:costs}.
