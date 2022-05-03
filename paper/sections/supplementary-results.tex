@@ -1,161 +1,116 @@
 \section{Cost of Grid Reinforcement and Onshore Wind Potential Restrictions}
 \label{sec:si:sensitivity-lv-onw}
 
+\subsection{Cost of Electricity Grid Reinforcement Restrictions}
+\label{sec:si:lv}
+
 \begin{figure}
     \centering
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{Sensitivity of electricity transmission grid expansion limits}
         \includegraphics[width=\textwidth]{lv-sensitivity.pdf}
+        \label{fig:lv-restriction}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
         \caption{Sensitivity of onshore wind expansion limits}
         \includegraphics[width=\textwidth]{onw-sensitivity.pdf}
+        \label{fig:onw-restriction}
     \end{subfigure}
     \caption{Sensitivity of electricity transmission grid expansion limits and onshore wind restrictions.}
     \label{fig:lv-onw-restriction}
 \end{figure}
 
-\begin{SCfigure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{sensitivity-h2.pdf}
-    \caption{Sensitivity of hydrogen network infrastructure.}
-    \label{fig:h2-restriction}
-\end{SCfigure}
+In the following sensitivity runs, the model is allowed to build new electricity
+transmission infrastructure wherever is cost-optimal, but the total volume of
+new transmission capacity (sum of line length times capacity, TWkm) is
+successively limited. The volume limit is given in fractions of today's grid
+volume: a line volume limit of 100\% means no new capacity is allowed beyond
+today's grid (since the model cannot remove existing lines); a limit of 125\%
+means the total grid capacity can grow by 25\% (25\% is similar to the planned
+extra capacity in the European network operators' Ten Year Network Development
+Plan (TYNDP) \cite{TYNDP2016}). For this investigation, a hydrogen network
+could be built.
 
-\subsection{Cost of Electricity Grid Reinforcement Restrictions}
-\label{sec:si:lv}
+\cref{fig:lv-restriction} shows the composition of total yearly system costs
+(including all investment and operational costs) as we vary the allowed grid
+expansion, from no expansion (only today's grid) to a doubling of today's grid
+capacities (the model optimises where new capacity is placed). As the grid is
+expanded, total costs decrease only slightly, despite the increasing costs of
+the grid. The total cost benefit of a doubling of grid capacity is around
+\euro47~billion per year corresponding to an expansion of XX TWkm. However, over
+half of the benefit (\euro26~billion per year) is available already at a 25\%
+expansion corresponding to an expansion of XX TWkm.
 
-The volume limit is given in fractions of today's grid volume: a
-line volume limit of 1.0 means no new capacity is allowed beyond today's grid
-(since the model cannot remove existing lines); a limit of 1.25 means the total
-grid capacity can grow by 25\% (25\% is similar to the planned extra capacity in
-the European network operators' Ten Year Network Development Plan (TYNDP)\cite{TYNDP2016})
-
-Figure shows the composition of total yearly system costs
-(including all investment and operational costs) as we vary the allowed
-grid expansion, from no expansion (only today's grid) to
-a doubling of today's grid capacities (the model optimises where new
-capacity is placed).
-
-The total costs are dominated by investments in generation from wind
-and solar, and conversion from power to heat (primarily heat pumps)
-and to hydrogen and liquid hydrocarbons (for transport fuels and as a
-feedstock for the chemicals industry). Vehicle costs are not included
-here. The costs of today's system are \euro700~billion per year,
-computed with the same assumptions, which is only slightly less than
-these net-zero emission systems.
-
-As the grid is expanded, total costs decrease
-slightly, despite the increasing costs of the grid. The grid enables
-renewable resources with better capacity factors to be integrated from
-further away, resulting in lower capacity needs for solar and
-wind. The grid also allows renewable variations to be smoothed in space,
-resulting in lower hydrogen demand for balancing power and heat.  The
-total cost benefit of a doubling of grid capacity is around
-\euro44~billion per year, but over half of the benefit (\euro26~billion per year) is available already at a 25\% expansion (similar to the level seen in the TYNDP \cite{TYNDP2016}).
-
-Figure shows the spatial distribution of the investments
-for the case of a 25\% expansion. While solar capacity is spread
-relatively evenly around the continent, both onshore and offshore wind
-are concentrated around the North Sea and British Isles. New
-transmission capacity is concentrated in HVDC lines that help the
-integration of wind in these regions, and the transport of wind energy
-to inland locations.
-
-Electrolyzer capacities for power-to-hydrogen see a massive scale-up,
-from several dozen MW today to 1048~GW in this scenario (note that
-several 100~MW electrolyzer facilities are already in planning for the
-2020s). Their locations correlate strongly with wind capacities,
-particularly offshore wind. A new network
-transports hydrogen from these sites of production to the rest of
-Europe where hydrogen is consumed by industry (for ammonia, organic
-chemicals and steel production), for heavy-duty transport and in fuel
-cells for power and heat backup. Of the huge hydrogen production
-(2949~TWh/a), most of it (1722~TWh/a) goes to Fischer-Tropsch fuels
-for organic chemicals and transport fuels, 615~TWh/a to fuel cell CHPs
-in district heating networks, and the rest to industry and transport.
-The hydrogen network plays a dominant role transporting energy around
-Europe when grid expansion is restricted: more energy is moved further
-in the hydrogen network (209~TWhkm/h) than either the HVAC
-(99~TWhkm/h) or HVDC (3.3~TWhkm/h) networks.
-
-Methane production is limited to biogas (352~TWh/a) and some fossil
-gas (388~TWh/a), the latter of whose emissions are offset by bioenergy
-with carbon capture and direct air capture with sequestration.
-Methane is used for process heat in some industry applications and as
-a heating backup for power-to-heat units. The model has the option of
-efficient power-to-methane conversion (methanation integrated with a
-solid oxide electrolyzer) but does not choose to build it because of
-its high capital costs compared to the direct hydrogen route.
-
-50\% more power grid volume (expansion of 162 TWkm) and 260 TWkm of hydrogen grid
-
-25\% more power grid volume (expansion of 81 TWkm) and 282 TWkm of hydrogen grid
-
-no more power grid volume and 308 TWkm of hydrogen grid
-
-direct system costs bit higher than today's system
-
-systems without grid expansion are feasible, but more costly
-
-as grid is expanded, costs reduce from solar, PtX and H2 network, more offshore wind
-
-total cost benefit of extra grid: 47 billion euro per year
-
-over half of the benefit is available at 25\% grid expansion (like TYNDP)
-
-
-
-
-
-
+\cref{fig:lv-restriction} also includes a scenario where today's electricity
+transmission infrastructure is completely removed from the model. While doubling
+the transmission grid yields a benefit of \euro47~billion per year, removing it
+incurs a cost of \euro~XX~billion per year. The lack of electricity grid is
+mostly compensated by more solar PV generation, battery storage and
+re-electrified hydrogen.
 
 \subsection{Cost of Onshore Wind Potential Restrictions}
 \label{sec:si:onw}
 
-If we take the case with no grid expansion and restrict the installable
-potentials of onshore down to zero, costs rise by an additional \euro~42~billion
-per year. The model substitutes onshore wind for
-higher investment in offshore and solar generators. Because offshore capacities
-are concentrated near coastlines, and grid capacity is restricted, total
-spending on hydrogen electrolyzers and networks also increases to absorb the
-offshore generation.
+In the following sensitivity runs, the maximum installable capacity of onshore
+wind is successively restricted down to zero at each node. The upper limit is
+derived from land use restriction and yields a maximum technical potential
+corresponding to about \SI{00}{\giga\watt} for Germany. For this investigation,
+a compromise electricity grid expansion by 25\% compared to today and no limits
+on hydrogen network infrastructure are assumed.
 
-Just as in the case of restricted line volumes, the rise in costs is non-linear:
-if we restrict to 25\% of the onshore potential (around 100~GW for Germany),
-costs rise by only \euro~14~billion per year. 25\% of the onshore wind potential
-represents a possible social compromise between total system cost, and public
-acceptance concerns about onshore wind development.
+By restricting the installable potentials of onshore down to zero, costs rise by
+an additional \euro~XX~billion per year (X\%). Just as in the case of restricted
+line volumes, \cref{fig:onw-restriction} reveals a nonlinear rise in system
+costs: if we constrain the model to 25\% of the onshore potential (around XX~GW
+for Germany), costs rise by only \euro~XX~billion per year (X\%). Thereby, 25\%
+of the onshore wind potential may represent a social compromise between total
+system cost, and social concerns about onshore wind development.
 
-Without onshore wind, solar rooftop and offshore potentials are maxxed out
-- If all sectors included and Europe self-sufficient, effect of installable potentials is critical
+In comparison, Schlachtberger et al.~\cite{schlachtbergerCostOptimal2018} found
+a smaller change between 9\% and 12\% in system costs in an electricity-only
+model when onshore wind potentials were restricted across various grid expansion
+limitations. The the biggest change was observed when the power grid could not
+be reinforced. Onshore wind was largely replaced with offshore wind in that
+model. Unlike that model, here we have a higher grid resolution (181 versus 30
+regions) which allows us to better assess the grid integration costs of offshore
+wind. Our results show that moderate power grid expansion is particularly
+important when onshore wind development is severely limited. For the extreme
+case where no onshore wind capacities would be built, reducing power grid
+expansion from 25\% to none incurs another rise in system cost of
+\euro~XX~billion per year (X\%).
 
-Without onshore wind, hydrogen network looks much different:
-- with: British Isles and North Sea dominate hydrogen production
-- without: Southern Europe becomes much larger exporter of hydrogen
+\begin{SCfigure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{sensitivity-h2.pdf}
+    \caption{Sensitivity of hydrogen network infrastructure.}
+    \label{fig:h2-restriction-w-onw}
+\end{SCfigure}
 
-Technical potentials for onshore wind respect land usage, but do not represent
-sociallly-acceptable potentials
-- technical potential of 480 GW in Germany is unlikely to be built
-- costs rise by 122 billion per year as we eliminate onshore wind
-- rise is only 45 billion per year if we allow a quarter of technical potential (120 GW in Germany)
+The benefit of a hydrogen network is similar whether or not onshore wind
+capacities are built in Europe, even though the hydrogen network topology is
+then built around supply from offshore wind in the North Sea and solar PV from
+Southern Europe rather than from onshore wind in North-West Europe. As
+\cref{fig:h2-restriction-w-onw} illustrates, the net benefit is again strongest
+when power grid expansion is restricted. If both onshore wind and power grid
+expansion are excluded, costs for a system without a hydrogen network option
+were by \euro~53~billion per year (5.6\%) higher. With cost-optimal electricity
+grid reinforcement, the net benefit of a hydrogen network is still as high as
+\euro~30~billion per year (3.5\%).
 
 \section{Detailed Results of Least-Cost Solution with Gas Network}
 \label{sec:si:detailed}
 
+In the following section we describe detailed results from a scenario where the
+carrier gas was nodally resolved and which included the methane network
+alongside the hydrogen and electricity grid. In previously shown results, gas
+was not nodally resolved and gas pipelines were only considered to determine the
+potential for retrofitted hydrogen pipelines.
+
 competition of H2 and gas flow? can gas network be completely removed?
 
 no loss modelling in gas networks
-
-amount of re-electrified hydrogen/gas
-
-How many pipelines are used in both directions?
-
-onshore wind sensitivities
-
-
 
 \begin{figure}
     \centering
