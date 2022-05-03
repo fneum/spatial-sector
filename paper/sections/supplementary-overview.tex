@@ -1,136 +1,19 @@
 \section{Model Overview}
 \label{sec:si:model-overview}
 
-\begin{figure}
-    \centering
-    \includegraphics[]{../graphics/multisector_figure.pdf}
-    \label{fig:multisector}
-\end{figure}
 
-\begin{figure}
-    \centering
-\begin{subfigure}[t]{0.49\textwidth}
-    \centering
-    % \caption{clustered electricity network}
-    \includegraphics[width=\textwidth]{electricity-network-today-map.pdf}
-\end{subfigure}
-\begin{subfigure}[t]{0.49\textwidth}
-    \centering
-    % \caption{gas network}
-    \includegraphics[width=\textwidth]{gas-network-today-map.pdf}
-\end{subfigure}
-\caption{Clustered electricity and gas transmission networks.}
-\label{fig:clustered-networks}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[height=0.25\textheight]{total-annual-demand.pdf}
-    \includegraphics[height=0.25\textheight]{ts-demand.pdf}
-    \caption{Final energy demand temporal diversity.}
-    \label{fig:demand-time}
-\end{figure}
-
-\newgeometry{top=0.5cm, bottom=1.5cm}
-\begin{figure}
-    \centering
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{electricity demand}
-        \label{fig:demand-space:electricity}
-        \includegraphics[width=\textwidth]{demand-map-electricity.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{hydrogen demand}
-        \label{fig:demand-space:hydrogen}
-        \includegraphics[width=\textwidth]{demand-map-H2.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{methane demand}
-        \label{fig:demand-space:methane}
-        \includegraphics[width=\textwidth]{demand-map-gas.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{heat demand}
-        \label{fig:demand-space:heat}
-        \includegraphics[width=\textwidth]{demand-map-heat.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{oil demand}
-        \label{fig:demand-space:oil}
-        \includegraphics[width=\textwidth]{demand-map-oil.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{solid biomass demand}
-        \label{fig:demand-space:biomass}
-        \includegraphics[width=\textwidth]{demand-map-solid biomass.pdf}
-    \end{subfigure}
-    \caption{Final energy demand spatial diversity.}
-    \label{fig:demand-space}
-\end{figure}
-\restoregeometry
-
-PyPSA-Eur-Sec i
-
-The overall circulation of energy and carbon is shown in \cref{fig:multisector}
-
-Not all of the sectors are at the full nodal resolution, and some demand for
-some sectors is distributed to nodes using heuristics that need to be corrected.
-Some networks are copper-plated to reduce computational times.
-
-overnight scenario
-
-no pathway
-
-weather year 2013
-
-High resolution multi-sectoral approach: Developing the most advanced open source modeling system with regard to spatial, sectoral, technological and temporal resolution
-- All energy infrastructures in one optimisation problem (electricity, gas, heat, industry)
-- Detailed transmission grid representation in EU-wide model
-- Detailed representation of demand sectors: Industry, buildings, transport
-- so that the variability of demand and variable renewable supply can be represented, and so that existing grid bottlenecks are visible.
-
-Energy sector coupling, storage and conversion is modelled to connect
-electricity, heating (individual buildings, district heating and industry),
-transport and gas (methane, hydrogen and carbon dioxide) in the different
-sectors (buildings, transport and industry).
-
-The spatial resolution of the model can be customised by the user. It can be set
-at electricity substation level, based on administrative boundaries such as
-NUTS2 or country-level, or to a custom number of nodes to enhance computational
-performance. The spatial resolution of the input data varies: conventional power
-plant locations are known exactly, as are large industrial facilities; wind and
-solar time series are regionalised based on the underlying ERA5 reanalysis data
-(around 20km by 20km); heat and transport demand at NUTS3; electricity demand
-time series are at TSO control region level.
-
-Electricity can be converted to heat via heat pumps or resistive heaters; to
-hydrogen gas, or further to methane and liquid hydrocarbons; or to work in
-various demand devices. Methane can be reformed to hydrogen, and most fuels can
-be used for electricity generation in turbines or fuel cells.
-
-Biomass can be used in electricity generation with and
-without CCS, as well as to provide low- to medium-temperature process heat in
-industry.
-
-Energy/material storage can be optimised in PyPSA-Eur-Sec including conventional
-pumped hydro storage, electrochemical storage like Lithium ion batteries,
-storage of gases including methane, hydrogen and carbon dioxide, storage of
-liquid fuels, as well as thermal energy storage in the form of hot water both in
-individual buildings and in district heating networks.
-
-Carbon capture is
-needed in the model both to capture and sequester process emissions with a
-fossil origin, such as those from calcination of fossil limestone in the cement
-industry, as well as to provide carbon for the production of hydrocarbons for
-dense transport fuels and as a chemical feedstock, for example for the plastics
-industry. Therefore, carbon cycles are carefully tracked in PyPSA-Eur-Sec.
-
-compared to electricity, heating and transport are strongly peaked
-- heating is strongly seasonal but also with synoptic variations
-- transport has strong daily periodicity
+PyPSA-Eur-Sec is an open model dataset of the European energy system at the
+transmission network level that covers the electricity, heating, transport and
+industry sectors. PyPSA-Eur-Sec builds a linear optimisation problem to plan
+energy system infrastructure from various open data sources using the workflow
+management tool Snakemake \citeS{snakemake}, which is then solved with the
+commercial solver Gurobi \citeS{gurobi}. The overall circulation of energy and
+carbon is shown in \cref{fig:multisector}. The modelling approaches for the
+items listed there are described in detail in the following sections
+\crefrange{sec:si:electricity}{sec:si:carbon-management}. A mathematical
+formulation of the model is provided in \cref{sec:si:math}. The clustered model
+resolution is shown in \cref{fig:clustered-networks} together with the existing
+electricity and gas grid capacities. The carriers electricity, hydrogen, heat
+and biomass are nodally resolved, whereas other carriers like gas, oil and
+carbon dioxide are copperplated in the current version to reduce the problem's
+computational burden.

@@ -13,13 +13,13 @@ renewable potentials.
 
 Hourly electricity demand at country-level for the reference year 2013 published
 by ENTSO-E is retrieved via the interface of the Open Power System Data (OPSD)
-initiative \citeS{}. Existing electrified heating is subtracted from this
+initiative \citeS{muehlenpfordtTimeSeries2020}. Existing electrified heating is subtracted from this
 demand, so that power-to-heat options can be optimised separately. Furthermore,
 current industry electricity demand is subtracted and handled separately
 considering further electrification in the industry sector (see \cref{sec:si:industry}).
 
 For the distribution of electricity demand for industry we leverage geographical
-data from the industrial database developed within the Hotmaps project \citeS{}.
+data from the industrial database developed within the Hotmaps project \citeS{piamanztobiasfleiterGeoreferencedIndustrial2018}.
 The remaining electricity demand for households and services is heuristically
 distributed inside each country to 40\% proportional to population density and
 to 60\% proportional to gross domestic product based on regression performed for
@@ -55,10 +55,8 @@ the locations of wind and solar installations is fragmentary, we disregard
 already existing wind and solar capacities. Moreover, new OCGT and CCGT as well
 as gas or biomass-fueled combined heat and power (CHP) generators may be built.
 For CHP generators we assume back-pressure operation with heat production
-proportional to electricity output.
-
-Specific techno-economic assumptions, like costs, lifetimes and efficiencies are
-included in \cref{sec:si:costs}.
+proportional to electricity output. Specific techno-economic assumptions, like
+costs, lifetimes and efficiencies are included in \cref{sec:si:costs}.
 
 \subsection{Electricity Storage}
 \label{sec:si:electricity:storage}
@@ -82,24 +80,30 @@ power (CHP) plant.
 
 \begin{figure}
     \includegraphics[width=\textwidth, center]{network.pdf}
-    \label{fig:base-network}
     \caption{ENTSO-E transmission network}
+    \label{fig:base-network}
 \end{figure}
+
+\begin{SCfigure}
+    \caption{Exemplary Voronoi cells of the transmission network's substations.}
+    \includegraphics[width=0.55\textwidth]{voronoi}
+    \label{fig:voronoi}
+\end{SCfigure}
 
 % topology
 
 The topology of the European electricity transmission network is represented at
-substation level based on maps released in the interactive ENTSO-E map \citeS{}
-using a modified version of the GridKit \citeS{} tool. As displayed in
-\cref{fig:base-network}, the dataset includes HVAC ines at and above 220 kV
-across the mulitple synchronous zones of the ENTSO-E area, but excludes Turkey
+substation level based on maps released in the interactive \mbox{ENTSO-E} map \citeS{ENTSOE}
+using a modified version of the GridKit \citeS{gridkit} tool. As displayed in
+\cref{fig:base-network}, the dataset includes HVAC lines at and above 220 kV
+across the mulitple synchronous zones of the \mbox{ENTSO-E} area, but excludes Turkey
 and North-African countries which are also synchronised to the continental
 European grid, interconnections to Russia, Belarus and Ukraine as well as small
 island networks with less than four nodes at transmission level, such as Cyprus,
 Crete and Malta. In total, the network encompasses around 3000 substations, 6600
 HVAC lines and around 70 HVDC links, some of which are planned projects from the
 Ten Year Network Development Plant (TYNDP) that are not yet in operation
-\citeS{}.
+\citeS{tyndp2018}.
 
 % unclustered model regions
 
@@ -114,21 +118,15 @@ the closest substation. The Voronoi cells are also computed for offshore regions
 based on the countries' Exclusive Economic Zones (EEZs) and the adjacent onshore
 substations.
 
-\begin{SCfigure}
-    \caption{Exemplary Voronoi cells of the transmission network's substations.}
-    \includegraphics[width=0.55\textwidth]{voronoi}
-    \label{fig:voronoi}
-\end{SCfigure}
-
 % physical modelling
 
 Capacities and electrical characteristics of transmission lines and substations,
-such as impedances and thermal ratings\todo{summer or winter ratings?}, are
-inferred from standard types for each voltage level from \citeS{}. For each HVAC
+such as impedances and thermal ratings, are
+inferred from standard types for each voltage level from \citeS{oedingElektrischeKraftwerke2011}. For each HVAC
 line, we further restrict line loading to 70\% of the nominal rating to
 approximate $N-1$ security, which protects the system against overloading if any
 one transmission line fails. This conservative security margin is commonly
-applied in the industry \citeS{}. Dynamic line rating is not considered. Power
+applied in the industry \citeS{ackermannOptimisingEuropean2016}. Dynamic line rating is not considered. Power
 flow is modelled through lossless linearised power flow equations using an
 efficient cycle-based formulation of Kirchhoff's voltage law
 \citeS{horschLinearOptimal2018}.
@@ -150,7 +148,9 @@ same country can be aggregated. The equivalent lines connecting the clustered
 regions are determined by the aggregated electro-technical characteristics of
 original transmission lines. Their weighted cost takes into consideration the
 underwater fraction of the lines and adds 25\% to the crow-fly distance to
-approximate routing constraints.
+approximate routing constraints. The clustered electricity network resolution
+and associated model regions, as shown in \cref{fig:clustered-networks}, are
+applied uniformly to the other nodally resolved energy carriers as well.
 
 % distribution grid
 

@@ -1,21 +1,124 @@
-\section*{Benefit of a Hydrogen Network with Repurposed Gas Pipelines}
+\section*{Energy system}
+\label{sec:es}
+\addcontentsline{toc}{section}{\nameref{sec:es}}
+
+Overall, the total system costs are dominated by investments in generation from wind
+and solar, and conversion from power to heat (primarily heat pumps)
+and to hydrogen and liquid hydrocarbons (for transport fuels and as a
+feedstock for the chemicals industry).
+
+Figure shows the spatial distribution of the investments
+for the case of a XX\% expansion. While solar capacity is spread
+relatively evenly around the continent, both onshore and offshore wind
+are concentrated around the North Sea and British Isles. New
+transmission capacity is concentrated in HVDC lines that help the
+integration of wind in these regions, and the transport of wind energy
+to inland locations.
+
+Electrolyzer capacities for power-to-hydrogen see a massive scale-up to XX~GW in
+this scenario. Their locations correlate strongly with wind capacities,
+particularly offshore wind. A new network transports hydrogen from these sites
+of production to the rest of Europe where hydrogen is consumed by industry (for
+ammonia, organic chemicals and steel production), for heavy-duty transport and
+in fuel cells for power and heat backup. Of the huge hydrogen production
+(XX~TWh/a), most of it (XX~TWh/a) goes to Fischer-Tropsch fuels for organic
+chemicals and transport fuels, XX~TWh/a to fuel cell CHPs in district heating
+networks, and the rest to industry and transport.
+
+The hydrogen network plays a
+dominant role transporting energy around Europe when grid expansion is
+restricted: more energy is moved further in the hydrogen network (XX~TWhkm/h)
+than either the HVAC (XX~TWhkm/h) or HVDC (XX~TWhkm/h) networks.
+
+Methane production is limited to biogas (XX~TWh/a) and some fossil
+gas (XX~TWh/a), the latter of whose emissions are offset by bioenergy
+with carbon capture and direct air capture with sequestration.
+Methane is used for process heat in some industry applications and as
+a heating backup for power-to-heat units.
+
+A net-zero-emission energy system will require policy support. From our model we
+see a need for high, increasing and transparent price for \co pollution of
+at least \SI{435}{\sieuro\per\tco} to achieve \co neutrality. As discussed in
+\cite{brownSynergiesSector2018}, these high abatement prices arise in building
+heating from the large price difference between low-carbon heat and natural gas
+(\SI{22}{\sieuro\per\mwh} in the model); if existing taxes and surcharges were
+included, the \co price would be lower.
+
+Uses of hydrogen:
+- amount of re-electrified hydrogen
+- amount of use in industry
+- amount of use for heating
+
+hydrogen supply:
+- how much hydrogen produced?
+- electrolysis capacities
+- spatial and temporal distribution of electrolysis capacity factors
+
+hydrogen network:
+- how much energy is transported via hydrogen vs electricity?
+- how much TWkm built?
+- what share of hydrogen is locally consumed?
+- how much H2 network is submarine/offshore?
+- what is the average loading of hydrogen vs electricity?
+- what are the dominant flow directions of energy?
+
+hydrogen storage:
+- storage capacities?
+- any steel tanks?
+- state of charge development over time
+
+What drives the hydrogen network?
+- industry demand
+- electricity grid bottlenecks / energy transport
+- cavern storage locations
+
+\section*{Hydrogen network benefit is robust, strongest without power grid expansion}
 \label{sec:h2}
 \addcontentsline{toc}{section}{\nameref{sec:h2}}
+
+If the electricity grid can be expanded, total costs decrease
+slightly, despite the increasing costs of the grid. The grid enables
+renewable resources with better capacity factors to be integrated from
+further away, resulting in lower capacity needs for solar and
+wind. The grid also allows renewable variations to be smoothed in space,
+resulting in lower hydrogen demand for balancing power and heat.  The
+total cost benefit of a doubling of grid capacity is around
+\euro44~billion per year, but over half of the benefit (\euro26~billion per year).
+
+as grid is expanded, costs reduce from solar, PtX and H2 network, more offshore wind
+
+
+\cref{fig:sensitivity-h2}
 
 The cost of hydrogen network 6-8 billion per year
 
 Net benefit is much higher: 30-53 billion per year (2.7-4.8\%)
 
-hydrogen network is robustly beneficial infrastructure, with strongest benefits when there is no power grid expansion
+hydrogen network is robustly beneficial infrastructure
+
+benefit is strongest when there is no power grid expansion
 
 Compare power grid to H2 network:
 - both are important for costs
 - but power grid expansion brings more cost benefit
+- hydrogen grid is not a perfect substitute
 - hydrogen network can partially substitute transmission expansion, but at higher system cost
 
 restricted storage potential makes H2 network more valuable
 
-which pipes are always retrofitted?
+no more power grid volume and 308 TWkm of hydrogen grid
+
+systems without grid expansion are feasible, but more costly
+
+compare annualised investment costs and volume to EHB
+
+Broad ranges of options with similar costs. The flatness of the total system
+costs as we vary grid expansion and onshore wind potentials is a general feature
+of energy system models: there are many directions in the feasible space where
+we can change the system composition with only a small change in total system
+costs. This flatness can be explored systematically using techniques similar to
+Modelling to Generate Alternatives (MGA), and was investigated for an
+electricity-only version of this model in \cite{Neumann2019}.
 
 \begin{SCfigure}
     \centering
@@ -24,6 +127,36 @@ which pipes are always retrofitted?
     \label{fig:sensitivity-h2}
 \end{SCfigure}
 
+
+\section*{Repurposing gas pipelines lowers costs and shapes routes}
+\label{sec:repurposed}
+\addcontentsline{toc}{section}{\nameref{sec:repurposed}}
+
+\cref{fig:twkm}
+
+How much does it cost to retrofit gas pipeline compared to new H2 pipeline?
+- around half
+
+Options to repurpose gas pipelines at lower cost than new pipelines means that
+for topology not always the shortest route will be preferred.
+
+How much of H2 network is retrofitted?
+- around two-thirds of the hydrogen grid can repurpose existing gas network
+
+how much energy is transmitted via electricity / hydrogen
+- if grid expansion is forbidden, hydrogen grid transmits 3x more energy than electricity grid
+
+How much of the methane network is retrofitted to hydrogen?
+
+gas pipelines are not needed anymore (SI)
+
+which pipes are consistently retrofitted across scenarios?
+
+- where H2 pipeline where no gas network?
+- where H2 pipeline exceeds gas pipeline?
+- where are gas pipelines left unused?
+
+How many H2 pipelines are used in both directions?
 
 \begin{figure}
     \centering
@@ -43,8 +176,6 @@ which pipes are always retrofitted?
     \label{fig:twkm}
 \end{figure}
 
-
-% \newgeometry{top=0.5cm, bottom=1.5cm}
 \begin{figure}
     \centering
     \makebox[\textwidth][c]{
@@ -74,9 +205,6 @@ which pipes are always retrofitted?
     \caption{Energy balance.}
     \label{fig:tsc}
 \end{figure}
-% \restoregeometry
-
-
 
 \begin{figure}
     \centering
@@ -128,6 +256,9 @@ which pipes are always retrofitted?
     \label{fig:io}
 \end{figure}
 
+\section*{Hydrogen infrastructure shifts when onshore wind expansion is restricted}
+\label{sec:onwind}
+\addcontentsline{toc}{section}{\nameref{sec:onwind}}
 
 \begin{figure}
     \centering
@@ -152,3 +283,21 @@ which pipes are always retrofitted?
     \label{fig:no-onw}
 \end{figure}
 
+\cref{fig:no-onw}
+
+By restricting the installable
+potentials of onshore down to zero, costs rise by an additional \euro~42~billion
+per year. The model substitutes onshore wind for
+higher investment in offshore and solar generators. Because offshore capacities
+are concentrated near coastlines, and grid capacity is restricted, total
+spending on hydrogen electrolyzers and networks also increases to absorb the
+offshore generation.
+
+Without onshore wind, solar rooftop and offshore potentials are maxxed out
+- If all sectors included and Europe self-sufficient, effect of installable potentials is critical
+- less retrofitting (X\%)
+- costs rise by \euro~104 bn/a (12\%) as onshore wind is eliminated (25\% grid expansion)
+
+Without onshore wind, hydrogen network looks much different:
+- with: British Isles and North Sea dominate hydrogen production
+- without: Southern Europe becomes much larger exporter of hydrogen

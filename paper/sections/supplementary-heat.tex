@@ -15,8 +15,8 @@ envelopes. This reduction is exogenously fixed at 29\%
 \citeS{zeyenMitigatingHeat2021,lombardiWeatherinducedVariability2022}. For space
 heating, the annual demands are converted to daily values based on the
 population-weighted Heating Degree Day (HDD) using the \textit{atlite} tool
-\citeS{}, where space heat demand is proportional to the difference between the
-daily average ambient temperature (read from ERA5 \citeS{}) and a threshold
+\citeS{hofmannAtliteLightweight2021}, where space heat demand is proportional to the difference between the
+daily average ambient temperature (read from ERA5 \citeS{ecmwf}) and a threshold
 temperature above which space heat demand is zero. A threshold temperature of
 \SI{15}{\celsius} is assumed. The daily space heat demand is distributed to the
 hours of the day following heat demand profiles from BDEW \citeS{}. These differ
@@ -29,14 +29,14 @@ proportion to their rural and urban populations respectively. Urban areas with
 dense heat demand can be supplied with large-scale district heating systems. We
 assume that by 2050, 60\% of urban heat demand is supplied by district heating
 networks. Lump-sum losses of 15\% are assumed in district heating systems.
-
 Cooling demand is supplied by electricity and included in the electricity
 demand. Cooling demand is assumed to remain at current levels.
 
-As shown in \cref{fig:demand-time}, total heat demand is similar to the total
-electricity demand but features much more pronounced seasonal variations. The
-total building heating demand adds up to \SI{3084}{\twh\per\year} of which 78\%
-occurs in urban areas.
+The regional distribution of the total heat demand is depicted in
+\cref{fig:demand-space:heat}. As \cref{fig:demand-time} reveals, the total heat
+demand is similar to the total electricity demand but features much more
+pronounced seasonal variations. The total building heating demand adds up to
+\SI{3084}{\twh\per\year} of which 78\% occurs in urban areas.
 
 \citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
 
@@ -81,7 +81,7 @@ temperatures
 \end{equation}
 For the sink water temperature $T_{sink}$ we assume \SI{55}{\celsius} For the
 time- and location-dependent source temperatures $T_{source}$, we rely on the
-ERA5 reanalysis weather data \citeS{}. The temperature differences are converted
+ERA5 reanalysis weather data \citeS{ecmwf}. The temperature differences are converted
 into COP time series using results from a regression analysis performed in
 \citeS{staffellReviewDomestic2012}. For air-sourced heat pumps (ASHP), we use
 the function

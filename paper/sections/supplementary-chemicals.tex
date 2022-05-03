@@ -13,7 +13,8 @@ of hydrogen is exogenously fixed. It is used in heavy-duty land transport (see
 \cref{sec:si:transport:land}) and as liquified hydrogen in the navigation sector
 (see \cref{sec:si:transport:shipping}). Furthermore, stationary fuel cells may
 re-electrify hydrogen (with waste heat as a byproduct) to balance renewable
-fluctuations.
+fluctuations. The regional distribution of hydrogen demands is shown in
+\cref{fig:demand-space:hydrogen}.
 
 \subsection{Hydrogen Supply}
 \label{sec:si:h2:supply}
@@ -68,27 +69,26 @@ repurposed pipelines are a result of the optimisation.
 \subsection{Hydrogen Storage}
 \label{sec:si:h2:storage}
 
-\begin{SCfigure}
-    \centering
-    \includegraphics[width=0.7\textwidth]{caverns.pdf}
-    \caption{Caverns}
-    \label{fig:caverns}
-\end{SCfigure}
-
 \begin{figure}
     \centering
     \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{cavern-potentials-nearshore.pdf}
+        \includegraphics[width=\textwidth]{caverns.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cavern-potentials-offshore.pdf}
+    \end{subfigure}
+    }
+    \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{cavern-potentials-onshore.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.6\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{cavern-potentials-offshore.pdf}
+        \includegraphics[width=\textwidth]{cavern-potentials-nearshore.pdf}
     \end{subfigure}
     }
     \caption{Cavern storage potentials}
@@ -99,7 +99,7 @@ Hydrogen can be stored in overground steel tanks or underground salt caverns.
 The annuitised cost for cavern storage is around 30 times lower than for storage
 in steel tanks including compression. For underground storage potentials for
 hydrogen in European salt caverns we take data from Caglayan et
-al.~\citeS{caglayanTechnicalPotential2019} (\cref{fig:caverns} and map it to
+al.~\citeS{caglayanTechnicalPotential2019} and map it to
 each of the 181 model regions (\cref{fig:clustered-caverns}). We include only
 those caverns that are located on land and within 50 km of the shore
 (nearshore). We impose this restriction to circumvent environmental problems
@@ -117,7 +117,9 @@ Methane is used in individual and large-scale gas boilers, in CHP plants with
 and without carbon capture, in OCGT and CCGT power plants, and in some industry
 subsectors for the provision of high temperature heat (see
 \cref{sec:si:industry}) Methane is not used in the transport sector because of
-engine slippage.
+engine slippage.  The regional distribution of methane demands is shown in
+\cref{fig:demand-space:hydrogen}. However, the results shown in the main body of
+the paper relax all methane transmission costs and constraints.
 
 \subsection{Methane Supply}
 \label{sec:si:methane:supply}
@@ -177,7 +179,9 @@ infrastructure included are presented in \cref{sec:si:detailed}.
 Naphtha is used as a feedstock in the chemicals industry (see
 \cref{sec:si:industry:chemicals}). Furthermore, kerosene is used as transport
 fuel in the aviation sector (see \cref{sec:si:transport:aviation}).
-Non-electrified agriculture machinery also consumes gasoline.
+Non-electrified agriculture machinery also consumes gasoline. The regional
+distribution of the demand for oil-based products is shown in
+\cref{fig:demand-space:oil}. However, this carrier is copperplated in the model.
 
 \subsection{Oil-based Product Supply}
 \label{sec:si:oil:supply}
@@ -258,8 +262,7 @@ biofuels \citeS{}. In comparison, PyPSA-Eur-Sec implies a doubling of biogas
 consumption and similar amounts of solid biofuels, but a shift from energy crops
 and primary wood to residues and wastes. Zappa et al.
 \citeS{zappa100Renewable2019} additionally allowed the use of roundwood chips
-and pellets, and grassy, willow and poplar energy crops. This leads to XX times
-higher biomass potentials.
+and pellets, and grassy, willow and poplar energy crops.
 
 \begin{table}
     \centering
@@ -285,6 +288,8 @@ also feed CHP plants in district heating networks. As noted in
 \cref{sec:si:industry}, solid biomass is used as heat supply in the paper and
 pulp and food, beverages and tobacco industries, where required temperatures are
 lower \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}.
+The regional distribution of solid biomass demand is shown in
+\cref{fig:demand-space:biomass}.
 
 \subsection{Biomass Transport}
 \label{sec:si:bio:transport}

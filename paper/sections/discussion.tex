@@ -1,85 +1,74 @@
 \subsection*{Comparison to Related Literature}
 
-Compared to the net-zero scenarios from the European Commission
-released in 2018 \cite{in-depth_2018}, we see much larger renewable
-generation, reaching beyond 10000~TWh/a. This represents a
-tripling of today's electricity generation (compared to at most a
-145\% increase by 2050 in \cite{in-depth_2018}), with one third going
-to regular electricity demand, one third going to newly-electrified
-sectors in heating, transport and industry, and one third going to
-hydrogen production (dominated by Fischer-Tropsch fuels). The major
-difference is caused by lower electrification rates in other sectors
-in \cite{in-depth_2018}, the higher biomass potentials
-in \cite{in-depth_2018}, and the fact that \cite{in-depth_2018} relies
-on imports of fossil oil for non-energy uses such as plastics (and
-does not count them towards net emissions like we do). We are also
-conservative on energy efficiency; building renovations and
-circular economy concepts would reduce the demand in our model.
+Compared to the net-zero scenarios from the European Commission released in 2018
+\cite{in-depth_2018}, we see much larger renewable generation, reaching beyond
+10000~TWh/a\todo{check total renewable generation}. This represents a tripling
+of today's electricity generation (compared to at most a 145\% increase by 2050
+in \cite{in-depth_2018}), with roughly one third going to regular electricity
+demand, one third going to newly-electrified sectors in heating, transport and
+industry, and one third going to hydrogen production (dominated by
+Fischer-Tropsch fuels). The major difference is caused by lower electrification
+rates in other sectors in \cite{in-depth_2018}, the higher biomass potentials in
+\cite{in-depth_2018}, and the fact that \cite{in-depth_2018} relies on imports
+of fossil oil for non-energy uses such as plastics and does not count them
+towards net emissions like we do.
 
 In \cite{brownSynergiesSector2018} an optimal grid expansion brought a benefit
-of \euro~64~billion per year compared to the case with no transmission
-between European countries, which is higher than the \euro~44~billion
-per year benefit found here. There are at least four causes for this
-difference: the model here has higher resolution (181 versus 30 nodes)
-which allows better placement of wind at good sites; here we start
-from today's grid, which has international transmission;
-in \cite{brownSynergiesSector2018} there was no hydrogen pipeline network and no
-underground hydrogen storage (just steel tanks); and finally we have
-higher demand for hydrogen from industry and synthetic fuels, which
-provides a large flexible load that helps to integrate wind and solar.
-
-In \cite{schlachtbergerCostOptimal2018} only a small change
-(8.8-12.2\%) in system costs was found in a model where onshore wind potentials
-were restricted, with the biggest change when the electricity grid was
-restricted. Onshore wind was largely replaced with offshore wind in
-that model. Unlike that model, here we have a higher grid resolution
-(181 versus 30 nodes) which allows us to better assess the grid
-integration costs of offshore wind.
+of \euro~64~billion per year compared to the case with no transmission between
+European countries, which is higher than the \euro~44~billion per year benefit
+found here. There are at least four causes for this difference: the model here
+has higher resolution (181 versus 30 nodes) which allows better placement of
+wind at good sites; here we start from today's grid, which already has some
+international transmission; in \cite{brownSynergiesSector2018} there was no
+hydrogen pipeline network and no underground hydrogen storage (just steel
+tanks); and finally we have higher demand for hydrogen from industry and
+synthetic fuels, which provides a large flexible load that helps to integrate
+wind and solar.
 
 Caglayan and co-authors \cite{Caglayan2019} also consider European
-decarbonisation scenarios with both electricity transmission and new
-hydrogen pipelines, but at a lower spatial resolution (96 nodes). A
-similar pattern of hydrogen pipeline expansion towards the British
-Isles and North Sea is seen, but lower overall hydrogen capacities
-because industry, shipping, aviation and non-electrified heating are
-not included.
+decarbonisation scenarios with both electricity transmission and new hydrogen
+pipelines, but at a lower spatial resolution (96 nodes). A similar pattern of
+hydrogen pipeline expansion towards the British Isles and North Sea is seen, but
+lower overall hydrogen capacities because industry, shipping, aviation and
+non-electrified heating are not included.
 
-\subsection*{Broad ranges of options with similar costs}
+\subsection*{Comparison to the European Hydrogen Backbone}
 
-The flatness of the total system costs as we vary grid expansion and
-onshore wind potentials is a general feature of energy system models:
-there are many directions in the feasible space where we can change
-the system composition with only a small change in total system
-costs. This flatness can be explored systematically using techniques similar to Modelling to
-Generate Alternatives (MGA), and was investigated for an
-electricity-only version of this model in \cite{Neumann2019}.
+Cost of hydrogen network
+- our models \euro 5-8 bn/a
+- EHB: \euro 4-8 bn/a
 
-\subsection*{Reliance on hydrogen infrastructure}
+\begin{tabular}{lrr}
+    \toprule
+     & Repurposed & New \\
+     Scenario& [TWkm] & [TWkm] \\
+    \midrule
+    European Hydrogen Backbone & 208 & 101 \\
+    PyPSA-Eur-Sec (with grid expansion) & 199 & 143 \\
+    PyPSA-Eur-Sec (no grid expansion) & 277 & 145 \\
+    \bottomrule
+  \end{tabular}
 
-One of the biggest changes seen in this model compared to today's
-system is the huge built-out of hydrogen infastructure: huge new
+EHB
+- made for hydrogen production of 20.6 Mt (692 TWh), demand 1640 TWh compared to XX TWh in our scenarios
+- considers imports
+- 60\% repurposed pipelines
+- levelised transport cost (0.11-0.21 \euro/kg/1000km or 3.3-6.3 \euro/MWh/1000km)
+
+
+\url{https://gasforclimate2050.eu/wp-content/uploads/2021/06/European-Hydrogen-Backbone_April-2021_V3.pdf}
+
+\subsection*{Public acceptance for hydrogen infrastructure}
+
+One of the biggest changes seen is the built-out of hydrogen infastructure: huge new
 electrolyzer capacities, underground storage in salt caverns as well
-as a new hydrogen pipeline network. It is not clear that a new
+as a new hydrogen pipeline network. It is not fully clear that a new
 hydrogen network will have any higher public acceptance than the power
 grid. However, if existing natural gas pipelines can be reused for hydrogen,
 or if at least the pipeline routes can be used, and are always discreetly buried underground, the disturbance to
 the public is minimised.
 
-
-\subsection*{Direct versus indirect costs}
-
-Although our model includes a constraint on \co emissions, we have
-not examined the indirect costs to environment, climate and health of
-the energy system. The German Environmental Agency (UBA) calculated
-the global environmental and health damages of greenhouse gas
-emissions in Germany in 2016 to be \euro~164~billion \cite{UBA2019}
-(these costs are dominated by climate-related damages amounting to
-\SI{180}{\sieuro\per\tco}). This is comparable to the direct costs of the
-German energy system, using our assumptions. Many of these indirect
-costs would be avoided in the net-zero-emission systems presented
-here.
-
-\subsection*{Imports and Self-Sufficiency}
+\subsection*{Energy imports and European self-sufficiency}
 
 limitation no imports
 
@@ -93,31 +82,3 @@ with imports
 
 future: increase self-sufficiency constraints of individual regions
 
-\subsection*{Policy prerequisites}
-
-A net-zero-emission energy system will require policy support.
-Smaller bidding zones and dynamic pricing for flexible loads would
-ease the management of grid congestion. From our model we see a need
-for high, increasing and transparent price for \co pollution
-(renewable support schemes alone are not sufficient to decarbonise
-transport, heating and industry \cite{zhuImpactCO22018}). The model requires
-a \co price of at least \SI{435}{\sieuro\per\tco} to achieve \co
-neutrality. As discussed in \cite{brownSynergiesSector2018}, these high abatement
-prices arise in building heating from the large price difference
-between low-carbon heat and natural gas (\SI{22}{\sieuro\per\mwh} in the model);
-if existing taxes and surcharges were included, the \co price would
-be lower.
-
-
-
-Add biomass supply and industry demand, aviation, shipping, agriculture, and non-energy
-feedstocks for chemicals industry.
-
-Examine different levels of: material efficiency, recycling, carbon
-sequestration, biomass and import of low-carbon synthetic fuels.
-
-Conclusions: efficiency is important, sequestration below \SI{200}{\mega\tco\per\year} is hard,
-costs reduced with lots of biomass and sequestration, but this is challenging.
-
-Without CCS/biomass/nuclear/efficiency/recycling/import need ~10,000 (update!) TWh/a of
-wind+solar - very hard without acceptance problems!

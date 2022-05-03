@@ -51,7 +51,7 @@
 
 Eligibile areas for developing renewable infrastructure are calculated per
 technology and substation's Voronoi cell using the \textit{atlite} tool
-\citeS{} and shown in \cref{fig:eligibility}.
+\citeS{hofmannAtliteLightweight2021} and shown in \cref{fig:eligibility}.
 
 The land available for wind and utility-scale solar PV capacities in a
 particular region is constrained by eligible codes of the CORINE land use
@@ -193,12 +193,12 @@ The location-dependent renewables availability time series are generated based
 on two gridded historical weather datasets (\cref{fig:weather-data}). We
 retrieve wind sepeeds at \SI{100}{\metre}, surface roughness, soil and air
 temperatures, and surface run-off from rainfall or melting snow from the global
-ERA5 reanalysis dataset provided by the ECMWF \citeS{}. It provides hourly
+ERA5 reanalysis dataset provided by the ECMWF \citeS{ecmwf}. It provides hourly
 values for each of these parameters since 1950 on a $0.25^{\circ} \times
 0.25^{\circ}$ grid. In Germany, such a weather cell expands approximately
 \SI{20}{\kilo\metre} from east to west and \SI{31}{km} from north to south. For
 the direct and diffuse solar irradiance, we use the satellite-aided SARAH-2
-dataset, which assesses cloud cover in more detail than the ERA5 dataset. It
+dataset \citeS{SARAH}, which assesses cloud cover in more detail than the ERA5 dataset. It
 features values from 1983 to 2015 at an even higher resolution with a
 $0.05^{\circ} \times 0.05^{\circ}$ grid and 30-minute intervals \citeS{}. In
 general, the reference weather year can be freely chosen for the optimisation,
@@ -221,7 +221,7 @@ series follows regression analyses that map soil or air temperatures to the
 coefficient of performance (COP) \citeS{nouvelEuropeanMapping2015,
 staffellReviewDomestic2012}. Hydroelectric inflow time series are derived from
 run-off data from ERA5 and scaled using EIA annual hydropower generation
-statistics \citeS{}. The open-source library \textit{atlite} \citeS{} provides
+statistics \citeS{u.s.energyinformationadministrationHydroelectricityNet2022}. The open-source library \textit{atlite} \citeS{hofmannAtliteLightweight2021} provides
 functionality to perform all these calculations efficiently. Finally, the
 obtained time series are aggregated to each region heuristically in proportion
 to each grid cell's mean capacity factor. This assumes a capacity layout

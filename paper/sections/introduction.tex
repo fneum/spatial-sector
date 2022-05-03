@@ -1,3 +1,5 @@
+% public acceptance problems
+
 There are many different combinations of technologies that would allow
 the European Union to reach net-zero greenhouse gas emissions by
 2050. However, not all technologies meet the same level of acceptance
@@ -12,34 +14,128 @@ technologies.
 
 2050 scenarios for EU: power demand doubles, mostly met by VRE
 
+hydrogen is an important energy carrier
+- store electricity
+- used in industry
+- feedstock for synthetic fuels
+
 This collides with low acceptance for power grid expansion and onshore wind
 
 Offshore wind can certainly help, but still needed to transport the electricity to loads inland
 
-- trade-offs with unpopular infrastructure
-- triangle: transmission, h2 grid, onshore wind
-- h2 grid vs. transmission grid
-	- contrast H2 network w/wo grid expansion
-	- contrast no grid expansion w/wo H2 network
-- framing: is h2 grid necessary / useful
-- framing: question of social potentials not cost
-- refer to European hydrogen backbone report
-- focus on substition options of infrastructure (electricity and hydrogen) with onshore wind as important sensitivity
-
-- examine benefits of hydrogen network in high-VRE net-zero scenarios for Europe
-- use PyPSA-Eur-Sec 181-region model with all energy sectors represented
-- hydrogen network reduces total systems costs by 2.4-4.8\%
-- X\% uses retrofitted gas network pipelines
-- benefits highest when grid expansion restricted and onshore potentials limited
-- hydrogen network reduces cost of system configurations with higher public acceptance
-
-interplay of electricity and hydrogen transmission grids
+trade-offs with unpopular infrastructure
 
 Electricity transmission network expansion has suffered many delays in
 Europe in recent decades, despite its importance for integrating
-renewable electricity into the energy system. But could a hydrogen
+renewable electricity into the energy system.
+
+But could a hydrogen
 network that reuses the existing fossil gas network offer a replacement
 for balancing variations in wind and solar energy across the continent?
+
+Can we substitute for the electricity grid by producing eleoctrolytic hydrogen
+and transport it through new or repurposed hydrogen pipeline network?
+
+% Idea of European hydrogen backbone
+
+- European hydrogen backbone report
+- hydrogen network largely based on repurposed natural gas infrastructure
+- substition options of infrastructure (electricity and hydrogen)?
+- is h2 grid necessary / useful
+
+% in this paper / model description
+
+We examine interplay of electricity and hydrogen transmission grids in the high
+resolution (181 nodes) all-energy-sector open-source model of the European
+energy system, PyPSA-Eur-Sec.
+
+In this contribution we examine the trade-off between costs and public
+acceptance for onshore wind and overhead transmission lines in highly
+renewable scenarios for Europe with net-zero carbon dioxide emissions
+in the whole energy system (electricity, buildings, transport and
+industry).
+
+For this purpose we use a capacity expansion model of the European energy
+system, PyPSA-Eur-Sec, which, in contrast to previous studies
+\cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,IEESWV,connollySmartEnergy2016,lofflerDesigningModel2017,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020},
+combines a fully sector-coupled approach with a high spatio-temporal resolution
+so that it can capture the grid bottlenecks that constrain the integration of
+variable renewable energy.
+
+We constrain the expansion of electricity and/or hydrogen grid to examine the
+effects on total system cost and the composition of technologies in the system.
+
+The model is detailed enough to capture existing
+bottlenecks and long time series, and has been highly optimised to run
+sector-coupled capacity expansion optimisations.
+
+Scenarios are run with cost
+assumptions for the year 2030 assuming zero net greenhouse gas emissions, while
+varying the allowed expansion of the electricity and hydrogen grids
+respectively.
+
+A hydrogen network can take over and exceed the electricity grid
+in terms of the amount of energy transported over long distances, balancing
+renewables both in space (with the network) and time (with underground storage).
+
+Need to co-optimise balancing solutions with generation. Optimising separately won't work.
+
+PyPSA-Eur-Sec represents all energy flows and bottlenecks in energy networks
+
+couples all energy sectors (power, heat, transport, industry)
+
+% results
+
+The presence of the hydrogen network can reduce system costs by up to 10\%.
+
+We find that the overall system costs are not overly affected
+by restrictions on electricity or hydrogen transmission.
+
+The high level of synthetic fuel production and exchange between the nodes, which is
+necessary for industry, transport and backup electricity and heating
+applications, provides sufficient flexibility to manage these
+restrictions.
+
+Moderate ... provide cost
+savings, but they are small (5-10~\%) compared to total system
+costs.
+
+The restriction of grid
+expansion leads to more local production from solar and more hydrogen
+production.
+
+The limited rise in system costs relies on a new network
+of underground hydrogen storage and pipelines in Europe, which help to balance
+generation from renewables in time and space.
+
+H2 and power: are not complements but their cost reductions are largely additive!
+
+All investigations are carried out with a constraint that carbon dioxide
+emissions balance out to zero over the year. The model is allowed to sequester
+up to 200 Mt\co per year, which allows it to sequester industry process
+emissions, such as calcination in cement manufacture, that have a fossil origin.
+Higher sequestration rates would be favoured in the model. For comparison, the
+JRC-EU-TIMES model sees optimal sequestration levels up to 1.4 Gt\co per year
+for a 95\% reduction of \co emissions in the EU compared to 1990 levels
+\cite{blancoPotentialHydrogen2018}.
+
+In these scenarios we do not allow the import of electricity or synthetic fuels
+(hydrogen, methane and liquid hydrocarbons) from outside Europe. Imports from
+regions with good renewable resources should be considered in future work
+\cite{fasihiTechnoeconomicAssessment2019,heuserTechnoeconomicAnalysis2019}.
+
+% challenges in high-RES energy system
+
+compared to electricity, heating and transport are strongly peaked
+- heating is strongly seasonal but also with synoptic variations
+- transport has strong daily periodicity
+There are difficult periods in winter with
+- low wind and solar (high prices)
+- high space heating demand
+- low air temperatures, which are bad for air-sourced heat pump performance
+- less smart solution: backup gas boilers
+- smart solution: building retrofiting, TES in district heating, CHP
+
 
 general:
 \cite{
@@ -62,103 +158,7 @@ general:
     lehmannManagingSpatial}
 
 PV cost
-\cite{jaxa-rozenSourcesUncertainty2021,victoriaSolarPhotovoltaics2021,xiaoPlummetingCosts2021}
-
-
-We examine these questions in the high resolution (181 nodes)
-all-energy-sector open-source model of the European energy system,
-PyPSA-Eur-Sec. The model is detailed enough to capture existing
-bottlenecks and long time series, and has been highly optimised to run
-sector-coupled capacity-expansion simulations. Scenarios are run for the
-year 2050 assuming zero net greenhouse gas emissions, while varying the
-allowed expansion of the electricity and hydrogen grids respectively. A
-hydrogen network can take over and exceed the electricity grid in terms
-of the amount of energy transported over long distances, balancing
-renewables both in space (with the network) and time (with underground
-storage). The presence of the hydrogen network can reduce system costs
-by up to 10%. It is planned to also examine the impact of assumptions
-about domestic versus imported hydrogen-based chemicals like ammonia and
-methanol on the different grid topologies.
-
-In this contribution we examine the trade-off between costs and public
-acceptance for onshore wind and overhead transmission lines in highly
-renewable scenarios for Europe with net-zero carbon dioxide emissions
-in the whole energy system (electricity, buildings, transport and
-industry). For this purpose we use a capacity expansion model of the
-European energy system, PyPSA-Eur-Sec, which, in contrast to previous
-studies \cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,IEESWV,connollySmartEnergy2016,lofflerDesigningModel2017,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020},
-combines a fully sector-coupled approach with a high-resolution grid
-model (181 regions) so that it can capture the grid bottlenecks that
-constrain the integration of renewable energy.  We successively
-constrain the allowed onshore wind and new overhead grid projects down
-to zero to examine the effects on total system cost and the
-composition of technologies in the system.
-
-We find that the overall system costs are not overly affected
-by restrictions on onshore wind and transmission. The high level of
-synthetic fuel production and exchange between the nodes, which is
-necessary for industry, transport and backup electricity and heating
-applications, provides sufficient flexibility to manage these
-restrictions. Moderate onshore wind and grid expansion provide cost
-savings, but they are small (5-10~\%) compared to total system
-costs. The restriction of onshore wind capacity results in a
-substitution with offshore wind and solar PV; the restriction of grid
-expansion leads to more local production from solar and more hydrogen
-production. The limited rise in system costs relies on a new network
-of underground hydrogen storage and pipelines in Europe, which help to balance
-generation from renewables in time and space.
-
-Need to co-optimise balancing solutions with generation. Optimising separately won't work.
-
-PyPSA-Eur-Sec represents all energy flows and bottlenecks in energy networks
-
-couple all energy sectors (power, heat, transport, industry)
-
-To explore the effects of acceptance, we carry out three principal investigations
-on the model:
-
-\begin{enumerate}
-\item \nameref{sec:lv}: The model is allowed to build new electricity
-transmission infrastructure wherever is cost-optimal, but the total volume of new
-transmission capacity (sum of line length times capacity, TWkm) is limited.
-
-\item \nameref{sec:onw}: Each node has a maximum installable capacity of onshore
-wind, based on land use restrictions. This gives a maximum social-technological
-potential, corresponding to about \SI{480}{\giga\watt} for Germany. This potential is
-successively restricted down to zero at each node. For this investigation, a
-compromise electricity grid expansion by 25\% compared to today is assumed.
-
-\item \nameref{sec:h2}:
-\end{enumerate}
-
-All investigations are carried out with a constraint that carbon dioxide
-emissions balance out to zero over the year (see for
-the possible paths carbon can take in the model). The model is allowed to
-sequester up to 200 Mt\co per year, which allows it to sequester industry
-process emissions, such as calcination in cement manufacture, that have a fossil
-origin. Higher sequestration rates would be favoured in the model (the
-JRC-EU-TIMES model sees optimal sequestration levels up to 1.4 Gt\co per year
-for a 95\% reduction of \co emissions in the EU compared to 1990 levels
-\cite{blancoPotentialHydrogen2018}).
-
-In these scenarios we do not allow the import of electricity or synthetic fuels
-(hydrogen, methane and liquid hydrocarbons) from outside Europe. Imports from
-regions with good renewable resources should be considered in future work
-\cite{fasihiTechnoeconomicAssessment2019,heuserTechnoeconomicAnalysis2019}.
-
-Can a hydrogen network replace electricity transmission network expansion in a climate-neutral scenario for Europe?
-
-Can we substitute for the electricity grid by producing eleoctrolytic hydrogen
-and transport it through new or repurposed hydrogen pipeline network?
-
-There are difficult periods in winter with
-- low wind and solar (high prices)
-- high space heating demand
-- low air temperatures, which are bad for air-sourced heat pump performance
-- less smart solution: backup gas boilers
-- smart solution: building retrofiting, TES in district heating, CHP
-
-H2 and power: are not complements but their cost reductions are largely additive!
-
-
-
+\cite{
+    jaxa-rozenSourcesUncertainty2021,
+    victoriaSolarPhotovoltaics2021,
+    xiaoPlummetingCosts2021}

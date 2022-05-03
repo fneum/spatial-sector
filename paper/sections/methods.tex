@@ -1,3 +1,12 @@
+overnight scenario, disregarding pathway
+
+weather year 2013
+- Detailed transmission grid representation in EU-wide model
+- Detailed representation of demand sectors: Industry, buildings, transport
+- so that the variability of demand and variable renewable supply can be represented, and so that existing grid bottlenecks are visible.
+In this study, we used the historical year 2013 for weather-dependent inputs and applied a net-zero
+emission constraint
+
 The model uses linear optimisation to minimise total annual operational and
 investment costs subject to technical and physical constraints, assuming perfect
 competition and perfect foresight over one year of 3-hourly operation. Apart
@@ -72,11 +81,29 @@ consider dense liquid hydrocarbons. Battery electric vehicles for passenger
 transport can be enables with demand response as well as vehicle-to-grid
 capabilities.
 
-% Since the model is still being refined, the results in this contribution are
-% only preliminary. Planned refinements include more precise placement of biomass
-% resources and industry demand within each country, the option to convert the
-% existing natural gas transmission network to carry 100\% hydrogen (currently the
-% hydrogen network is built based on the optimal topology between the nodes
-% regardless of the existing network) and more scenarios for circular economy
-% concepts, different biomass potentials, different levels of carbon sequestration
-% and non-zero import volumes for synthetic fuels.
+Energy sector coupling, storage and conversion is modelled to connect
+electricity, heating (individual buildings, district heating and industry),
+transport and gas (methane, hydrogen and carbon dioxide) in the different
+sectors (buildings, transport and industry).
+
+Electricity can be converted to heat via heat pumps or resistive heaters; to
+hydrogen gas, or further to methane and liquid hydrocarbons; or to work in
+various demand devices. Methane can be reformed to hydrogen, and most fuels can
+be used for electricity generation in turbines or fuel cells.
+
+Biomass can be used in electricity generation with and
+without CCS, as well as to provide low- to medium-temperature process heat in
+industry.
+
+Energy/material storage can be optimised including conventional
+pumped hydro storage, electrochemical storage like Lithium ion batteries,
+storage of gases including methane, hydrogen and carbon dioxide, storage of
+liquid fuels, as well as thermal energy storage in the form of hot water both in
+individual buildings and in district heating networks.
+
+Carbon capture is
+needed in the model both to capture and sequester process emissions with a
+fossil origin, such as those from calcination of fossil limestone in the cement
+industry, as well as to provide carbon for the production of hydrocarbons for
+dense transport fuels and as a chemical feedstock, for example for the plastics
+industry.
