@@ -11,36 +11,37 @@
     \label{fig:process-emissions}
 \end{SCfigure}
 
+% \begin{table}[h]
+%     \centering
+%     \small
+%     \setlength{\tabcolsep}{6pt}
+%     \begin{tabular}{@{} p{5cm}r @{}}
+%       \toprule
+%       Material & Production [\si{\mega\tonne\per\year}] \\
+%       \midrule
+%       steel & 174 \\
+%       cement & 186 \\
+%       glass & 44 \\
+%       ceramics and other NMM & 360 \\
+%       ammonia & 18 \\
+%       chlorine & 10 \\
+%       methanol & 2 \\
+%       high-value chemicals (HVC) & 47 \\
+%       other chemicals & 28 \\
+%       pulp & 39 \\
+%       paper & 94 \\ \bottomrule
+%     \end{tabular}
+%     \caption{Industrial production for main products in 2015.}
+%     \label{tab:industryproduction}
+%   \end{table}
+
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
     \caption{Distribution of industries according to emissions data from the Hotmaps industrial sites database.}
     \label{fig:hotmaps}
 \end{SCfigure}
 
-\begin{table}
-    \centering
-    \small
-    \setlength{\tabcolsep}{6pt}
-    \begin{tabular}{@{} p{5cm}r @{}}
-      \toprule
-      Material & Production [\si{\mega\tonne\per\year}] \\
-      \midrule
-      steel & 174 \\
-      cement & 186 \\
-      glass & 44 \\
-      ceramics and other NMM & 360 \\
-      ammonia & 18 \\
-      chlorine & 10 \\
-      methanol & 2 \\
-      high-value chemicals (HVC) & 62 \\
-      other chemicals & 28 \\
-      pulp & 39 \\
-      paper & 94 \\ \bottomrule
-    \end{tabular}
-    \caption{Industrial production for main products in 2015.}
-    \label{tab:industryproduction}
-  \end{table}
-  % TODO: \todo{check these numbers}
+
 \section{Industry Sector}
 \label{sec:si:industry}
 
@@ -56,7 +57,7 @@ consumption in Europe were iron and steel, chemicals industry, non-metallic
 mineral products, pulp, paper and printing, food, beverages and tobacco, and
 non-ferrous metals \cite{IDEES}.
 
-\subsection{General Overview}
+\subsection{Overview}
 \label{sec:si:industry:overview}
 
 Greenhouse gas emissions associated with industry can be classified into
@@ -340,13 +341,14 @@ process emissions of \SI{0.03}{\tco\per\tonne} of ceramic.
 
 The production of glass is assumed to be fully electrified based on the current
 efficiency of electric melting tanks and electric annealing which adds up to an
-electricity demand of 2.07 MWh/t of glass
+electricity demand of 2.07 MWh\el/t of glass
 \citeS{lechtenbohmerDecarbonisingEnergy2016}. The manufacturing of glass incurs
-process emissions of \SI{0.1}{\tco\per\tonne} of glass.
+process emissions of \SI{0.1}{\tco\per\tonne} of glass. Potential efficiency
+improvements, which according to \citeS{lechtenbohmerDecarbonisingEnergy2016}
+could reduce energy demands to 0.85~MWh\el/t of glass, have not been considered.
 
 \citeS{furszyferdelrioDecarbonizingGlass2022}
 
-\citeS{lechtenbohmerDecarbonisingEnergy2016} also has big efficiency improvement with 0.85~MWh\el/tGlass.
 
 \subsection{Non-ferrous Metals}
 \label{sec:si:industry:nfm}
@@ -367,11 +369,13 @@ into aluminium via the  Hall-H\'{e}roult process
 \begin{equation}
     \ce{2Al2O3 + 3C -> 4Al + 3\co}.
 \end{equation}
-The primary route requires high-enthalpy heat \todo{How much energy?} to produce
-alumina which is supplied by methane and causes process emissions of
+The primary route requires high-enthalpy heat (2.3 MWh/t) to produce alumina
+which is supplied by methane and causes process emissions of
 \SI{1.5}{\tco\per\tonne} aluminium. According to  \citeS{Friedrichsen_2018},
 inert anodes might become commercially available by 2030 that would eliminate
 the process emissions. However, they have not been considered in this study.
+Assuming all subprocesses are electrified, the primary route requires 15.4
+MWh$_{el}$/t of aluminium.
 
 In the secondary route, scrap aluminium is remelted. The energy demand for this
 process is only 10\% of the primary route and there are no associated process
@@ -380,8 +384,8 @@ requires 1.7 MWh/t of aluminium. Following \citeS{Friedrichsen_2018}, we assume
 a share of recycled aluminium of 80\% by 2050.
 
 For the other non-ferrous metals, we assume the electrification of the entire
-manufacturing process with an average electricity demand of 3.2 MWh/t lead
-equivalent. \todo{check source and code}
+manufacturing process with an average electricity demand of 3.2 MWh\el/t lead
+equivalent.
 
 \subsection{Other Industry Subsectors}
 \label{sec:si:industry:other}

@@ -1,24 +1,28 @@
-overnight scenario, disregarding pathway
-
-weather year 2013
 - Detailed transmission grid representation in EU-wide model
 - Detailed representation of demand sectors: Industry, buildings, transport
 - so that the variability of demand and variable renewable supply can be represented, and so that existing grid bottlenecks are visible.
-In this study, we used the historical year 2013 for weather-dependent inputs and applied a net-zero
-emission constraint
+- applied a net-zero emission constraint
 
-The model uses linear optimisation to minimise total annual operational and
-investment costs subject to technical and physical constraints, assuming perfect
-competition and perfect foresight over one year of 3-hourly operation. Apart
-from existing electricity transmission and hydroelectric facilities, no other
-existing assets are assumed (so-called `greenfield optimisation'), so that the
-model represents an ideal steady state.  Cost assumptions are taken, where
-possible, from predictions for the year 2030 by the Danish Energy Agency
-\cite{dea2019}. The model is implemented in the free software framework Python
-for Power System Analysis (PyPSA) \cite{brownPyPSAPython2018}.
+In this section the core characteristics and ssumptions of the model
+PyPSA-Eur-Sec are presented. More detailed descriptions of specific sectors,
+energy carriers, renewable potentials, transmission infrastructure modelling,
+and mathematical problem formulation are covered in the supplementary material
+under \crefrange{sec:si:model-overview}{sec:si:math}.
 
-In this section the main assumptions used in the model PyPSA-Eur-Sec are
-presented. PyPSA-Eur-Sec builds upon the model from \cite{brown2018}, which
+The European sector-coupled energy system model PyPSA-Eur-Sec uses linear
+optimisation to minimise total annual operational and investment costs subject
+to technical and physical constraints, assuming perfect competition and perfect
+foresight over one year of 3-hourly operation. In this study, we used the
+historical year 2013 for weather-dependent inputs. Apart from existing
+electricity transmission and hydroelectric facilities, no other existing assets
+are assumed (so-called `greenfield optimisation' or 'overnight scenario'), so
+that the model represents an ideal steady state and disregards pathway
+dependencies.  Cost assumptions are taken, where possible, from predictions for
+the year 2030 by the Danish Energy Agency \cite{dea2019} (see
+\cref{sec:si:costs}). The model is implemented in the free software framework
+Python for Power System Analysis (PyPSA) \cite{brownPyPSAPython2018}.
+
+PyPSA-Eur-Sec builds upon the model from \cite{brownSynergiesSector2018}, which
 covered electricity, heating in buildings and ground transport in Europe with
 one node per country. PyPSA-Eur-Sec adds biomass on the supply side, and
 industry, aviation and shipping on the demand side. Unavoidable process
@@ -27,45 +31,45 @@ dense hydrocarbon fuels for aviation, necessitate careful management of the
 carbon cycle, including carbon capture from industry, biomass combustion and
 directly from the air.
 
-Figure gives an overview of the supply, transmission,
-storage and demand sectors implemented in the European sector-coupled model
+Energy sector coupling, storage and conversion is modelled to connect
+electricity, heating (individual buildings, district heating and industry),
+transport and gas (methane, hydrogen and carbon dioxide) in the different
+sectors (buildings, transport and industry).
+
+\cref{fig:multisector} gives an overview of the supply, transmission, storage
+and demand sectors implemented in the European sector-coupled model
 PyPSA-Eur-Sec. Generator capacities (for onshore wind, offshore wind, solar
 photovoltaic (PV), biomass and natural gas), storage capacities (for batteries,
 hydrogen, methane, liquid hydrocarbons, carbon dioxide and hot water tanks),
 heating capacities (for heat pumps, resistive heaters, gas boilers, combined
 heat and power (CHP) plants and solar thermal collector units), carbon capture
 (from industry, CHP plants and directly from the air), energy converters
-(electrolyzers, methanation, Fischer-Tropsch) and transmission capacities for
-electricity and hydrogen are all subject to optimisation, as well as the
-operational dispatch of each unit in each hour. Demand curves for the different
-sectors, the ratio of district heating to decentralised heating, the number of
-electric vehicles, methane storage and hydroelectricity capacities (for
-reservoir and run-of-river generators and pumped hydro storage) are exogenous to
-the model.
+(electrolyzers, methanation, Fischer-Tropsch), energy storage (batteries,
+hydrogen storage in caverns and steel tanks, pumped-hydro and reservoirs), and
+transmission capacities for electricity and hydrogen are all subject to
+optimisation, as well as the operational dispatch of each unit in each hour.
+Demand curves for the different sectors, the ratio of district heating to
+decentralised heating, the number of electric vehicles, methane storage and
+hydroelectricity capacities (for reservoir and run-of-river generators and
+pumped hydro storage) are exogenous to the model.
 
 The European transmission network model is based on the open model PyPSA-Eur
-presented in \cite{horschPyPSAEurOpen2018}. The state of the network in 2018 is plotted. The full European transmission network is clustered
-down to 181 representative nodes based on the methodology used in
-\cite{Hoersch2017}, thereby preserving the most important transmission corridors
+presented in \cite{horschPyPSAEurOpen2018}. The full European transmission network is clustered
+down to 181 representative regions based on the methodology used in
+\cite{Hoersch2017,frysztackiStrongEffect2021}, thereby preserving the most important transmission corridors
 that cause bottlenecks. The linearised optimal power flow uses a cycle-based
 formulation from \cite{horschLinearOptimal2018} that significantly improves computational
-performance; as transmission lines are expanded, impedances are updated
-iteratively until convergence is achieved.
+performance.
 
-The sector-coupling model is based on the open model PyPSA-Eur-Sec from
-\cite{brownSynergiesSector2018} which added to the electricity-only model of
-\cite{schlachtbergerBenefitsCooperation2017} both land transport as well as space and water heating
-in the residential and commercial sectors. In the model presented in this
-contribution, biomass, industry demand (separately for sectors including iron
-and steel, concrete, chemicals) and transport fuels for aviation and shipping
-have also been included.
-
-For biomass, only waste and residues from agriculture and forestry are
+For \textbf{biomass}, only waste and residues from agriculture and forestry are
 permitted, using the most conservative potential estimates from the JRC-EU-TIMES
-model \cite{jrcbiomass2015}. This results in 352~TWh per year of biogas and
-1261~TWh per year of solid biomass residues and waste for the whole of Europe.
+model \cite{jrcbiomass2015}. This results in 347~TWh per year of biogas and
+1186~TWh per year of solid biomass residues and waste for the whole of Europe.
+Biomass can be used in electricity generation with and
+without CCS, as well as to provide low- to medium-temperature process heat in
+industry.
 
-For industry, we change some industrial processes to low-emission ones (e.g.
+For \textbf{industry}, we change some industrial processes to low-emission ones (e.g.
 switching to hydrogen for direct reduction of iron ore \cite{voglAssessmentHydrogen2018}), allow
 more recycling of steel and aluminium \cite{circular_economy}, switch fuel
 sources for process heat, use synthetic fuels for ammonia and organic chemicals,
@@ -73,27 +77,19 @@ and allow carbon capture. It is assumed that no plastic or other non-energy
 product is sequestered in landfill, but that all carbon in plastics eventually
 makes its way back to the atmosphere, either through combustion or decay; this
 approach is stricter than other models \cite{in-depth_2018}.
+(separately for sectors including iron and steel, concrete, chemicals)
 
-Transport and mobility comprises light and heavy road, rail, shipping and
+The \textbf{transport} sector comprises light and heavy road, rail, shipping and
 aviation transport. For road and rail, electrification and fuel cell vehicles are
 available. For shipping, liquid hydrogen is considered. For aviation, we
 consider dense liquid hydrocarbons. Battery electric vehicles for passenger
 transport can be enables with demand response as well as vehicle-to-grid
 capabilities.
 
-Energy sector coupling, storage and conversion is modelled to connect
-electricity, heating (individual buildings, district heating and industry),
-transport and gas (methane, hydrogen and carbon dioxide) in the different
-sectors (buildings, transport and industry).
-
 Electricity can be converted to heat via heat pumps or resistive heaters; to
 hydrogen gas, or further to methane and liquid hydrocarbons; or to work in
 various demand devices. Methane can be reformed to hydrogen, and most fuels can
 be used for electricity generation in turbines or fuel cells.
-
-Biomass can be used in electricity generation with and
-without CCS, as well as to provide low- to medium-temperature process heat in
-industry.
 
 Energy/material storage can be optimised including conventional
 pumped hydro storage, electrochemical storage like Lithium ion batteries,
@@ -101,7 +97,7 @@ storage of gases including methane, hydrogen and carbon dioxide, storage of
 liquid fuels, as well as thermal energy storage in the form of hot water both in
 individual buildings and in district heating networks.
 
-Carbon capture is
+\textbf{Carbon capture} is
 needed in the model both to capture and sequester process emissions with a
 fossil origin, such as those from calcination of fossil limestone in the cement
 industry, as well as to provide carbon for the production of hydrocarbons for

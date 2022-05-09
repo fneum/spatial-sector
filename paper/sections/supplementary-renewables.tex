@@ -55,14 +55,15 @@ technology and substation's Voronoi cell using the \textit{atlite} tool
 
 The land available for wind and utility-scale solar PV capacities in a
 particular region is constrained by eligible codes of the CORINE land use
-database (100m resolution) \citeS{} and is further restricted by distance
-criteria and the natural protection areas specified in the Natura 2000 dataset
-\citeS{}. These criteria are summarised in \cref{tab:eligibility}. The
-installable potentials for rooftop PV are included with an assumption of 1 kWp
-per person (0.1 kW/m$^2$ and 10 m$^2$/person). Moreover, offshore wind farms may
-not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO
-bathymetry dataset \citeS{}. This currently disreagards the possibility of
-floating wind turbines
+database (100m resolution) \citeS{europeanenvironmentagencyeeaCorineLand} and is
+further restricted by distance criteria and the natural protection areas
+specified in the Natura 2000 dataset
+\citeS{europeanenvironmentagencyeeaNatura2000}. These criteria are summarised in
+\cref{tab:eligibility}. The installable potentials for rooftop PV are included
+with an assumption of 1 kWp per person (0.1 kW/m$^2$ and 10 m$^2$/person).
+Moreover, offshore wind farms may not be built at sea depths exceeding
+\SI{50}{\metre}, as indicated by the GEBCO bathymetry dataset \citeS{gebcoGEBCO2014}. This
+currently disreagards the possibility of floating wind turbines
 \citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}.
 For near-shore locations (less than 30 km off the shore) AC connections are
 considered, whereas for far-shore locations, DC connections including AC-DC
@@ -72,8 +73,8 @@ are exogenously fixed at current values and not expandable.
 To express the potential in terms of installable capacities, the available areas
 are multiplied with allowed deployment densities, which we consider to be a
 fraction of the technology's technical deployment density to preempt public
-acceptance issues. These densities are 3 MW/m$2$ for onshore wind, 2 MW/m$2$ for
-offshore wind, 5.1 MW/m$2$ for utility-scale solar.
+acceptance issues. These densities are 3 MW/m$^ 2$ for onshore wind, 2 MW/m$^2$ for
+offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
 
 \citeS{mckennaHighresolutionLargescale2022,Ryberg2018,bodisHighresolutionGeospatial2019}
 
@@ -200,11 +201,11 @@ values for each of these parameters since 1950 on a $0.25^{\circ} \times
 the direct and diffuse solar irradiance, we use the satellite-aided SARAH-2
 dataset \citeS{SARAH}, which assesses cloud cover in more detail than the ERA5 dataset. It
 features values from 1983 to 2015 at an even higher resolution with a
-$0.05^{\circ} \times 0.05^{\circ}$ grid and 30-minute intervals \citeS{}. In
+$0.05^{\circ} \times 0.05^{\circ}$ grid and 30-minute intervals \citeS{SARAH}. In
 general, the reference weather year can be freely chosen for the optimisation,
 but in this contribution all analyses are based on the year 2013, which is
 regarded as characteristic year for both wind and solar resources (e.g.
-\citeS{}).
+\citeS{cokerInterannualWeather2020}).
 
 Models for wind turbines, solar panels, heat pumps and the inflow into hydro
 basins convert the weather data to hourly time series for capacity factors and
@@ -212,20 +213,22 @@ performance coefficients. Using power curves of selected wind turbines types
 (Vestas V112 for onshore, NREL 5MW for offshore), wind speeds scaled to the
 according hub height are mapped to power outputs. For offshore wind, we
 additionally take into account wake effects by applying a uniform correction
-factor of 88.55\% to the capacity factors \citeS{}. The solar photovoltaic
-panels' output is calculated based on the incidence angle of solar irradiation,
-the panel's tilt angle, and conversion efficiency. Similarly, solar thermal
-generation is determined based on collector orientation and a clear-sky model
-based on \citeS{henningComprehensiveModel2014a}. The creation of heat pump time
-series follows regression analyses that map soil or air temperatures to the
-coefficient of performance (COP) \citeS{nouvelEuropeanMapping2015,
-staffellReviewDomestic2012}. Hydroelectric inflow time series are derived from
-run-off data from ERA5 and scaled using EIA annual hydropower generation
-statistics \citeS{u.s.energyinformationadministrationHydroelectricityNet2022}. The open-source library \textit{atlite} \citeS{hofmannAtliteLightweight2021} provides
-functionality to perform all these calculations efficiently. Finally, the
-obtained time series are aggregated to each region heuristically in proportion
-to each grid cell's mean capacity factor. This assumes a capacity layout
-proportional to mean capacity factors. The resulting spatial and temporal
+factor of 88.55\% to the capacity factors \citeS{boschTemporallyExplicit2018}.
+The solar photovoltaic panels' output is calculated based on the incidence angle
+of solar irradiation, the panel's tilt angle, and conversion efficiency.
+Similarly, solar thermal generation is determined based on collector orientation
+and a clear-sky model based on \citeS{henningComprehensiveModel2014a}. The
+creation of heat pump time series follows regression analyses that map soil or
+air temperatures to the coefficient of performance (COP)
+\citeS{nouvelEuropeanMapping2015, staffellReviewDomestic2012}. Hydroelectric
+inflow time series are derived from run-off data from ERA5 and scaled using EIA
+annual hydropower generation statistics
+\citeS{u.s.energyinformationadministrationHydroelectricityNet2022}. The
+open-source library \textit{atlite} \citeS{hofmannAtliteLightweight2021}
+provides functionality to perform all these calculations efficiently. Finally,
+the obtained time series are aggregated to each region heuristically in
+proportion to each grid cell's mean capacity factor. This assumes a capacity
+layout proportional to mean capacity factors. The resulting spatial and temporal
 variability of capacity factors are shown in
 \crefrange{fig:cfs-ts}{fig:cfs-maps}.
 
