@@ -74,11 +74,11 @@ effects on total system cost and the composition of technologies in the system.
 
 while
 varying the allowed expansion of the electricity and hydrogen grids
-respectively. q
+respectively.
 
 We also run sensitivity of restricted onshore wind potentials
 
-% model description
+% model description and novelty
 
 For this purpose we use a capacity expansion model of the European energy
 system, PyPSA-Eur-Sec, which, in contrast to previous studies
@@ -96,7 +96,26 @@ assumptions for the year 2030 assuming zero net greenhouse gas emissions,
 
 Need to co-optimise balancing solutions with generation. Optimising separately won't work.
 
-couples all energy sectors (power, heat, transport, industry)
+
+Features:
+- couples all energy sectors (power, heat, transport, industry)
+- gas network data to estimate retrofitting potentials
+- potential for hydrogen storage in salt caverns
+- renewable potentials for wind, solar and biomass
+- energy as well as non-energy demands
+- detailed carbon management of sources, capture, usage and sequestration (last for transition)
+
+% challenges to the model
+
+compared to electricity, heating and transport are strongly peaked
+- heating is strongly seasonal but also with synoptic variations
+- transport has strong daily periodicity
+There are difficult periods in winter with
+- low wind and solar (high prices)
+- high space heating demand
+- low air temperatures, which are bad for air-sourced heat pump performance
+- less smart solution: backup gas boilers
+- smart solution: building retrofiting, TES in district heating, CHP
 
 % scenario assumptions
 

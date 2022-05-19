@@ -3,7 +3,7 @@
 - so that the variability of demand and variable renewable supply can be represented, and so that existing grid bottlenecks are visible.
 - applied a net-zero emission constraint
 
-In this section the core characteristics and ssumptions of the model
+In this section the core characteristics and assumptions of the model
 PyPSA-Eur-Sec are presented. More detailed descriptions of specific sectors,
 energy carriers, renewable potentials, transmission infrastructure modelling,
 and mathematical problem formulation are covered in the supplementary material
@@ -15,7 +15,7 @@ to technical and physical constraints, assuming perfect competition and perfect
 foresight over one year of 3-hourly operation. In this study, we used the
 historical year 2013 for weather-dependent inputs. Apart from existing
 electricity transmission and hydroelectric facilities, no other existing assets
-are assumed (so-called `greenfield optimisation' or 'overnight scenario'), so
+are assumed (so-called `greenfield optimisation' or `overnight scenario'), so
 that the model represents an ideal steady state and disregards pathway
 dependencies.  Cost assumptions are taken, where possible, from predictions for
 the year 2030 by the Danish Energy Agency \cite{dea2019} (see
@@ -53,12 +53,15 @@ decentralised heating, the number of electric vehicles, methane storage and
 hydroelectricity capacities (for reservoir and run-of-river generators and
 pumped hydro storage) are exogenous to the model.
 
-The European transmission network model is based on the open model PyPSA-Eur
-presented in \cite{horschPyPSAEurOpen2018}. The full European transmission network is clustered
-down to 181 representative regions based on the methodology used in
-\cite{Hoersch2017,frysztackiStrongEffect2021}, thereby preserving the most important transmission corridors
-that cause bottlenecks. The linearised optimal power flow uses a cycle-based
-formulation from \cite{horschLinearOptimal2018} that significantly improves computational
+\textbf{supply}
+
+The \textbf{transmission} network for European electricity transport is based on
+the open model PyPSA-Eur presented in \cite{horschPyPSAEurOpen2018}. The full
+European transmission network is clustered down to 181 representative regions
+based on the methodology used in \cite{Hoersch2017,frysztackiStrongEffect2021},
+thereby preserving the most important transmission corridors that cause
+bottlenecks. The linearised optimal power flow uses a cycle-based formulation
+from \cite{horschLinearOptimal2018} that significantly improves computational
 performance.
 
 For \textbf{biomass}, only waste and residues from agriculture and forestry are
@@ -86,20 +89,22 @@ consider dense liquid hydrocarbons. Battery electric vehicles for passenger
 transport can be enables with demand response as well as vehicle-to-grid
 capabilities.
 
-Electricity can be converted to heat via heat pumps or resistive heaters; to
-hydrogen gas, or further to methane and liquid hydrocarbons; or to work in
-various demand devices. Methane can be reformed to hydrogen, and most fuels can
-be used for electricity generation in turbines or fuel cells.
+The model can \textbf{convert} between various energy carriers. Electricity can
+be converted to heat via heat pumps or resistive heaters; to hydrogen gas, or
+further to methane and liquid hydrocarbons; or to work in various demand
+devices. Methane can be reformed to hydrogen, and most fuels can be used for
+electricity generation in turbines or fuel cells.
 
-Energy/material storage can be optimised including conventional
+Energy and material \textbf{storage} can be optimised including conventional
 pumped hydro storage, electrochemical storage like Lithium ion batteries,
 storage of gases including methane, hydrogen and carbon dioxide, storage of
 liquid fuels, as well as thermal energy storage in the form of hot water both in
-individual buildings and in district heating networks.
+individual buildings and in district heating networks. For hydro storage, we
+consider existing capacities. For hydrogen storage, regional potentials for
+storage in salt caverns are included.
 
-\textbf{Carbon capture} is
-needed in the model both to capture and sequester process emissions with a
-fossil origin, such as those from calcination of fossil limestone in the cement
-industry, as well as to provide carbon for the production of hydrocarbons for
-dense transport fuels and as a chemical feedstock, for example for the plastics
-industry.
+\textbf{Carbon capture} is needed in the model both to capture and sequester
+process emissions with a fossil origin, such as those from calcination of fossil
+limestone in the cement industry, as well as to use carbon for the
+production of hydrocarbons for dense transport fuels and as a chemical
+feedstock, for example for the plastics industry.

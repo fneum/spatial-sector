@@ -1,295 +1,343 @@
-\section*{Common features across scenarios of European carbon-neutrality}
+\section*{Common features across four scenarios of European carbon-neutrality}
 \label{sec:es}
 \addcontentsline{toc}{section}{\nameref{sec:es}}
 
-Overall, the total system costs are dominated by investments in generation from wind
-and solar, and conversion from power to heat (primarily heat pumps)
-and to hydrogen and liquid hydrocarbons (for transport fuels and as a
-feedstock for the chemicals industry).
+% TSC
 
-\cref{fig:tsc:w-el-w-h2} shows the spatial distribution of the investments
-for the least-cost solution with full electricity and hydrogen network expansion.
+Across all four scenarios, the total system costs are dominated by investments
+in generation from wind and solar, and conversion from power to heat (primarily
+heat pumps) and to hydrogen and liquid hydrocarbons (for transport fuels and as
+a feedstock for the chemicals industry). The composition and variation of total
+system costs are shown in \cref{fig:sensitivity-h2}.
+
+The spatial distribution of the investments are shown in \cref{fig:tsc}. In particular, \cref{fig:tsc:w-el-w-h2} shows
+the the least-cost solution with full electricity and hydrogen network expansion.
+
+% generation
 
 While solar capacity is spread relatively evenly around the continent with a
 slight skew torwards Southern Europe, both onshore and offshore wind are
-concentrated around the North Sea and British Isles. New transmission capacity
+concentrated around the North Sea and British Isles.
+
+If allowed, new power transmission capacity
 is concentrated in regions so that they help the integration of wind in these
 regions, and the transport of wind energy to inland locations.
+net flow directions: more mixed patterns, balancing rather than net transport over long distances
+
+% hydrogen
 
 Electrolyzer capacities for power-to-hydrogen see a massive scale-up between
 1057~GW and 1297~GW depending on the permitted energy transport infrastructure.
-Their locations correlate strongly with wind capacities ($R^2=0.85$).
-
-A new network transports hydrogen from these sites of production to the rest of
-Europe where hydrogen is consumed by industry (for ammonia, organic chemicals
-and steel production), for heavy-duty transport and in fuel cells for power and
-heat backup.
-
-Of the huge hydrogen production (2437~TWh/a), most of it (1425~TWh/a) goes to
-Fischer-Tropsch fuels for organic chemicals and transport fuels, of which
-356~TWh/a waste heat enter the district heating networks. A total of 775~TWh/a
-is used in shipping (two thirds) and land (one third) transport. 226~TWh/a are
-used in the industry sector and for methanation. 79~TWh/a of hydrogen are lost
-in conversion.
-
-If the electricity grid expansion is restricted but hydrogen can be transported,
-more hydrogen is produced to be re-electrified in critical phases and locations
-of system operation (100 TWh\el).
-
-Methane production is limited to biogas (346~TWh/a) and some fossil gas
-(371~TWh/a), the latter of whose emissions are offset by bioenergy with carbon
-capture. Direct air capture with sequestration and synthetic methane production
-were only observed if both hydrogen and electricity network could not be
-expanded. Methane is used for process heat in some industry applications and as
-a heating backup for power-to-heat units.
-
-From our model we infer a required carbon price between
-\SI{435}{\sieuro\per\tco} with and \SI{513}{\sieuro\per\tco} without network
-expansion to achieve \co neutrality in Europe.
-
-compared to electricity, heating and transport are strongly peaked
-- heating is strongly seasonal but also with synoptic variations
-- transport has strong daily periodicity
-There are difficult periods in winter with
-- low wind and solar (high prices)
-- high space heating demand
-- low air temperatures, which are bad for air-sourced heat pump performance
-- less smart solution: backup gas boilers
-- smart solution: building retrofiting, TES in district heating, CHP
-
+The capacities are lowest when the electricity grid can be expanded.
+In this case, their locations correlate strongly with wind
+capacities ($R^2=0.85$).
 average capacity factors of electrolysis 36\% to 40\%, flexible operation
 leveraging periods with high wind speeds across Europe (see
 \cref{fig:output-ts-1}), buffered in hydrogen cavern storage for stable
 production of synthetic hydrocarbons, whereas Fischer-Tropsch runs 87\% to 95\%,
 only interrupted in winter periods with low wind speeds and high heat demands
+Blue hydrogen production from steam methane reforming with carbon capture
+did not occur at large scale in any of the scenarios.
 
-dominant flow directions of energy by carrier?
-- supplemental figures %\cref{}
-- hydrogen: Ireland and England to Netherlands, Belgium and Western Germany; Scotland via North Sea to all of Germany; France to Southwest Germany; North East Spain via France to Switzerland
-- electricity: more mixed patterns - balancing rather net transport over long distances
+If allowed, a new network transports hydrogen from these sites of production to the rest of
+Europe where hydrogen is consumed by industry (for ammonia, high value chemicals
+and steel production), for heavy-duty transport and in fuel cells for power and
+heat backup.
+net flow directions: Ireland and England to Netherlands, Belgium and Western Germany; Scotland via North Sea to all of Germany; France to Southwest Germany; North East Spain via France to Switzerland
 
-hydrogen storage:
-- storage capacities? 62-66 TWh with hydrogen network, 32-35 TWh without hydrogen network; similar injection patterns; \cite{caglayanImpactDifferent2019} has 130~TWh of cavern storage
-- all storage is cavern storage; no storage in steel tanks (neither hydrogen nor electricity network: 1.3 TWh steel tank (4\%))
-- placed Northern Ireland, Denmark, England
+a new network
+of underground hydrogen storage and pipelines in Europe helps to balance
+generation from renewables in time and space.
 
 What drives the hydrogen network?
 - industry demand for hydrogen in areas with less attractive renewable potentials
 - electricity grid bottlenecks / alternative energy transport
 - waste heat of synthetic fuel production can only be leveraged in district heating networks of urban areas
 - move produced hydrogen to cavern storage locations, rather than storage in steel tanks
-- because gas and oil can be moved freely in the model, the spatial distribution of their demands is not a siting factor for synfuel production
+- because gas and oil can be moved freely in the model, the spatial distribution of their demands is not a considered siting factor for synfuel production
 
-\section*{Hydrogen network benefit is robust, strongest without power grid expansion}
+hydrogen storage:
+- storage capacities? 62-66 TWh with hydrogen network, 32-35 TWh without hydrogen network; similar injection patterns; \cite{caglayanImpactDifferent2019} has 130~TWh of cavern storage
+- all storage is cavern storage; no storage in steel tanks unldess neither hydrogen nor electricity network can be built. In this case, 1.3 TWh steel tank (4\%))
+- placed Northern Ireland, Denmark, England
+
+Of the huge hydrogen production (2437~TWh/a), most is used to produce
+Fischer-Tropsch fuels for organic chemicals and transport fuels (1425~TWh/a), of
+which 356~TWh/a of waste heat enter district heating networks. A total of
+778~TWh/a is used in shipping (two thirds) and land (one third) transport. The
+industry sector consumes 196~TWh/a, and 30~TWh/a are used for methanation.
+Around 79~TWh/a of hydrogen are lost in conversion. If the electricity grid
+expansion is restricted but hydrogen can be transported, even more hydrogen is
+produced to be re-electrified in critical phases and locations of system
+operation (100 TWh\el). \todo[]{reference sankey in SI}
+
+% other
+
+Methane production is limited to biogas (346~TWh/a) and some fossil gas
+(371~TWh/a), the latter of whose emissions are offset by bioenergy with carbon
+capture. Direct air capture with sequestration and significant synthetic methane production
+were only observed if both hydrogen and electricity network could not be
+expanded. Methane is used for process heat in some industry applications and as
+a heating backup for power-to-heat units.
+
+From our model we infer a required carbon price between
+\SI{435}{\sieuro\per\tco} with and \SI{513}{\sieuro\per\tco} without network
+expansion to achieve carbon-neutrality in Europe.
+
+\section*{Hydrogen network benefit is robust, strongest without grid expansion}
 \label{sec:h2}
 \addcontentsline{toc}{section}{\nameref{sec:h2}}
 
-\cref{fig:sensitivity-h2}
+In \cref{fig:sensitivity-h2}, we compare the total system costs and their
+composition between the four main scenarios which vary in whether or not the
+power grid can be expanded beyond today's levels and if a new hydrogen backbone
+based on new and retrofitted pipelines can be built.
 
-% electricity grid restriction
+% overall
 
-If the electricity grid can be expanded, total costs decrease
-slightly, despite the increasing costs of the grid.
+Overall, we find that system costs are not overly affected by restrictions on
+the development of electricity or hydrogen transmission infrastructure. The
+realisable cost savings are small compared to total system costs, and systems
+without grid expansion present themselves as equally feasible alternatives. The
+combined net benefit of hydrogen and electricity grid expansion is 93 bn\euro/a.
+A system without either would then be around 12\% more expensive. This limited
+cost increase can be attributed  to the high level of synthetic fuel production,
+which is necessary for industry, transport and backup electricity and heating
+applications. The option for flexible conversion plant operation, cheap storage
+and low-cost exchange between the nodes offers sufficient leeway to manage
+electricity and hydrogen transport restrictions.
 
-The
-total cost benefit of power grid expansion is around
-\euro47~billion per year.
+% grid expansion benefit
 
-The grid enables
-renewable resources with better capacity factors to be integrated from
-further away, resulting in lower capacity needs for solar and
-wind. The grid also allows renewable variations to be smoothed in space,
-resulting in lower hydrogen demand for balancing power and heat.
+The net benefit of power grid expansion is between \euro46-62~billion per
+year, against transmission grid expansion costs between \euro11-14~billion per
+year. System costs decrease despite the increasing investments in electricity
+transmission infrastructure. The benefit is strongest if no hydrogen network can
+compensate for the lack of grid capacity to transport energy over long
+distances. \cref{sec:si:lv} presents additional intermediate results about
+the system cost sensitivity between a doubling of power grid capacity and no
+grid expansion. The electricity network enables renewable resources with better
+capacity factors to be integrated from further away, resulting in lower capacity
+needs for solar and wind. The grid also allows renewable variations to be
+smoothed in space, resulting in lower hydrogen demand for balancing power and
+heat. A restriction on the level of power grid expansion leads to more local
+production from solar photovolatics and increased hydrogen production. When the
+electricity grid can be expanded, money spent on solar generation, hydrogen
+electrolysis and pipelines reduces, while the generation of offshore wind power
+is increased.
 
-The restriction of grid
-expansion leads to more local production from solar and more hydrogen
-production.
+\todo[inline]{move explanation of power grid benefit to preceding section}
 
-consequently, as grid is expanded, costs reduce from solar, PtX and H2 network, more offshore wind
+% hydrogen network benefit  %5.6-7.9
 
-\cref{sec:si:lv} presents additional intermediate results between a doubling of
-power grid capacity and no grid expansion.
+The presence of a new hydrogen backbone can reduce system costs by up to 6\%.
+The net benefit between \euro31-46~billion per year (4-6\%) largely exceeds the
+cost of the hydrogen network, which are estimated between \euro5-8~billion per
+year. The hydrogen backbone's benefit is strongest when the electricity grid is
+not expanded. However, even with high levels of grid expansion it is still
+strongly beneficial infrastructure.
 
-% hydrogen network benefit
+% combined benefit, nearly additive cost reductions
 
-The presence of the hydrogen network can reduce system costs by up to 5.7\%.
+While grid reinforcements provide slightly higher cost reductions, hydrogen and
+electricity transmission infrastructure are strongest together. Approximately
+half of the combined benefit of transmission infrastructure can be achieved by
+only building a new hydrogen backbone, whereas two thirds of the benefit can be
+reached by exclusively reinforcing the electricity transmission system. Compared
+to the combined net benefit of 93 bn\euro/a, the individual benefits sum up to a
+value that is a mere 16\% higher ($46+62=108$ bn\euro/a). Thus, offered cost
+reductions are largely additive.
 
-The cost of hydrogen network 5.6-7.9 billion per year
+\todo[inline]{I wonder: Is this maybe due to the restriction
+to 10 GW extension per electricity transmission line? Maybe benefit of H2
+network would be lower if this constraint were lifted.}
 
-Net benefit is much higher: 31-46 billion per year (4.1-5.7\%)
+% electricity and hydrogen network: perfect substitutes?
 
-hydrogen network is robustly beneficial infrastructure
-benefit is strongest when there is no power grid expansion
-
-conversely, the benefit of electrcity grid reinforcement is strongest
-when there is no hydrogen network option
-
-a new network
-of underground hydrogen storage and pipelines in Europe helps to balance
-generation from renewables in time and space.
-
-% overall / compared
-
-We find that the overall system costs are not overly affected
-by restrictions on electricity or hydrogen transmission.
-
-Moderate levels of hydrogen and/or electricity grid expansion provide cost
-savings, but they are small compared to total system costs.
-
-systems without grid expansion are feasible
-
-The high level of synthetic fuel production and exchange between the nodes, which is
-necessary for industry, transport and backup electricity and heating
-applications, provides sufficient flexibility to manage these
-restrictions.
-
-% comparison of H2 to power grid
-
-the total net benefit of combined hydrogen and electricity grid expansion (beyond today) is 93 bn\euro/a (12.2\%)
-- half of this benefit can be achieved by exclusive hydrogen network expansion
-- whereas two thirds of the benefit can be reaped by only electricity grid expansion
-- both are important for costs, but power grid expansion brings more cost benefit
-- hydrogen grid is not a perfect substitute for electricity transmission
-- rather transmission via eletrons or molecules have complementary strengths for long-distance transport of energy
-- cost reductions are largely additive (total benefit 93, 46+62=108 for each individually, 108/93=1.16)
-- hydrogen network can partially substitute transmission expansion (up to 46/62=75\% of electricity system benefit), strongest together
-
-Depending on the level of power grid expansion, between 342 and 422 TWkm of
-hydrogen pipelines are built. The higher value is obtained when the hydrogen
-network partially compensates for the lack of electricity grid reinforcement.
-
-\begin{SCfigure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{sensitivity-h2-new.pdf}
-    \caption{Benefits of electricity and hydrogen network infrastructure.}
-    \label{fig:sensitivity-h2}
-\end{SCfigure}
-
-
-\section*{Repurposing gas pipelines lowers costs and shapes routes}
-\label{sec:repurposed}
-\addcontentsline{toc}{section}{\nameref{sec:repurposed}}
-
-
-\cref{fig:h2-network}
-
-
-\cref{fig:network-stats:twkm} shows statistics on the total electricity and
-hydrogen transmission capacity built as well as how much energy is moved through
-the respective networks. For the hydrogen network a distinction between
-retrofitted and new pipelines is made. For the electricity network a distinction
-is made between existing and added capacity or how much energy is moved via HVAC
-or HVDC power lines.
-
-A hydrogen network can take over and exceed the electricity grid
-in terms of the amount of energy transported over long distances, balancing
-renewables both in space (with the network) and time (with underground storage).
-
-% h2 network topology
-
-Restricting hydrogen expansion has only a small effect on cost-optimal levels of
-grid expansion. While with a hydrogen network, the power grid capacity is a
-little more than doubled, without it the cost-optimal power grid capacities are
-10\% higher.
-
-The pipeline connections between regions may have optimised capacities as high as 50 GW.
-
-H2 pipeline is particularly attractive when end-use is hydrogen-based product
-- hydrogen: 106-226~\euro/MW/km
-- electricity: 400~\euro/MW/km
-- annualised cost basis: electricity 1.6 times more expensive than H2, if retrofitted even 3.4 times
-- not attractive for electricity end-use: round-trip efficiency electricity-H2-electricity 34\% (a third), more generation capacity needed
-- however, electricity demand and direct electrification dominate the demand for hydrogen-based products; can explain benefit of power grid expansion
-
-% repurposing capacities
-
-Repurposing a gas pipeline to transport hydrogen is assumed to cost around half
-that of building a new hydrogen pipeline (117 versus 250 \euro/MW/km). This
-estimate includes the cost for compressor substitution. In consequence, the
-hydrogen network topology does not always follow the shortest routes.
-
-With power grid expansion, 58\% of the hydrogen network uses repurposed gas
-pipelines. When the electricity grid cannot be reinforced, this share rises to
-66\%.
-
-Up to a third of the existing gas network (TWkm) are retrofitted to transport
-hydrogen instead. This still leaves large  gas network capacities that are
-neither used for hydrogen nor methane transport, particularly in Germany,
-Poland, Italy and the North Sea as supplementary runs with full gas network
-resolution demonstrate (\cref{fig:si:gas-leftover})
-
-A little more than 40\% of retrofittable pipelines fully use their conversion
-potential to hydrogen.
-
-The largest new hydrogen pipelines are built on the British Isles, between
-Denmark and Germany, inside Belgium and the Netherlands, and in the North-East
-of Spain.
-
-The most notable corridors for gas pipeline retrofitting, are located offshore
-within the North Sea, in South-East England and crossing the English Channel, as
-well as inside Germany, Austria and Northern Italy.
-
-The large existing gas transmission capacities in Southern Italy and Eastern
-Europe are not repurposed for hydrogen transport. However, this result would
-likely change if attractive energy import options through these corridors were
-considered.
-
-% repurposing energy moved
-
-\cref{fig:network-stats:ewhkm}
-When both hydrogen and electricity grid expansion are allowed, both networks
-transport approximately the same amount of energy. As the nominal capacity of
-the hydrogen network is less than half that of the optimised electricity grid,
-this means that the utilisation rate of the hydrogen network is higher (59\%
-versus 35\%).
-
-The hydrogen network plays a dominant role transporting energy around Europe
-when grid expansion is restricted: around three times more energy is moved in
-the hydrogen network (2.84~TWhkm/h) than in the electricity network
-(0.95~EWhkm). At the same time, the total amount of energy moved as hydrogen or
-electricity is reduced by only 22\%.
-
-% import exports
-
-\cref{fig:io}
-
-overall pattern: energy surplus in coastal and most Southern regions supplying
-to the inland regions of Europe with high demands but less attractive renewable potentials.
-
-energy surplus (up to 200 TWh net surplus)
-- wind-rich regions of Europe
-- offshore wind in Denmark (in particular with eletricity grid reinforcement)
-- onshore wind in Ireland (if grid expansion is restricted, production site for feedstock which can still be transported)
-- but also other individual regions in Spain, Greece, France and Germany
-
-energy deficit (up to 150 TWh net deficit)
-- urban areas around London and Paris
-- industrial cluster between Rotterdam and Ruhr valley
-
-hydrogen supply is more regionally imbalanced than electricityl supply
-
-if hydrogen transport is restricted
+This also means that a hydrogen backbone is not a perfect substitute for power
+grid reinforcements. It can only partially compensate for the lack of grid
+expansion, yielding roughly 75\% of the electricity grid's benefit. Rather energy
+transport as electrons and molecules seem to offer complementary
+strengths. Nevertheless, seen from a system-level perspective, differences in
+total costs are small. A system build exclusively around hydrogen network
+expansion is just around 2\% more expensive than an alternative system that only
+allows electricity grid expansion. % (4\% without onshore wind)
 
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{transmission capacity built}
-        \includegraphics[width=\textwidth]{twkm}
-        \label{fig:network-stats:twkm}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{energy moved}
-        \includegraphics[width=\textwidth]{ewhkm}
-        \label{fig:network-stats:ewhkm}
-    \end{subfigure}
-    % }
-    \caption{Transmission capacity built and energy moved for various scenarios.
+    \includegraphics[width=0.9\textwidth]{sensitivity-h2-new.pdf}
+    \caption{Benefits of electricity and hydrogen network infrastructure.
+    The figure compares four scenarios with and without expansion of a hydrogen network (left to right) and the electricity grid (top to bottom).
+    Each bar depicts the total system cost of one scenario alongside its cost composition.
+    Arrows between the bars indicate absolute and relative cost increases
+    as network infrastructures are successively restricted.}
+    \label{fig:sensitivity-h2}
+\end{figure}
+
+
+\section*{Bulk energy transport through hydrogen backbone}
+\label{sec:energy-moved}
+\addcontentsline{toc}{section}{\nameref{sec:energy-moved}}
+
+\cref{fig:network-stats} shows statistics on the total electricity and
+hydrogen transmission capacity built as well as how much energy is moved through
+the respective networks, while distinguising between retrofitted and new
+capacities.
+
+% capacity built
+
+Depending on the level of power grid expansion, between 342 and 422~TWkm of
+hydrogen pipelines are built. The higher value is obtained when the hydrogen
+network partially offsets the lack of electricity grid reinforcement. On the
+other side, restricting hydrogen expansion has only a small effect on
+cost-optimal levels of grid expansion. While with a hydrogen network, the power
+grid capacity is a little more than doubled, without it the cost-optimal power
+grid capacities are 10\% higher.
+
+% energy moved
+
+When both hydrogen and electricity grid expansion are allowed, both networks
+turn out to transport approximately the same amount of energy
+(\cref{fig:network-stats:ewhkm}), even though the hydrogen network capacity is
+less than half that of the power grid and rather comparable with the existing
+power grid (\cref{fig:network-stats:twkm}). In consequence, the utilisation rate
+of the hydrogen network (59\%) is much higher than that of the electricity grid
+(35\%). Supplementary figures show the regional distribution of network
+loadings. \todo[]{SI figures for network loading}
+
+When electricity grid expansion is restricted, the hydrogen network plays a
+dominant role for transporting energy around Europe. In this case, around three
+times more energy is moved in the hydrogen network (2.8~EWhkm) than in the
+electricity network (1~EWhkm). However, the restriction of grid expansion
+affects rather the division of energy flows between hydrogen and electricity
+network. The total amount of energy moved as hydrogen or electricity is only
+reduced by 22\%.
+
+\section*{New hydrogen backbone can leverage repurposed gas pipelines}
+\label{sec:repurposed}
+\addcontentsline{toc}{section}{\nameref{sec:repurposed}}
+
+% when is H2 network attractive compared to power grid?
+
+A network of hydrogen pipelines is particularly attractive when the end use is
+hydrogen-based product. It is less competitive to supply electricity demands
+because additional generation capacity is needed to compensate efficiency losses
+in the production and re-electrification of hydrogen. The flexible use of
+electricity due to its high exergy levels as well as the fact that because of
+high direct electification levels electricity demand exceeds the demand for
+hydrogen-based products may explain the higher benefit if electricity
+transmission reinforcement despite the higher development costs.
+
+With our assumptions, developing a MWkm of transmission lines is by a factor 1.6
+more expensive than building a MWkm of hydrogen pipeline. According to our
+assumptions, a new hydrogen pipeline is costed at 250~\euro/MW/km, whereas costs
+for a new high-voltage transmission line may be as high as 400~\euro/MW/km. The
+attractiveness of a hydrogen network compared to power grid expansion is further
+spurred by existing gas infrastructure that can be retrofitted. Repurposing a
+gas pipeline to transport hydrogen is assumed to cost around half that of
+building a new hydrogen pipeline (117 versus 250 \euro/MW/km). This estimate
+includes the cost for compressor substitution. Consequently, detours of the
+hydrogen network topology may be cost-effective if through rerouting repurposing
+potentials can be tapped.
+
+% repurposing capacities and network topology
+
+As \cref{fig:h2-network} illustrates, the optimised hydrogen network topology is
+highly concentrated in North-Western Europe. Individual pipeline connections
+between regions have optimised capacities up to 50 GW; as much as thirty
+parallel 380~kV transmission lines.
+
+Of the total hydrogen network volume, between 58\% and 66\% consists of
+repurposed gas pipelines. The share is highest when the electricity grid is not
+permitted to be reinforced. Of the existing gas network, up to a third is
+retrofitted to % (measured by TWkm)
+transport hydrogen instead. This still leaves large gas network capacities that
+are neither used for hydrogen nor methane transport, particularly in Germany,
+Poland, Italy and the North Sea. This is demonstrated in supplementary runs with
+full gas network resolution in \cref{sec:si:detailed}. In our scenarios, a
+little more than 40\% of retrofittable gas pipelines fully exhaust their
+conversion potential to hydrogen.
+
+The most notable corridors for gas pipeline retrofitting, are located offshore
+across the North Sea and the English Channel, as well as in England, Germany,
+Austria and Northern Italy. The large existing gas transmission capacities in
+Southern Italy and Eastern Europe are not repurposed for hydrogen transport in
+this self-sufficient scenario for Europe. However, this picture would likely
+change if impored options were considered in those regions. The largest new
+hydrogen pipelines are built on the British Isles, between Denmark and Germany,
+inside Belgium, Northern France and the Netherlands, and in the North-East of
+Spain.
+
+
+\section*{Regional imbalance of supply and demand is severe}
+\label{sec:imbalance}
+\addcontentsline{toc}{section}{\nameref{sec:imbalance}}
+% import exports
+
+\cref{fig:io} shows the net energy surpluses and deficits of each region
+alongside so-called Lorenz curves that depict regional inequities between supply
+and demand for each carrier and the four network expansion scenarios.
+
+In line with previously shown capacity expansion plans, energy surplus is found
+largely in the wind-rich coastal and solar-rich most Southern regions that
+supply the inland regions of Europe, which have high demands but less attractive
+renewable potentials. The net energy surplus of individual regions amounts to up
+to 200 TWh. Examples are Danish offshore wind power exports observed in
+particular with eletricity grid reinforcement, large production sites for
+synthetic fuels in Ireland leveraging favourable local onshore wind potentials,
+but also other regions in Spain, Greece, France and Germany. Net energy deficits
+of single regions add up to similarly high values close to 200 TWh. Examples are
+in particular the metropolitan areas around London and Paris, as well as the
+industrial cluster between Rotterdam and the Ruhr valley.
+
+Energy transport infrastructure fuels the uneven regional distribution of supply
+relative to demand. This is nicely illustrated by the Lorenz curves presented in
+\cref{fig:io} for different energy carriers and network expansion scenarios. The
+Lorenz curves plot the carrier's cumulative share of supply versus the
+cumulative share of demand, sorted by the ratio of supply and demand in
+ascending order. If the annual sums of supply and demand are equal in each
+region, the Lorenz curve resides on the identiy line. But the more unequal the
+regional supply is relative to demand, the further the curve dents into the
+bottom right corner of the graph.
+
+For the least-cost scenario, \cref{fig:io:w-el-w-h2} highlights that hydrogen
+supply is more regionally imbalanced relative to demand than electricity supply.
+Roughly 60\% of the hydrogen demand is consumed in regions that produce less
+than 1\% of total hydrogen supply. Conversely, 40\% of the hydrogen supply is
+produced in regions that consume less than 5\% of total hydrogen demand.
+Naturally, reduced electricity grid expansion causes more evenly distributed
+electricity supply (\cref{fig:io:wo-el-w-h2,fig:io:wo-el-wo-h2}). If hydrogen
+transport is restricted (\cref{fig:io:w-el-wo-h2,fig:io:wo-el-wo-h2}), the
+production of liquid hydrocarbons is increased in renewable-rich regions because
+they can be transported at low cost. In this case, 70\% of the demand for
+oil-based products is consumed in regions that produce less than 1\% of total
+supply. With full network expansion, 70\% of demand covers 16\% of supply.
+
+% - 17\% of oil from fossil sources
+% - 45\% of methane comes from unlocated fossil sources (explains steep end)
+
+
+\begin{figure}
+    \centering
+    \makebox[\textwidth][c]{
+        \begin{subfigure}[t]{0.55\textwidth}
+            \centering
+            \caption{energy moved}
+            \includegraphics[width=\textwidth]{ewhkm}
+            \label{fig:network-stats:ewhkm}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.55\textwidth}
+            \centering
+            \caption{transmission capacity built}
+            \includegraphics[width=\textwidth]{twkm}
+            \label{fig:network-stats:twkm}
+        \end{subfigure}
+    }
+    \caption{Transmission capacity built and energy moved for various network expansion scenarios.
         For the hydrogen network a distinction between retrofitted and new pipelines is made.
         For the electricity network a distinction is made between existing and added capacity
-        or how much energy is moved via HVAC or HVDC power lines.}
+        or how much energy is moved via HVAC or HVDC power lines. Both measures weight capacity
+        and energy by the length of the line.}
     \label{fig:network-stats}
 \end{figure}
 
@@ -322,7 +370,15 @@ if hydrogen transport is restricted
             \includegraphics[width=\textwidth, trim=0cm 0cm 7cm 0cm, clip]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network-costs-all_2030.pdf}
             \label{fig:tsc:wo-el-wo-h2}
         \end{subfigure}
-    } \caption{}
+    } \caption{
+        Regional distribution of system costs and electricity grid
+    expansion for scenarios with and without electricity or hydrogen network
+    expansion. The pie charts depict the annualised system cost alongside the
+    shares of the various technologies for each region. The color legend is the
+    same as for Figure 1. The line widths depict the level of added grid
+    capacity, distinguising between HVAC lines (grey) and HVDC links (purple).
+    The added capacity of a connection between two regions was capped to 10 GW.
+    }
     \label{fig:tsc}
 \end{figure}
 
@@ -342,7 +398,11 @@ if hydrogen transport is restricted
             \label{fig:h2-network:wo-el}
         \end{subfigure}
     }
-    \caption{Optimised hydrogen network and production sites with and without electricity grid reinforcement.}
+    \caption{Optimised hydrogen network and production sites with and without
+    electricity grid reinforcement. The size of the circles depicts the
+    electrolysis and fuel cell capacities in the respective region. The line
+    widths depict the optimised hydrogen pipeline capacities. The darker shade
+    depicts the share of capacity that is built from retrofitted gas pipelines.}
     \label{fig:h2-network}
 \end{figure}
 
@@ -379,63 +439,74 @@ if hydrogen transport is restricted
         \end{subfigure}
     }
     \caption{Regional total energy balances for scenarios with and without
-        electricity or hydrogen network expansion. The Lorenz curves on the upper
-        left of each map depict the regional inequity of electricity, hydrogen,
-        methane and oil supply relative to demand.}
+    electricity or hydrogen network expansion, revealing regions with net energy
+    surpluses and deficits. The Lorenz curves on the upper left of each map
+    depict the regional inequity of electricity, hydrogen, methane and oil
+    supply relative to demand. If the annual sums of supply and demand are equal
+    in each region, the Lorenz curve resides on the identiy line. But the more
+    unequal the regional supply is relative to demand, the further the curve
+    dents into the bottom right corner of the graph.}
     \label{fig:io}
 \end{figure}
 
-\section*{Onshore wind expansion restrictions shift hydrogen infrastructure}
+\section*{Onshore wind restrictions alter hydrogen backbone topology}
 \label{sec:onwind}
 \addcontentsline{toc}{section}{\nameref{sec:onwind}}
 
 \begin{figure}
     \centering
     \makebox[\textwidth][c]{
-        \begin{subfigure}[t]{0.48\textwidth}
-            \centering
-            \caption{system cost}
-            \includegraphics[height=0.27\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2030.pdf}
-            \label{fig:no-onw:tsc}
-        \end{subfigure}
-        \begin{subfigure}[t]{0.4\textwidth}
+        \begin{subfigure}[t]{0.6\textwidth}
             \centering
             \caption{hydrogen network}
-            \includegraphics[height=0.27\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2030.pdf}
+            \includegraphics[height=0.35\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2030.pdf}
             \label{fig:no-onw:h2}
         \end{subfigure}
-        \begin{subfigure}[t]{0.43\textwidth}
+        \begin{subfigure}[t]{0.6\textwidth}
             \centering
             \caption{energy balance}
-            \includegraphics[height=0.27\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2030/import-export-total-200.pdf}
+            \includegraphics[height=0.35\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2030/import-export-total-200.pdf}
             \label{fig:no-onw:io}
         \end{subfigure}
-    }
+        }
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \caption{system cost}
+        \includegraphics[height=0.35\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2030.pdf}
+        \label{fig:no-onw:tsc}
+    \end{subfigure}
     \caption{Maps of regional energy balance, hydrogen network and production sites, and spatial and technological distribution of system costs for a scenario without onshore wind and without power grid expansion.}
     \label{fig:no-onw}
 \end{figure}
 
 % cost impact and overall system
 
-By restricting the installable potentials of onshore down to zero, costs rise by
-\euro~104 bn/a (12\%) as onshore wind is eliminated if the electricity grid is
-fixed to today's capacities. \cref{sec:si:onw} presents intermediate results
-between full and no onshore wind expansion. The model substitutes onshore wind,
-particularly in the British Isles, for higher investment in offshore wind in the
-North Sea and solar generators in Southern Europe (\cref{fig:no-onw:tsc}).
-Because offshore capacities are concentrated near coastlines, and grid capacity
-is restricted, total spending on hydrogen electrolyzers and networks also
-increases to absorb the increased offshore generation. Without onshore wind, the
-potentials for rooftop solar PV and offshore wind in Europe are largely
-exhausted, such that in this self-sufficient scenario for Europe, the
-effect of installable potentials becomes critical.
+Like building new power transmission lines, the deployment of onshore wind may
+not always be socially accepted such that it may not be possible to leverage its
+full potential. In the following section and \cref{fig:no-onw}, we explore the
+hypothetical impact of restricting the installable potentials of onshore wind
+down to zero.
+
+We find that as onshore wind is eliminated, costs rise by \euro~104 bn/a (12\%)
+when the electricity grid is fixed to today's capacities but a hydrogen network
+can be developed. In comparison to the least-cost solution with full network
+expansion, this solution is XX\% more expensive. \cref{sec:si:onw} presents
+intermediate results between full and no onshore wind expansion. The model
+substitutes onshore wind, particularly in the British Isles, for higher
+investment in offshore wind in the North Sea and solar generators in Southern
+Europe (\cref{fig:no-onw:tsc}). Because offshore capacities are concentrated
+near coastlines, and grid capacity is restricted, total spending on hydrogen
+electrolyzers and networks also increases to absorb the increased offshore
+generation. Without onshore wind, the potentials for rooftop solar PV and
+offshore wind in Europe are largely exhausted, such that in this self-sufficient
+scenario for Europe, the effect of installable potentials becomes critical.
 
 % changes in hydrogen infrastructure
 
 Whereas with onshore wind, the  British Isles and North Sea dominate hydrogen
 production, Southern Europe becomes a large exporter of solar-based hydrogen if
 the development of onshore wind capacities is restricted
-(\crefrange{fig:no-onw:h2}{fig:no-onw:io}). This shift in hydrogen
+(\cref{fig:no-onw:h2,fig:no-onw:io}). This shift in hydrogen
 infrastructure also impacts the share of gas pipelines being retrofitted for
 hydrogen transport. As the Iberian Peninsula becomes a preferred region for
 hydrogen production but has a more sparse gas transmission network, the rate of
