@@ -1,4 +1,5 @@
-\documentclass[12pt,1p]{elsarticle}
+\documentclass[12pt,preprint]{elsarticle}
+% \documentclass[12pt,1p]{elsarticle}
 % \documentclass[11pt]{article}
 
 \journal{Joule}
@@ -28,10 +29,10 @@
 % \usepackage{amssymb}
 
 \usepackage{geometry}
-\geometry{
-top=30mm,
-bottom=35mm,
-}
+% \geometry{
+% top=30mm,
+% bottom=35mm,
+% }
 
 \usepackage{amsmath}
 \usepackage{bbold}
@@ -155,32 +156,32 @@ bottom=35mm,
 		hydrogen backbone, sector-coupling, retrofitting, energy systems, transmission expansion, Europe, climate-neutral, renewables
 	\end{keyword}
 
-	\begin{graphicalabstract}
-	\end{graphicalabstract}
+	% \begin{graphicalabstract}
+	% \end{graphicalabstract}
 
 	\begin{highlights}
-		\item examines the benefit of a hydrogen network in net-zero scenarios for Europe with high shares of renewables
+		\item examines the benefit of a hydrogen network in net-zero \co scenarios for Europe with high shares of renewables
 		\item uses open energy system model PyPSA-Eur-Sec with 181 regions, 3-hourly resolution for a year and all energy sectors represented
 		\item hydrogen network reduces cost of system configurations by up to 6\%
-		\item almost 60\% uses retrofitted gas network pipelines
-		\item benefits highest when electricity grid expansion restricted, but both reduce costs
+		\item almost 60\% of hydrogen backbone uses retrofitted gas network pipelines
+		\item benefits are highest when electricity grid expansion restricted, but both reduce costs
 	\end{highlights}
 
 \end{frontmatter}
 
-\listoftodos[TODOs]
+% \listoftodos[TODOs]
 
 \begin{small}
 	\tableofcontents
 \end{small}
 ~\\
 
-\addcontentsline{toc}{section}{Context \& Scale}
-\begin{shaded}
-\vspace{-0.5cm}
-\section*{Context \& Scale}
-\input{sections/context.tex}
-\end{shaded}
+% \addcontentsline{toc}{section}{Context \& Scale}
+% \begin{shaded}
+% \vspace{-0.5cm}
+% \section*{Context \& Scale}
+% \input{sections/context.tex}
+% \end{shaded}
 
 \section*{Introduction}
 \label{sec:intro}
@@ -207,9 +208,7 @@ bottom=35mm,
 \label{sec:methods}
 \addcontentsline{toc}{section}{\nameref{sec:methods}}
 
-\begin{small}
 \input{sections/methods.tex}
-\end{small}
 
 \section*{Acknowledgements}
 \small
