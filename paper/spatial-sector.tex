@@ -55,7 +55,8 @@
 % \usepackage[toc,title,page]{appendix}
 
 
-\usepackage[prependcaption,textsize=footnotesize]{todonotes}
+\usepackage[prependcaption,textsize=scriptsize]{todonotes}
+% \usepackage[prependcaption,textsize=scriptsize,disable]{todonotes}
 
 \usepackage{siunitx}
 \sisetup{
@@ -98,6 +99,8 @@
 % 	modifier={by},
 % 	version={4.0},
 % ]{doclicense}
+
+\newcommand{\topic}[1]{\todo[color=green!40,noline]{#1}}
 
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
