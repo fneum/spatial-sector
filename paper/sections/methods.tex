@@ -21,32 +21,33 @@ free software framework Python for Power System Analysis (PyPSA)
 PyPSA-Eur-Sec builds upon the model from \cite{brownSynergiesSector2018}, which
 covered electricity, heating in buildings and ground transport in Europe with
 one node per country. PyPSA-Eur-Sec adds biomass on the supply side, industry,
-aviation and shipping on the demand side, and higher spatial resolution to
-suitably assess infrastructure requirements. Unavoidable process emissions, as
-well as the need for feedstocks for the chemicals industry and dense hydrocarbon
-fuels for aviation, necessitate careful management of the carbon cycle,
-including carbon capture from industry, biomass combustion and directly from the
-air.
+agriculture, aviation and shipping on the demand side, and higher spatial
+resolution to suitably assess infrastructure requirements. Unavoidable process
+emissions, as well as the need for feedstocks for the chemicals industry and
+dense hydrocarbon fuels for aviation, necessitate careful management of the
+carbon cycle, including carbon capture from industry, biomass combustion and
+directly from the air.
 
 Energy sector coupling, storage and conversion is modelled to connect
 electricity, heating (individual buildings, district heating and industry),
 transport and gas (methane, hydrogen and carbon dioxide) in the different
-sectors (buildings, transport and industry). \cref{fig:multisector} gives an
-overview of the supply, transmission, storage and demand sectors implemented in
-the European sector-coupled model PyPSA-Eur-Sec. Generator capacities (for
-onshore wind, offshore wind, solar photovoltaic (PV), biomass and natural gas),
-storage capacities (for batteries, hydrogen, methane, liquid hydrocarbons,
-carbon dioxide and hot water tanks), heating capacities (for heat pumps,
-resistive heaters, gas boilers, combined heat and power (CHP) plants and solar
-thermal collector units), carbon capture (from industry, CHP plants and directly
-from the air), energy converters (electrolyzers, methanation, Fischer-Tropsch),
-energy storage (batteries, hydrogen storage in caverns and steel tanks,
-pumped-hydro and reservoirs), and transmission capacities for electricity and
-hydrogen are all subject to optimisation, as well as the operational dispatch of
-each unit in each hour. Demand curves for the different sectors, the ratio of
-district heating to decentralised heating, the number of electric vehicles,
-methane storage and hydroelectricity capacities (for reservoir and run-of-river
-generators and pumped hydro storage) are exogenous to the model.
+sectors (buildings, transport, agriculture and industry). \cref{fig:multisector}
+gives an overview of the supply, transmission, storage and demand sectors
+implemented in the European sector-coupled model PyPSA-Eur-Sec. Generator
+capacities (for onshore wind, offshore wind, solar photovoltaic (PV), biomass
+and natural gas), storage capacities (for batteries, hydrogen, methane, liquid
+hydrocarbons, carbon dioxide and hot water tanks), heating capacities (for heat
+pumps, resistive heaters, gas boilers, combined heat and power (CHP) plants and
+solar thermal collector units), carbon capture (from industry, CHP plants and
+directly from the air), energy converters (electrolyzers, methanation,
+Fischer-Tropsch), energy storage (batteries, hydrogen storage in caverns and
+steel tanks, pumped-hydro and reservoirs), and transmission capacities for
+electricity and hydrogen are all subject to optimisation, as well as the
+operational dispatch of each unit in each hour. Demand curves for the different
+sectors, the ratio of district heating to decentralised heating, the number of
+electric vehicles, methane storage and hydroelectricity capacities (for
+reservoir and run-of-river generators and pumped hydro storage) are exogenous to
+the model.
 
 \textbf{supply}
 
@@ -75,6 +76,8 @@ available. For shipping, liquid hydrogen is considered. For aviation, we
 consider dense liquid hydrocarbons. Battery electric vehicles for passenger
 transport can be enables with demand response as well as vehicle-to-grid
 capabilities.
+
+The \textbf{buildings} sector...
 
 The model can \textbf{convert} between various energy carriers. Electricity can
 be converted to heat via heat pumps or resistive heaters; to hydrogen gas, or

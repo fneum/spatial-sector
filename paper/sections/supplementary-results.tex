@@ -50,7 +50,70 @@ what exists incurs a cost of \euro~86~billion per year. The lack of electricity
 grid is mostly compensated by more solar PV generation, battery storage and
 re-electrified hydrogen.
 
-\subsection{Cost of Onshore Wind Potential Restrictions}
+\subsection{Cost of Onshore Wind Potential Elimination}
+\label{sec:si:onw}
+
+\begin{figure}
+    \centering
+    \makebox[\textwidth][c]{
+        \begin{subfigure}[t]{0.6\textwidth}
+            \centering
+            \caption{hydrogen network}
+            \includegraphics[height=0.42\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2030.pdf}
+            \label{fig:no-onw:h2}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.6\textwidth}
+            \centering
+            \caption{energy balance}
+            \includegraphics[height=0.42\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2030/import-export-total-200.pdf}
+            \label{fig:no-onw:io}
+        \end{subfigure}
+        }
+    \begin{subfigure}[t]{0.6\textwidth}
+        \centering
+        \caption{system cost}
+        \includegraphics[height=0.42\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2030.pdf}
+        \label{fig:no-onw:tsc}
+    \end{subfigure}
+    \caption{Maps of regional energy balance, hydrogen network and production sites, and spatial and technological distribution of system costs for a scenario without onshore wind and without power grid expansion.}
+    \label{fig:no-onw}
+\end{figure}
+
+Like building new power transmission lines, the deployment of onshore wind may
+not always be socially accepted, such that it may not be possible to leverage
+its full potential. In the following additional sensitivity analysis, we explore
+the hypothetical impact of restricting the installable potentials of onshore
+wind down to zero (\cref{fig:no-onw}).
+
+We find that as onshore wind is eliminated, costs rise by \euro~104 bn/a (12\%)
+when the electricity grid is fixed to today's capacities, but a hydrogen network
+can still be developed. In comparison to the least-cost solution with full
+network expansion, this solution is 23\% more expensive. A solution in which
+neither a hydrogen network could be developed would be 30\% more expensive.
+\cref{sec:si:onw} presents intermediate results between full and no onshore wind
+expansion. The model substitutes onshore wind, particularly in the British
+Isles, for higher investment in offshore wind in the North Sea and solar
+generators in Southern Europe (\cref{fig:no-onw:tsc}). Because offshore
+capacities are concentrated near coastlines, and grid capacity is restricted,
+total spending on hydrogen electrolysers and networks also increases to absorb
+the increased offshore generation. Without onshore wind, the potentials for
+rooftop solar PV and offshore wind in Europe are largely exhausted, such that in
+this self-sufficient scenario for Europe, the effect of installable potentials
+becomes critical.
+
+Whereas with onshore wind, the British Isles and North Sea dominate hydrogen
+production, Southern Europe becomes a large exporter of solar-based hydrogen if
+the development of onshore wind capacities is restricted
+(\cref{fig:no-onw:h2,fig:no-onw:io}). This shift in hydrogen infrastructure also
+impacts the share of gas pipelines being retrofitted for hydrogen transport. As
+the Iberian Peninsula becomes a preferred region for hydrogen production but has
+a more sparse gas transmission network today, the rate of retrofitted pipeline
+capacity reduces from 66\% to 53\%. Many new hydrogen pipelines are built to
+connect Spain with France, but also to connect increased hydrogen production
+from Danish offshore wind to Germany. Gas pipeline retrofitting is then
+concentrated in Germany, Austria and Italy.
+
+\subsection{Cost of Compromises on Onshore Wind Potential Restrictions}
 \label{sec:si:onw}
 
 In the following sensitivity runs, the maximum installable capacity of onshore
@@ -107,10 +170,6 @@ carrier gas was nodally resolved and which included the methane network
 alongside the hydrogen and electricity grid. In previously shown results, gas
 was not nodally resolved and gas pipelines were only considered to determine the
 potential for retrofitted hydrogen pipelines.
-
-competition of H2 and gas flow? can gas network be completely removed?
-
-no loss modelling in gas networks
 
 \begin{figure}
     \centering
