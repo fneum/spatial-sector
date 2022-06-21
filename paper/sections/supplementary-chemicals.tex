@@ -38,7 +38,7 @@ energy to split water into hydrogen and oxygen
     \ce{2H2O -> 2 H2 + O2}.
 \end{equation}
 For the electrolysis, we assume alkaline electrolysers since they have lower
-cost \citeS{} and higher cumulative installed capacity \citeS{} than polymer
+cost \citeS{dea2019} and higher cumulative installed capacity \citeS{staffellRoleHydrogen2019a} than polymer
 electrolyte membrane (PEM) electrolysers. Waste heat from electrolysis is not
 leveraged in the model.
 
@@ -91,7 +91,7 @@ repurposed pipelines are a result of the optimisation.
         \includegraphics[width=\textwidth]{cavern-potentials-nearshore.pdf}
     \end{subfigure}
     }
-    \caption{Cavern storage potentials}
+    \caption{Potentials for hydrogen underground storage in salt caverns. Potentials are separated into offshore, onshore and near-shore (within 50km of the coast) potentials.}
     \label{fig:clustered-caverns}
 \end{figure}
 
@@ -130,7 +130,7 @@ synthetic sources. If gas infrastructure is regionally resolved (see
 existing and planned LNG terminals, pipeline entry-points, and intra-European
 gas extraction sites (see \cref{fig:gas-raw}), which are retrieved from the
 SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022} and the GEM Wiki
-\citeS{}. Biogas can be upgraded to methane (see \cref{sec:si:bio:potentials}).
+\citeS{gemwikiLNGTerminals2021}. Biogas can be upgraded to methane (see \cref{sec:si:bio:potentials}).
 Synthetic methane can be produced by processing hydrogen and captures \co in the
 Sabatier reaction
 \begin{equation}
@@ -147,20 +147,22 @@ depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 \begin{figure}
     \includegraphics[width=1\textwidth,center]{gas_network.pdf}
     \label{fig:gas-raw}
-    \caption{Gas network}
+    \caption{Unclustered European gas transmission network based on the
+    SciGRID Gas IGGIELGN dataset. The pipelines are color-coded by estimated capacities. Markers indicate entry-points, sites of fossil resource extraction, and LNG terminals.}
 \end{figure}
 
 The existing European gas transmission network is represented based on the
 SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022}, as shown in
 \cref{fig:gas-raw}. This dataset is based on compiled and merged data from the
-ENTSOG map \citeS{} and other publicly available data sources. It includes data
+ENTSOG maps \citeS{entsogTransmissionCapacity2021} and other publicly available data sources. It includes data
 on the capacity, diameter, pressure, length, and directionality of pipelines.
 Missing capacity data is conservatively inferred from the pipe diameter
-following conversion factors derived from \citeS{EuropeanHydrogen}. The gas
-network is clustered to the model's 181 regions (see
-\cref{fig:clustered-networks}). Gas pipelines can be endogenously expanded or
-repurposed for hydrogen transport (see \cref{sec:si:h2:transport}). Gas flows
-are represented by a lossless transport model.
+following conversion factors derived from
+\citeS{gasforclimateEuropeanHydrogen2021}. The gas network is clustered to the
+model's 181 regions (see \cref{fig:clustered-networks}). Gas pipelines can be
+endogenously expanded or repurposed for hydrogen transport (see
+\cref{sec:si:h2:transport}). Gas flows are represented by a lossless transport
+model.
 
 The results presented in the main body of the article regard the gas
 transmission network only to determine the retofitting potentials for hydrogen
@@ -214,26 +216,26 @@ and no bottlenecks are expected.
     \makebox[\textwidth][c]{
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        % \caption{electricity demand}
+        \caption{solid biomass potentials}
         \includegraphics[width=\textwidth]{biomass-solid biomass.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        % \caption{hydrogen demand}
+        \caption{biogas potentials}
         \includegraphics[width=\textwidth]{biomass-biogas.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        % \caption{methane demand}
+        \caption{potentials not included}
         \includegraphics[width=\textwidth]{biomass-not included.pdf}
     \end{subfigure}
     }
-    \caption{Biomass potentials.}
+    \caption{Regional distribution of biomass potentials seperated by solid biomass, biogas and potentials not included. Only residual biomass feedstocks are included. Potentials are based on the medium availability scenario for 2030 from the JRC ENSPRESO database.}
     \label{fig:biomass-potentials}
 \end{figure}
 
 Regional biomass supply potentials are taken from the JRC ENSPRESO database
-\citeS{jrcbiomass2015}. This dataset includes various biomass feedstocks at
+\citeS{ruizENSPRESOOpen2019}. This dataset includes various biomass feedstocks at
 NUTS2 resolution for low, medium and high availability scenarios.  We use the
 medium availability scenario for 2030, assuming no biomass import from outside
 Europe. The data for NUTS2 regions is mapped to PyPSA-Eur-Sec model regions in
@@ -258,7 +260,7 @@ A summary of which feedstocks are used in the model is shown in
 included in \cref{fig:biomass-potentials}. In 2015, the EU28 biomass energy
 consumption consisted of \SI{180}{\twh} of biogas, \SI{1063}{\twh} of solid
 biofuels, \SI{109}{\twh} renewable municipal waste and \SI{159}{\twh} of liquid
-biofuels \citeS{}. In comparison, PyPSA-Eur-Sec implies a doubling of biogas
+biofuels \citeS{ruizENSPRESOOpen2019}. In comparison, PyPSA-Eur-Sec implies a doubling of biogas
 consumption and similar amounts of solid biofuels, but a shift from energy crops
 and primary wood to residues and wastes. Zappa et al.
 \citeS{zappa100Renewable2019} additionally allowed the use of roundwood chips
@@ -276,7 +278,7 @@ and pellets, and grassy, willow and poplar energy crops.
         not used & energy crops: sugar beet bioethanol, rape seed and other oil crops, starchy crops, grassy, willow, poplar; roundwood fuelwood; roundwood chips and pellets & 1661 \\
         \bottomrule
     \end{tabularx}
-    \caption{Use of biomass potentials according to classifications from the JRC in the medium availability scenario for 2030.}
+    \caption{Use of biomass potentials according to classifications from the JRC ENSPRESO database in the medium availability scenario for 2030.}
     \label{tab:biomass}
 \end{table}
 

@@ -1,7 +1,7 @@
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{fec_industry_today_tomorrow.pdf}
-    \caption{Final consumption of energy and non-energy feedstocks in industry today (left bar) and
-    our future scenario in 2050 (right bar)}
+    \caption{Final consumption of energy and non-energy feedstocks in industry today (top bar) and
+    our future scenario in 2050 (bottom bar)}
     \label{fig:fec-industry}
 \end{SCfigure}
 
@@ -37,7 +37,7 @@
 
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
-    \caption{Distribution of industries according to emissions data from the Hotmaps industrial sites database.}
+    \caption{Distribution of industries according to emissions data from the Hotmaps industrial sites database. Marker size is proportional to the industrial site's reported emission levels.}
     \label{fig:hotmaps}
 \end{SCfigure}
 
@@ -76,11 +76,11 @@ and process switching described in the subsequent sections. Second, the 2050
 energy demands and process emissions are calculated using the
 per-unit-of-material ratios based on the industry transformations and the
 country-level material production in 2015 \citeS{IDEES}, assuming constant
-material demand as shown in \cref{tab:industryproduction}. Missing or too
-coarsely aggregated data in the JRC-IDEES database \citeS{IDEES} is supplemented
-with additional datasets: Eurostat energy-balances \citeS{}, USGS \citeS{usgs}
-for ammonia production, DECHEMA \citeS{introzziDECHEMAGesellschaft} for methanol
-and chlorine, and national statistics from Switzerland \citeS{}.
+material demand. Missing or too coarsely aggregated data in the JRC-IDEES
+database \citeS{IDEES} is supplemented with additional datasets: Eurostat
+energy balances \citeS{eurostatEnergyBalances2021}, USGS \citeS{unitedstatesgeologicalsurveyAmmoniaProduction2021} for ammonia production, DECHEMA
+\citeS{introzziDECHEMAGesellschaft} for methanol and chlorine, and national
+statistics from Switzerland \citeS{bundesamtfurenergieEnergieverbrauchIndustrie2021}.
 
 Where there are fossil and electrified alternatives for the same process (e.g.
 in glass manufacture or drying) we assume that the process is completely
@@ -90,7 +90,7 @@ approach depends on the temperature required
 \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}.
 Processes that require temperatures below \SI{500}{\celsius} are supplied with
 solid biomass, since we assume that residues and wastes are not suitable for
-high-temperature applications (cf. \cref{sec:si:heat:supply}). We see solid
+high-temperature applications (cf.~\cref{sec:si:heat:supply}). We see solid
 biomass use primarily in the pulp and paper industry, where it is already
 widespread, and in food, beverages and tobacco, where it replaces natural gas.
 Industries which require high temperatures (above \SI{500}{\celsius}), such as
@@ -184,7 +184,7 @@ Integrated steelworks can be replaced by direct reduced iron (DRI) and subsequen
 This circumvents the process emissions associated with the use of coke. For
 hydrogen-based DRI we assume energy requirements of 1.7 MWh$_{H_2}$/t steel
 \citeS{voglAssessmentHydrogen2018} and 0.322 MWh$_{el}$/t steel
-\citeS{}.
+\citeS{hybritSummaryFindings2021}.
 
 The shares of steel produced via each of the three routes by 2050 is exogenously
 set in the model. We assume that hydrogen-based DRI plus EAF replaces integrated
@@ -225,7 +225,7 @@ their current and future production routes are different.
 
 Statistics for the production of ammonia, which is commonly used as a
 fertiliser, are taken from statistics provided by the United States Geological
-Survey (USGS) for every country \citeS{}. Ammonia can be made from hydrogen and
+Survey (USGS) for every country \citeS{unitedstatesgeologicalsurveyAmmoniaProduction2021}. Ammonia can be made from hydrogen and
 nitrogen using the Haber-Bosch process \citeS{leviMappingGlobal2018}.
 \begin{equation}
     \ce{N2 + 3H2 -> 2NH3}
@@ -233,7 +233,7 @@ nitrogen using the Haber-Bosch process \citeS{leviMappingGlobal2018}.
 The Haber-Bosch process is not explicitly represented in the model, such that
 demand for ammonia enters the model as a demand for hydrogen (6.5
 MWh\ce{H2}/t\ce{NH3}) and electricity (1.17 MWh$_{el}$/t\ce{NH3})
-\citeS{Wang2018Joule}. Today, natural gas dominates in Europe as the source for
+\citeS{wangGreeningAmmonia2018}. Today, natural gas dominates in Europe as the source for
 the hydrogen used in the Haber-Bosch process, but the model can choose among the
 various hydrogen supply options described in
 \cref{sec:si:h2:supply}
@@ -304,11 +304,11 @@ process heat. Thereby, cement constitutes the biggest source of industry
 process emissions in Europe (\cref{fig:process-emissions}).
 
 Cement process emissions can be captured assuming a capture rate of 90\%
-\citeS{}. Whether emissions are captured is decided by the model taking into
-account the capital costs of carbon capture modules. The electricity and heat
-demand of process emission carbon capture is currently ignored. For net-zero
-emission scenarios, the remaining process emissions need to be compansated by
-negative emissions.
+\citeS{dea2019}. Whether emissions are captured is decided by the model taking
+into account the capital costs of carbon capture modules. The electricity and
+heat demand of process emission carbon capture is currently ignored. For
+net-zero emission scenarios, the remaining process emissions need to be
+compansated by negative emissions.
 
 With the exception of electricity demand and biomass demand for low-temperature
 heat, the final energy consumption of this subsector is assumed to be supplied
@@ -358,7 +358,7 @@ The non-ferrous metal subsector includes the manufacturing of base metals
 metals (molybdenum, cobalt, silicon).
 
 The manufacturing of aluminium accounts for more than half of the final energy
-consumption of this subsector \citeS{}. Two alternative processing routes are
+consumption of this subsector. Two alternative processing routes are
 used today to manufacture aluminium in Europe. The primary route represents 40\%
 of the aluminium production, while the secondary route represents the remaining
 60\%.
@@ -403,13 +403,14 @@ while the remaining processes are electrified.
 None of the subsectors involve process emissions.
 
 Energy demands for the agriculture, forestry and fishing sector per country are
-taken from the JRC IDEES database \citeS{} (missing countries filled with
-eurostat data \citeS{}) and are split into electricity (lighting, ventilation,
-specific electricity uses, electric pumping devices), heat (specific heat uses,
-low enthalpy heat) machinery oil (motor drives, farming machine drives,
-diesel-fueled pumping devices). Heat demand is assigned at “services rural heat”
-buses. Time series for demands are assumed to be constant and distributed inside
-countries by population
+taken from the JRC IDEES database \citeS{IDEES}. Missing countries are filled with
+eurostat data \citeS{eurostatEnergyBalances2021}. Agricultural energy demands
+are split into electricity (lighting, ventilation, specific electricity uses,
+electric pumping devices), heat (specific heat uses, low enthalpy heat)
+machinery oil (motor drives, farming machine drives, diesel-fueled pumping
+devices). Heat demand is assigned at “services rural heat” buses. Time series
+for demands are assumed to be constant and distributed inside countries by
+population.
 
 \citeS{sovacoolDecarbonizingFood2021}
 

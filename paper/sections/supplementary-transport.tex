@@ -21,7 +21,7 @@ JRC-IDEES database \citeS{IDEES}.
         \caption{availability (per-unit)}
         \includegraphics[width=.8\textwidth, trim=0cm 1cm 0cm 0cm, clip]{bev-demand-month}
     \end{subfigure}
-    \caption{Time series of battery electric vehicle demand and availability in December.}
+    \caption{Normalised time series of battery electric vehicle demand and availability in December.}
     \label{fig:bev-demand-availability}
 \end{figure}
 
@@ -33,12 +33,12 @@ internal combustion engines exist.
 The energy savings gained by electrifying road transport, are computed through
 country-specific factors that compare the current final energy consumption of
 cars per distance travelled (average for Europe
-\SI{0.7}{\kilo\watt\hour\per\kilo\metre}, \citeS{}) to the
+\SI{0.7}{\kwh\per\kilo\metre}, \citeS{IDEES}) to the
 \SI{0.18}{\kilo\watt\hour\per\kilo\metre} assumed for the battery-to-wheel
 efficiency of electric vehicles.
 
 Weekly profiles of distances travelled published by the Germand Federal Highway
-Research Institute (BASt) \citeS{} are used to generate hourly time series for
+Research Institute (BASt) \citeS{bundesanstaltfurstrassenwesenAutomatischeZahlstellen2021} are used to generate hourly time series for
 each European country taking into account their local time. Furthermore, a
 temperature dependence is included in the time series to account for
 heating/cooling demand in transport. For temperatures below \SI{15}{\celsius}
@@ -58,7 +58,7 @@ connected to the grid at any time is inversely proportional to the transport
 demand profile, which translates into an average/minimum availability of
 80\%/62\% of the time. These values are conservative compared to most of the
 literature, where average parking times of the European vehicle fleet is
-estimated at 92\% \citeS{}. The battery cost of BEV is not included in the model
+estimated at 92\% \citeS{}\todo{can't find literature source!}. The battery cost of BEV is not included in the model
 since it is assumed that BEV owners buy them to primarily satisfy their mobility
 needs.
 

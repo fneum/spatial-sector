@@ -29,7 +29,7 @@ demands is shown in \cref{fig:demand-space:electricity}.
 \subsection{Electricity Supply}
 
 \begin{SCfigure}
-    \caption{Powerplants.}
+    \caption{Existing conventional power plant capacities in Europe by technology. Marker size is proportional to nominal capacity.}
     \label{fig:powerplants}
     \includegraphics[width=0.7\textwidth]{powerplants.pdf}
 \end{SCfigure}
@@ -80,7 +80,7 @@ power (CHP) plant.
 
 \begin{figure}
     \includegraphics[width=\textwidth, center]{network.pdf}
-    \caption{ENTSO-E transmission network}
+    \caption{Unclustered European electricity transmission network by voltage level including planned TYNDP projects. Network data was retrieved from \href{https://www.entsoe.eu/data/map/}{entsoe.eu/data/map} and \href{https://tyndp.entsoe.eu/}{tyndp.entsoe.eu}.}
     \label{fig:base-network}
 \end{figure}
 
@@ -122,7 +122,7 @@ substations.
 
 Capacities and electrical characteristics of transmission lines and substations,
 such as impedances and thermal ratings, are
-inferred from standard types for each voltage level from \citeS{oedingElektrischeKraftwerke2011}. For each HVAC
+inferred from standard types for each voltage level from Oeding and Oswald~\citeS{oedingElektrischeKraftwerke2011}. For each HVAC
 line, we further restrict line loading to 70\% of the nominal rating to
 approximate $N-1$ security, which protects the system against overloading if any
 one transmission line fails. This conservative security margin is commonly

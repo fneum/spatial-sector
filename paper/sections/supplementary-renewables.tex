@@ -5,34 +5,36 @@
 \subsection{Potentials}
 \label{sec:si:renewable-potentials}
 
-\newgeometry{margin=2cm}
-\begin{landscape}
+% \newgeometry{margin=2cm}
+% \begin{landscape}
 
 \begin{figure}
     \centering
     % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
             \centering
         \caption{solar land eligibility}
         \includegraphics[width=\textwidth]{eligibility-solar-250-20.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \centering
         \caption{onshore wind land eligibility}
         \includegraphics[width=\textwidth]{eligibility-onwind-250-20.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \centering
+        \vspace{.5cm}
         \caption{offshore wind land eligibility}
         \includegraphics[width=\textwidth]{eligibility-offwind-250-20.pdf}
     \end{subfigure}
     %}
-    \caption{Land eligibility.}
+    \caption{Land eligibility for the development of renewable generation capacities. Green color indicates
+    areas eligible to build wind or utility-scale solar parks based on suitable land types, natural protection areas, and water depths.}
     \label{fig:eligibility}
 \end{figure}
 
-\end{landscape}
-\restoregeometry
+% \end{landscape}
+% \restoregeometry
 
 \begin{table}
     \caption{Land types considered suitable for every technology from Corine Land Cover database}
@@ -81,7 +83,6 @@ offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
 \subsection{Time Series}
 \label{sec:si:renewable-ts}
 
-
 \begin{figure}
     \centering
     % \makebox[\textwidth][c]{
@@ -106,6 +107,23 @@ offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
     \label{fig:weather-data}
 \end{figure}
 
+\begin{figure}
+    \centering
+    % \makebox[\textwidth][c]{
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{solar}
+        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{wind}
+        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
+    \end{subfigure}
+    % }
+    \caption{Available energy density for wind and utility-scale solar PV power generation.}
+    \label{fig:energy-density}
+\end{figure}
 
 \begin{figure}
     \centering
@@ -167,28 +185,12 @@ offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
         \includegraphics[width=\textwidth]{cf-ground-sourced heat pump.pdf}
     \end{subfigure}
     % }
-    \caption{Regional distribution of capacity factors of renewable energy sources.}
+    \caption{Regional distribution of average capacity factors of renewable energy sources.}
     \label{fig:cfs-maps}
 \end{figure}
 
 
-\begin{figure}
-    \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{solar}
-        \includegraphics[width=\textwidth]{solar-energy-density.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{wind}
-        \includegraphics[width=\textwidth]{wind-energy-density.pdf}
-    \end{subfigure}
-    % }
-    \caption{Available energy density for wind and utility-scale solar PV energy generation.}
-    \label{fig:energy-density}
-\end{figure}
+
 
 The location-dependent renewables availability time series are generated based
 on two gridded historical weather datasets (\cref{fig:weather-data}). We
