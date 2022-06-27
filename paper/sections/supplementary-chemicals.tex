@@ -154,10 +154,10 @@ depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 The existing European gas transmission network is represented based on the
 SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022}, as shown in
 \cref{fig:gas-raw}. This dataset is based on compiled and merged data from the
-ENTSOG maps \citeS{entsogTransmissionCapacity2021} and other publicly available data sources. It includes data
-on the capacity, diameter, pressure, length, and directionality of pipelines.
-Missing capacity data is conservatively inferred from the pipe diameter
-following conversion factors derived from
+ENTSOG maps \citeS{entsogTransmissionCapacity2021} and other publicly available
+data sources. It includes data on the capacity, diameter, pressure, length, and
+directionality of pipelines. Missing capacity data is conservatively inferred
+from the pipe diameter following conversion factors derived from an EHB report
 \citeS{gasforclimateEuropeanHydrogen2021}. The gas network is clustered to the
 model's 181 regions (see \cref{fig:clustered-networks}). Gas pipelines can be
 endogenously expanded or repurposed for hydrogen transport (see
@@ -183,7 +183,8 @@ Naphtha is used as a feedstock in the chemicals industry (see
 fuel in the aviation sector (see \cref{sec:si:transport:aviation}).
 Non-electrified agriculture machinery also consumes gasoline. The regional
 distribution of the demand for oil-based products is shown in
-\cref{fig:demand-space:oil}. However, this carrier is copperplated in the model.
+\cref{fig:demand-space:oil}. However, this carrier is copperplated in the model,
+which means that transport costs and constraints are neglected.
 
 \subsection{Oil-based Product Supply}
 \label{sec:si:oil:supply}

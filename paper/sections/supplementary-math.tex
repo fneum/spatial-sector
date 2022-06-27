@@ -1,17 +1,19 @@
 \section{Mathematical Model Formulation}
 \label{sec:si:math}
 
-The objective is to minimise the total annual system costs that comprises both investment
-costs and operational expenditures of generation, storage, transmission and
-conversion infrastructure. To express both as annual costs, we use the annuity
-factor $(1-(1+\tau)^{-n}) / \tau$ that, like a mortgage, converts the upfront
-investment of an asset to annual payments considering its lifetime $n$ and cost
-of capital $\tau$. Thus, the objective includes on one hand the annualised
-capital costs $c_*$ for investments at bus $i$ in generator capacity
-$G_{i,r}\in\R^+$ of technology $r$, storage energy capacity $E_{i,s}\in\R^+$ of
-technology $s$, electricity transmission line capacities $P_{\ell}\in\R^+$, and
-energy conversion and transport capacities $F_k\in\R^+$ (links), as well as the variable
-operating costs $o_*$ for generator dispatch $g_{i,r,t}\in\R^+$ and link dispatch $f_{k,t}\in\R^+$ on the other:
+The objective is to minimise the total annual system costs of the energy system
+that comprises both investment costs and operational expenditures of generation,
+storage, transmission and conversion infrastructure. To express both as annual
+costs, we use the annuity factor $(1-(1+\tau)^{-n}) / \tau$ that, like a
+mortgage, converts the upfront investment of an asset to annual payments
+considering its lifetime $n$ and cost of capital $\tau$. Thus, the objective
+includes on one hand the annualised capital costs $c_*$ for investments at bus
+$i$ in generator capacity $G_{i,r}\in\R^+$ of technology $r$, storage energy
+capacity $E_{i,s}\in\R^+$ of technology $s$, electricity transmission line
+capacities $P_{\ell}\in\R^+$, and energy conversion and transport capacities
+$F_k\in\R^+$ (links), as well as the variable operating costs $o_*$ for
+generator dispatch $g_{i,r,t}\in\R^+$ and link dispatch $f_{k,t}\in\R^+$ on the
+other:
 \begin{align}
   \label{eq:objective}
   \min_{G,E,P,F,g} \quad &\left[\sum_{i,r} c_{i,r}\cdot G_{i,r} + \sum_{i,s} c_{i,s}\cdot E_{i,s} + \sum_{\ell}c_{\ell}\cdot P_{\ell}+ \sum_{k}c_{k}\cdot F_k +\right. \\

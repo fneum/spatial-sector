@@ -183,7 +183,7 @@ Integrated steelworks can be replaced by direct reduced iron (DRI) and subsequen
 \end{align}
 This circumvents the process emissions associated with the use of coke. For
 hydrogen-based DRI we assume energy requirements of 1.7 MWh$_{H_2}$/t steel
-\citeS{voglAssessmentHydrogen2018} and 0.322 MWh$_{el}$/t steel
+\citeS{voglAssessmentHydrogen2018} and 0.322 MWh$_{\text{el}}$/t steel
 \citeS{hybritSummaryFindings2021}.
 
 The shares of steel produced via each of the three routes by 2050 is exogenously
@@ -232,7 +232,7 @@ nitrogen using the Haber-Bosch process \citeS{leviMappingGlobal2018}.
 \end{equation}
 The Haber-Bosch process is not explicitly represented in the model, such that
 demand for ammonia enters the model as a demand for hydrogen (6.5
-MWh\ce{H2}/t\ce{NH3}) and electricity (1.17 MWh$_{el}$/t\ce{NH3})
+MWh$_{\ce{H2}}$/t$_{\ce{NH3}}$) and electricity (1.17 MWh$_{\text{el}}$/t$_{\ce{NH3}}$)
 \citeS{wangGreeningAmmonia2018}. Today, natural gas dominates in Europe as the source for
 the hydrogen used in the Haber-Bosch process, but the model can choose among the
 various hydrogen supply options described in
@@ -240,25 +240,25 @@ various hydrogen supply options described in
 
 The total production and specific energy consumption of chlorine and methanol is
 taken from DECHEMA \citeS{introzziDECHEMAGesellschaft}. According to this
-source, the production of chlorine amounts to 9.58 Mt$_{Cl}$/a, which is assumed
-to require electricity at 3.6 MWh$_{el}$/t of chlorine and yield hydrogen at
-0.9372 MWh$_{H_2}$/t of chlorine in the chloralkali process. The production of
-methanol adds up to 1.5 Mt$_{MeOH}$/a, requiring electricity at 0.167 MWh$_{el}$/t
-of methanol and methane at 10.25 MWh$_{CH_4}$/t of methanol.
+source, the production of chlorine amounts to 9.58 Mt$_{\ce{Cl}}$/a, which is assumed
+to require electricity at 3.6 MWh$_{\text{el}}$/t of chlorine and yield hydrogen at
+0.9372 MWh$_{\ce{H2}}$/t of chlorine in the chloralkali process. The production of
+methanol adds up to 1.5 Mt$_{\ce{MeOH}}$/a, requiring electricity at 0.167 MWh$_{\text{el}}$/t
+of methanol and methane at 10.25 MWh$_{\ce{CH4}}$/t of methanol.
 
 The production of ammonia, methanol, and chlorine production is deducted from
 the JRC IDEES basic chemicals, leaving the production totals of high-value
 chemicals. For this, we assume that the liquid hydrocarbon feedstock comes from
-synthetic or fossil-origin naphtha (14 MWh$_{naphtha}$/t of HVC, similar to
+synthetic or fossil-origin naphtha (14 MWh$_{\text{naphtha}}$/t of HVC, similar to
 \citeS{lechtenbohmerDecarbonisingEnergy2016}), ignoring the methanol-to-olefin
 route. Furthermore, we assume the following transformations of the
 energy-consuming processes in the production of plastics: the final energy
 consumption in steam processing is converted to methane since requires
-temperature above \SI{500}{\celsius} (4.1 MWh$_{CH_4}$/t of HVC)
+temperature above \SI{500}{\celsius} (4.1 MWh$_{\ce{CH4}}$/t of HVC)
 \citeS{rehfeldtBottomupEstimation2018}; and the remaining processes are
 electrified using the current efficiency of microwave for high-enthalpy heat
 processing, electric furnaces, electric process cooling and electric generic
-processes (2.85 MWh$_{el}$/t of HVC).
+processes (2.85 MWh$_{\text{el}}$/t of HVC).
 
 
 The process emissions from feedstock in the chemical industry are as high as
@@ -271,9 +271,9 @@ associated \co emissions.
 Circular economy practices reduce the amount of primary feedstock needed for the
 production of plastics in the model and, consequently, also the level of process
 emissions (\cref{fig:process-emissions}). We assume that 30\% of plastics are
-mechanically recycled requiring 0.547 MWh$_{el}$/t of HVC
+mechanically recycled requiring 0.547 MWh$_{\text{el}}$/t of HVC
 \citeS{meysCircularEconomy2020}, 15\% of plastics are chemically recycled
-requiring 6.9 MWh$_{el}$/t of HVC based on pyrolysis and electric steam cracking
+requiring 6.9 MWh$_{\text{el}}$/t of HVC based on pyrolysis and electric steam cracking
 \citeS{materialeconomicsIndustrialTransformation2019}, and 10\% of plastics are
 reused (equivalent to reduction in demand). The remaining 45\% need to be
 produced from primary feedstock. In comparison, Material Economics
@@ -375,7 +375,7 @@ which is supplied by methane and causes process emissions of
 inert anodes might become commercially available by 2030 that would eliminate
 the process emissions. However, they have not been considered in this study.
 Assuming all subprocesses are electrified, the primary route requires 15.4
-MWh$_{el}$/t of aluminium.
+MWh$_{\text{el}}$/t of aluminium.
 
 In the secondary route, scrap aluminium is remelted. The energy demand for this
 process is only 10\% of the primary route and there are no associated process
@@ -392,7 +392,7 @@ equivalent.
 
 The remaining industry subsectors include
 (a) pulp, paper, printing,
-(b) food, beverages, tobacco ,
+(b) food, beverages, tobacco,
 (c) textiles and leather,
 (d) machinery equipment,
 (e) transport equipment,

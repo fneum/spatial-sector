@@ -1,5 +1,3 @@
-\topic{public acceptance problems / importance of power grid}
-
 There are many different combinations of infrastructure that would allow Europe
 to reach net-zero greenhouse gas emissions by 2050. However, not all
 technologies meet the same level of acceptance among the public. The last few
@@ -13,17 +11,13 @@ electricity transmission network expansion has suffered many delays in Europe in
 recent decades, despite its importance for integrating large amounts of
 renewable electricity such that all energy sectors can be decarbonised.
 
-\topic{hydrogen: an important energy carrier}
-
 Hydrogen will likely become a pivotal energy carrier in such a climate-neutral
 energy system. Hydrogen is needed in the industry to produce ammonia for
-fertilisers and direct reduced iron for steelmaking. It is also a critical
-feedstock to produce synthetic methane and liquid hydrocarbons for use as
-aviation fuel and as a precursor to high-value chemicals. Further hydrogen use
-extends to heavy-duty land transport, shipping as liquified hydrogen, and backup
-heat and power supply through re-electrification in stationary fuel cells.
-
-\topic{idea of European hydrogen backbone as replacement?}
+fertilisers and can be used for direct reduced iron for steelmaking. It is also
+a critical feedstock to produce synthetic methane and liquid hydrocarbons for
+use as aviation fuel and as a precursor to high-value chemicals. Hydrogen could
+also be used for heavy-duty land transport, shipping, and backup heat
+and power supply.
 
 The limited social acceptance for electricity grid reinforcement and the
 advancing role of hydrogen raises the question of whether a new network of
@@ -36,28 +30,24 @@ It would offer an alternative route to connecting remote regions with abundant
 and cost-effective wind and solar potentials to densely-populated and
 industry-heavy regions with high demand but limited supply options.
 
-\topic{large retrofitting potential of gas network / higher acceptance?}
-
 Since Europe has a sizeable existing gas transmission network that is set to
-become increasingly expendable as the system transitions towards climate
-neutrality, the option to repurpose parts of the network, to transport hydrogen
-instead, may reinforce this idea. This is because retrofitting gas pipelines
-would significantly lower the development costs compared to building new
-hydrogen pipelines. Moreover, repurposed and new pipelines may also meet higher
-levels of acceptance among the local populations than transmission lines. Unlike
-transmission towers, pipelines are less visible because they usually run below
-or near the ground. Particularly where gas pipelines already exist, the
-perceivable impact would be minimal.
-
-\topic{shortcomings in literature/EHB}
+become increasingly redundant as the system transitions towards climate
+neutrality, the option to repurpose parts of the network to transport hydrogen
+instead, may make hydrogen networks even more attractive. This is because
+retrofitting gas pipelines would significantly lower the development costs
+compared to building new hydrogen pipelines. Moreover, repurposed and new
+pipelines may also meet higher levels of acceptance among the local populations
+than transmission lines. Unlike transmission towers, pipelines are less visible
+because they usually run below or near the ground. Particularly where gas
+pipelines already exist, the perceivable impact would be minimal.
 
 However, few studies have evaluated the benefit of a hydrogen network in Europe
 so far. The EHB reports do not include an assessment based on the
 co-optimisation of energy system components
 \cite{gasforclimateEuropeanHydrogen2020,gasforclimateEuropeanHydrogen2021,gasforclimateExtendingEuropean2021,gasforclimateEuropeanHydrogen2022}.
 Other sector-coupling studies have not included hydrogen networks at all
-\cite{brownSynergiesSector2018}, or when they do, model Europe only at
-country-level resolution
+\cite{brownSynergiesSector2018,pickeringDiversityOptions}, or when they do,
+model Europe only at country-level resolution
 \cite{europeancommission.directorategeneralforenergy.METISStudy2021,victoriaSpeedTechnological2021},
 have a country-specific focus with limited geographical scope
 \cite{gilsInteractionHydrogen2021}, or neglect some energy sectors or non-energy
@@ -65,32 +55,29 @@ demands that involve hydrogen
 \cite{gilsInteractionHydrogen2021,Caglayan2019,caglayanRobustDesign2021}. None
 of the studies have explored the interplay between hydrogen network expansion
 and electricity grid reinforcements. Neither have the potentials for lower
-development costs through pipeline retrofitting been taken into account so far.
+development costs through pipeline retrofitting been taken into account so far
+in a highly resolved model.
 
+This paper provides the first high-resolution examination of the trade-offs
+between electricity grid expansion and a new hydrogen network in scenarios for a
+European energy system with net-zero carbon dioxide emissions and high shares of
+renewable electricity production. We analyse four main scenarios to investigate
+if a hydrogen network can compensate for a potential lack of power grid
+expansion. The scenarios differ based on whether or not electricity and hydrogen
+grids can be expanded, including potentials for gas pipeline retrofitting.
+Evaluation criteria include the total system cost, the composition and spatial
+distribution of technologies and transmission infrastructure in the system. As a
+supplementary sensitivity analysis, we also evaluate the impact of restricted
+onshore wind potentials on these scenarios.
 
-\topic{in this paper}
-
-This paper examines the economic benefit of a hydrogen backbone in scenarios for
-a European energy system with net-zero carbon dioxide emissions and high shares
-of renewable electricity production. We analyse four main scenarios to
-investigate if a hydrogen network can compensate for a potential lack of power
-grid expansion. These vary on whether or not electricity and hydrogen grids can
-be expanded, including potentials for gas pipeline retrofitting. Evaluation
-criteria are the total system cost, the composition and spatial distribution of
-technologies and transmission infrastructure in the system.
-
-% As a supplementary sensitivity analysis, we also evaluate the
-% impact of restricted onshore wind potentials.
-
-\topic{mini model description and novelty}
-
-For our analysis, we use an open-source capacity expansion model of the European
-energy system, PyPSA-Eur-Sec, which, in contrast to previous studies
+For our analysis, we use an open capacity expansion model of the European energy
+system, PyPSA-Eur-Sec, which, in contrast to many previous studies
 \cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,connollySmartEnergy2016,lofflerDesigningModel2017,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020},
 combines a fully sector-coupled approach with a high spatio-temporal resolution
-so that it can capture the transmission bottlenecks that constrain the
-cost-effective integration of variable renewable energy. The model co-optimises
-the investment and operation of generation, storage, conversion and transmission
+and multi-carrier transmission infrastructure representation so that it can
+capture the various transport bottlenecks that constrain the cost-effective
+integration of variable renewable energy. The model co-optimises the investment
+and operation of generation, storage, conversion and transmission
 infrastructures in a single linear optimisation problem, covering 181 regions
 and a 3-hourly time resolution for a full year. It incorporates spatially
 distributed demands of the electricity, industry, buildings, agriculture and
@@ -98,24 +85,26 @@ transport sectors, including shipping and aviation as well as non-energy
 feedstock demands in the chemicals industry. Primary energy supply comes from
 wind, solar, biomass, hydro, and limited amounts of fossil oil and gas. The
 energy flows between the system's energy carriers are modelled by various
-technologies, including heat pumps, CHPs, thermal storage, electric vehicles,
-batteries, power-to-X processes, fuel cells, and geological potentials of
-underground hydrogen storage. Moreover, data on electricity and gas transmission
-infrastructure is included to determine grid expansion needs and retrofitting
-potentials. Finally, the model also features detailed management of carbon flows
-between capture, usage, sequestration and the atmosphere. More details on the
-model are presented in \nameref{sec:methods} and \nameref{sec:si}.
-
-\topic{scenario assumptions}
+technologies, including heat pumps, combined heat and power (CHP) plants,
+thermal storage, electric vehicles, batteries, power-to-X processes, fuel cells,
+and geological potentials of underground hydrogen storage. Data on electricity
+and gas transmission infrastructure is also included to determine grid expansion
+needs and retrofitting potentials. The model also features detailed management
+of carbon flows between capture, usage, sequestration and the atmosphere to
+track carbon through the system. More details on the model are presented in the
+\nameref{sec:methods} and \nameref{sec:si}. The model is open-source and based
+on open data such that results can be reproduced and assumptions may be modified
+(\href{https://github.com/pypsa/pypsa-eur-sec}{github.com/pypsa/pypsa-eur-sec}).
 
 All investigations are conducted with a constraint that carbon dioxide emissions
 into the atmosphere balance out to zero over the year. The model can sequester
 up to 200 Mt\co per year, allowing it to sequester industry process emissions,
 such as calcination in cement manufacture, that have a fossil origin but limits
 the use of negative emission technologies compared to other works
-\cite{blancoPotentialHydrogen2018}. In our scenarios, we do not
-consider energy imports into Europe and apply technology assumptions for
-the year 2030 \cite{DEA}.
+\cite{blancoPotentialHydrogen2018}. In our scenarios, we also do not consider
+clean energy imports to Europe, thus assuming that Europe is self-sufficient in
+electricity and green fuels and feedstocks. Technology assumptions are taken
+widely from the Danish Energy Agency for the year 2030 \cite{DEA}.
 
 % Higher sequestration rates would be
 % favoured in the model. For comparison, the JRC-EU-TIMES model sees optimal
@@ -136,7 +125,6 @@ the year 2030 \cite{DEA}.
 %     victoriaSpeedTechnological2021,
 %     lombardiPolicyDecision2020,
 %     tsiropoulosNetzeroEmissions2020,
-%     europeancommission.directorategeneralforenergy.METISStudy2021,
 %     tafarteQuantifyingTrade,
 %     lehmannManagingSpatial}
 
@@ -145,3 +133,5 @@ the year 2030 \cite{DEA}.
 %     jaxa-rozenSourcesUncertainty2021,
 %     victoriaSolarPhotovoltaics2021,
 %     xiaoPlummetingCosts2021}
+
+%

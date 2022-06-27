@@ -99,8 +99,8 @@
 % 	modifier={by},
 % 	version={4.0},
 % ]{doclicense}
-
-\newcommand{\topic}[1]{\todo[color=green!40,noline]{#1}}
+%
+% \newcommand{\topic}[1]{\todo[color=green!40,noline]{#1}}
 
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -164,7 +164,19 @@
 
 \end{frontmatter}
 
-% \listoftodos[TODOs]
+
+
+\section*{Highlights}
+
+\begin{itemize}
+	\item examines the benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables
+	\item uses open energy system model PyPSA-Eur-Sec with 181 regions, 3-hourly resolution for a year and all energy sectors (electricity, buildings, transport, industry, agriculture) represented
+	\item hydrogen network reduces system costs by up to 6\%, with highest benefits when power grid expansion restricted
+	\item between 58-66\% of hydrogen backbone uses retrofitted gas network pipelines
+	\item cost benefit of electricity grid expansion is higher than of hydrogen network (6\% versus 8\%), but both together reduce costs by up to 12\%
+\end{itemize}
+
+Word count: 4721 (excl. \nameref{sec:methods} and \nameref{sec:si})
 
 % \addcontentsline{toc}{section}{Context \& Scale}
 % \begin{shaded}
@@ -172,18 +184,6 @@
 % \section*{Context \& Scale}
 % \input{sections/context.tex}
 % \end{shaded}
-
-\section*{Highlights}
-
-\begin{itemize}
-	\item examines the benefit of a hydrogen network in net-zero \co scenarios for Europe with high shares of renewables
-	\item uses open energy system model PyPSA-Eur-Sec with 181 regions, 3-hourly resolution for a year and all energy sectors (electricity, buildings, transport, industry, agriculture) represented
-	\item hydrogen network reduces system costs by up to 6\%, and are highest when power grid expansion restricted
-	\item between 58-66\% of hydrogen backbone uses retrofitted gas network pipelines
-	\item cost benefit of electricity grid expansion is higher than of hydrogen network (6\% versus 8\%), but both together reduce costs by up to 12\%
-\end{itemize}
-
-Word count: 4721 (excl. \nameref{sec:methods} and \nameref{sec:si})
 
 \newpage
 \section*{Introduction}
@@ -214,20 +214,45 @@ Word count: 4721 (excl. \nameref{sec:methods} and \nameref{sec:si})
 \input{sections/methods.tex}
 
 \section*{Acknowledgements}
-\small
 
 % F.N. and T.B. gratefully acknowledge funding from the Helmholtz
 % Association under grant no. VH-NG-1352.
 
 \section*{License}
-% \doclicenseLongText
-% \doclicenseIcon
+
+This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0
+International License (CC-BY-4.0)}.
 
 \section*{Author Contributions}
 
 % following https://casrai.org/credit/
 
-\textbf{Author XY}:
+\textbf{Author FN}:
+Conceptualization --
+Data curation --
+Formal Analysis --
+Investigation --
+Methodology --
+Software --
+Supervision --
+Validation --
+Visualization --
+Writing - original draft --
+Writing - review \& editing
+\textbf{Author EZ}:
+Data curation --
+Formal Analysis --
+Investigation --
+Software --
+Validation --
+Writing - review \& editing
+\textbf{Author MV}:
+Formal Analysis --
+Investigation --
+Methodology --
+Software --
+Writing - review \& editing
+\textbf{Author TB}:
 Conceptualization --
 Data curation --
 Formal Analysis --
@@ -238,8 +263,6 @@ Project administration --
 Resources --
 Software --
 Supervision --
-Validation --
-Visualization --
 Writing - original draft --
 Writing - review \& editing
 

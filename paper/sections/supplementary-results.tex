@@ -99,16 +99,17 @@ when the electricity grid is fixed to today's capacities, but a hydrogen network
 can still be developed. In comparison to the least-cost solution with full
 network expansion, this solution is 23\% more expensive. A solution in which
 neither a hydrogen network could be developed would be 30\% more expensive.
-\cref{sec:si:onw} presents intermediate results between full and no onshore wind
-expansion. The model substitutes onshore wind, particularly in the British
-Isles, for higher investment in offshore wind in the North Sea and solar
-generators in Southern Europe (\cref{fig:no-onw:tsc}). Because offshore
-capacities are concentrated near coastlines, and grid capacity is restricted,
-total spending on hydrogen electrolysers and networks also increases to absorb
-the increased offshore generation. Without onshore wind, the potentials for
-rooftop solar PV and offshore wind in Europe are largely exhausted, such that in
-this self-sufficient scenario for Europe, the effect of installable potentials
-becomes critical.
+\cref{sec:si:onw-compromise} presents further intermediate results between full
+and no onshore wind expansion for scenarios with hydrogen network expansion and
+TYNDP-equivalent power grid reinforcements. The model substitutes onshore wind,
+particularly in the British Isles, for higher investment in offshore wind in the
+North Sea and solar generators in Southern Europe (\cref{fig:no-onw:tsc}).
+Because offshore capacities are concentrated near coastlines, and grid capacity
+is restricted, total spending on hydrogen electrolysers and networks also
+increases to absorb the increased offshore generation. Without onshore wind, the
+potentials for rooftop solar PV and offshore wind in Europe are largely
+exhausted, such that in this self-sufficient scenario for Europe, the effect of
+installable potentials becomes critical.
 
 Whereas with onshore wind, the British Isles and North Sea dominate hydrogen
 production, Southern Europe becomes a large exporter of solar-based hydrogen if
@@ -121,37 +122,6 @@ capacity reduces from 66\% to 53\%. Many new hydrogen pipelines are built to
 connect Spain with France, but also to connect increased hydrogen production
 from Danish offshore wind to Germany. Gas pipeline retrofitting is then
 concentrated in Germany, Austria and Italy.
-
-\subsection{Cost of Compromises on Onshore Wind Potential Restrictions}
-\label{sec:si:onw-compromise}
-
-In the following sensitivity runs, the maximum installable capacity of onshore
-wind is successively restricted down to zero at each node. The upper limit is
-derived from land use restriction and yields a maximum technical potential
-corresponding to about \SI{481}{\giga\watt} for Germany. For this investigation,
-a compromise electricity grid expansion by 25\% compared to today and no limits
-on hydrogen network infrastructure are assumed.
-
-By restricting the installable potentials of onshore down to zero, costs rise by
-\euro~103~billion per year (13\%). Just as in the case of restricted line volumes,
-\cref{fig:onw-restriction} reveals a nonlinear rise in system costs: if we
-constrain the model to 25\% of the onshore potential (around 120~GW for Germany),
-costs rise by only \euro~64~billion per year (5\%). Thereby, 25\% of the onshore
-wind potential may represent a social compromise between total system cost, and
-social concerns about onshore wind development.
-
-In comparison, Schlachtberger et al.~\citeS{schlachtbergerCostOptimal2018} found
-a smaller change between 9\% and 12\% in system costs in an electricity-only
-model when onshore wind potentials were restricted across various grid expansion
-limitations. The the biggest change was observed when the power grid could not
-be reinforced. Onshore wind was largely replaced with offshore wind in that
-model. Unlike that model, here we have a higher grid resolution (181 versus 30
-regions) which allows us to better assess the grid integration costs of offshore
-wind. Our results show that moderate power grid expansion is particularly
-important when onshore wind development is severely limited. For the extreme
-case where no onshore wind capacities would be built, reducing power grid
-expansion from 25\% to none incurs another rise in system cost of an additional
-\euro~50~billion per year (6\%).
 
 \begin{figure}
     \centering
@@ -171,169 +141,210 @@ were by \euro~53~billion per year (5.6\%) higher. With cost-optimal electricity
 grid reinforcement, the net benefit of a hydrogen network is still as high as
 \euro~30~billion per year (3.5\%).
 
+\subsection{Cost of Compromises on Onshore Wind Potential Restrictions}
+\label{sec:si:onw-compromise}
+
+In the following sensitivity runs, the maximum installable capacity of onshore
+wind is successively restricted down to zero at each node. The upper limit is
+derived from land use restriction and yields a maximum technical potential
+corresponding to about \SI{481}{\giga\watt} for Germany. For this investigation,
+a compromise electricity grid expansion by 25\% compared to today and no limits
+on hydrogen network infrastructure are assumed.
+
+As previously discussed in \cref{sec:si:onw}, costs rise by \euro~103~billion
+per year (13\%) by restricting the installable potentials of onshore down to
+zero. Just as in the case of restricted line volumes, \cref{fig:onw-restriction}
+reveals a nonlinear rise in system costs: if we constrain the model to 25\% of
+the onshore potential (around 120~GW for Germany), costs rise by only
+\euro~64~billion per year (5\%). Thereby, 25\% of the onshore wind potential may
+represent a social compromise between total system cost, and social concerns
+about onshore wind development.
+
+In comparison, Schlachtberger et al.~\citeS{schlachtbergerCostOptimal2018} found
+a smaller change between 9\% and 12\% in system costs in an electricity-only
+model when onshore wind potentials were restricted across various grid expansion
+limitations. The the biggest change was observed when the power grid could not
+be reinforced. Onshore wind was largely replaced with offshore wind in that
+model. Unlike that model, here we have a higher grid resolution (181 versus 30
+regions) which allows us to better assess the grid integration costs of offshore
+wind. Our results show that moderate power grid expansion is particularly
+important when onshore wind development is severely limited. For the extreme
+case where no onshore wind capacities would be built, reducing power grid
+expansion from 25\% to none incurs another rise in system cost of an additional
+\euro~50~billion per year (6\%).
+
 
 \section{Supplementary Results for Network Expansion Scenarios}
 \label{sec:si:results-network-expansion}
 
-\todo[inline]{introductory text referencing all figures}
-\cref{fig:si:flow-ac}
-\cref{fig:si:flow-h2}
-\cref{fig:si:lmp-ac}
-\cref{fig:si:lmp-h2}
-\cref{fig:si:lmp-ts-ac}
-\cref{fig:si:lmp-ts-h2}
-\cref{fig:si:lmp-dc}
-\cref{fig:si:sankey}
+In this section, supplementary results for the different network expansion
+scenarios are presented. \cref{fig:si:flow-ac,fig:si:flow-h2} display net
+electricity and hydrogen flows in their respective transmission networks.
+Further figures show the variation of average nodal prices of electricity and
+hydrogen in space (\cref{fig:si:lmp-ac,fig:si:lmp-h2}), in time
+(\cref{fig:si:lmp-ts-ac,fig:si:lmp-ts-h2}), and as duration curves
+(\cref{fig:si:lmp-dc}). Sankey diagrams in \cref{fig:si:sankey} illustrate
+energy flows in the system. Across the scenarios, we infer that a carbon price
+between \SI{435}{\sieuro\per\tco} with transmission infrastructure expansion and
+\SI{513}{\sieuro\per\tco} without would be required to achieve both climate
+neutrality and self-sufficiency in Europe.
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/elec-flow-map-backbone.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/elec-flow-map-backbone.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
+        \caption{Without power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/elec-flow-map-backbone.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/elec-flow-map-backbone.pdf}
     \end{subfigure}
-    \caption{Net flow of electricity in the network. Shows net flows larger than XX TWh. Arrow size is proportional to flow.}
+    \caption{Net flow of electricity in the network. The maps shows net flows larger than 10 TWh with arrow sizes proportional to net flow volume. Only power grid expansion enables bulk energy transport in form of electricity. With the existing transmission network, net flows are limited and the transmission infrastructure is rather used for synoptic balancing as weather systems pass the continent.}
     \label{fig:si:flow-ac}
 \end{figure}
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/H2-flow-map-backbone.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
+        \caption{Without power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/H2-flow-map-backbone.pdf}
     \end{subfigure}
-    \caption{Net flow of hydrogen in the network. Shows net flows larger than XX TWh. Arrow size is proportional to flow.}
+    \caption{Net flow of hydrogen in the network. The maps shows net flows larger than 10 TWh with arrow sizes proportional to net flow volume. The flows indicate the integration of cheap production sites in Spain and the British Isles and high demands in Central Europe.}
     \label{fig:si:flow-h2}
 \end{figure}
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/nodal-prices-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/nodal-prices-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
+        \caption{Without power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/nodal-prices-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/nodal-prices-AC.pdf}
     \end{subfigure}
-    \caption{Regional distribution of average nodal electricity prices.}
+    \caption{Regional distribution of average nodal electricity prices. The reinforcement of the electricity grid mitigates regional price differences. Some price differences persist because of expansion constraints on individual lines.}
     \label{fig:si:lmp-ac}
 \end{figure}
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/nodal-prices-H2.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/nodal-prices-H2.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
+        \caption{Without power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/nodal-prices-H2.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/nodal-prices-H2.pdf}
     \end{subfigure}
-    \caption{Regional distribution of average nodal hydrogen prices.}
+    \caption{Regional distribution of average nodal hydrogen prices. The
+    development of a hydrogen network evens out regional price differences. With
+    limited \ce{H2} network expansion prices are almost twice as high in
+    Europe's industrial clusters than the most cost-effective hydrogen
+    production sites.}
     \label{fig:si:lmp-h2}
 \end{figure}
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-ts-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/price-ts-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
-        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-ts-AC.pdf}
+        \caption{Without power grid expansion, with hydrogen network}
+        \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-ts-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/price-ts-AC.pdf}
     \end{subfigure}
-    \caption{Temporal distribution of average nodal electricity prices.}
+    \caption{Temporal distribution of average nodal electricity prices. The graphs show daily patterns with price troughs during the day, especially in summer, as well as seasonal patterns with higher prices in winter than in the summer. A few periods in January and February are particularly challenging to the system, resulting in very high electricity prices.}
     \label{fig:si:lmp-ts-ac}
 \end{figure}
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-ts-H2.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/price-ts-H2.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
-        \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-ts-H2.pdf}
+        \caption{Without power grid expansion, with hydrogen network}
+        \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-ts-H2.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/price-ts-H2.pdf}
     \end{subfigure}
-    \caption{Temporal distribution of average nodal hydrogen prices.}
+    \caption{Temporal distribution of average nodal hydrogen prices. Compared to
+    electricity prices, the seasonal component dominates daily patterns. Price
+    spikes occur with limited \ce{H2} network expansion in winter periods that
+    are challenging to the system.}
     \label{fig:si:lmp-ts-h2}
 \end{figure}
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[width=.8\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-duration-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[width=.8\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/price-duration-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
@@ -346,12 +357,12 @@ grid reinforcement, the net benefit of a hydrogen network is still as high as
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
+        \caption{Without power grid expansion, with hydrogen network}
         \includegraphics[width=.8\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/price-duration-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[width=.8\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/price-duration-AC.pdf}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
@@ -370,28 +381,28 @@ grid reinforcement, the net benefit of a hydrogen network is still as high as
     \makebox[\textwidth][c]{
     \begin{subfigure}{0.6\textwidth}
         \centering
-        \caption{With grid reinforcement, with hydrogen network}
+        \caption{With power grid expansion, with hydrogen network}
         \includegraphics[trim=1.5cm 2cm 1.5cm 2.5cm, clip, width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/sankey.pdf}
     \end{subfigure}
     \begin{subfigure}{0.6\textwidth}
         \centering
-        \caption{With grid reinforcement, without hydrogen network}
+        \caption{With power grid expansion, without hydrogen network}
         \includegraphics[trim=1.5cm 2cm 1.5cm 2.5cm, clip, width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/sankey.pdf}
     \end{subfigure}
     }
     \makebox[\textwidth][c]{
     \begin{subfigure}{0.6\textwidth}
         \centering
-        \caption{Without grid reinforcement, with hydrogen network}
+        \caption{Without power grid expansion, with hydrogen network}
         \includegraphics[trim=1.5cm 2cm 1.5cm 2.5cm, clip, width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/sankey.pdf}
     \end{subfigure}
     \begin{subfigure}{0.6\textwidth}
         \centering
-        \caption{Without grid reinforcement, without hydrogen network}
+        \caption{Without power grid expansion, without hydrogen network}
         \includegraphics[trim=1.5cm 2cm 1.5cm 2.5cm, clip, width=\textwidth]{20211218-181-h2/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030/sankey.pdf}
     \end{subfigure}
     }
-    \caption{Sankey diagrams of energy flows.}
+    \caption{Sankey diagrams of energy flows in the European system.}
     \label{fig:si:sankey}
 \end{figure}
 
@@ -400,15 +411,22 @@ grid reinforcement, the net benefit of a hydrogen network is still as high as
 \section{Detailed Results of Least-Cost Solution with Full Grid Expansion}
 \label{sec:si:detailed}
 
-In the following section we describe detailed results from the scenario where
-where both the hydrogen and electricity grid could be expanded.
-
-\todo[inline]{introductory text referencing all figures}
-\crefrange{fig:output-ts-1}{fig:output-ts-4}
-\cref{fig:si:lcoe}
-\cref{fig:si:utilisation-rate-map}
-\cref{fig:si:utilisation-rate-ts}
-\cref{fig:si:grid-utilisation}
+In the following section we present more detailed results from the scenario
+where both the hydrogen and electricity grid could be expanded. Among the
+scenarios we investigated, this represents the least-cost solution.
+\crefrange{fig:output-ts-1}{fig:output-ts-4} show temporally resolved energy
+balances for different carriers: electricity, hydrogen, heat, methane, oil-based
+products, and carbon dioxide. These are daily sampled time series for a year and
+3-hourly sampled time series for the month February, and indicate how different
+technologies are operated both seasonally and daily. \cref{fig:si:lcoe} displays
+the regional distribution of levelised cost of electricity for wind and solar
+generation. \cref{fig:si:utilisation-rate-map} indicates how synthetic fuel
+production facilities are operated regionally. How selected energy system
+components are operated throughout the year is shown in
+\cref{fig:si:utilisation-rate-ts}. The utilisation of electricity and hydrogen
+network assets are presented in \cref{fig:si:grid-utilisation}, alongside
+information about where energy is curtailed and what congestion rents are
+incurred.
 
 \begin{figure}
     \centering
@@ -420,7 +438,7 @@ where both the hydrogen and electricity grid could be expanded.
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{heat}
+        \caption{space and water heating}
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat-D-2013.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
@@ -429,7 +447,7 @@ where both the hydrogen and electricity grid could be expanded.
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-H2-D-2013.pdf}
     \end{subfigure}
     %}
-    \caption{Daily sampled time series for (a) electricity, (b) heat, and (c) hydrogen supply (above zero) and consumption (below zero) composition. Supply and consumption balance for each bar.}
+    \caption{Daily sampled time series for (a) electricity, (b) heat, and (c) hydrogen supply (above zero) and consumption (below zero) composition. Supply and consumption balance for each bar by definition.}
     \label{fig:output-ts-1}
 \end{figure}
 
@@ -467,7 +485,7 @@ where both the hydrogen and electricity grid could be expanded.
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{heat}
+        \caption{space and water heating}
         \includegraphics[width=\textwidth]{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/ts-balance-total heat--2013-02.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
@@ -524,7 +542,7 @@ where both the hydrogen and electricity grid could be expanded.
         \caption{offshore wind (DC-connected)}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/lcoe-offwind-dc.pdf}
     \end{subfigure}
-    \caption{Levelised cost of electricity of wind and solar generation. Only shows locations where more than XX GW of the respective technology were built.}
+    \caption{Levelised cost of electricity of wind and solar generation. Only shows locations where more than 1 GW of the respective technology were built.}
     \label{fig:si:lcoe}
 \end{figure}
 
@@ -532,7 +550,7 @@ where both the hydrogen and electricity grid could be expanded.
     \centering
     \begin{subfigure}{0.66\textwidth}
         \centering
-        \caption{Electrolysis}
+        \caption{electrolysis}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/utilisation-factors-H2 Electrolysis.pdf}
     \end{subfigure}
     \begin{subfigure}{0.66\textwidth}
@@ -540,7 +558,7 @@ where both the hydrogen and electricity grid could be expanded.
         \caption{Fischer-Tropsch conversion}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/utilisation-factors-Fischer-Tropsch.pdf}
     \end{subfigure}
-    \caption{Utilisation rate of synthetic fuel production capacities. Only shows locations where more than XX GW of the respective technology were built.}
+    \caption{Utilisation rate of synthetic fuel production capacities. Only shows locations where more than 1 GW of the respective technology were built.}
     \label{fig:si:utilisation-rate-map}
 \end{figure}
 
@@ -585,7 +603,14 @@ where both the hydrogen and electricity grid could be expanded.
         \centering
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/cf-ts-hydrogen storage.pdf}
     \end{subfigure}
-    \caption{Operations and storage filling levels of selected energy system components.}
+    \caption{Operations and storage filling levels of selected energy system components. The figure outlines
+    the flexible operation of electrolysers (both seasonally and daily)
+    the near-constant operation of synthetic fuel production
+    the backup role of gas power plants (OCGT),
+    the seasonal operation of heat pumps, gas boilers, CHP, and hydrogen storage,
+    the daily pattern of battery storage filling levels, and
+    periods of peak loading of the power distribution grid.
+    }
     \label{fig:si:utilisation-rate-ts}
 \end{figure}
 
@@ -602,14 +627,12 @@ where both the hydrogen and electricity grid could be expanded.
         \caption{hydrogen network loading}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/map_avg_pipelineloading.pdf}
     \end{subfigure}
-    \begin{subfigure}{0.70\textwidth}
+    \begin{subfigure}{0.65\textwidth}
         \vspace{1cm}
         \centering
         \caption{electricity grid congestion and curtailment}
         \includegraphics[width=\textwidth]{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030/map_congestion.pdf}
     \end{subfigure}
-    \caption{Utilisation rate of electricity and hydrogen network, curtailment and congestion. Subplot (a) shows average electricity network loading relative to $N-1$ compliant line rating and the corresponding duration curve of line loadings. Subplot (b) shows the average hydrogen pipeline loading relative to the nominal pipeline capacity and also the corresponding duration curve of pipeline loadings. Subplot (c) shows the regional and technological distribution of curtailment in the system as well as realised congestion rents in the electricity network.}
+    \caption{Utilisation rate of electricity and hydrogen network, curtailment and congestion. Subplot (a) shows average electricity network loading relative to $N-1$ compliant line rating (70\% of nominal rating) and the corresponding duration curve of line loadings. Subplot (b) shows the average hydrogen pipeline loading relative to the nominal pipeline capacity and also the corresponding duration curve of pipeline loadings. Subplot (c) shows the regional and technological distribution of curtailment in the system as well as realised congestion rents in the electricity network.}
     \label{fig:si:grid-utilisation}
 \end{figure}
-
-\todo{add legend to plot indicating that width proportional to (pipe-)line capacity.}
