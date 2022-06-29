@@ -33,7 +33,7 @@ Caglayan et al.~\cite{Caglayan2019} also consider European decarbonisation
 scenarios with both electricity transmission and new hydrogen pipelines, but at
 a lower spatial resolution (96 regions). A similar pattern of hydrogen pipeline
 expansion towards the British Isles and North Sea is seen, but lower overall
-hydrogen capacities (258~GW compared to more than 1000~GW in our scenarios)
+hydrogen capacities (258~GW compared to our \SIrange{1057}{1297}{\giga\watt})
 because industry, shipping, aviation, agriculture and non-electrified heating
 are not included. Caglayan et al.~\cite{Caglayan2019} also find cost-optimal
 hydrogen underground storage of 130~TWh, whereas our scenarios involve less
@@ -44,22 +44,20 @@ European energy system was also recently presented by Pickering et
 al.~\cite{pickeringDiversityOptions}. Their 98-region model with 2-hourly
 resolution likewise includes all energy sectors including non-energy feedstocks
 and also optimises for fully self-sufficient energy supply chains within Europe.
-However, their analysis contains no detailed account of hydrogen infrastructure.
-Hydrogen transport is not considered such that hydrogen must be
-produced locally, whereby power grid expansion gains importance. Moreover,
-their scenarios disregard geological potentials for cheap underground hydrogen
-storage as well as the potential to retrofit gas pipelines for hydrogen
-transport. Owing to high cost of hydrogen storage in steel tanks and fewer
-assumed direct uses of hydrogen, their results show less hydrogen storage
-(\SIrange{0}{6}{\twh} versus \SIrange{32}{66}{\twh}) and lower electrolyser
-capacities (\SIrange{290}{855}{\giga\watt} versus
-\SIrange{1057}{1297}{\giga\watt}) compared to our results. Furthermore, whereas
-our model allows limited use of fossil fuels and with options for carbon capture
-and sequestration, Pickering et al.~\cite{pickeringDiversityOptions} are more
-restrictive by eliminating the use of fossil energy sources and only considering
-direct air capture as carbon source. Overall, total system costs lie in a range
-between 811 and 954 bn\euro/a compared to costs between 764 and 857 bn\euro/a in
-our study.
+However, they do not focus on hydrogen infrastructure. Hydrogen transport is not
+considered such that hydrogen must be produced locally, whereby power grid
+expansion gains importance. Moreover, their scenarios disregard geological
+potentials for low-cost storage in salt aquifers and the option to retrofit gas
+pipelines. Owing to high storage cost in steel tanks and fewer assumed end-uses
+of hydrogen, their scenarios involve less hydrogen storage (\SIrange{0}{6}{\twh}
+versus \SIrange{32}{66}{\twh}) and lower electrolyser capacities
+(\SIrange{290}{855}{\giga\watt} versus \SIrange{1057}{1297}{\giga\watt})
+compared to our results. Furthermore, whereas our model allows limited use of
+fossil fuels and with options for carbon capture and sequestration, Pickering et
+al.~\cite{pickeringDiversityOptions} are more restrictive by eliminating the use
+of fossil energy sources and only considering direct air capture as carbon
+source. Overall, total system costs lie in a range between 811 and 954 bn\euro/a
+compared to costs between 764 and 857 bn\euro/a in our study.
 
 \subsection*{Comparison to the European Hydrogen Backbone}
 
@@ -133,10 +131,11 @@ effect of imports on infrastructure needs should be explored in future work
 
 Additionally, the very uneven distribution of energy supply in our results may
 interfere with the level of social acceptance for new infrastructure to an
-extent that may block a swift energy transition. Hence, future investigations
-should weigh the cost surcharge of increased regionally self-sufficient energy
-supply against the potential benefit of higher public acceptance and increased
-resiliency.
+extent that may block a swift energy transition
+\cite{sasseDistributionalTradeoffs2019,sasseRegionalImpacts2020}. Hence, future
+investigations should weigh the cost surcharge of increased regionally
+self-sufficient energy supply against the potential benefit of higher public
+acceptance and increased resilience.
 
 Moreover, previous research has shown that there are many directions in the
 feasible space where the system composition can be changed with only a small
@@ -146,15 +145,16 @@ trade-offs regarding transmission networks, a more comprehensive exploration of
 near-optimal solutions in sector-coupled systems using techniques like
 Modelling-to-Generate-Alternatives (MGA)
 \cite{Neumann2019,lombardiPolicyDecision2020,pedersenModelingAll2020,pickeringDiversityOptions},
-would likely reveal a broader range of alternative system layouts.
+would reveal a broader range of alternative system layouts.
 
-\todo[noline]{Wxpand by a few more sentences.}
-
-Besides, there are many more limitations pertaining to the quality and
-availability of open data on demands and infrastructure, uncertainty in future
-technology assumptions, limited robustness to interannual weather variation,
-neglect of demand sufficiency, and exogenous assumptions about fuel and process
-switching in transport and industry. %Nevertheless, we believe our results can
-% demonstrate the conditions under which a hydrogen backbone in Europe would be beneficial.
-
-% no nuclear
+Besides, there are many more limitations. Nevertheless, we believe our results
+can demonstrate the conditions under which a hydrogen backbone in Europe would
+be beneficial. For instance, high-quality data on demands and infrastructure is
+not always publicly available; projections for future technology costs and
+assumptions are uncertain and we neglect the dynamics of technological learning
+by doing; we also do not consider new nuclear power plants; heat demands and the
+availability of renewables vary considerably year by year such that our
+stricture to a single year may limit the solutions' robustness to interannual
+weather variability; and for the transport and industry sectors we make some
+exogenous assumptions about process switching, drive trains, alternative fuels
+for industry heat and recycling rates.
