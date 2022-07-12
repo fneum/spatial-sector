@@ -38,7 +38,7 @@ energy to split water into hydrogen and oxygen
     \ce{2H2O -> 2 H2 + O2}.
 \end{equation}
 For the electrolysis, we assume alkaline electrolysers since they have lower
-cost \citeS{dea2019} and higher cumulative installed capacity \citeS{staffellRoleHydrogen2019a} than polymer
+cost\citeS{DEA} and higher cumulative installed capacity\citeS{staffellRoleHydrogen2019a} than polymer
 electrolyte membrane (PEM) electrolysers. Waste heat from electrolysis is not
 leveraged in the model.
 
@@ -58,8 +58,8 @@ The endogenous retrofitting of gas pipelines to hydrogen pipelines is
 implemented in a way, such that for every unit of gas pipeline decommissioned,
 60\% of its nominal capacity are available for hydrogen transport on the
 respective route, following assumptions from the European Hydrogen Backbone
-report \citeS{gasforclimateEuropeanHydrogen2020}. When the gas network is not resolved, this
-value denotes the potential for repurposed hydrogen pipelines.
+report.\citeS{gasforclimateEuropeanHydrogen2020} When the gas network is not
+resolved, this value denotes the potential for repurposed hydrogen pipelines.
 
 New pipelines can be built additionally on all routes where there currently is a
 gas or electricity network connection. These new pipelines will be built where
@@ -99,11 +99,11 @@ Hydrogen can be stored in overground steel tanks or underground salt caverns.
 The annuitised cost for cavern storage is around 30 times lower than for storage
 in steel tanks including compression. For underground storage potentials for
 hydrogen in European salt caverns we take data from Caglayan et
-al.~\citeS{caglayanTechnicalPotential2019} and map it to
+al.~\citeS{caglayanTechnicalPotential2020} and map it to
 each of the 181 model regions (\cref{fig:clustered-caverns}). We include only
 those caverns that are located on land and within 50 km of the shore
 (nearshore). We impose this restriction to circumvent environmental problems
-associated with brine water disposal \citeS{caglayanTechnicalPotential2019}. The
+associated with brine water disposal.\citeS{caglayanTechnicalPotential2020} The
 storage potential is abundant and the constraining factor is more where they
 exist and less how large the energy storage potentials are.
 
@@ -129,15 +129,15 @@ synthetic sources. If gas infrastructure is regionally resolved (see
 \cref{sec:si:methane:transport}), fossil gas can enter the system only at
 existing and planned LNG terminals, pipeline entry-points, and intra-European
 gas extraction sites (see \cref{fig:gas-raw}), which are retrieved from the
-SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022} and the GEM Wiki
-\citeS{gemwikiLNGTerminals2021}. Biogas can be upgraded to methane (see \cref{sec:si:bio:potentials}).
-Synthetic methane can be produced by processing hydrogen and captures \co in the
-Sabatier reaction
+SciGRID Gas IGGIELGN dataset\citeS{plutaSciGRIDGas2022a} and the GEM
+Wiki.\citeS{gemwikiLNGTerminals2021} Biogas can be upgraded to methane (see
+\cref{sec:si:bio:potentials}). Synthetic methane can be produced by processing
+hydrogen and captures \co in the Sabatier reaction
 \begin{equation}
     \ce{CO2 + 4H2 -> CH4 + 2H2O}.
 \end{equation}
 Direct power-to-methane conversion with efficient heat integration developed in
-the HELMETH project is also an option \citeS{gruberPowertoGasThermal2018}. The
+the HELMETH project is also an option.\citeS{gruberPowertoGasThermal2018} The
 share of synthetic, biogenic and fossil methane is an optimisation result
 depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 
@@ -152,9 +152,9 @@ depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 \end{figure}
 
 The existing European gas transmission network is represented based on the
-SciGRID Gas IGGIELGN dataset \citeS{plutaSciGRIDGas2022}, as shown in
+SciGRID Gas IGGIELGN dataset,\citeS{plutaSciGRIDGas2022a} as shown in
 \cref{fig:gas-raw}. This dataset is based on compiled and merged data from the
-ENTSOG maps \citeS{entsogTransmissionCapacity2021} and other publicly available
+ENTSOG maps\citeS{entsogTransmissionCapacity2021} and other publicly available
 data sources. It includes data on the capacity, diameter, pressure, length, and
 directionality of pipelines. Missing capacity data is conservatively inferred
 from the pipe diameter following conversion factors derived from an EHB report
@@ -231,7 +231,7 @@ and no bottlenecks are expected.
         \includegraphics[width=\textwidth]{biomass-not included.pdf}
     \end{subfigure}
     }
-    \caption{Regional distribution of biomass potentials seperated by solid biomass, biogas and potentials not included. Only residual biomass feedstocks are included. Potentials are based on the medium availability scenario for 2030 from the JRC ENSPRESO database.}
+    \caption{Regional distribution of biomass potentials separated by solid biomass, biogas and potentials not included. Only residual biomass feedstocks are included. Potentials are based on the medium availability scenario for 2030 from the JRC ENSPRESO database.}
     \label{fig:biomass-potentials}
 \end{figure}
 
@@ -245,14 +245,14 @@ proportion to the area overlap.
 Only residues from agriculture, forestry, and biodegradable municipal
 waste are considered as energy feedstocks. Fuel crops are avoided because they
 compete with scarce land for food production, while primary wood as well as wood
-chips and pellets are avoided because of concerns about sustainability
-\citeS{bentsenCarbonDebt2017}.
+chips and pellets are avoided because of concerns about sustainability.
+\citeS{bentsenCarbonDebt2017}
 Manure and sludge waste are available to the model as biogas, whereas other
 wastes and residues are classified as solid biomass. Solid biomass resources are
 available for combustion in combined-heat-and-power (CHP) plants and for medium
 temperature heat (below \SI{500}{\celsius}) applications in industry.
 The technical characteristics for the solid biomass CHP are taken from the
-Danish Energy Agency Technology Database \citeS{DEA} assumptions for a
+Danish Energy Agency Technology Database\citeS{DEA} assumptions for a
 medium-sized back pressure CHP with wood pellet feedstock; this has very similar
 costs and efficiencies to CHPs with feedstocks of straw and wood chips.
 
@@ -261,7 +261,7 @@ A summary of which feedstocks are used in the model is shown in
 included in \cref{fig:biomass-potentials}. In 2015, the EU28 biomass energy
 consumption consisted of \SI{180}{\twh} of biogas, \SI{1063}{\twh} of solid
 biofuels, \SI{109}{\twh} renewable municipal waste and \SI{159}{\twh} of liquid
-biofuels \citeS{ruizENSPRESOOpen2019}. In comparison, PyPSA-Eur-Sec implies a doubling of biogas
+biofuels.\citeS{ruizENSPRESOOpen2019} In comparison, PyPSA-Eur-Sec implies a doubling of biogas
 consumption and similar amounts of solid biofuels, but a shift from energy crops
 and primary wood to residues and wastes. Zappa et al.
 \citeS{zappa100Renewable2019} additionally allowed the use of roundwood chips
@@ -290,7 +290,7 @@ Solid biomass provides process heat up to \SI{500}{\celsius} in industry and can
 also feed CHP plants in district heating networks. As noted in
 \cref{sec:si:industry}, solid biomass is used as heat supply in the paper and
 pulp and food, beverages and tobacco industries, where required temperatures are
-lower \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}.
+lower.\citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}
 The regional distribution of solid biomass demand is shown in
 \cref{fig:demand-space:biomass}.
 
@@ -299,5 +299,5 @@ The regional distribution of solid biomass demand is shown in
 
 Solid biomass is assumed to be transported freely among the modelled regions.
 Biogas can be upgraded and then transported via the methane network. While the
-methane network is neglected, also biogas can be moved without cost or
+methane network is neglected, biogas can also be moved without cost or
 constraints.

@@ -8,18 +8,17 @@ Building heating considering space and water heating in the residential and
 services sectors is resolved for each region, both for individual buildings and
 district heating systems, which include different supply options.
 
-Annual heat demands per country are retrieved from JRC-IDEES \citeS{IDEES} for
+Annual heat demands per country are retrieved from JRC-IDEES\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017} for
 the year 2011 and split into space and water heating. The space heating demand
 is reduced by retrofitting measures that improve the buildings' thermal
-envelopes. This reduction is exogenously fixed at 29\%
-\citeS{zeyenMitigatingHeat2021,lombardiWeatherinducedVariability2022}. For space
+envelopes. This reduction is exogenously fixed at 29\%.\citeS{zeyenMitigatingHeat2021} For space
 heating, the annual demands are converted to daily values based on the
-population-weighted Heating Degree Day (HDD) using the \textit{atlite} tool
-\citeS{hofmannAtliteLightweight2021}, where space heat demand is proportional to the difference between the
-daily average ambient temperature (read from ERA5 \citeS{ecmwf}) and a threshold
+population-weighted Heating Degree Day (HDD) using the \textit{atlite} tool,
+\citeS{hofmannAtliteLightweight2021} where space heat demand is proportional to the difference between the
+daily average ambient temperature (read from ERA5\citeS{ecmwf}) and a threshold
 temperature above which space heat demand is zero. A threshold temperature of
 \SI{15}{\celsius} is assumed. The daily space heat demand is distributed to the
-hours of the day following heat demand profiles from BDEW \citeS{bdewBDEWHeat2021}. These differ
+hours of the day following heat demand profiles from BDEW.\citeS{bdewBDEWHeat2021} These differ
 for weekdays and weekends/holidays and between residential and services demand.
 Hot water demand is assumed to be constant throughout the year.
 
@@ -38,7 +37,7 @@ demand is similar to the total electricity demand but features much more
 pronounced seasonal variations. The total building heating demand adds up to
 \SI{3084}{\twh\per\year} of which 78\% occurs in urban areas.
 
-\citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
+% \citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
 
 \subsection{Heat Supply}
 \label{sec:si:heat:supply}
@@ -81,10 +80,10 @@ temperatures
 \end{equation}
 For the sink water temperature $T_{sink}$ we assume \SI{55}{\celsius} For the
 time- and location-dependent source temperatures $T_{source}$, we rely on the
-ERA5 reanalysis weather data \citeS{ecmwf}. The temperature differences are converted
-into COP time series using results from a regression analysis performed in
-\citeS{staffellReviewDomestic2012}. For air-sourced heat pumps (ASHP), we use
-the function
+ERA5 reanalysis weather data.\citeS{ecmwf} The temperature differences are
+converted into COP time series using results from a regression analysis
+performed in.\citeS{staffellReviewDomestic2012} For air-sourced heat pumps
+(ASHP), we use the function
 \begin{equation}
     COP(\Delta T) = 6.81 + 0.121 \Delta T + 0.000630 \Delta T^2;
 \end{equation}
@@ -94,8 +93,6 @@ for ground-sourced heat pumps (GSHP), we use the function
 \end{equation}
 The resulting time series are displayed in \cref{fig:cfs-ts}.
 The spatial diversity of heat pump coefficients is shown in \cref{fig:cfs-maps}.
-
-\citeS{dahlCostSensitivity2019, madedduCOReduction2020}
 
 \subsection{Heat Storage}
 \label{sec:si:heat:storage}

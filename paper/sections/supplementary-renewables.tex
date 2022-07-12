@@ -37,7 +37,7 @@
 % \restoregeometry
 
 \begin{table}
-    \caption{Land types considered suitable for every technology from Corine Land Cover database}
+    \caption{Land types considered suitable for every technology from Corine Land Cover database. Land type codes are referenced in brackets.}
     \small
     \begin{tabularx}{\textwidth}{lX}
         \toprule
@@ -52,21 +52,24 @@
 \end{table}
 
 Eligibile areas for developing renewable infrastructure are calculated per
-technology and substation's Voronoi cell using the \textit{atlite} tool
-\citeS{hofmannAtliteLightweight2021} and shown in \cref{fig:eligibility}.
+technology and substation's Voronoi cell using the
+\textit{atlite}\citeS{hofmannAtliteLightweight2021} tool and shown in
+\cref{fig:eligibility}.
 
 The land available for wind and utility-scale solar PV capacities in a
-particular region is constrained by eligible codes of the CORINE land use
-database (100m resolution) \citeS{europeanenvironmentagencyeeaCorineLand} and is
-further restricted by distance criteria and the natural protection areas
-specified in the Natura 2000 dataset
-\citeS{europeanenvironmentagencyeeaNatura2000}. These criteria are summarised in
-\cref{tab:eligibility}. The installable potentials for rooftop PV are included
-with an assumption of 1 kWp per person (0.1 kW/m$^2$ and 10 m$^2$/person).
-Moreover, offshore wind farms may not be built at sea depths exceeding
-\SI{50}{\metre}, as indicated by the GEBCO bathymetry dataset \citeS{gebcoGEBCO2014}. This
-currently disreagards the possibility of floating wind turbines
-\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}.
+particular region is constrained by eligible codes of the
+CORINE\citeS{europeanenvironmentagencyeeaCorineLand} land use database (100m
+resolution)  and is further restricted by distance criteria and the natural
+protection areas specified in the Natura
+2000\citeS{europeanenvironmentagencyeeaNatura2000} dataset. These criteria are
+summarised in \cref{tab:eligibility}. The installable potentials for rooftop PV
+are included with an assumption of 1 kWp per person (0.1 kW/m$^2$ and 10
+m$^2$/person). A more sophisticated potential estimate can be found in Bódis et
+al.~\citeS{bodisHighresolutionGeospatial2019}. Moreover, offshore wind farms may
+not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO\citeS{gebcoGEBCO2014}
+bathymetry dataset. This currently disreagards the
+possibility of floating wind turbines.
+\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}
 For near-shore locations (less than 30 km off the shore) AC connections are
 considered, whereas for far-shore locations, DC connections including AC-DC
 converter costs are assumed. Reservoir hydropower and run-of-river capacities
@@ -75,10 +78,13 @@ are exogenously fixed at current values and not expandable.
 To express the potential in terms of installable capacities, the available areas
 are multiplied with allowed deployment densities, which we consider to be a
 fraction of the technology's technical deployment density to preempt public
-acceptance issues. These densities are 3 MW/m$^ 2$ for onshore wind, 2 MW/m$^2$ for
-offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
+acceptance issues. These densities are 3 MW/m$^ 2$ for onshore wind, 2 MW/m$^2$
+for offshore wind, 5.1 MW/m$^2$ for utility-scale solar. For a review of
+alternative potential wind potential assessments, see McKenna et
+al.~\citeS{mckennaHighresolutionLargescale2022} and Ryberg et
+al.~\citeS{rybergFutureEuropean2019}.
 
-\citeS{mckennaHighresolutionLargescale2022,Ryberg2018,bodisHighresolutionGeospatial2019}
+
 
 \subsection{Time Series}
 \label{sec:si:renewable-ts}
@@ -153,7 +159,7 @@ offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
         \includegraphics[width=\textwidth]{cop-ts-ground-sourced heat pump.pdf}
     \end{subfigure}
     % }
-    \caption{Capacity factor time series of renewable energy sources.}
+    \caption{Spatially aggregated capacity factor time series of renewable energy sources.}
     \label{fig:cfs-ts}
 \end{figure}
 
@@ -162,26 +168,32 @@ offshore wind, 5.1 MW/m$^2$ for utility-scale solar.
     % \makebox[\textwidth][c]{
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
+        \caption{onshore wind}
         \includegraphics[width=\textwidth]{cf-onwind.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
+        \caption{offshore wind}
         \includegraphics[width=\textwidth]{cf-offwind-dc.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
+        \caption{solar photovoltaics}
         \includegraphics[width=\textwidth]{cf-solar.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
+        \caption{solar thermal}
         \includegraphics[width=\textwidth]{cf-solar thermal.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
+        \caption{air-sourced heat pump}
         \includegraphics[width=\textwidth]{cf-air-sourced heat pump.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
+        \caption{ground-sourced heat pump}
         \includegraphics[width=\textwidth]{cf-ground-sourced heat pump.pdf}
     \end{subfigure}
     % }

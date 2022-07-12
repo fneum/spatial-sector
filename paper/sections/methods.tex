@@ -10,17 +10,17 @@ subject to technical and physical constraints, assuming perfect competition and
 perfect foresight over one uninterrupted year of 3-hourly operation (see
 \cref{sec:si:math} for mathematical formulation). In this study, we used the
 historical year 2013 for weather-dependent inputs. Apart from existing
-electricity transmission and hydroelectric facilities, no other existing assets
-are assumed (\textit{greenfield optimisation} or \textit{overnight scenario}),
-so that the model assumes a long-term equilibrium in a market with perfect
-competition and foresight, and disregards pathway dependencies. Cost
-assumptions are taken, where possible, from predictions for the year 2030 by the
-Danish Energy Agency \cite{dea2019} (see \cref{sec:si:costs}). The model is
-implemented in the free software framework Python for Power System Analysis
-(PyPSA) \cite{brownPyPSAPython2018}.
+electricity and gas transmission infrastructure and hydroelectric facilities, no
+other existing assets are assumed (\textit{greenfield optimisation} or
+\textit{overnight scenario}), so that the model assumes a long-term equilibrium
+in a market with perfect competition and foresight, and disregards pathway
+dependencies. Cost assumptions are taken, where possible, from predictions for
+the year 2030 by the Danish Energy Agency (see
+\cref{sec:si:costs}).\cite{DEA} The model is implemented in the free and open software
+framework Python for Power System Analysis (PyPSA).\cite{brownPyPSAPython2018}
 
 PyPSA-Eur-Sec builds upon the model from Brown et
-al.~\cite{brownSynergiesSector2018}, which covered electricity, heating in
+al.,~\cite{brownSynergiesSector2018} which covered electricity, heating in
 buildings and ground transport in Europe with one node per country.
 PyPSA-Eur-Sec adds biomass on the supply side, industry, agriculture, aviation
 and shipping on the demand side, and higher spatial resolution to suitably
@@ -39,7 +39,7 @@ across the different energy sectors. Generator capacities (for onshore wind,
 offshore wind, utility-scale and rooftop solar photovoltaic (PV), biomass,
 hydroelectricity, oil and natural gas), heating capacities (for heat pumps,
 resistive heaters, gas boilers, combined heat and power (CHP) plants and solar
-thermal collector units), synthetic fuel production (electrolyzers, methanation,
+thermal collector units), synthetic fuel production (electrolysers, methanation,
 Fischer-Tropsch, steam methane reforming, fuel cells), storage capacities
 (stationary and electric vehicle batteries, hydrogen storage in caverns and
 steel tanks, pit thermal energy storage, pumped-hydro and reservoirs, and
@@ -58,18 +58,19 @@ hydroelectricity capacities (for reservoir and run-of-river generators and
 pumped hydro storage).
 
 The time series and potentials of variable renewable \textbf{energy supply}
-(wind, solar, ambient heat) are computed from historical weather data (ERA5
-\cite{ecmwf} and SARAH-2 \cite{SARAH}). Potentials for wind and solar generation
-take various land eligibility constraints into account, e.g.~suitable land types
-and exclusion zones around populated and protected areas. As long as emissions
-can be offset by negative emission technologies, limited amounts of fossil oil
-and gas can still be used as primary energy supply. While no assumption about
-the origin of fossil energy is made, imports of renewables-based products into
-Europe are not considered.
+(wind, solar, hydro, ambient heat) are computed from historical weather data
+(ERA5 \cite{ecmwf} and SARAH-2 \cite{SARAH}). Potentials for wind and solar
+generation take various land eligibility constraints into account, e.g.~suitable
+land types and exclusion zones around populated and protected areas. As long as
+emissions can be offset by negative emission technologies and sequestration
+potentials are not exhausted, limited amounts of fossil oil and gas can still be
+used as primary energy supply. While no assumption about the origin of fossil
+energy is made, imports of renewables-based products into Europe are not
+considered.
 
 The full \textbf{transmission} network for European electricity transport is
 taken from the electricity-only model version,
-PyPSA-Eur\cite{horschPyPSAEurOpen2018}, and is clustered down to 181
+PyPSA-Eur,\cite{horschPyPSAEurOpen2018} and is clustered down to 181
 representative regions based on the methodology used in Hörsch and
 Brown\cite{Hoersch2017} and Frysztacki et al.~\cite{frysztackiStrongEffect2021}.
 This level of aggregation reflects, at the upper end, the computational limit to
@@ -79,22 +80,26 @@ transmission corridors that cause bottlenecks and limit the system integration
 of renewables. Power flows are modelled using a cycle-based load flow
 linearization from Hörsch et al.~\cite{horschLinearOptimal2018} that
 significantly improves computational performance. Hydrogen pipeline flows assume
-a simple transport model. The potential for gas pipeline retrofitting is
-estimated based on consolidated network data from the SciGRID\_gas project
-\cite{plutaSciGRIDGas2022}.
+a simple transport model. This means that while incoming and outbound flows must
+balance for each region and pipes can transport hydrogen only within their
+capacity limits, no further physical gaseous flow constraints are applied. The
+potential for gas pipeline retrofitting is estimated based on consolidated
+network data from the SciGRID\_gas project \cite{plutaSciGRIDGas2022a} such that
+for every unit of gas pipeline decommissioned, 60\% of its capacity becomes
+available for hydrogen transport.\cite{gasforclimateEuropeanHydrogen2020}
 
 For \textbf{industry}, we assume that the demand for materials (such as steel,
 cement, and high-value chemicals) remain constant. The assumed industry
 transformation is characterised by electrification, process switching to
 low-emission alternatives (e.g. switching to hydrogen for direct reduction of
-iron ore \cite{voglAssessmentHydrogen2018}), more recycling of steel, plastics
-and aluminium \cite{circular_economy}, fuel switching for high- and
+iron ore\cite{voglAssessmentHydrogen2018}), more recycling of steel, plastics
+and aluminium\cite{circular_economy}, fuel switching for high- and
 mid-temperature process heat to biomass and methane, use synthetic fuels for
 ammonia and organic chemicals, and allow carbon capture. It is assumed that no
 plastic or other non-energy product is sequestered in landfill, but that all
 carbon in plastics eventually makes its way back to the atmosphere, either
-through combustion or decay; this approach is stricter than other models
-\cite{in-depth_2018}.
+through combustion or decay; this approach is stricter than other models.
+\cite{in-depth_2018}
 
 The \textbf{transport} sector comprises light and heavy road, rail, shipping and
 aviation transport. For road and rail, electrification and fuel cell vehicles
@@ -109,15 +114,15 @@ can be met through air- and ground-sourced heat pumps, gas boilers, CHPs,
 resitive heaters as well as waste heat from synthetic fuel production in
 district heating networks. For district heating networks, seasonal heat storage
 options are also available. Efficiency gains from building retrofitting are
-exogenous to the model \cite{zeyenMitigatingHeat2021}.
+exogenous to the model based on Zeyen et al.\cite{zeyenMitigatingHeat2021}
 
 For \textbf{biomass}, only waste and residues from agriculture and forestry are
-permitted, using the medium potential estimates from the JRC ENSPRESO database
-\cite{ruizENSPRESOOpen2019}. This results in 347~TWh per year of biogas that can be
-upgraded and 1186~TWh per year of solid biomass residues and waste
-for the whole of Europe. Biomass can be used in electricity generation with and
-without CCS, as well as to provide low- to medium-temperature process heat in
-industry.
+permitted, using the medium potential estimates from the JRC ENSPRESO database.
+\cite{ruizENSPRESOOpen2019} This results in 347~TWh per year of biogas that can
+be upgraded and 1186~TWh per year of solid biomass residues and waste for the
+whole of Europe. Biomass can be used in combined electricity and heat generation
+with and without CCS, as well as to provide low- to medium-temperature process
+heat in industry.
 
 \textbf{Carbon capture} is needed in the model both to capture and sequester
 process emissions with a fossil origin, such as those from calcination of fossil

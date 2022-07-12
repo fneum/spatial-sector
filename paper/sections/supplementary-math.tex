@@ -59,33 +59,47 @@ $\underline{f}_{k,t}=-1$ allows power flows in either direction. On the other
 hand, a heat resistor has $\underline{f}_{k,t}=0$ since it can only convert
 electricity to heat.
 
-The dispatch of storage units is split into two positive variables;
-one each for charging $h_{i,s,t}^+$ and discharging $h_{i,s,t}^-$.
-Both are limited by the power rating $E_{i,s}$ of the storage units.
+The energy levels $e_{i,s,t}$ of all stores are constrained by their energy capacity
 \begin{align}
-  0 &  & \leq &  & h_{i,s,t}^+ &  & \leq &  & E_{i,s} & \qquad\forall i, s, t \label{eq:sto1} \\
-  0 &  & \leq &  & h_{i,s,t}^- &  & \leq &  & E_{i,s} & \qquad\forall i, s, t \label{eq:sto2}
+  0 &  & \leq &  & e_{i,s,t} &  & \leq &  & E_{i,s} & \qquad\forall i, s, t,
 \end{align}
-This formulation does not prevent simultaneous charging and discharging,
-in order to maintain the computational benefit of a convex feasible space but
-can be counteracted by adding a small marginal cost to the storage dispatch
-variables. The energy levels $e_{i,s,t}$ of all storage units have to be
-consistent with the dispatch in all hours
+and have to be consistent with the dispatch variable $h_{i,s,t}\in\R$ in all
+hours
+\begin{align}
+  e_{i,s,t} =\: & \eta_{i,s,0}^{w_t} \cdot e_{i,s,t-1} + w_t \cdot h_{i,s,t}, \label{eq:stoe}
+\end{align}
+where $\eta_{i,s,0}$ denotes the standing loss . Furthermore, the storage energy
+levels are either assumed to be cyclic or given an initial state of charge,
+\begin{align}
+  e_{i,s,0} = e_{i,s,\abs{\mathcal{T}}} \qquad\forall i, s, or\\
+  e_{i,s,0} = e_{i,s,\text{initial}} \qquad\forall i, s.
+\end{align}
+
+The modelling of hydroelectricity storage deviates from regular storage to
+additionally account for natural inflow and spillage of water. We also assume
+fixed power ratings $H_{i,s}$ for hydroelectricity storage. The dispatch of
+hydroelectricity storage units is split into two positive variables; one each
+for charging $h_{i,s,t}^+$ and discharging $h_{i,s,t}^-$, and limited by
+$H_{i,s}$.
+\begin{align}
+  0 &  & \leq &  & h_{i,s,t}^+ &  & \leq &  & H_{i,s} & \qquad\forall i, s, t \label{eq:sto1} \\
+  0 &  & \leq &  & h_{i,s,t}^- &  & \leq &  & H_{i,s} & \qquad\forall i, s, t \label{eq:sto2}
+\end{align}
+% This formulation does not prevent simultaneous charging and discharging, in
+% order to maintain the computational benefit of a convex feasible space that can
+% be counteracted by adding a small marginal cost to the storage dispatch
+% variables.
+The energy levels $e_{i,s,t}$ of all hydroelectric storage also have to match
+the dispatch across all hours
 \begin{align}
   e_{i,s,t} =\: & \eta_{i,s,0}^{w_t} \cdot e_{i,s,t-1} + w_t \cdot h_{i,s,t}^\text{inflow} - w_t \cdot h_{i,s,t}^\text{spillage} & \quad\forall i, s, t \nonumber \\
                 & + \eta_{i,s,+} \cdot w_t \cdot h_{i,s,t}^+ - \eta_{i,s,-}^{-1} \cdot w_t \cdot h_{i,s,t}^-, \label{eq:stoe}
 \end{align}
-whereby storage units can have a standing loss $\eta_{i,s,0}$, a charging efficiency $\eta_{i,s,+}$, a discharging efficiency $\eta_{i,s,-}$,
-natural inflow $h_{i,s,t}^\text{inflow}$ and spillage $h_{i,s,t}^\text{spillage}$.
-Furthermore, the storage energy levels are either assumed to be cyclic or given an initial state of charge,
-\begin{align}
-  e_{i,s,0} = e_{i,s,\abs{\mathcal{T}}} \qquad\forall i, s, or\\
-  e_{i,s,0} = e_{i,s,\text{initial}} \qquad\forall i, s,
-\end{align}
-and are constrained by their energy capacity
-\begin{align}
-  0 &  & \leq &  & e_{i,s,t} &  & \leq &  & E_{i,s} & \qquad\forall i, s, t.
-\end{align}
+whereby hydropower storage units can additionally have a charging efficiency
+$\eta_{i,s,+}$, a discharging efficiency $\eta_{i,s,-}$, natural inflow
+$h_{i,s,t}^\text{inflow}$ and spillage $h_{i,s,t}^\text{spillage}$, besides the
+standing loss $\eta_{i,s,0}$.
+
 % To reduce the number of decision variables, here we link the energy storage volume to
 % power ratings using a technology-specific parameter $\overline{T}_s$
 % that describes the maximum duration a storage unit can discharge at full power rating.
@@ -96,7 +110,7 @@ outgoing energy flows $f_{\ell,t}$ of incident transmission lines $\ell$ to
 balance the perfectly inelastic electricity demand $d_{i,t}$ at each location
 $i$ and snapshot $t$
 \begin{align}
-    \sum_r g_{i,r,t} + \sum_s \left(h_{i,s,t}^- - h_{i,s,t}^+ \right) + \sum_\ell K_{i\ell} f_{\ell,t} + \sum_k L_{ikt} f_{k,t} = d_{i,t}  \quad \leftrightarrow \quad \lambda_{i,t} \quad \forall i,t,
+    \sum_r g_{i,r,t} + \sum_s \left(h_{i,s,t}^- - h_{i,s,t}^+ \right) + \sum_s h_{i,s,t} + \sum_\ell K_{i\ell} f_{\ell,t} + \sum_k L_{ikt} f_{k,t} = d_{i,t}  \quad \leftrightarrow \quad \lambda_{i,t} \quad \forall i,t,
 \end{align}
 where $K_{i\ell}$ is the incidence matrix of the electricity network with
 non-zero values $-1$ if line $\ell$ starts at node $i$ and $1$ if it ends at
@@ -127,7 +141,7 @@ impacts on performance. Here, we use linearised load flow assumptions, where the
 voltage angle difference around every closed cycle in the electricity
 transmission network must add up to zero. Using a cycle basis $C_{\ell c}$ of
 the network graph where the independent cycles $c$ are expressed as directed
-linear combinations of lines $\ell$ \citeS{horschLinearOptimal2018}, we can write
+linear combinations of lines $\ell$,\citeS{horschLinearOptimal2018} we can write
 KVL as
 \begin{align}
     \sum_\ell C_{\ell c} \cdot x_\ell \cdot p_{\ell,t} = 0 \qquad\forall c,t
@@ -156,4 +170,4 @@ sequences of investments), but searches for a cost-optimal layout corresponding
 to a given \co emission reduction level and assumes perfect foresight for
 the reference year based on which capacities are optimised. This optimisation
 problem is implemented in the open-source Python-based modelling framework
-PyPSA \citeS{brownPyPSAPython2018}.
+PyPSA.\citeS{brownPyPSAPython2018}

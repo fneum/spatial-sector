@@ -52,8 +52,21 @@
 \usepackage{subcaption}
 \usepackage{blindtext}
 \usepackage[parfill]{parskip}
+%\usepackage[clean]{svg}
 % \usepackage[toc,title,page]{appendix}
 
+
+% \newcommand{\executeiffilenewer}[3]{%
+% \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+% {\pdffilemoddate{#2}}>0%
+% {\immediate\write18{#3}}\fi%
+% }
+% \newcommand{\includesvg}[1]{%
+% \executeiffilenewer{#1.svg}{#1.pdf}%
+% {inkscape -z -D --file=#1.svg %
+% --export-pdf=#1.pdf --export-latex}%
+% \input{#1.pdf_tex}%
+% }
 
 \usepackage[prependcaption,textsize=scriptsize]{todonotes}
 % \usepackage[prependcaption,textsize=scriptsize,disable]{todonotes}
@@ -134,6 +147,8 @@
 \usepackage{tocloft}
 \cftsetindents{section}{1em}{2.75em}
 
+\usepackage{orcidlink}
+
 \begin{document}
 
 
@@ -141,15 +156,15 @@
 
 	\title{Benefits of a Hydrogen Network in Europe}
 
-	\author[tubaddress]{Fabian Neumann\corref{correspondingauthor}}
+	\author[tubaddress]{Fabian Neumann\,\orcidlink{0000-0001-8551-1480}\corref{correspondingauthor}}
 	\ead{f.neumann@tu-berlin.de}
-	\author[tubaddress]{Elisabeth Zeyen}
-	\author[aarhus,aarhus2]{Marta Victoria}
-	\author[tubaddress]{Tom Brown}
+	\author[tubaddress]{Elisabeth Zeyen\,\orcidlink{0000-0002-7262-3296}}
+	\author[aarhus,aarhus2]{Marta Victoria\,\orcidlink{0000-0003-1665-1281}}
+	\author[tubaddress]{Tom Brown\,\orcidlink{0000-0001-5898-1911}}
 	% \cortext[correspondingauthor]{}
 	\address[tubaddress]{Department of Digital Transformation in Energy Systems, Institute of Energy Technology, Technische Universität Berlin, Fakultät III, Einsteinufer 25 (TA 8), 10587 Berlin, Germany}
 	\address[aarhus]{Department of Mechanical and Production Engineering, Aarhus University, Inge Lehmanns Gade 10, 8000 Aarhus, Denmark}
-	\address[aarhus2]{iCLIMATE Interdisciplinary Centre for Climate Change, Aarhus University}
+	\address[aarhus2]{Novo Nordisk Foundation CO$_2$ Research Center, Aarhus University, Aarhus, Denmark}
 
 	\begin{abstract}
 		\input{sections/abstract.tex}
@@ -164,27 +179,32 @@
 
 \end{frontmatter}
 
+\section*{Graphical Abstract}
 
+\includegraphics[width=\textwidth]{graphics/graphical-abstract.png}
+
+\par\noindent\rule{\textwidth}{0.4pt}
 
 \section*{Highlights}
 
 \begin{itemize}
-	\item examines the benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables
+	\item examines benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables and no energy imports
 	\item uses open energy system model PyPSA-Eur-Sec with 181 regions, 3-hourly resolution for a year and all energy sectors (electricity, buildings, transport, industry, agriculture) represented
-	\item hydrogen network reduces system costs by up to 6\%, with highest benefits when power grid expansion restricted
+	\item hydrogen network reduces system costs by up to 6\%, with highest benefits when power grid expansion is restricted
 	\item between 58-66\% of hydrogen backbone uses retrofitted gas network pipelines
-	\item cost benefit of electricity grid expansion is higher than of hydrogen network (6\% versus 8\%), but both together reduce costs by up to 12\%
+	\item cost benefit of electricity grid expansion is higher than of hydrogen network (8\% versus 6\%), but both together reduce costs by up to 12\%
 \end{itemize}
 
-Words: 5386
-(excl. abstract, captions, \nameref{sec:methods}, \nameref{sec:si})
+\par\noindent\rule{\textwidth}{0.4pt}
 
-% \addcontentsline{toc}{section}{Context \& Scale}
-% \begin{shaded}
-% \vspace{-0.5cm}
-% \section*{Context \& Scale}
-% \input{sections/context.tex}
-% \end{shaded}
+\section*{Context \& Scale}
+
+\input{sections/context.tex}
+
+\par\noindent\rule{\textwidth}{0.4pt}
+
+\section*{Words}
+5746 (excl. preamble, captions, \nameref{sec:methods}, \nameref{sec:si})
 
 \newpage
 \section*{Introduction}
@@ -219,16 +239,18 @@ Words: 5386
 % F.N. and T.B. gratefully acknowledge funding from the Helmholtz
 % Association under grant no. VH-NG-1352.
 
+We are grateful for helpful comments by Johannes Hampp.
+
 \section*{License}
 
-This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0
-International License (CC-BY-4.0)}.
+\href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0
+International License (CC-BY-4.0)}
 
 \section*{Author Contributions}
 
 % following https://casrai.org/credit/
 
-\textbf{Author FN}:
+\textbf{F.N.}:
 Conceptualization --
 Data curation --
 Formal Analysis --
@@ -240,20 +262,20 @@ Validation --
 Visualization --
 Writing - original draft --
 Writing - review \& editing
-\textbf{Author EZ}:
+\textbf{E.Z.}:
 Data curation --
 Formal Analysis --
 Investigation --
 Software --
 Validation --
 Writing - review \& editing
-\textbf{Author MV}:
+\textbf{M.V.}:
 Formal Analysis --
 Investigation --
 Methodology --
 Software --
 Writing - review \& editing
-\textbf{Author TB}:
+\textbf{T.B.}:
 Conceptualization --
 Data curation --
 Formal Analysis --
@@ -270,11 +292,13 @@ Writing - review \& editing
 
 \section*{Data and Code Availability}
 
-A dataset of the model results is available at \href{zenodoTBA}{doi:zenodoTBA}.
-The code to reproduce the experiments is available at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
+A dataset of the model results is available on \textit{zenodo} at \href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}.
+The code to reproduce the experiments is available on \textit{Github} at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
 We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}),
 PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
 PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
+Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.3.0).
+An interactive scenario explorer is under development at \href{https://share.streamlit.io/fneum/spatial-sector-dashboard}{share.streamlit.io/fneum/spatial-sector-dashboard}.
 
 % tidy with https://flamingtempura.github.io/bibtex-tidy/
 \addcontentsline{toc}{section}{References}
@@ -306,6 +330,7 @@ PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthe
 %\bibliographyS{library}
 \bibliographyS{/home/fneum/zotero}
 
+\newpage
 \begin{small}
 	\tableofcontents
 \end{small}
