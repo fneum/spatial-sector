@@ -1,39 +1,16 @@
 \begin{SCfigure}
-    \includegraphics[width=0.7\textwidth]{fec_industry_today_tomorrow.pdf}
+    \includegraphics[width=0.66\textwidth]{fec_industry_today_tomorrow.pdf}
     \caption{Final consumption of energy and non-energy feedstocks in industry today (top bar) and
     our future scenario in 2050 (bottom bar)}
     \label{fig:fec-industry}
 \end{SCfigure}
 
 \begin{SCfigure}
-    \includegraphics[width=0.7\textwidth]{process-emissions.pdf}
+    \includegraphics[width=0.66\textwidth]{process-emissions.pdf}
     \caption{Process emissions in industry today (top bar) and in 2050 without carbon capture (bottom bar)}
     \label{fig:process-emissions}
 \end{SCfigure}
 
-% \begin{table}[h]
-%     \centering
-%     \small
-%     \setlength{\tabcolsep}{6pt}
-%     \begin{tabular}{@{} p{5cm}r @{}}
-%       \toprule
-%       Material & Production [\si{\mega\tonne\per\year}] \\
-%       \midrule
-%       steel & 174 \\
-%       cement & 186 \\
-%       glass & 44 \\
-%       ceramics and other NMM & 360 \\
-%       ammonia & 18 \\
-%       chlorine & 10 \\
-%       methanol & 2 \\
-%       high-value chemicals (HVC) & 47 \\
-%       other chemicals & 28 \\
-%       pulp & 39 \\
-%       paper & 94 \\ \bottomrule
-%     \end{tabular}
-%     \caption{Industrial production for main products in 2015.}
-%     \label{tab:industryproduction}
-%   \end{table}
 
 \begin{SCfigure}
     \includegraphics[width=0.7\textwidth]{hotmaps.pdf}
@@ -41,6 +18,11 @@
     \label{fig:hotmaps}
 \end{SCfigure}
 
+\begin{SCfigure}
+    \includegraphics[width=0.6\textwidth]{demand-map-process emission}
+    \caption{Spatial distribution of industrial process emissions.}
+    \label{fig:spatial-process-emissions}
+\end{SCfigure}
 
 \section{Industry Sector}
 \label{sec:si:industry}
@@ -61,27 +43,32 @@ non-ferrous metals.\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegra
 \label{sec:si:industry:overview}
 
 Greenhouse gas emissions associated with industry can be classified into
-energy-related and process-related emissions. Today, fossil fuels are used for
-process heat energy in the chemicals industry, but also as a non-energy
-feedstock for chemicals like ammonia (\ce{NH3}), ethylene (\ce{C2H4}) and
-methanol (\ce{CH3OH}). Energy-related emissions can be curbed by using
-low-emission energy sources. The only option to reduce process-related emissions
-is by using an alternative manufacturing process or by assuming a certain rate
-of recyling so that a lower amount of virgin material is needed.
+energy-related and process-related emissions (for the spatial distribution of
+European process emissions see \cref{fig:spatial-process-emissions}). Today,
+fossil fuels are used for process heat energy in the chemicals industry, but
+also as a non-energy feedstock for chemicals like ammonia (\ce{NH3}), ethylene
+(\ce{C2H4}) and methanol (\ce{CH3OH}). Energy-related emissions can be curbed by
+using low-emission energy sources. The only option to reduce process-related
+emissions is by using an alternative manufacturing process or by assuming a
+certain rate of recyling so that a lower amount of virgin material is needed.
 
 The overarching modelling procedure can be described as follows. First, the
 energy demands and process emissions for every unit of material output are
-estimated based on data from the JRC-IDEES database\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017} and the fuel
-and process switching described in the subsequent sections. Second, the 2050
-energy demands and process emissions are calculated using the
+estimated based on data from the JRC-IDEES
+database\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017}
+and the fuel and process switching described in the subsequent sections. Second,
+the 2050 energy demands and process emissions are calculated using the
 per-unit-of-material ratios based on the industry transformations and the
-country-level material production in 2015,\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017} assuming constant
-material demand. Missing or too coarsely aggregated data in the JRC-IDEES
-database\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017} is supplemented with additional datasets: Eurostat energy
+country-level material production in
+2015,\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017}
+assuming constant material demand. Missing or too coarsely aggregated data in
+the JRC-IDEES
+database\citeS{europeancommission.jointresearchcentre.JRCIDEESIntegrated2017} is
+supplemented with additional datasets: Eurostat energy
 balances,\citeS{eurostatEnergyBalances2021} USGS for ammonia
 production,\citeS{unitedstatesgeologicalsurveyAmmoniaProduction2021} DECHEMA for
-methanol and chlorine,\citeS{bazzanella2017} and national
-statistics from Switzerland.\citeS{bundesamtfurenergieEnergieverbrauchIndustrie2021}
+methanol and chlorine,\citeS{bazzanella2017} and national statistics from
+Switzerland.\citeS{bundesamtfurenergieEnergieverbrauchIndustrie2021}
 
 Where there are fossil and electrified alternatives for the same process (e.g.
 in glass manufacture or drying) we assume that the process is completely
@@ -91,14 +78,14 @@ approach depends on the temperature required.
 \citeS{naeglerQuantificationEuropean2015,rehfeldtBottomupEstimation2018}
 Processes that require temperatures below \SI{500}{\celsius} are supplied with
 solid biomass, since we assume that residues and wastes are not suitable for
-high-temperature applications (\cref{sec:si:heat:supply}). We see solid
-biomass use primarily in the pulp and paper industry, where it is already
-widespread, and in food, beverages and tobacco, where it replaces natural gas.
-Industries which require high temperatures (above \SI{500}{\celsius}), such as
-metals, chemicals and non-metalic minerals are either electified where suitable
+high-temperature applications (\cref{sec:si:heat:supply}). We see solid biomass
+use primarily in the pulp and paper industry, where it is already widespread,
+and in food, beverages and tobacco, where it replaces natural gas. Industries
+which require high temperatures (above \SI{500}{\celsius}), such as metals,
+chemicals and non-metalic minerals are either electified where suitable
 processes already exist, or the heat is provided with synthetic methane.
-Hydrogen for high-temperature process heat was not
-considered in our scenarios.\citeS{neuwirthFuturePotential2022} For Europe, Rehfeldt et al.
+Hydrogen for high-temperature process heat was not considered in our
+scenarios.\citeS{neuwirthFuturePotential2022} For Europe, Rehfeldt et al.
 \citeS{rehfeldtBottomupEstimation2018} estimated that, from 2015 industrial heat
 demand, 45\% is above \SI{500}{\celsius}, 30\% within
 \SIrange{100}{500}{\celsius}, 25\% below \SI{100}{\celsius}. Similarly, Naegler

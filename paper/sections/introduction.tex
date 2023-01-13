@@ -15,8 +15,8 @@ Hydrogen will likely become a pivotal energy carrier in such a climate-neutral
 energy system. Hydrogen is needed in the industry to produce ammonia for
 fertilisers and can be used for direct reduced iron for steelmaking. It is also
 a critical feedstock to produce synthetic methane and liquid hydrocarbons for
-use as aviation fuel and as a precursor to high-value chemicals. Hydrogen could
-also be used for heavy-duty land transport, shipping, and backup heat
+use as aviation and shipping fuel, and as a precursor to high-value chemicals. Hydrogen could
+also be used for heavy-duty land transport and backup heat
 and power supply.
 
 The limited social acceptance for electricity grid reinforcement and the
@@ -41,9 +41,10 @@ than transmission lines. Unlike transmission towers, pipelines are less visible
 because they usually run below or near the ground. Particularly where gas
 pipelines already exist, the perceivable impact would be minimal.
 
-However, few studies have evaluated the benefit of a hydrogen network in Europe
-so far. The industry-oriented EHB reports do not include an assessment based on
-the co-optimisation of energy system components.
+However, few studies have evaluated the extent of system cost reductions that
+could be achieved by building a hydrogen network in Europe so far. The
+industry-oriented EHB reports do not include an assessment based on the
+co-optimisation of energy system components.
 \cite{gasforclimateEuropeanHydrogen2020,gasforclimateEuropeanHydrogen2021,gasforclimateExtendingEuropean2021,gasforclimateEuropeanHydrogen2022}
 Other sector-coupling studies have not included hydrogen networks at all,
 \cite{brownSynergiesSector2018,pickeringDiversityOptions2022,childFlexibleElectricity2019,kendziorskiCentralizedDecentral2022}
@@ -71,7 +72,7 @@ hydrogen infrastructure can play in a future sector-coupled system. For the
 first time, such an investigation considers regionalised potentials for the
 repurposing of legacy gas pipelines and the geological storage of hydrogen in
 salt caverns. Our analysis covers four main scenarios to examine if a hydrogen
-network can compensate for a potential lack of power grid expansion. These
+network composed of new and retrofitted pipelines can compensate for a potential lack of power grid expansion. These
 scenarios differ based on whether or not electricity and hydrogen grids can be
 expanded. Evaluation criteria include the total system cost, the composition and
 spatial distribution of technologies and transmission infrastructure in the
@@ -87,22 +88,25 @@ capture the various transport bottlenecks that constrain the cost-effective
 integration of variable renewable energy. The model co-optimises the investment
 and operation of generation, storage, conversion and transmission
 infrastructures for the least-cost outcome in a single linear optimisation
-problem, covering 181 regions and a 3-hourly time resolution for a full year. It
-incorporates spatially distributed demands of the electricity, industry,
-buildings, agriculture and transport sectors, including shipping and aviation as
-well as non-energy feedstock demands in the chemicals industry. Primary energy
-supply comes from wind, solar, biomass, hydro, and limited amounts of fossil oil
-and gas. The energy flows between the system's energy carriers are modelled by
-various technologies, including heat pumps, combined heat and power (CHP)
-plants, thermal storage, electric vehicles, batteries, power-to-X processes,
-fuel cells, and geological potentials of underground hydrogen storage. Data on
-electricity and gas transmission infrastructure is also included to determine
-grid expansion needs and retrofitting potentials. The model also features
-detailed management of carbon flows between capture, usage, sequestration and
-emissions to the atmosphere to track carbon through the system. More details on
-the model are presented in the \nameref{sec:methods} and \nameref{sec:si}. The
-model is open-source and based on open data such that results can be reproduced
-and assumptions may be modified by others
+problem, covering 181 regions and a 3-hourly time resolution for a full year.
+The regional scope comprises the European Union without Cyprus and Malta plus the United
+Kingdom, Norway, Switzerland, Albania, Bosnia and Herzegovina,
+Montenegro, North Macedonia, Serbia and Kosovo. It incorporates spatially distributed
+demands of the electricity, industry, buildings, agriculture and transport
+sectors, including shipping and aviation as well as non-energy feedstock demands
+in the chemicals industry. Primary energy supply comes from wind, solar,
+biomass, hydro, and limited amounts of fossil oil and gas. The energy flows
+between the system's energy carriers are modelled by various technologies,
+including heat pumps, combined heat and power (CHP) plants, thermal storage,
+electric vehicles, batteries, power-to-X processes, fuel cells, and geological
+potentials of underground hydrogen storage. Data on electricity and gas
+transmission infrastructure is also included to determine grid expansion needs
+and retrofitting potentials. The model also features detailed management of
+carbon flows between capture, usage, sequestration and emissions to the
+atmosphere to track carbon through the system. More details on the model are
+presented in the \nameref{sec:methods} and \nameref{sec:si}. The model is
+open-source and based on open data such that results can be reproduced and
+assumptions may be modified by others
 (\href{https://github.com/pypsa/pypsa-eur-sec}{github.com/pypsa/pypsa-eur-sec}).
 
 All investigations are conducted with a constraint that carbon dioxide emissions

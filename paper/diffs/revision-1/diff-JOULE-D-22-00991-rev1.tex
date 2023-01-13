@@ -1,0 +1,147 @@
+\documentclass[10pt]{article}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL before.tex   Sun Oct 23 11:28:08 2022
+%DIF ADD after.tex    Sun Oct 23 11:31:47 2022
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\usepackage[margin=1.4cm]{geometry}
+\usepackage[parfill]{parskip}
+\pagenumbering{gobble}
+\def\co{CO${}_2$}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+\section*{Abstract}
+
+Electricity transmission expansion has suffered many delays in Europe in recent
+decades, despite its importance for integrating renewable electricity into the
+energy system. A hydrogen network which reuses the existing fossil gas network
+would not only help supply demand for low-emission fuels, but could also help to
+balance variations in wind and solar energy across the continent and thus avoid
+power grid expansion. We pursue this idea by varying the allowed expansion of
+electricity and hydrogen grids in net-zero \co scenarios for a sector-coupled
+European energy system with high shares of renewables and self-sufficient
+supply. We cover the electricity, buildings, transport, agriculture, and
+industry sectors across 181 regions and model every third hour of a year. With
+this high spatio-temporal resolution, \DIFdelbegin \DIFdel{we }\DIFdelend \DIFaddbegin \DIFadd{the model }\DIFaddend can capture bottlenecks in
+transmission \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{networks, }\DIFaddend the variability of demand and renewable supply\DIFaddbegin \DIFadd{, as well
+as regional opportunities for the reuse of legacy gas infastructure and
+geological hydrogen storage}\DIFaddend . Our results show a consistent benefit of a
+pan-continental hydrogen backbone that connects high-yield regions with demand
+centers, synthetic fuel production and \DIFdelbegin \DIFdel{geological
+}\DIFdelend \DIFaddbegin \DIFadd{cavern }\DIFaddend storage sites. Developing a
+hydrogen network reduces system costs by up to 6\%, with highest benefits when
+electricity grid reinforcements cannot be realised. Between 58\% and 66\% of
+this backbone could be built from repurposed natural gas pipelines. However, we
+find that hydrogen networks can only partially substitute for power grid
+expansion, and that both can achieve strongest cost savings of 12\% together. 
+
+\section*{Introduction}
+
+\dots pipelines already exist, the perceivable impact would be minimal.
+
+However, few studies have evaluated the benefit of a hydrogen network in Europe
+so far. The \DIFaddbegin \DIFadd{industry-oriented }\DIFaddend EHB reports do not include an assessment based on
+the co-optimisation of energy system components. Other sector-coupling studies
+have not included hydrogen networks at all, or when they do, model Europe only
+at country-level resolution, have a country-specific focus with limited
+geographical scope or detail outside the focus area, or neglect some energy
+sectors or non-energy demands that involve hydrogen. \DIFdelbegin \DIFdel{None of the studies have
+explored the interplay between hydrogen networkexpansion and electricity grid
+reinforcements. Neither have the potentials for lower }\DIFdelend \DIFaddbegin \DIFadd{However, high spatial
+resolution at continental scope is critical to assess electricity grid
+bottlenecks that constrain the integration of Europe's best renewable sites and
+how they can be relieved by a hydrogen network. Great regional detail is also
+essential to evaluate where there are potentials for lowering hydrogen network
+}\DIFaddend development costs through \DIFdelbegin \DIFdel{pipeline retrofitting been taken into account so far}\DIFdelend \DIFaddbegin \DIFadd{gas pipeline retrofitting and where there are
+geological hydrogen storage sites to support the development of a hydrogen
+supply chain. Previous one-node-per-country studies could not have suitably
+assessed this}\DIFaddend .
+
+This paper provides the first high-resolution examination of the trade-offs
+between electricity grid expansion and a new hydrogen network in scenarios for a
+European energy system with net-zero carbon dioxide emissions and high shares of
+renewable electricity production. \DIFdelbegin \DIFdel{We analyse }\DIFdelend \DIFaddbegin \DIFadd{By leveraging recent computational advances,
+we elevate the model's spatial resolution to 181 regions to study what role
+hydrogen infrastructure can play in a future sector-coupled system. For the
+first time, such an investigation considers regionalised potentials for the
+repurposing of legacy gas pipelines and the geological storage of hydrogen in
+salt caverns. Our analysis covers }\DIFaddend four main scenarios to \DIFdelbegin \DIFdel{investigate
+}\DIFdelend \DIFaddbegin \DIFadd{examine }\DIFaddend if a hydrogen
+network can compensate for a potential lack of power grid expansion. \DIFdelbegin \DIFdel{The }\DIFdelend \DIFaddbegin \DIFadd{These
+}\DIFaddend scenarios differ based on whether or not electricity and hydrogen grids can be
+expanded\DIFdelbegin \DIFdel{, including potentials for gas pipeline retrofitting}\DIFdelend . Evaluation criteria include the total system cost, the composition and
+spatial distribution of technologies and transmission infrastructure in the
+system. As a supplementary sensitivity analysis, we also evaluate the impact of
+restricted onshore wind potentials on these scenarios.
+
+For our analysis, we use an open capacity expansion model\dots
+
+\section*{Discussion}
+
+\dots which provides a large flexible load that helps to integrate wind and
+solar in time\DIFaddbegin \DIFadd{.
+}
+
+\DIFadd{Victoria et al.~investigate the timing of
+when technologies like carbon capture, electrolysis and a hydrogen network
+become important for the European energy transition. The authors find a hydrogen
+network consistently appearing after 2035 in all scenarios. However, owing to a
+focus on transition pathways, the presented scenarios only resolve a single
+region per country. Thereby, little can be said about network infrastructure
+needs beyond cross-border transmission capacities, retrofitting opportunities
+for legacy gas pipelines or the availability of geological hydrogen storage
+potentials within countries. Compared to our findings, limited network expansion
+options affect system costs much less. A doubling of today's transmission volume
+reduces cost by 2\%, compared to 6.2\% in this study. Disabling hydrogen network
+expansion increases system cost by 0.5\%, compared to 5.7\% in this study. This
+substantial discrepancy arises because the one-node-per-country model version in
+Victoria et al.~does not capture
+country-internal transmission bottlenecks of either electricity or hydrogen
+networks. As the system integration costs of remote resources like offshore wind
+are thereby neglected within the countries, the benefit of network
+infrastructure is degraded. By boosting the spatial resolution to subnational
+scales in this study, more can be said about the competition between hydrogen
+and electricity networks}\DIFaddend .
+
+Caglayan et al. also consider European decarbonisation
+scenarios\dots
+
+\end{document}

@@ -12,7 +12,6 @@
 % 3–5 figures and
 % 30 references.
 
-% open acess fee: 7500 Euros
 
 \bibliographystyle{elsarticle-num}
 \biboptions{numbers,sort&compress,super}
@@ -77,11 +76,11 @@
 	per-mode = symbol
 }
 \DeclareSIUnit\year{a}
-\DeclareSIUnit{\tco}{t_{\ce{CO2}}}
-\DeclareSIUnit{\sieuro}{\mbox{\euro}}
-\DeclareSIUnit{\twh}{{\tera\watt\hour}}
-\DeclareSIUnit{\mwh}{{\mega\watt\hour}}
-\DeclareSIUnit{\kwh}{{\kilo\watt\hour}}
+\DeclareSIUnit\tco{t_{\ce{CO2}}}
+\DeclareSIUnit\sieuro{\mbox{\euro}}
+\DeclareSIUnit\twh{TWh}
+\DeclareSIUnit\mwh{MWh}
+\DeclareSIUnit\kwh{kWh}
 
 \newcommand{\co}{\ce{CO2}~}
 
@@ -96,16 +95,16 @@
 \newcites{S}{Supplementary References}
 \bibliographystyleS{elsarticle-num}
 
-\graphicspath{{../results/graphics/}, {../../../playgrounds/pr/pypsa-eur-sec/results/}}
+\graphicspath{{../results/graphics-20221227/}, {../workflows/pypsa-eur-sec/results/}}
 
-\newcommand{\onwrun}{20211218-181-onw}
-\newcommand{\gasrun}{20211218-181-gas}
-\newcommand{\decrun}{20211218-181-decentral}
-\newcommand{\lvrun}{20211218-181-lv}
-\newcommand{\hyrun}{20211218-181-h2}
-\newcommand{\gasrunscen}{20211218-181-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030}
-\newcommand{\runelec}{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030}
-\newcommand{\runhy}{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030}
+\newcommand{\onwrun}{20221227-onw}
+\newcommand{\gasrun}{20221227-gas}
+\newcommand{\decrun}{20221227-decentral}
+\newcommand{\lvrun}{20221227-lv}
+\newcommand{\hyrun}{20221227-main}
+\newcommand{\gasrunscen}{20221227-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
+\newcommand{\runelec}{20221227-main/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2050}
+\newcommand{\runhy}{20221227-main/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
 
 % \usepackage[
 % 	type={CC},
@@ -149,12 +148,14 @@
 
 \usepackage{orcidlink}
 
+\input{variables.tex} 
+
 \begin{document}
 
 
 \begin{frontmatter}
 
-	\title{Benefits of a Hydrogen Network in Europe}
+	\title{Options for a Hydrogen Network in Europe\\with Repurposed Gas Pipelines}
 
 	\author[tubaddress]{Fabian Neumann\,\orcidlink{0000-0001-8551-1480}\corref{correspondingauthor}}
 	\ead{f.neumann@tu-berlin.de}
@@ -171,7 +172,7 @@
 	\end{abstract}
 
 	\begin{keyword}
-		hydrogen backbone, sector-coupling, retrofitting, energy systems, transmission expansion, Europe, climate-neutral, renewables
+		hydrogen network, sector-coupling, retrofitting, energy systems, transmission expansion, Europe, climate-neutral, renewables
 	\end{keyword}
 
 	% \begin{graphicalabstract}
@@ -188,11 +189,11 @@
 \section*{Highlights}
 
 \begin{itemize}
-	\item examines benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables and no energy imports
+	\item examines cost benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables and no energy imports
 	\item uses open energy system model PyPSA-Eur-Sec with 181 regions, 3-hourly resolution for a year and all energy sectors (electricity, buildings, transport, industry, agriculture) represented
-	\item hydrogen network reduces system costs by up to 6\%, with highest benefits when power grid expansion is restricted
-	\item between 58-66\% of hydrogen backbone uses retrofitted gas network pipelines
-	\item cost benefit of electricity grid expansion is higher than of hydrogen network (8\% versus 6\%), but both together reduce costs by up to 12\%
+	\item hydrogen network reduces energy system costs by up to \maxhybenefitrel\%, with highest cost reductions when power grid expansion is restricted
+	\item between \minretroshare-\maxretroshare\% of hydrogen network uses retrofitted gas network pipelines
+	\item cost benefit of electricity grid expansion is higher than of hydrogen network (\maxacbenefitrel\% versus \maxhybenefitrel\%), but both together reduce costs by up to \gridbenefitrel\%
 \end{itemize}
 
 \par\noindent\rule{\textwidth}{0.4pt}
@@ -203,10 +204,10 @@
 
 \par\noindent\rule{\textwidth}{0.4pt}
 
-\section*{Words}
-5746 (excl. preamble, captions, \nameref{sec:methods}, \nameref{sec:si})
+% \section*{Words}
+% 5746 (excl. preamble, captions, \nameref{sec:methods}, \nameref{sec:si})
 
-\newpage
+% \newpage
 \section*{Introduction}
 \label{sec:intro}
 \addcontentsline{toc}{section}{\nameref{sec:intro}}
@@ -235,9 +236,6 @@
 \input{sections/methods.tex}
 
 \section*{Acknowledgements}
-
-% F.N. and T.B. gratefully acknowledge funding from the Helmholtz
-% Association under grant no. VH-NG-1352.
 
 We are grateful for helpful comments by Johannes Hampp.
 
@@ -303,8 +301,8 @@ The code to reproduce the experiments is available on \textit{Github} at \href{h
 We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}),
 PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
 PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
-Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.3.0).
-An interactive scenario explorer is under development at \href{https://share.streamlit.io/fneum/spatial-sector-dashboard}{share.streamlit.io/fneum/spatial-sector-dashboard}.
+Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.4.0).
+An interactive scenario explorer is under development at \href{https://spatial-sector.streamlit.app}{spatial-sector.streamlit.app}.
 
 % tidy with https://flamingtempura.github.io/bibtex-tidy/
 \addcontentsline{toc}{section}{References}
