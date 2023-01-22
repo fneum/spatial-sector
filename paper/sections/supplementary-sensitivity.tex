@@ -42,7 +42,7 @@ extra capacity in the European network operators' Ten Year Network Development
 Plan (TYNDP)\citeS{tyndp2018}). For this investigation, a hydrogen network
 could be built.
 
-\cref{fig:lv-restriction} shows the composition of total yearly system costs
+\cref{fig:lv-restriction} shows the composition of total annual energy system costs
 (including all investment and operational costs) as we vary the allowed power
 grid expansion, from no expansion (only today's grid) to a doubling of today's
 grid capacities (the model optimises where new capacity is placed). As the grid
@@ -85,7 +85,7 @@ PV generation, battery storage and re-electrified hydrogen.
         \includegraphics[height=0.42\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2050.pdf}
         \label{fig:no-onw:tsc}
     \end{subfigure}
-    \caption{Maps of regional energy balance, hydrogen network and production sites, and spatial and technological distribution of system costs for a scenario without onshore wind and without power grid expansion.}
+    \caption{Maps of regional energy balance, hydrogen network and production sites, and spatial and technological distribution of total energy system costs for a scenario without onshore wind and without power grid expansion.}
     \label{fig:no-onw}
 \end{figure}
 
@@ -176,165 +176,294 @@ case where no onshore wind capacities would be built, reducing power grid
 expansion from 25\% to none incurs another rise in system cost of an additional
 43~bn\euro/a (6\%).
 
-
 \subsection{Using Technology and Cost Projections for 2050}
 \label{sec:si:sensitivity-costs}
 
-Diminishes benefit of electricity grid expansion.
+In this sensitivity analysis, we investigate the impact of using more
+progressive technology cost projections.\citeS{wayEmpiricallyGrounded2022}
+Rather than using assumptions for the year 2030, we use cost assumptions for
+2050 as outlined in \cref{tab:si:costs}. These assumptions include cost
+reductions of solar photovoltaics and power-to-liquid processes by 25\% beyond
+2030, as well as a reduction by 33\% for direct air capture and 45\% to 60\% for
+battery storage and electrolysers.
 
-\begin{figure}
+Using more progressive assumptions diminishes the cost benefit of power grid
+reinforcements from 6-8\% to 4-5\% (\cref{fig:sensitivity-costs}). However, the
+cost benefit of the hydrogen network is robust against variations in cost and
+technology projections, changing merely from 1.6-3.4\% to 2.0-3.1\%. With cost
+projections for 2050, we see a total cost reduction between 15\% and 18\% and a
+shift towards more distributed and decentral solutions
+(\cref{fig:sensitivity-costs-diff}). This includes significantly more solar and
+battery deployment, more electrolysers with more flexible operation supported by
+additional hydrogen storage for buffering, and less wind generation and
+distribution grid capacities. Owing to plummeting costs of solar photovoltaics,
+\cref{fig:hydrogen-inframaps:costs} reveals a shift towards more hydrogen
+production in sunny Southern Europe. This leads to more hydrogen storage and a
+stronger hydrogen network buildout in this region. The consequence is a more
+balanced production of solar-based hydrogen in Southern Europe and wind-based
+hydrogen in the North Sea region.
+
+\begin{SCfigure}
     \centering
-    \includegraphics[width=0.7\textwidth]{sensitivity-h2-new-costs.pdf}
-    \caption{Benefits of electricity and hydrogen network infrastructure with cost projections for 2050.}
+    \includegraphics[width=0.75\textwidth]{sensitivity-h2-new-costs.pdf}
+    \caption{Cost benefits of electricity and hydrogen network infrastructure with cost projections for 2050.}
     \label{fig:sensitivity-costs}
-\end{figure}
+\end{SCfigure}
 
 \begin{figure}
     \centering
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in system cost}
+        \caption{differences in system cost compared to 2030 cost projections}
         \includegraphics[width=\textwidth]{diff-cost-costs}
         \label{fig:sensitivity-costs-cost}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in capacities}
+        \caption{differences in generation and conversion capacities compared to 2030 cost projections}
         \includegraphics[width=\textwidth]{diff-capacity-costs}
         \label{fig:sensitivity-costs-cap}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in storage capacities}
+        \caption{differences in storage capacities compared to 2030 cost projections}
         \includegraphics[width=\textwidth]{diff-storage-costs}
         \label{fig:sensitivity-costs-sto}
     \end{subfigure}
-    \caption{Differences to main scenarios}
+    \caption{Differences in total system cost and optimised capacities for more progressive 2050 cost projections compared to more conservative 2030 cost projections.}
     \label{fig:sensitivity-costs-diff}
 \end{figure}
 
-% \includegraphics[width=.9\textwidth]{diff-internal-cost-costs}
 
 \subsection{Importing all Liquid Hydrocarbons}
 \label{sec:si:sensitivity-imports}
 
-\begin{figure}
+In this sensitivity analysis, we explore the cost benefit of a hydrogen network
+if all liquid hydrocarbons were imported from outside of Europe. We chose this
+case as it constitutes an import scenario that should be detrimental to the
+benefits of a hydrogen network. We assume uniform import costs of 115
+\euro/MWh\citeS{staissOptionenFuer2022,schornMethanolRenewable2021} for
+methanol and Fischer-Tropsch fuels, for a total import volume of 1573 TWh
+(roughly one-third methanol and two-thirds Fischer-Tropsch fuels). By replacing the
+domestic production of electrofuels with imports, 1903 TWh (80\%) of domestic
+hydrogen demand fall away, which is much more compared to the 333 TWh for
+domestic and foreign hydrogen supply each mentioned in the REPowerEU plans for
+2030.\citeS{europeancommissionRepowerEUPlan}
+
+As \cref{fig:sensitivity-imports} shows, the relative cost benefits of network
+expansion do not change much (from 1.6-3.4\% to 1.9-2.8\%), while the overall
+benefit of network expansion is slightly reduced from 10\% to 9\%. Moreover,
+there is practically no change in total system costs
+(\cref{fig:sensitivity-import-diff}). The costs of 189 bn\euro/a for electrofuel
+imports (23.6-25.7\% of system costs) displace almost equal costs for the
+domestic supply chain for fuel synthesis comprising wind and solar electricity
+generation, direct air capture, hydrogen storage and power-to-X processes
+(electrolysis, methanolisation, Fischer-Topsch). Since the domestic electrofuels
+can mostly use captured carbon dioxide from point-sources, whereas imported
+fuels rely on direct air capture as a carbon source, the costs for direct air
+capture cancel out the savings from utilising better renewable resources abroad.
+
+Regarding the spatial deployment of hydrogen infrastructure, as shown in
+\cref{fig:hydrogen-inframaps:imports}, we see fewer hydrogen pipelines built
+overall, reduced to a total network volume of 103-180 TWkm compared to 204-307
+TWkm in scenarios without imports. However, the reduced network achieves higher
+retrofitting shares of 78\%. Hydrogen production hubs in Southern Europe
+disappear such that the remaining hubs are located in the broader North Sea region.
+
+It is necessary to underline that this sensitivity analysis explores the impact
+of importing the majority of hydrogen derivatives and does not analyse the
+impact of direct hydrogen imports on network development. For instance, if
+hydrogen were imported via pipelines from the MENA region to supply hydrogen to
+domestic synthetic fuel production sites, much of the buildout of the European
+hydrogen network would likely be diverted to Italy and Spain.
+
+\begin{SCfigure}
     \centering
-    \includegraphics[width=0.7\textwidth]{sensitivity-h2-new-import.pdf}
-    \caption{Benefits of electricity and hydrogen network infrastructure with imports of all liquid hydrocarbons.}
+    \includegraphics[width=0.75\textwidth]{sensitivity-h2-new-import.pdf}
+    \caption{Cost benefits of electricity and hydrogen network infrastructure if all liquid hydrocarbons are imported.}
     \label{fig:sensitivity-imports}
-\end{figure}
-
-Majority of hydrogen derivatives
-
+\end{SCfigure}
 
 \begin{figure}
     \centering
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in system cost}
+        \caption{differences in system cost compared to scenarios without imports}
         \includegraphics[width=\textwidth]{diff-cost-import}
         \label{fig:sensitivity-import-cost}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in capacities}
+        \caption{differences in generation and conversion capacities compared to scenarios without imports}
         \includegraphics[width=\textwidth]{diff-capacity-import}
         \label{fig:sensitivity-import-cap}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in storage capacities}
+        \caption{differences in storage capacities compared to scenarios without imports}
         \includegraphics[width=\textwidth]{diff-storage-import}
         \label{fig:sensitivity-import-sto}
     \end{subfigure}
-    \caption{Differences to main scenarios}
+    \caption{Differences in total system cost and optimised capacities for scenarios with all liquid hydrocarbons imported compared to scenarios without imports.}
     \label{fig:sensitivity-import-diff}
 \end{figure}
 
-% \includegraphics[width=.9\textwidth]{diff-internal-cost-import}
 
 \subsection{Liquid Hydrogen in Shipping}
 \label{sec:si:sensitivity-shipping}
 
-\begin{figure}
+In this sensitivity analysis, we examined the impact of changing the primary
+fuel used in shipping from methanol to liquid hydrogen. The hydrogen demand for
+international shipping was geographically distributed based on trade volumes of
+international ports,\citeS{worldbankWorldBank} while the demand for domestic
+shipping was distributed by population. The costs for hydrogen liquefaction were
+also included in our analysis (see \cref{tab:si:costs}).
+
+The results of this analysis are shown in \cref{fig:sensitivity-shipping} and
+indicate that while the cost benefit of electricity grid reinforcements is
+similar (6.6-9.0\%), the cost benefit of a hydrogen network almost doubles (from
+1.6-3.4\% to 3.3-5.6\%). The overall cost benefit of network expansion rose from
+9.9\% to 12.6\%. This difference can be attributed to the added need to
+transport the hydrogen for the shipping sector from the most cost-effective
+hydrogen production sites to the ports, whereas previously methanol offered
+low-cost transport allowing for methanolisation directly where hydrogen was
+produced.
+
+As shown in \cref{fig:sensitivity-shipping-diff}, energy system costs are
+between 2.5\% and 4.9\% cheaper when exchanging methanol with liquid hydrogen in
+ships. Methanolisation plants are substituted by hydrogen liquefaction plants,
+and because less carbon needs to be handled in the system, direct air capture is
+no longer required. The higher energy efficiency of liquid hydrogen in shipping
+also lowers the requirements for wind and solar buildout. However, the cost
+differences should be viewed in the context that the costs of ships fueled by
+liquid hydrogen are likely to be considerably higher than those fueled by
+methanol.\citeS{johnstonShippingSunshine2022} The spatial patterns of hydrogen
+infrastructure buildout remain largely unchanged
+(\cref{fig:hydrogen-inframaps:lh2}).
+
+\begin{SCfigure}
     \centering
-    \includegraphics[width=0.7\textwidth]{sensitivity-h2-new-shipping.pdf}
-    \caption{Benefits of electricity and hydrogen network infrastructure with use of liquid hydrogen in shipping instead of methanol.}
+    \includegraphics[width=0.75\textwidth]{sensitivity-h2-new-shipping.pdf}
+    \caption{Cost benefits of electricity and hydrogen network infrastructure with use of liquid hydrogen in shipping instead of methanol.}
     \label{fig:sensitivity-shipping}
-\end{figure}
-
+\end{SCfigure}
 
 \begin{figure}
     \centering
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{differences in system cost}
-        \includegraphics[width=\textwidth]{diff-cost-shipping}
-        \label{fig:sensitivity-shipping-cost}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{differences in capacities}
-        \includegraphics[width=\textwidth]{diff-capacity-shipping}
-        \label{fig:sensitivity-shipping-cap}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{differences in storage capacities}
-        \includegraphics[width=\textwidth]{diff-storage-shipping}
-        \label{fig:sensitivity-shipping-sto}
-    \end{subfigure}
-    \caption{Differences to main scenarios}
+    \includegraphics[width=\textwidth]{diff-cost-shipping}
+    \caption{Differences in total system cost for usage of liquid hydrogen in shipping compared to methanol.}
     \label{fig:sensitivity-shipping-diff}
 \end{figure}
 
-% \includegraphics[width=.9\textwidth]{diff-internal-cost-shipping}
-
-How it increases benefit of hydrogen network.
+\begin{figure}
+    \centering
+    \makebox[\textwidth][c]{
+        \begin{subfigure}[t]{0.6\textwidth}
+            \centering
+            \caption{hydrogen infrastructure with 2030 costs, methanol in shipping, no imports}
+            \includegraphics[width=\textwidth]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-h2_network_2050.pdf}
+            \label{fig:hydrogen-inframaps:base}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.6\textwidth}
+            \centering
+            \caption{hydrogen infrastructure with 2050 cost assumptions}
+            \includegraphics[width=\textwidth]{\costrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-h2_network_2050.pdf}
+            \label{fig:hydrogen-inframaps:costs}
+        \end{subfigure}
+    }
+    \makebox[\textwidth][c]{
+        \begin{subfigure}[t]{0.6\textwidth}
+            \centering
+            \caption{hydrogen infrastructure with liquid hydrogen in shipping}
+            \includegraphics[width=\textwidth]{\shprun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-h2_network_2050.pdf}
+            \label{fig:hydrogen-inframaps:lh2}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.6\textwidth}
+            \centering
+            \caption{hydrogen infrastructure with all liquid hydrocarbons imported}
+            \includegraphics[width=\textwidth]{\imprun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-h2_network_2050.pdf}
+            \label{fig:hydrogen-inframaps:imports}
+        \end{subfigure}
+        }
+    \caption{Hydrogen infrastructure buildout with different cost assumptions (\cref{fig:hydrogen-inframaps:costs}), shipping fuel (\cref{fig:hydrogen-inframaps:lh2}) or import levels (\cref{fig:hydrogen-inframaps:imports}) in scenarios without electricity grid reinforcements.}
+    \label{fig:hydrogen-inframaps}
+\end{figure}
 
 \subsection{Temporal Resolution}
 \label{sec:si:sensitivity-time}
 
-Text
+In \cref{fig:sensitivity-time}, we varied the temporal resolution for the
+scenario with both power and hydrogen network expansion with a reduced spatial
+resolution of 90 regions. In this way, we were computationally able to sweep the
+time resolution from a 6-hourly model up to an hourly model. Total energy system
+costs and optimised capacities are shown relative to the hourly model.
+
+Overall, with a system cost difference of -0.35\% the error induced by
+resampling the model from an hourly to a 3-hourly resolution is small and
+justifies a model size reduction by factor 3. The temporal aggregation causes a
+minor underestimation of short-term battery storage and offshore wind as well as
+a minor overestimation of solar photovoltaics and hydrogen storage. This trend
+intensifies with coarser temporal resolution, such that with a 6-hourly
+resolution the system cost deviation exceeds 2.5\% since balancing needs for
+solar electricity are discounted, which makes this technology more attractive.
 
 \begin{figure}
     \centering
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in system cost}
+        \caption{differences in total energy system cost compared to hourly resolution}
         \includegraphics[width=.9\textwidth]{diff-time-opt-cost}
         \label{fig:sensitivity-time-cost}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in capacities}
+        \caption{differences in generation and conversion capacities compared to hourly resolution}
         \includegraphics[width=.9\textwidth]{diff-time-opt-capacity}
         \label{fig:sensitivity-time-cap}
     \end{subfigure}
-    \caption{Differences to hourly resolution: cost and capacities.}
+    \caption{ Total system costs and optimised capacities for varying temporal
+    resolutions relative to hourly resolution. The comparison refers to scenario
+    with both power grid reinforcements and hydrogen network expansion. }
     \label{fig:sensitivity-time}
 \end{figure}
 
 \subsection{Spatial Resolution}
 \label{sec:si:sensitivity-space}
 
-Text
+In \cref{fig:sensitivity-space}, we also varied the spatial resolution of the
+model from a one-node-per-country version (37 regions) to 181 regions for the
+scenario without power or hydrogen network expansion. Total energy system
+costs and optimised capacities are shown relative to the 181-region model.
+
+Compared to the model with 181 regions, a one-node-per-country resolution
+underestimates system cost by 4.3\%, favouring remote offshore wind over more
+localised production with solar photovoltaics and batteries. The differences can
+be explained by a combination of two opposing
+effects.\citeS{frysztackiStrongEffect2021a} The aggregation of the transmission
+networks lifts bottlenecks within clustered regions, lowering system costs. On
+the other hand, the aggregation of wind and solar capacity factors blur the most
+productive sites, increasing costs. In terms of system costs, the error induced
+by reducing the spatial resolution from 181 regions to 128 regions (-0.47\%) is
+comparable to the error caused by choosing 3-hourly over hourly time resolution
+(-0.35\%).
 
 \begin{figure}
     \centering
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in system cost}
+        \caption{differences in system cost compared to 181-region model}
         \includegraphics[width=.9\textwidth]{diff-space-1p0-no_H2_grid-cost}
         \label{fig:sensitivity-space-cost}
     \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
         \centering
-        \caption{differences in capacities}
+        \caption{differences in generation and conversion capacities compared to 181-region model}
         \includegraphics[width=.9\textwidth]{diff-space-1p0-no_H2_grid-capacity}
         \label{fig:sensitivity-space-cap}
     \end{subfigure}
-    \caption{Differences to spatial resolution of 181 regions: cost and capacities.}
+    \caption{ Total system costs and optimised capacities for varying spatial
+    resolutions relative to 181-regions model. The case with 37 regions corresponds to
+    a single node per country and synchronous zone. The comparison refers to the scenario
+    with neither power grid reinforcements nor hydrogen network expansion. }
     \label{fig:sensitivity-space}
 \end{figure}

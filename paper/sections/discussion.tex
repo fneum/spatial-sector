@@ -6,81 +6,89 @@ limitations of our study.
 \subsection*{Comparison to Related Literature}
 
 Compared to the net-zero scenarios from the European
-Commission\cite{in-depth_2018}, we see much larger wind and solar electricity
-generation, reaching beyond \maxvres~TWh/a compared to
-2500~TWh/a.\cite{in-depth_2018} In terms of total electricity produced, our
-results show almost a tripling of today's generation. By 2050, it rises to 270\%
-compared to 150\% in the Commission's report.\cite{in-depth_2018} Roughly one
+Commission,\cite{in-depth_2018} we see much larger wind and solar capacities,
+reaching beyond 2000~GW compared to 1200~GW for wind and 3500~GW compared to
+1000~GW for solar.\cite{in-depth_2018} In terms of total electricity produced,
+our results approximately show a tripling of today's generation compared to
+150\% in the Commission's net-zero zenarios.\cite{in-depth_2018} Roughly one
 third goes to regular electricity demand, one third goes to newly electrified
 sectors in heating, transport and industry, and another third goes to hydrogen
 production (dominated by demand for liquid hydrocarbons). The major difference
 to the Commission's scenarios\cite{in-depth_2018} is caused by their lower
-electrification rates in other sectors, higher biomass potentials, and a strong
-reliance on imports of fossil oil for non-energy uses such as plastics that were
-not counted towards net emissions as we do in this study.
+electrification rates, a 15\% share of nuclear power in the electricity mix,
+higher biomass usage (2900~TWh/a versus 1400~TWh/a), and a strong reliance on
+fossil fuels imports (2900~TWh/a) for non-energy uses (e.g. plastics and other
+high-value chemicals). By considering landfill of plastics as long-term carbon
+sequestration option, the Commission's scenarios see little need to produce
+synthetic hydrocarbons for non-energy feedstocks. On the contrary, our
+modelling, which assumes that all carbon in landfill will eventually decay and
+dissipate into the atmosphere and limited sequestration potentials, requires
+green electrofuels for feedstocks and precludes the wide-ranging use of fossil oil.
 
-In Brown et al.~\cite{brownSynergiesSector2018}, a cost-optimal power grid expansion
-brought a benefit of 64~bn\euro/a compared to no
-power grid reinforcements, which is higher than the
-\maxacbenefitabs~bn\euro/a benefit found here. There are at least four causes for
-this difference: the model here has higher resolution (181 compared to 30
-regions) which allows better placement of wind at good sites; here we start from
-today's grid; in Brown et al.~\cite{brownSynergiesSector2018} there was no
-hydrogen pipeline network and no underground hydrogen storage; and finally we
-have higher hydrogen demand for industry and synthetic fuel production, which
-provides a large flexible load that helps to integrate wind and solar.
+% In Brown et al.~\cite{brownSynergiesSector2018}, a cost-optimal power grid expansion
+% brought a benefit of 64~bn\euro/a compared to no
+% power grid reinforcements, which is similar to the
+% \maxacbenefitabs~bn\euro/a benefit found here. There are at least four causes for
+% this difference: the model here has higher resolution (181 compared to 30
+% regions) which allows better placement of wind at good sites; here we start from
+% today's grid; in Brown et al.~\cite{brownSynergiesSector2018} there was no
+% hydrogen pipeline network and no underground hydrogen storage; and finally we
+% have higher hydrogen demand for industry and synthetic fuel production, which
+% provides a large flexible load that helps to integrate wind and solar.
 
 Victoria et al.~\cite{victoriaSpeedTechnological2022} investigate the timing of
 when certain technologies %like carbon capture, electrolysis and a hydrogen network
-become important for the European energy transition. The authors find a hydrogen
-network consistently appearing after 2035 in all scenarios. However, owing to
+become important for the European energy transition, and find a hydrogen
+network consistently appearing after 2035. However, owing to a
 one-node-per-country resolution, little can be said about subnational network
 infrastructure needs, retrofitting opportunities for gas pipelines or regional
 geological storage potentials. Compared to our findings, limited network
-expansion options affect system costs less
+expansion options affect total energy system costs less
 in~\cite{victoriaSpeedTechnological2022}. A doubling of today's transmission
-volume reduces cost by 2\% in~\cite{victoriaSpeedTechnological2022}, compared to
+volume reduces costs by 2\% in~\cite{victoriaSpeedTechnological2022}, compared to
 \maxacbenefitrel\% in this study. Disabling hydrogen network expansion increases
-system cost by 0.5\% in ~\cite{victoriaSpeedTechnological2022}, compared to
+costs by 0.5\% in ~\cite{victoriaSpeedTechnological2022}, compared to
 \maxhybenefitrel\% in this study. This discrepancy arises because
 country-internal transmission bottlenecks are not captured, whereby the
 integration costs of remote resources like offshore wind within the countries
-are neglected. By boosting the spatial resolution to subnational scales, more
-can be said about the competition between hydrogen and electricity networks.
+are neglected.
+% By boosting the spatial resolution to subnational scales, more
+% can be said about the competition between hydrogen and electricity networks.
 
 Caglayan et al.~\cite{Caglayan2019} also consider European decarbonisation
 scenarios with both electricity and hydrogen networks, but at lower spatial
 resolution (96 regions). A similar pattern of hydrogen pipeline expansion
-towards the British Isles and North Sea is seen, but lower overall hydrogen
+towards the British Isles and North Sea is seen, but lower overall electrolyser
 capacities (258~GW compared to our
 \SIrange{\minelectrolysis}{\maxelectrolysis}{\giga\watt}) because industry,
 shipping, aviation, agriculture and non-electrified heating are not included.
-Caglayan et al.~\cite{Caglayan2019} also find cost-optimal hydrogen underground
-storage of 130~TWh, whereas our scenarios involve less cavern storage between
-\hydrogenstorageacyhyn and \hydrogenstorageacnhyn~TWh owing to the larger and
+Caglayan et al.~\cite{Caglayan2019} also find cost-optimal hydrogen
+storage of 130~TWh, whereas our scenarios involve just between
+\hydrogenstorageacnhyn~and \hydrogenstorageacnhyy~TWh owing to the larger
 flexible hydrogen demand diminishing the need for weekly and monthly balancing.
 
 A large number of cost-effective designs for a climate-neutral European energy
 system was also presented by Pickering et
 al.~\cite{pickeringDiversityOptions2022}. Their 98-region model with 2-hourly
 resolution likewise includes all energy sectors including non-energy feedstocks
-and also optimises for fully self-sufficient energy supply chains within Europe.
-However, they do not offer hydrogen transport options so that hydrogen must be
-produced locally. Moreover, geological potentials for low-cost hydrogen storage
-and the option to retrofit gas pipelines are disregarded. Owing to high storage
-cost in steel tanks and fewer assumed end-uses of hydrogen and its derivatives
-(e.g.~in shipping and heavy-duty transport), the scenarios involve less hydrogen
-storage (\SIrange{0}{6}{\twh} versus
-\SIrange{\hydrogenstorageacyhyn}{\hydrogenstorageacnhyn}{\twh}) and lower
+and also assumes energy self-sufficiency for Europe. However, hydrogen transport
+options were not considered such that hydrogen must be produced locally.
+Moreover, geological potentials for low-cost hydrogen storage and the option to
+retrofit gas pipelines are disregarded. Owing to higher storage cost in steel
+tanks and fewer assumed end-uses of hydrogen and its derivatives, the scenarios
+involve less hydrogen storage (\SIrange{0}{6}{\twh} versus
+\SIrange{\hydrogenstorageacnhyn}{\hydrogenstorageacnhyy}{\twh}) and lower
 electrolyser capacities (\SIrange{290}{855}{\giga\watt} versus
 \SIrange{\minelectrolysis}{\maxelectrolysis}{\giga\watt}) in our results.
 Furthermore, whereas our model allows limited use of fossil fuels and with
 options for carbon capture and sequestration, Pickering et
-al.~\cite{pickeringDiversityOptions2022} are more restrictive by eliminating the
-use of fossil energy sources and only considering direct air capture as carbon
-source for synthetic hydrocarbons. Overall, total system costs lie in a similar
-range between 730 and 866 bn\euro/a compared to costs between \minsystemcost~and
-\maxsystemcost~bn\euro/a in our study. 
+al.~\cite{pickeringDiversityOptions2022} eliminate the
+use of fossil energy and only consider direct air capture as carbon
+source. Overall, total energy system costs lie in a similar range between 730
+and 866 bn\euro/a compared to costs between \minsystemcost~and
+\maxsystemcost~bn\euro/a in our study.
+
+% TODO check FLH of electrolysis in euro-calliope
 
 % However, the composition differs.
 % Pickering et al.~\cite{pickeringDiversityOptions2022} have higher spendings on
@@ -140,7 +148,7 @@ But other than the visions laid out in the reports, we present analysis based on
 temporally resolved spatial co-planning of energy infrastructures. We see
 cost-optimal hydrogen network investments between
 \minhycost-\maxhycost~bn\euro/a, while the EHB report covering 21 countries
-finds similar costs between
+finds slightly higher costs between
 4-10~bn\euro/a.\cite{gasforclimateExtendingEuropean2021}\footnote{To calculate
 the annuity of the overnight hydrogen network costs listed in the EHB reports, a
 lifetime of 50 years and a discount rate of 7\% are assumed.} The extension to
@@ -153,9 +161,9 @@ to calculate length-weighted network capacities.}, our scenarios show a
 similarly sized hydrogen network with comparable retrofitting shares. Measured
 by the length-weighted sum of pipeline capacities (TWkm), the 309 TWkm indicated
 in the EHB report match the upper end of the range of
-\mintwkmhydrogen-\maxtwkmhydrogen~TWkm observed in our scenarios. Likewise, the
+204-307~TWkm observed in our scenarios. Likewise, the
 69\% share of repurposed natural gas pipelines
-\cite{gasforclimateExtendingEuropean2021} agrees with our findings where between
+\cite{gasforclimateExtendingEuropean2021} roughly agrees with our findings where between
 \minretroshare\% and \maxretroshare\% of hydrogen pipelines are retrofitted gas
 pipelines.
 
@@ -181,10 +189,10 @@ limited amounts of fossil gas and oil imports are allowed, no imports of
 renewable electricity, chemical energy carriers or commodities from outside of
 Europe are considered. However, with imports system needs for electricity and
 hydrogen transmission infrastructure may change substantially. New hydrogen
-import hubs would require different bulk transmission routes. The import of
+import hubs might require different bulk transmission routes. The import of
 large amounts of carbon-based fuels and ammonia would furthermore diminish the
 demand for hydrogen overall, and hence also the need to transport it. This
-effect of imports on infrastructure needs should be explored in future work.
+effect of imports on infrastructure needs is demonstrated in \cref{sec:si:sensitivity-imports} and should be explored in more detail in future work.
 \cite{fasihiTechnoeconomicAssessment2019,heuserTechnoeconomicAnalysis2019,hamppImportOptions2021}
 
 % TODO this is where to discuss the import sensitivity

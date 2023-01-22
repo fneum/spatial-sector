@@ -1,3 +1,21 @@
+\subsection*{Resource Availability}
+
+\subsubsection*{Lead Contact}
+
+\subsubsection*{Materials availability}
+
+\subsubsection*{Data and Code Availability}
+
+A dataset of the model results is available on \textit{zenodo} at \href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}.
+The code to reproduce the experiments is available on \textit{Github} at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
+We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}),
+PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
+PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
+Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.4.0).
+An interactive scenario explorer can be found at \href{https://spatial-sector.streamlit.app}{spatial-sector.streamlit.app}.
+
+\subsection*{Modelling Setup}
+
 In this section the core characteristics and assumptions of the model
 PyPSA-Eur-Sec are presented. More detailed descriptions of specific sectors,
 energy carriers, renewable potentials, transmission infrastructure modelling,
@@ -10,16 +28,16 @@ subject to technical and physical constraints, assuming perfect competition and
 perfect foresight over one uninterrupted year of 3-hourly operation (see
 \cref{sec:si:math} for mathematical formulation). In this study, we used the
 historical year 2013 for weather-dependent inputs. Apart from existing
-electricity and gas transmission infrastructure and hydroelectric facilities, no
-other existing assets are assumed (\textit{greenfield optimisation} or
+electricity and gas transmission infrastructure and hydroelectric power plants,
+no other existing assets are assumed (\textit{greenfield optimisation} or
 \textit{overnight scenario}), so that the model assumes a long-term equilibrium
 in a market with perfect competition and foresight, and disregards pathway
 dependencies. Cost assumptions are taken, where possible, from predictions for
-the year 2030 by the Danish Energy Agency (see
-\cref{sec:si:costs}).\cite{DEA} The model is implemented in the free and open software
-framework Python for Power System Analysis (PyPSA).\cite{brownPyPSAPython2018}
-
-% TODO reference 2050 cost sensitivity
+the year 2030 by the Danish Energy Agency (see \cref{tab:si:costs} for a
+complete list and \cref{sec:si:sensitivity-costs} for a sensitivity with
+projections for 2050).\cite{DEA} The model is implemented in the free and open
+software framework Python for Power System Analysis
+(PyPSA).\cite{brownPyPSAPython2018}
 
 PyPSA-Eur-Sec builds upon the model from Brown et
 al.,~\cite{brownSynergiesSector2018} which covered electricity, heating in
@@ -52,13 +70,13 @@ lines, new hydrogen and repurposed natural gas pipelines are all subject to
 optimisation, as well as the operational dispatch of each unit in each
 represented hour.
 
-\textbf{Exogenous assumptions} in the model include a constant demand for the
-different materials and energy carriers in each sector, the extent of land
-transport electrification, the use of methanol as shipping fuel and
-kerosene in aviation, the ratio of district heating to decentralised heating in
-densely populated regions, efficiency gains of 29\% due to building retrofitting,
-hydroelectricity capacities (for reservoir and run-of-river generators and
-pumped hydro storage).
+\textbf{Exogenous assumptions} in the model include a constant and
+spatially-fixed demand for the different materials and energy carriers in each
+sector, the extent of land transport electrification, the use of methanol as
+shipping fuel and kerosene in aviation, the ratio of district heating to
+decentralised heating in densely populated regions, efficiency gains of 29\% due
+to building retrofitting, hydroelectricity capacities (for reservoir and
+run-of-river generators and pumped hydro storage).
 
 The time series and potentials of variable renewable \textbf{energy supply}
 (wind, solar, hydro, ambient heat) are computed from historical weather data
@@ -95,16 +113,17 @@ pipeline decommissioned, 60\% of its capacity becomes available for hydrogen
 transport.\cite{gasforclimateEuropeanHydrogen2020}
 
 For \textbf{industry}, we assume that the demand for materials (such as steel,
-cement, and high-value chemicals) remain constant. The assumed industry
-transformation is characterised by electrification, process switching to
-low-emission alternatives (e.g. switching to hydrogen for direct reduction of
-iron ore\cite{voglAssessmentHydrogen2018}), more recycling of steel, plastics
-and aluminium\cite{circular_economy}, fuel switching for high- and
-mid-temperature process heat to biomass and methane, use synthetic fuels for
-ammonia and organic chemicals, and allow carbon capture. It is assumed that no
-plastic or other non-energy product is sequestered in landfill, but that all
-carbon in plastics eventually makes its way back to the atmosphere, either
-through combustion or decay; this approach is stricter than other models.
+cement, and high-value chemicals) remain constant, and disregard options for
+industry relocation. The assumed industry transformation is characterised by
+electrification, process switching to low-emission alternatives (e.g. switching
+to hydrogen for direct reduction of iron ore\cite{voglAssessmentHydrogen2018}),
+more recycling of steel, plastics and aluminium\cite{circular_economy}, fuel
+switching for high- and mid-temperature process heat to biomass and methane, use
+synthetic fuels for ammonia and organic chemicals, and allow carbon capture. It
+is assumed that no plastic or other non-energy product is sequestered in
+landfill, but that all carbon in plastics eventually makes its way back to the
+atmosphere, either through combustion or decay; this approach is stricter than
+other models.
 \cite{in-depth_2018}
 
 The \textbf{transport} sector comprises light and heavy road, rail, shipping and
@@ -130,7 +149,7 @@ permitted, using the medium potential estimates from the JRC ENSPRESO database.
 be upgraded and 1038~TWh per year of solid biomass residues and waste for the
 whole of Europe. Biomass can be used in combined electricity and heat generation
 with and without CCS, as well as to provide low- to medium-temperature process
-heat in industry. 
+heat in industry.
 
 \textbf{Carbon capture} is needed in the model both to capture and sequester
 process emissions with a fossil origin, such as those from calcination of fossil
@@ -141,4 +160,5 @@ emissions, steam methane reforming, CHP plants) or by direct air capture.
 Captured \co can be used to produce synthetic hydrocarbons via Sabatier,
 Fischer-Tropsch or methanolisation processes. Up to 200 Mt\co/a may be
 sequestered underground, which is sufficient to capture process emissions but
-limits the system's reliance on negative emission technologies.
+limits the system's reliance on negative emission technologies. Landfill of
+plastics is not considered as long-term sequestration option.

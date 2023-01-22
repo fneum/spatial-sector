@@ -5,6 +5,8 @@
 \journal{Joule}
 \widowpenalty10000
 \clubpenalty10000
+\hyphenpenalty100
+
 \abstracttitle{Summary}
 
 % A typical research article will be
@@ -28,10 +30,10 @@
 % \usepackage{amssymb}
 
 \usepackage{geometry}
-% \geometry{
-% top=30mm,
-% bottom=35mm,
-% }
+\geometry{
+top=30mm,
+bottom=35mm,
+}
 
 \usepackage{amsmath}
 \usepackage{bbold}
@@ -101,6 +103,9 @@
 \newcommand{\gasrun}{20221227-gas}
 \newcommand{\decrun}{20221227-decentral}
 \newcommand{\lvrun}{20221227-lv}
+\newcommand{\costrun}{20221227-costs}
+\newcommand{\imprun}{20221227-import}
+\newcommand{\shprun}{20221227-shipping}
 \newcommand{\hyrun}{20221227-main}
 \newcommand{\gasrunscen}{20221227-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
 \newcommand{\runelec}{20221227-main/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2050}
@@ -148,7 +153,7 @@
 
 \usepackage{orcidlink}
 
-\input{variables.tex} 
+\input{variables.tex}
 
 \begin{document}
 
@@ -182,11 +187,16 @@
 
 \section*{Graphical Abstract}
 
+% https://www.cell.com/pb/assets/raw/shared/figureguidelines/GA_guide.pdf
+
 \includegraphics[width=\textwidth]{graphics/graphical-abstract.png}
 
 \par\noindent\rule{\textwidth}{0.4pt}
 
 \section*{Highlights}
+
+% You may include up to four highlights.%
+% The length of each highlight cannot exceed 85 characters (including spaces).
 
 \begin{itemize}
 	\item examines cost benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables and no energy imports
@@ -204,10 +214,15 @@
 
 \par\noindent\rule{\textwidth}{0.4pt}
 
-% \section*{Words}
-% 5746 (excl. preamble, captions, \nameref{sec:methods}, \nameref{sec:si})
+\section*{eTOC Blurb}
 
-% \newpage
+TODO
+
+% The eTOC blurb is a short summary that describes the context and significance
+% of the findings for the broader readership. Please see the "in brief" links in
+% the table of contents for examples. The blurb should be 80 words or less.
+
+
 \section*{Introduction}
 \label{sec:intro}
 \addcontentsline{toc}{section}{\nameref{sec:intro}}
@@ -241,9 +256,7 @@ We are grateful for helpful comments by Johannes Hampp.
 
 \section*{Declaration of Interests}
 
-The authors declare that they have no known competing financial interests or
-personal relationships that could have appeared to influence the work reported
-in this paper.
+The authors declare no competing interests.
 
 % \section*{License}
 
@@ -292,17 +305,6 @@ Software --
 Supervision --
 Writing - original draft --
 Writing - review \& editing
-
-
-\section*{Data and Code Availability}
-
-A dataset of the model results is available on \textit{zenodo} at \href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}.
-The code to reproduce the experiments is available on \textit{Github} at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
-We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}),
-PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
-PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
-Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.4.0).
-An interactive scenario explorer is under development at \href{https://spatial-sector.streamlit.app}{spatial-sector.streamlit.app}.
 
 % tidy with https://flamingtempura.github.io/bibtex-tidy/
 \addcontentsline{toc}{section}{References}

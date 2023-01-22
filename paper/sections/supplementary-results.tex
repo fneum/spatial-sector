@@ -14,7 +14,7 @@ prices of electricity and hydrogen in space
 energy flows in the system. Across the scenarios, we infer that a carbon price
 between \SI{385}{\sieuro\per\tco} with transmission infrastructure expansion and
 \SI{579}{\sieuro\per\tco} without would be required to achieve both climate
-neutrality and self-sufficiency in Europe.
+neutrality and self-sufficiency in Europe. Curtailment of renewables varies between 1.8\% and 3\% (\cref{fig:si:curtailment}).
 
 \begin{figure}
     \begin{subfigure}{0.49\textwidth}
@@ -89,7 +89,7 @@ neutrality and self-sufficiency in Europe.
     \end{subfigure}
     \caption{Regional distribution of average nodal hydrogen prices. The
     development of a hydrogen network evens out regional price differences. With
-    limited \ce{H2} network expansion prices are almost twice as high in
+    limited hydrogen network expansion prices are almost twice as high in
     Europe's industrial clusters than the most cost-effective hydrogen
     production sites.}
     \label{fig:si:lmp-h2}
@@ -143,7 +143,7 @@ neutrality and self-sufficiency in Europe.
     \end{subfigure}
     \caption{Temporal distribution of average nodal hydrogen prices. Compared to
     electricity prices, the seasonal component dominates daily patterns. Price
-    spikes occur with limited \ce{H2} network expansion in winter periods that
+    spikes occur with limited hydrogen network expansion in winter periods that
     are challenging to the system.}
     \label{fig:si:lmp-ts-h2}
 \end{figure}
@@ -260,248 +260,16 @@ neutrality and self-sufficiency in Europe.
     \label{fig:si:carbon-sankey-2}
 \end{figure}
 
-
-\section{Detailed Results of Least-Cost Solution with Full Grid Expansion}
-\label{sec:si:detailed}
-
-In the following section we present more detailed results from the scenario
-where both the hydrogen and electricity grid could be expanded. Among the
-scenarios we investigated, this represents the least-cost solution.
-\crefrange{fig:output-ts-1}{fig:output-ts-4} show temporally resolved energy
-balances for different carriers: electricity, hydrogen, heat, methane, oil-based
-products, and carbon dioxide. These are daily sampled time series for a year and
-3-hourly sampled time series for the month February, and indicate how different
-technologies are operated both seasonally and daily. \cref{fig:si:lcoe} displays
-the regional distribution of levelised cost of electricity for wind and solar
-generation. \cref{fig:si:utilisation-rate-map} indicates how synthetic fuel
-production facilities are operated regionally. How selected energy system
-components are operated throughout the year is shown in
-\cref{fig:si:utilisation-rate-ts}. The utilisation of electricity and hydrogen
-network assets are presented in \cref{fig:si:grid-utilisation}, alongside
-information about where energy is curtailed and what congestion rents are
-incurred.
-
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{electricity}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-total electricity-D-2013.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{space and water heating}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-total heat-D-2013.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{hydrogen}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-H2-D-2013.pdf}
-    \end{subfigure}
-    %}
-    \caption{Daily sampled time series for (a) electricity, (b) heat, and (c) hydrogen supply (above zero) and consumption (below zero) composition. Supply and consumption balance for each bar by definition.}
-    \label{fig:output-ts-1}
+    \includegraphics[width=\textwidth]{capacities}
+    \caption{Installed capacities per scenario and technology group.}
+    \label{fig:si:capacities}
 \end{figure}
 
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{methane}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-gas-D-2013.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{oil-based products}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-liquid hydrocarbons-D-2013.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{stored \co}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-co2 stored-D-2013.pdf}
-    \end{subfigure}
-    %}
-    \caption{Daily sampled time series for (a) methane, (b) oil-based products, and (c) carbon dioxide supply (above zero) and consumption (below zero) composition. Supply and consumption balance for each bar.}
-    \label{fig:output-ts-2}
-\end{figure}
-
-
-\begin{figure}
-    \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{electricity}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-total electricity--2013-02.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{space and water heating}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-total heat--2013-02.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{hydrogen}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-H2--2013-02.pdf}
-    \end{subfigure}
-    %}
-    \caption{Hourly sampled time series of February for (a) electricity, (b) heat, and (c) hydrogen supply (above zero) and consumption (below zero) composition. Supply and consumption balance for each bar.}
-    \label{fig:output-ts-3}
-\end{figure}
-
-\begin{figure}
-    \centering
-    % \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{methane}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-gas--2013-02.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{oil-based products}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-liquid hydrocarbons--2013-02.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{\textwidth}
-        \centering
-        \caption{stored \co}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/ts-balance-co2 stored--2013-02.pdf}
-    \end{subfigure}
-    %}
-    \caption{Hourly sampled time series of February for (a) methane, (b) oil-based products, and (c) carbon dioxide supply (above zero) and consumption (below zero) composition. Supply and consumption balance for each bar.}
-    \label{fig:output-ts-4}
-\end{figure}
-
-\begin{figure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \caption{utility-scale solar}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/lcoe-solar.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \caption{onshore wind}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/lcoe-onwind.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \caption{offshore wind (AC-connected)}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/lcoe-offwind-dc.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \caption{offshore wind (DC-connected)}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/lcoe-offwind-dc.pdf}
-    \end{subfigure}
-    \caption{Levelised cost of electricity of wind and solar generation. Only shows locations where more than 1 GW of the respective technology were built.}
-    \label{fig:si:lcoe}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.66\textwidth}
-        \centering
-        \caption{electrolysis}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/utilisation-factors-H2 Electrolysis.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.66\textwidth}
-        \centering
-        \caption{Fischer-Tropsch conversion}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/utilisation-factors-Fischer-Tropsch.pdf}
-    \end{subfigure}
-    \caption{Utilisation rate of synthetic fuel production capacities. Only shows locations where more than 1 GW of the respective technology were built.}
-    \label{fig:si:utilisation-rate-map}
-\end{figure}
-
-% \begin{figure}
-%     \centering
-%     \begin{subfigure}{0.66\textwidth}
-%         \centering
-%         \caption{annual space and water heat demand}
-%         \includegraphics[width=\textwidth]{demand-map-heat}
-%     \end{subfigure}
-%     \begin{subfigure}{0.66\textwidth}
-%         \centering
-%         \caption{Fischer-Tropsch conversion plant capacities}
-%         \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/capacities-built-Fischer-Tropsch.pdf}
-%     \end{subfigure}
-%     \caption{Pairing of Fischer-Tropsch fuel production sites and heat demand. Waste heat from synthetic fuel production can be used in the district heating networks of urban areas and supply a large share of hot water demand throughout the summer.}
-%     \label{fig:si:waste-heat-synfuels}
-% \end{figure}
-
-\begin{figure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-H2 Electrolysis.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-Fischer-Tropsch.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-electricity distribution grid.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-OCGT.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-air-sourced heat pump.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-ground-sourced heat pump.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-gas boiler.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-CHP.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-battery.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/cf-ts-hydrogen storage.pdf}
-    \end{subfigure}
-    \caption{Operations and storage filling levels of selected energy system components. The figure outlines
-    the flexible operation of electrolysers (both seasonally and daily)
-    the near-constant operation of synthetic fuel production
-    the backup role of gas power plants (OCGT),
-    the seasonal operation of heat pumps, gas boilers, CHP, and hydrogen storage,
-    the daily pattern of battery storage filling levels, and
-    periods of peak loading of the power distribution grid.
-    }
-    \label{fig:si:utilisation-rate-ts}
-\end{figure}
-
-
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \caption{electricity network loading}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/map_avg_lineloading.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \caption{hydrogen network loading}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/map_avg_pipelineloading.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.65\textwidth}
-        \vspace{1cm}
-        \centering
-        \caption{electricity grid congestion and curtailment}
-        \includegraphics[width=\textwidth]{\hyrun/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050/map_congestion.pdf}
-    \end{subfigure}
-    \caption{Utilisation rate of electricity and hydrogen network, curtailment and congestion. Subplot (a) shows average electricity network loading relative to $N-1$ compliant line rating (70\% of nominal rating) and the corresponding duration curve of line loadings. Subplot (b) shows the average hydrogen pipeline loading relative to the nominal pipeline capacity and also the corresponding duration curve of pipeline loadings. Subplot (c) shows the regional and technological distribution of curtailment in the system as well as realised congestion rents in the electricity network.}
-    \label{fig:si:grid-utilisation}
+    \includegraphics[width= \textwidth]{curtailment}
+    \caption{Curtailment of variable renewables by technology and scenario in relative and absolute  terms.}
+    \label{fig:si:curtailment}
 \end{figure}
