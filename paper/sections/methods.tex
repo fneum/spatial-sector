@@ -2,17 +2,26 @@
 
 \subsubsection*{Lead Contact}
 
+Requests for further information, resources and materials should be directed to
+the lead contact, Fabian Neumann
+(\href{mailto:f.neumann@tu-berlin.de}{f.neumann@tu-berlin.de}).
+
 \subsubsection*{Materials availability}
 
-\subsubsection*{Data and Code Availability}
-
-A dataset of the model results is available on \textit{zenodo} at \href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}.
-The code to reproduce the experiments is available on \textit{Github} at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
+A dataset of the model results is available on Zenodo at \href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}.
+The code to reproduce the experiments is available on GitHub at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
 We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}),
 PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
 PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
 Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.4.0).
 An interactive scenario explorer can be found at \href{https://spatial-sector.streamlit.app}{spatial-sector.streamlit.app}.
+
+\subsubsection*{Data and Code Availability}
+
+A dataset of the model inputs and results has been deposited to Zenodo at
+\href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}. The
+code to reproduce the experiments is available on GitHub at
+\href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
 
 \subsection*{Modelling Setup}
 
@@ -32,10 +41,7 @@ electricity and gas transmission infrastructure and hydroelectric power plants,
 no other existing assets are assumed (\textit{greenfield optimisation} or
 \textit{overnight scenario}), so that the model assumes a long-term equilibrium
 in a market with perfect competition and foresight, and disregards pathway
-dependencies. Cost assumptions are taken, where possible, from predictions for
-the year 2030 by the Danish Energy Agency (see \cref{tab:si:costs} for a
-complete list and \cref{sec:si:sensitivity-costs} for a sensitivity with
-projections for 2050).\cite{DEA} The model is implemented in the free and open
+dependencies. The model is implemented in the free and open
 software framework Python for Power System Analysis
 (PyPSA).\cite{brownPyPSAPython2018}
 
@@ -70,13 +76,35 @@ lines, new hydrogen and repurposed natural gas pipelines are all subject to
 optimisation, as well as the operational dispatch of each unit in each
 represented hour.
 
-\textbf{Exogenous assumptions} in the model include a constant and
-spatially-fixed demand for the different materials and energy carriers in each
-sector, the extent of land transport electrification, the use of methanol as
-shipping fuel and kerosene in aviation, the ratio of district heating to
-decentralised heating in densely populated regions, efficiency gains of 29\% due
-to building retrofitting, hydroelectricity capacities (for reservoir and
-run-of-river generators and pumped hydro storage).
+\textbf{Exogenous demand and supply assumptions} in the model include a fully
+price inelastic and spatially-fixed demand for the different materials and
+energy carriers in each sector, the extent of land transport electrification,
+the use of methanol as shipping fuel and kerosene in aviation, process switching
+in industry, the reuse and recycling rates of steel (70\%), aluminium (80\%) and
+plastics (55\%) manufacturing, the ratio of district heating to decentralised
+heating in densely populated regions, efficiency gains of 29\% due to building
+retrofitting, hydroelectricity capacities (for reservoir and run-of-river
+generators and pumped hydro storage).
+
+For the \textbf{technology and cost assumptions}, we take estimates for the year
+2030 for the main scenarios and run a sensitivity analysis with more progressive
+cost projections for the year 2050 in \cref{sec:si:sensitivity-costs}. We take
+technology projections for the year 2030 for the main scenarios to account for
+expected technology cost reductions in the near-term while acknowledging that
+the gradual transition to climate neutrality implies that much of the
+infrastructure must be built well in advance of reaching net-zero emissions.
+Many numbers come from the technology database published by the Danish Energy
+Agency (DEA).\citeS{DEA} A complete referenced list of techno-economic
+assumptions is compiled in \cref{tab:si:costs}. Among many other technologies,
+for overnight costs we assume 636~\euro/kW$_e$ for rooftop PV, 487 \euro/kW$_e$
+for utility-scale PV, 142~\euro/kWh and 160~\euro/kW for batteries,
+1035~\euro/kW for onshore wind, 1524 \euro/kW for offshore wind, 450
+\euro/kW$_e$ for electrolysers, 1100 \euro/kW$_e$ for fuel cell CHPs,
+2~\euro/kWh for underground hydrogen storage, 0.54~\euro/kWh for central pit
+thermal energy storage, 628-651~\euro/kW$_{out}$ for methanation,
+methanolisation and Fischer-Tropsch processes, 572~\euro/kW$_{CH_4}$ for steam
+methane reforming with carbon capture (i.e.~blue hydrogen), and 685~\euro/t for
+direct air capture with uninterrupted operation.
 
 The time series and potentials of variable renewable \textbf{energy supply}
 (wind, solar, hydro, ambient heat) are computed from historical weather data
@@ -98,8 +126,8 @@ al.~\cite{frysztackiStrongEffect2021}. This level of aggregation reflects, at
 the upper end, the computational limit to solve a temporally resolved
 sector-coupled energy system optimisation problem and, at the lower end, the
 requirements to preserve the most important transmission corridors that cause
-bottlenecks and limit the system integration of renewables.
-% TODO reference sensitivity analysis for spatial resolution
+bottlenecks and limit the system integration of renewables. The impacts of
+spatial aggregation are evaluated in \cref{sec:si:sensitivity-space}.
 Power flows are modelled using a cycle-based load flow linearization from Hörsch
 et al.~\cite{horschLinearOptimal2018} that significantly improves computational
 performance. The power flow linearisation implies that no transmission losses
@@ -114,16 +142,16 @@ transport.\cite{gasforclimateEuropeanHydrogen2020}
 
 For \textbf{industry}, we assume that the demand for materials (such as steel,
 cement, and high-value chemicals) remain constant, and disregard options for
-industry relocation. The assumed industry transformation is characterised by
-electrification, process switching to low-emission alternatives (e.g. switching
-to hydrogen for direct reduction of iron ore\cite{voglAssessmentHydrogen2018}),
-more recycling of steel, plastics and aluminium\cite{circular_economy}, fuel
-switching for high- and mid-temperature process heat to biomass and methane, use
-synthetic fuels for ammonia and organic chemicals, and allow carbon capture. It
-is assumed that no plastic or other non-energy product is sequestered in
-landfill, but that all carbon in plastics eventually makes its way back to the
-atmosphere, either through combustion or decay; this approach is stricter than
-other models.
+industry relocation.\cite{toktarovaInteractionElectrified2022} The assumed
+industry transformation is characterised by electrification, process switching
+to low-emission alternatives (e.g. switching to hydrogen for direct reduction of
+iron ore\cite{voglAssessmentHydrogen2018}), more recycling of steel, plastics
+and aluminium\cite{circular_economy}, fuel switching for high- and
+mid-temperature process heat to biomass and methane, use synthetic fuels for
+ammonia and organic chemicals, and allow carbon capture. It is assumed that no
+plastic or other non-energy product is sequestered in landfill, but that all
+carbon in plastics eventually makes its way back to the atmosphere, either
+through combustion or decay; this approach is stricter than other models.
 \cite{in-depth_2018}
 
 The \textbf{transport} sector comprises light and heavy road, rail, shipping and
@@ -148,8 +176,8 @@ permitted, using the medium potential estimates from the JRC ENSPRESO database.
 \cite{ruizENSPRESOOpen2019} This results in 336~TWh per year of biogas that can
 be upgraded and 1038~TWh per year of solid biomass residues and waste for the
 whole of Europe. Biomass can be used in combined electricity and heat generation
-with and without CCS, as well as to provide low- to medium-temperature process
-heat in industry.
+with and without carbon capture, as well as to provide low- to
+medium-temperature process heat in industry.
 
 \textbf{Carbon capture} is needed in the model both to capture and sequester
 process emissions with a fossil origin, such as those from calcination of fossil

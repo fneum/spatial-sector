@@ -88,8 +88,6 @@ source. Overall, total energy system costs lie in a similar range between 730
 and 866 bn\euro/a compared to costs between \minsystemcost~and
 \maxsystemcost~bn\euro/a in our study.
 
-% TODO check FLH of electrolysis in euro-calliope
-
 % However, the composition differs.
 % Pickering et al.~\cite{pickeringDiversityOptions2022} have higher spendings on
 % power-to-liquids owing to cost assumptions about conversion plants, higher costs
@@ -183,6 +181,7 @@ pipelines.
 % 37\%.
 
 \subsection*{Limitations of the study and scope for future investigations}
+\label{sec:limitations}
 
 In the presented scenarios, Europe is largely energy self-sufficient. While
 limited amounts of fossil gas and oil imports are allowed, no imports of
@@ -192,10 +191,10 @@ hydrogen transmission infrastructure may change substantially. New hydrogen
 import hubs might require different bulk transmission routes. The import of
 large amounts of carbon-based fuels and ammonia would furthermore diminish the
 demand for hydrogen overall, and hence also the need to transport it. This
-effect of imports on infrastructure needs is demonstrated in \cref{sec:si:sensitivity-imports} and should be explored in more detail in future work.
+effect of wide-ranging imports of liquid hydrocarbon demand on infrastructure
+needs is demonstrated in \cref{sec:si:sensitivity-imports} and should be
+explored in more detail in future work.
 \cite{fasihiTechnoeconomicAssessment2019,heuserTechnoeconomicAnalysis2019,hamppImportOptions2021}
-
-% TODO this is where to discuss the import sensitivity
 
 Additionally, the very uneven distribution of energy supply in our results may
 interfere with the level of social acceptance for new infrastructure to an
@@ -210,26 +209,78 @@ with only a small change in total
 costs.\cite{Neumann2019,lombardiPolicyDecision2020,pedersenModelingAll2021,pickeringDiversityOptions2022}
 This breadth of options makes robust statements about specific infrastructure
 needs more vague. While we present selected design trade-offs regarding
-transmission networks, a more comprehensive exploration of near-optimal
-solutions in sector-coupled systems would be prudent.
+transmission networks and some further sensitivities
+(\cref{sec:si:sensitivity}), a more comprehensive exploration of near-optimal
+solutions would be prudent, especially in the directions of carbon management
+infrastructure, biomass usage, the level of energy imports, industry transition
+and relocation options, more regionally balanced infrastructure, and increased
+system resilience.
 
-Further limitations include that projections for future technology costs and
-assumptions are uncertain and we neglect the dynamics of technological learning
-by doing; we do not consider new nuclear power plants; heat demands and the
-availability of renewables vary considerably year by year such that our
-stricture to a single year may limit the robustness to interannual weather
-variability; and for the transport and industry sectors we make some exogenous
-assumptions about process switching, drive trains, alternative fuels for
-industry heat and recycling rates which may have turned out differently if they
-were endogenously optimised. For computational reasons, we also need to limit
-the model's resolution to 181 regions with 3-hourly time steps and we ignore the
-nonlinearity of electricity and gaseous flow physics.
+Owing to the absence of pathway optimisation in our model setup, our results
+cannot offer insights into the transition steps of network development or the
+energy system overall and how the gradual transformation may restrict certain
+options towards the final climate-neutral state. For example, our results do not
+show which parts of gas network could be repurposed first or where the benefit
+of a hydrogen network might be the highest initially. In the context of
+multi-horizon planning, we also neglect the dynamics of technological learning
+by
+doing.\cite{heubergerPowerCapacity2017,fellingMultiHorizonPlanning2021,zeyenEndogenousLearning2022}
+The transformation to net-zero emissions requires vast and timely growth rates
+of power-to-X and carbon dioxide removal technologies to realise anticipated
+cost reductions, which we assume to be given by assuming fixed cost projections.
 
-% 130 GB of RAM and 2 days
+Further limitations include that heat demands and the availability of renewables
+vary considerably year by year such that our stricture to a single year may
+limit the robustness to interannual weather variability; we do not consider new
+nuclear power plants: and for the transport and industry sectors we make some
+exogenous assumptions about process switching, drive trains, alternative fuels
+for industry heat and recycling rates which may have turned out differently if
+they were endogenously optimised.
 
-% Nevertheless, we believe our results can demonstrate
-% the conditions under which a hydrogen network in Europe would be beneficial.
+% For computational reasons, we also need to
+% limit the model's resolution to 181 regions with 3-hourly time steps (see
+% \cref{sec:si:sensitivity-time,sec:si:sensitivity-space}) and we ignore the
+% nonlinearity of electricity and gaseous flow physics such that a single run
+% completes within 2 days and 130 GB of memory. Nevertheless, we believe our
+% results can demonstrate the conditions under which a hydrogen network in Europe
+% would be beneficial.
 
-\subsection*{Policy implications}
+\subsection*{Policy implications, regional and operational insights}
+\label{sec:policy}
 
-\todo{add policy implications}
+Regardless of the energy carrier transported, our results highlight that
+cooperation between European countries is important to reach net-zero \co
+emissions most cost-effectively. This is because there are significant
+differences in renewable resources across Europe. The cost differential between
+supply in Europe's demand centres and periphery outweigh the cost of building
+new transmission infrastructure. Thus, we see both substantial net importers
+(e.g.~the industry clusters in Ruhr valley and Rotterdam area) and strong net
+exporters of energy (e.g.~Denmark, Ireland, Spain, Greece). The option to
+transport energy around Europe also counteracts the case for industry
+relocation. It may be less controversial as transmission infrastructure would
+affect regional development less than the migration of industries. Regarding
+hydrogen production, we see both solar-based hubs in Southern Europe and
+wind-based hubs in Northern Europe. The regional and technological diversity in
+hydrogen production appears as the preferred solution.
+
+As the general hydrogen network benefit is not dependent on infeasible
+electricity grid reinforcements, both networks could be developed in parallel.
+Thus, policymaking could focus on options that are easiest achieved and most
+widely accepted. While the hydrogen network benefit is not affected by alternate
+technology cost developments or import policies, the network topology is. Lower
+costs of solar photovoltaics raise the appeal of hydrogen production hubs in
+Southern Europe, altering the suitable hydrogen network layout. Likewise,
+wide-ranging hydrogen imports from the MENA region must be supported with
+transmission infrastructure through Southern Europe. The flexible operation of
+electrolysers has several advantages for system stability and integrating wind
+and solar generation cost-effectively.
+
+Fluctuating renewable generation is buffered in geological hydrogen storage
+primarily in the UK, Denmark, Spain and Greece to achieve more continuous
+production in capital-intensive fuel synthesis plants. This leads to low
+curtailment rates of renewables and little requirements for firm capacity,
+outlining the benefit of cross-sectoral approaches for reducing \co emissions
+cost-effectively. Fuel cell CHP plants in Germany can further support grid
+operation when the power grid cannot be expanded. However, energetically the
+re-electrification of hydrogen only plays a minor role in this sector-coupled
+system.

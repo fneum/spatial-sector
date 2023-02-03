@@ -1,6 +1,4 @@
-\section*{Cost benefit of hydrogen network is consistent, and strongest without power grid expansion}
-\label{sec:h2}
-\addcontentsline{toc}{section}{\nameref{sec:h2}}
+
 
 \begin{figure}
     \centering
@@ -11,9 +9,9 @@
     as conversion losses in electrofuel synthesis. The ambient heat retrieved by
     heat pumps is counted as energy supply. A breakdown of final energy and
     non-energy demands by sector is shown in
-    \cref{fig:demand-by-sector-carrier}. For technologies with carbon capture (CC)
-    option,  the carbon dioxide
-    balance shows residual uncaptured emissions. }
+    \cref{fig:demand-by-sector-carrier}. For technologies with carbon capture
+    option (CC), the carbon dioxide balance shows residual uncaptured emissions.
+    }
     \label{fig:balance}
 \end{figure}
 
@@ -42,9 +40,53 @@
     \label{fig:sensitivity-h2}
 \end{figure}
 
-\cref{fig:balance}
 
-TODO
+\section*{Energy and carbon balances are dominated by wind and solar supply, electricity and heat demand, emissions of hydrocarbons, and removal from biomass}
+\label{sec:balances}
+\addcontentsline{toc}{section}{\nameref{sec:balances}}
+
+First of all, we underline with the energy balance in \cref{fig:balance} the
+central role of wind and solar electricity supply in all scenarios.
+Hydroelectricity, biomass and the recovery of ambient heat through heat pumps
+further support the energy supply, whereas fossil oil and gas only play a
+marginal role as options to offset their emissions are limited by the assumed
+sequestration potentials. Electricity demand for industrial processes,
+electrified transport and the residential sector, alongside heat for hot water
+provision, space heating and industrial processes, dominate the energy
+consumption. For the most part, hydrogen is only an intermediate product between
+electricity and another energy carrier. There are only few direct applications
+of hydrogen, for instance, in the industry sector for producing steel with
+hydrogen-based direct reduced iron rather than coke-fired integrated steelworks,
+as well as for heavy-duty land transport. Most hydrogen is used to produce
+derivatives like Fischer-Tropsch fuels, methane and methanol, which are used for
+dense aviation and shipping fuels and as feedstock for high-value chemicals.
+These liquid hydrocarbons are the third largest consumer in the energy balance.
+In terms of energy, the reconversion of hydrogen to electricity only assumes a
+secondary role. Conversion losses are also shown and are most pronounced for
+electrolysis, as we assume that waste heat from other fuel synthesis plants can
+be injected into the local district heating networks.
+
+The atmospheric \co balance in \cref{fig:balance} shows that liquid hydrocarbons
+in shipping, aviation and the decay or incineration of plastics constitute the
+major uncaptured carbon dioxide emissions in the system. Some additional \co is
+emitted through using methane (natural gas, biogas or synthetic) in gas boilers
+and CHP plants in the heating sector during the challenging cold winter periods
+with low renewable energy supply. Industrial process emissions are largely
+captured such that, owing to imperfect capture rates, only residual emissions
+are released into the atmosphere. Most carbon dioxide removal is achieved
+through biomass technologies. For instance, biogenic \co is captured in biomass
+CHP plants or industrial low-temperature heat applications. Direct air capture
+takes a much smaller supplementary part. Of the \co handled by the system for
+the synthesis of electrofuels and long-term sequestration, the largest share is
+of biogenic origin (62\%) followed by fossil \co (25\%); direct air capture has
+the smallest share with (13\%). The broad availability of captured \co from
+industrial processes and biofuel combustion is advantageous for the system, as
+it lowers the cost of fuel synthesis by evading costly and energy-intensive
+direct air capture.
+
+\section*{Cost benefit of hydrogen network is consistent, and strongest without power grid expansion}
+\label{sec:h2}
+\addcontentsline{toc}{section}{\nameref{sec:h2}}
 
 In \cref{fig:sensitivity-h2}, we first compare the total energy system costs and
 their composition between the four main scenarios, which vary in whether or not
@@ -95,7 +137,11 @@ The presence of a new hydrogen network can reduce system costs by up to
 network, which costs between \minhycost-\maxhycost~bn\euro/a. Its system cost
 benefit is strongest when the electricity grid is not expanded. However, even
 with high levels of power grid expansion, the hydrogen network is still
-beneficial infrastructure.
+beneficial infrastructure. The hydrogen network offers an alternative for bulk
+energy transport from the windiest and sunniest regions in Europe's periphery to
+low-cost geological storage sites and the industrial clusters in Central Europe
+with high energy demand but less attractive and more constrained renewable
+potentials (see \nameref{sec:energy-moved}).
 
 Although power grid reinforcements provide higher cost reductions, hydrogen and
 electricity networks are strongest together. Around
@@ -118,30 +164,24 @@ A system built exclusively around hydrogen network expansion is just \acvshycost
 more expensive than an alternative system that only allows electricity grid
 expansion.
 
-\section*{Common features across four scenarios of European climate neutrality}
+\section*{Common design features across four scenarios of European climate neutrality}
 \label{sec:es}
 \addcontentsline{toc}{section}{\nameref{sec:es}}
 
 Across all scenarios, we see \SIrange{\minoffwind}{\maxoffwind}{\giga\watt}
 offshore wind, \SIrange{\minonwind}{\maxonwind}{\giga\watt} onshore wind, and
-\SIrange{\minsolar}{\maxsolar}{\giga\watt} solar photovoltaics.
-
-The wide range
-of solar capacities are due to an increased solar- and battery-driven
-localisation of electricity generation when the expansion of transmission
-infrastructure is limited.
-
-as network expansion options are constrained, demand for daily storage
-(batteries) almost quadruples and almost doubles for synoptic and seasonal
-storage (hydrogen and thermal storage). Solar capacities rise by 932 GW (+35\%)
-from 2666 GW to 3598 GW.
-
-Across
-all scenarios, the capacities of photovoltaics split on average into
+\SIrange{\minsolar}{\maxsolar}{\giga\watt} solar photovoltaics
+(\cref{fig:si:capacities}). The wide range of solar capacities is due to an
+increased localisation of electricity generation through solar photovoltaics
+when the expansion of transmission infrastructure is limited. As network
+expansion options are constrained, we see demand for local daily storage with
+batteries almost quadrupling (from 73 to 272 GW with an energy-to-power ratio of
+6 hours) and doubling for synoptic and seasonal storage with hydrogen and
+thermal storage (from 73 to 141 TWh, see \cref{fig:si:capacities}). For all
+scenarios, the capacities of photovoltaics split on average into
 \meanrooftopshare\% rooftop PV and \meanutilityshare\% utility-scale PV. The
 offshore share of wind generation capacities varies between \minoffshoreshare\%
-and \maxoffshoreshare\% and is highest when networks can be fully
-expanded.
+and \maxoffshoreshare\% and is highest when networks can be fully expanded.
 
 The spatial distribution of investments per scenario is shown in \cref{fig:tsc}.
 While solar capacities are found throughout Europe, especially in the South,
@@ -149,9 +189,10 @@ onshore and offshore wind capacities are mostly found in the North Sea region
 and the British Isles. When allowed, new electricity transmission capacity is
 built where they help the integration of remote wind production and the
 transport to inland demand centres (see \nameref{sec:h2}). Consequently, most
-grid expansion is seen in and between Northwestern and Central Europe.
-
-TODO Battery storage deployment!
+grid expansion is seen in and between Northwestern and Central Europe. Battery
+storage pairs with solar generation in Southern Euope, particularly when power
+grid reinforcement is limited. Besides their wider use overall, battery
+deployment also progresses northbound in this case.
 
 Furthermore, electrolyser capacities for power-to-hydrogen see a massive
 scale-up to between \SIrange{\minelectrolysis}{\maxelectrolysis}{\giga\watt}
@@ -246,7 +287,7 @@ industry feedstocks (e.g.~high-value chemicals). Around \hydrogenlosses~TWh/a of
 hydrogen is lost during synthetic fuel production. If the electricity grid
 expansion is restricted, but hydrogen can be transported, even more hydrogen is
 produced to be re-electrified in fuel cells during critical phases of system
-operation (\hydrogenfuelcell TWh$_{\ce{H2}}$). According to \cref{fig:tsc},
+operation (\hydrogenfuelcell~TWh$_{\ce{H2}}$). According to \cref{fig:tsc},
 these fuel cells would mostly be built inland in Central Europe. In all scenarios with
 network expansion, no synthetic methane for process
 heat in some industrial applications and as a heating backup for power-to-heat
@@ -255,16 +296,19 @@ for biogas (\biogas~TWh/a) and limited amounts of fossil gas (\fossilgas~TWh/a),
 which are offset by sequestering biogenic carbon dioxide, over synthetic
 production.
 
-Only in scenarios where neither hydrogen nor power network expansion were
-allowed, we see methanation (\ce{H2}-to-\ce{CH4},
-\SI{\hydrogenmethanation}{\twh}) and steam methane reforming with carbon capture
-(\ce{CH4}-to-\ce{H2}, \SI{\bluehydrogen}{\twh}). In these cases, the route via
-the European gas transmission network, is used to partially counteract
-transmission bottlenecks. Direct air capture
-(\SIrange{\mindac}{\maxdac}{\mega\tco\per\year}) was made use of in all
+Only when neither hydrogen nor power network expansion were allowed, we see
+methanation (\ce{H2}-to-\ce{CH4}, \SI{\hydrogenmethanation}{\twh}) and steam
+methane reforming with carbon capture (\ce{CH4}-to-\ce{H2},
+\SI{\bluehydrogen}{\twh}). In this case, despite the associated conversion
+losses, synthetic methane is used as a transport medium to use the existing gas
+network to counteract the restricted transport options otherwise. Apart from
+imperfect capture rates of 90\% that requires supplementing some CO$_2$, this
+process creates a carbon cycle provided that the \co is returned to the
+methanation sites with an appropriate \co transport infrastructure. Direct air
+capture (\SIrange{\mindac}{\maxdac}{\mega\tco\per\year}) was made use of in all
 scenarios, supplementing carbon available from biogenic or fossil sources, while
-remaining within set sequestration limits. For a comprehensive
-overview of energy and carbon flows in each scenario see
+remaining within set sequestration limits. For a comprehensive overview of
+energy and carbon flows in each scenario see
 \cref{fig:si:sankey,fig:si:carbon-sankey}.
 
 \begin{figure}
@@ -438,35 +482,38 @@ In consequence, even detours of the hydrogen network topology may be
 cost-effective if, through rerouting, more repurposing potentials can be tapped.
 
 As \cref{fig:h2-network} illustrates, the optimised hydrogen network topology is
-highly concentrated in the Northwestern Europe. Individual pipeline connections
+built around supporting flows into the industry and population centres of
+Central Europe. We see strong pipeline connections in Northwestern Europe to
+integrate wind-based hydrogen hubs as well as connections for the transport of
+solar hydrogen hubs from Spai, Italy and Greece. Individual pipeline connections
 between regions have optimised capacities up to 30 GW. Of the total hydrogen
 network volume, between \minretroshare\% and \maxretroshare\% consists of
 repurposed gas pipelines. The share is highest when the electricity grid is not
 permitted to be reinforced. Up to a quarter of the existing natural gas network
 is retrofitted to transport hydrogen instead, leaving large capacities that are
-used neither for hydrogen nor methane transport, particularly in Germany,
-Poland, Italy and the North Sea. In our scenarios, 29-42\% of retrofittable gas
-pipelines fully exhaust their conversion potential to hydrogen. The most notable
-corridors for gas pipeline retrofitting are located offshore across the North
-Sea and the English Channel and in Great Britain, Germany, Austria, Switzerland,
-Northern France and Italy. The most prominent new hydrogen pipelines are built
-in the British Isles particularly to connect Ireland, Northern France, the
-Netzherlands, and in Spain and Portugal. The sizeable existing natural gas
-transmission capacities in Southern Italy and Eastern Europe are largely not
-repurposed for hydrogen transport in this self-sufficient scenario for Europe.
+used neither for hydrogen nor methane transport. In our scenarios, 29-42\% of
+retrofittable gas pipelines fully exhaust their conversion potential to
+hydrogen. The most notable corridors for gas pipeline retrofitting are located
+offshore across the North Sea and the English Channel and in Great Britain,
+Germany, Austria, Switzerland, Northern France and Italy. The most prominent new
+hydrogen pipelines are built in the British Isles particularly to connect
+Ireland, Northern France, the Netherlands, and in Spain and Portugal. The
+sizeable existing natural gas transmission capacities in Southern Italy and
+Eastern Europe are largely not repurposed for hydrogen transport in this
+self-sufficient scenario for Europe.
 
 However, this picture would change if clean energy import options were
 considered. Since most hydrogen is used to produce synthetic fuels and ammonia,
 if these were imported, much of the hydrogen demand would fall away, thereby
-also reducing the extent hydrogen infrastructure.
-TODO We present this case in \cref{sec:si:sensitivity-imports}
+also reducing the extent hydrogen infrastructure. We present this case in
+\cref{sec:si:sensitivity-imports}. Moreover, direct hydrogen imports into Europe
+could alter cost-effective network topologies as new import locations need to be
+connected rather than domestic production sites. For instance, the networks role
+might change from distributing energy from North Sea hydrogen hubs to
+integrating inbound pipelines from North-Africa with increased network
+capacities in Southern Europe.\cite{wetzelGreenEnergy2022}
 
-Moreover, direct hydrogen imports into Europe may alter cost-effective network
-topologies as new import locations need to be connected rather than domestic
-production. For instance, the networks role might change from distributing
-energy from North Sea hydrogen hubs to integrating inbound pipelines from
-North-Africa with increased network capacities in Southern Europe.
-
+\section*{Regional imbalance of supply and demand is reinforced by transmission}
 \label{sec:imbalance}
 \addcontentsline{toc}{section}{\nameref{sec:imbalance}}
 

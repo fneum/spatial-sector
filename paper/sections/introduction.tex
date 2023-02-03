@@ -1,54 +1,61 @@
-% TODO add citations
-
 There are many different combinations of infrastructure that would allow Europe
-to reach net-zero greenhouse gas emissions by mid-century. However, not all
-technologies meet the same level of acceptance among the public. The last few
-decades have seen public resistance to new and existing nuclear power plants,
-projects with carbon capture and sequestration (CCS), onshore wind power plants,
-and overhead transmission lines. The lack of public acceptance can both delay
-the deployment of a technology and even stop its deployment altogether. This may
+to reach net-zero greenhouse gas emissions by
+mid-century.\cite{pickeringDiversityOptions2022} However, not all technologies
+meet the same level of acceptance among the public. The last few decades have
+seen public resistance to new and existing nuclear power plants, projects with
+carbon capture and sequestration (CCS), onshore wind power plants, and overhead
+transmission
+lines.\cite{cohenRefocussingResearch2014a,bertschPublicAcceptance2016,boudetPublicPerceptions2019a}
+The lack of public acceptance can both delay the deployment of a technology and
+even stop its deployment altogether.\cite{batelSocialAcceptance2013a} This may
 make it harder to reach greenhouse gas reduction targets in time or cause rising
 costs through the substitution with other technologies. In particular,
 electricity transmission network expansion has suffered many delays in Europe in
 recent decades, despite its importance for integrating large amounts of
-renewable electricity such that all energy sectors can be decarbonised.
+renewable electricity such that all energy sectors can be
+decarbonised.\cite{schlachtbergerBenefitsCooperation2017,trondleTradeOffsGeographic2020}
 
 Hydrogen will likely become a pivotal energy carrier in such a climate-neutral
-energy system, as it is needed in the industry to produce ammonia for
-fertilisers and can be used for direct reduced iron for steelmaking. It is also
-a critical feedstock to produce synthetic methane and liquid hydrocarbons for
-use as aviation and shipping fuel, and as a precursor to high-value chemicals.
-Hydrogen could also be used for heavy-duty land transport and backup heat and
-power supply.
+energy system,\cite{hanleyRoleHydrogen2018,staffellRoleHydrogen2019a} as it is
+needed in the industry to produce ammonia for fertilisers and can be used for
+direct reduced iron for
+steelmaking.\cite{wangGreeningAmmonia2018,voglPhasingOut2021} It is also a
+critical feedstock to produce synthetic methane and liquid hydrocarbons for use
+as aviation and shipping fuel, and as a precursor to high-value chemicals in
+industrial production.\cite{lechtenbohmerDecarbonisingEnergy2016} Hydrogen could
+also be used for heavy-duty land transport and backup heat and power
+supply.\cite{kluschkeMarketDiffusion2019,doddsHydrogenFuel2015}
 
 The limited social acceptance for electricity grid reinforcement and the
 advancing role of hydrogen raises the question of whether a new hydrogen network
 could offer a replacement for balancing variable renewable electricity
-generation and moving energy across the continent. Such a vision for a
-\textit{European Hydrogen Backbone (EHB)} has recently been expressed by
-Europe's gas industry in a series of reports.
+generation and moving energy across the
+continent.\cite{caglayanRobustDesign2021} Such a vision for a \textit{European
+Hydrogen Backbone (EHB)} has recently been expressed by Europe's gas industry in
+a series of reports.
 \cite{gasforclimateEuropeanHydrogen2020,gasforclimateEuropeanHydrogen2021,gasforclimateExtendingEuropean2021,gasforclimateEuropeanHydrogen2022}
 It would offer an alternative to connect remote regions with abundant
 and cost-effective wind and solar potentials to densely-populated and
 industry-heavy regions with high demand but limited supply options.
 
-Since Europe's sizeable natural gas transmission network is set to
-become increasingly redundant as the system transitions towards climate
-neutrality, the option to repurpose parts of the network to transport hydrogen
-instead may enhance the appeal of hydrogen networks further. This is because
-retrofitting gas pipelines would greatly reduce the development costs
-of hydrogen pipelines. Moreover, repurposed and new
-pipelines may also meet higher levels of acceptance among the local populations
-than transmission lines. Unlike transmission towers, pipelines are less visible
-because they usually run below or near the ground. Particularly where gas
-pipelines already exist, the perceivable impact would be minimal.
+Since Europe's sizeable natural gas transmission network is set to become
+increasingly redundant as the system transitions towards climate neutrality, the
+option to repurpose parts of the network to transport hydrogen instead may
+enhance the appeal of hydrogen networks further. This is because retrofitting
+gas pipelines would greatly reduce the development costs of hydrogen
+pipelines.\cite{cerniauskasOptionsNatural2020,tsikliosHydrogenTransport2022}
+Moreover, repurposed and new pipelines may also meet higher levels of acceptance
+among the local populations than transmission
+lines.\cite{schonauerHydrogenFuture2022} Unlike transmission towers, pipelines
+are less visible because they usually run below or near the ground. Particularly
+where gas pipelines already exist, the perceivable impact would be minimal.
 
 However, few studies have looked into how much building a hydrogen network in
 Europe could reduce system costs. The industry-oriented EHB reports do not
 include an assessment based on the co-optimisation of energy system components.
 \cite{gasforclimateEuropeanHydrogen2020,gasforclimateEuropeanHydrogen2021,gasforclimateExtendingEuropean2021,gasforclimateEuropeanHydrogen2022}
 Other sector-coupling studies have not included hydrogen networks at all,
-\cite{brownSynergiesSector2018,pickeringDiversityOptions2022,childFlexibleElectricity2019,kendziorskiCentralizedDecentral2022}
+\cite{brownSynergiesSector2018,pickeringDiversityOptions2022,childFlexibleElectricity2019a,kendziorskiCentralizedDecentral2022}
 or when they do, model Europe only at country-level resolution,
 \cite{europeancommission.directorategeneralforenergy.METISStudy2021,victoriaSpeedTechnological2022}
 have a country-specific focus with limited geographical scope or detail outside
@@ -79,37 +86,36 @@ more progressive technology assumptions
 derivatives on network benefits (\cref{sec:si:sensitivity-imports}), and the use
 of alternative shipping fuels (\cref{sec:si:sensitivity-shipping}).
 
-% TODO is this the right location?
-
 For our analysis, we use an open capacity expansion model of the European energy
 system, PyPSA-Eur-Sec, which, in contrast to many previous studies,
-\cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,connollySmartEnergy2016,lofflerDesigningModel2017,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020}
+\cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,connollySmartEnergy2016,Loffler_2019,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020,ludererImpactDeclining2021}
 combines a fully sector-coupled approach with a high spatio-temporal resolution
 and multi-carrier transmission infrastructure representation so that it can
 capture the various transport bottlenecks that constrain the cost-effective
-integration of variable renewable energy. The model co-optimises the investment
-and operation of generation, storage, conversion and transmission
-infrastructures for the least-cost outcome in a single linear optimisation
-problem, covering 181 regions and a 3-hourly time resolution for a full year. A
-sensitivity analysis varying the model's spatio-temporal resolution is included
-in \cref{sec:si:sensitivity-time,sec:si:sensitivity-space}. The regional
-scope comprises the European Union without Cyprus and Malta plus the United
-Kingdom, Norway, Switzerland, Albania, Bosnia and Herzegovina, Montenegro, North
+integration of variable renewable energy.\cite{frysztackiStrongEffect2021} The
+model co-optimises the investment and operation of generation, storage,
+conversion and transmission infrastructures for the least-cost outcome in a
+single linear optimisation problem, covering 181 regions and a 3-hourly time
+resolution for a full year. A sensitivity analysis varying the model's
+spatio-temporal resolution is included in
+\cref{sec:si:sensitivity-time,sec:si:sensitivity-space}. The regional scope
+comprises the European Union without Cyprus and Malta plus the United Kingdom,
+Norway, Switzerland, Albania, Bosnia and Herzegovina, Montenegro, North
 Macedonia, Serbia and Kosovo. It incorporates spatially distributed demands of
 the electricity, industry, buildings, agriculture and transport sectors,
-including shipping and aviation as well as non-energy feedstock demands in the
-chemicals industry. Primary energy supply comes from wind, solar, biomass,
-hydro, and limited amounts of fossil oil and gas. The energy flows between the
-system's energy carriers are modelled by various technologies, including heat
-pumps, combined heat and power (CHP) plants, thermal storage, electric vehicles,
-batteries, power-to-X processes, fuel cells, and geological potentials of
-underground hydrogen storage. Data on electricity and gas transmission
-infrastructure is also included to determine grid expansion needs and
-retrofitting potentials. The model also features detailed management of carbon
-flows between capture, usage, sequestration and emissions to the atmosphere to
-track carbon through the system. More details on the model are presented in the
-\nameref{sec:methods} and \nameref{sec:si}. The model is open-source and based
-on open data
+including dense fuels in shipping and aviation as well as non-energy feedstock
+demands in the chemicals industry. Primary energy supply comes from wind, solar,
+biomass, hydro, and limited amounts of fossil oil and gas. The energy flows
+between the system's energy carriers are modelled by various technologies,
+including heat pumps, combined heat and power (CHP) plants, thermal storage,
+electric vehicles, batteries, power-to-X processes, fuel cells, and geological
+potentials of underground hydrogen storage. Data on electricity and gas
+transmission infrastructure is also included to determine grid expansion needs
+and retrofitting potentials. The model also features detailed management of
+carbon flows between capture, usage, sequestration and emissions to the
+atmosphere to track carbon through the system. More details on the model are
+presented in the \nameref{sec:methods} and \nameref{sec:si}. The model is
+open-source and based on open data
 (\href{https://github.com/pypsa/pypsa-eur-sec}{github.com/pypsa/pypsa-eur-sec}).
 
 All investigations are conducted with a constraint that carbon dioxide emissions
