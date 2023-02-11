@@ -14,7 +14,7 @@ We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}
 PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
 PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
 Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.4.0).
-An interactive scenario explorer can be found at \href{https://spatial-sector.streamlit.app}{spatial-sector.streamlit.app}.
+An interactive scenario explorer can be found at \href{https://h2-network.streamlit.app}{h2-network.streamlit.app}.
 
 \subsubsection*{Data and Code Availability}
 
@@ -78,7 +78,7 @@ represented hour.
 
 \textbf{Exogenous demand and supply assumptions} in the model include a fully
 price inelastic and spatially-fixed demand for the different materials and
-energy carriers in each sector, the extent of land transport electrification,
+energy services in each sector, the extent of land transport electrification,
 the use of methanol as shipping fuel and kerosene in aviation, process switching
 in industry, the reuse and recycling rates of steel (70\%), aluminium (80\%) and
 plastics (55\%) manufacturing, the ratio of district heating to decentralised
@@ -127,9 +127,9 @@ the upper end, the computational limit to solve a temporally resolved
 sector-coupled energy system optimisation problem and, at the lower end, the
 requirements to preserve the most important transmission corridors that cause
 bottlenecks and limit the system integration of renewables. The impacts of
-spatial aggregation are evaluated in \cref{sec:si:sensitivity-space}.
-Power flows are modelled using a cycle-based load flow linearization from Hörsch
-et al.~\cite{horschLinearOptimal2018} that significantly improves computational
+spatial aggregation are evaluated in \cref{sec:si:sensitivity-space}. Power
+flows are modelled using a cycle-based load flow linearization from Hörsch et
+al.~\cite{horschLinearOptimal2018} that significantly improves computational
 performance. The power flow linearisation implies that no transmission losses
 are considered. Hydrogen pipeline flows assume a simple transport model. This
 means that while incoming and outbound flows must balance for each region and

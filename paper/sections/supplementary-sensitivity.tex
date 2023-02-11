@@ -69,23 +69,35 @@ PV generation, battery storage and re-electrified hydrogen.
         \begin{subfigure}[t]{0.6\textwidth}
             \centering
             \caption{hydrogen network}
-            \includegraphics[height=0.42\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2050.pdf}
+            \includegraphics[height=0.39\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2050.pdf}
             \label{fig:no-onw:h2}
         \end{subfigure}
         \begin{subfigure}[t]{0.6\textwidth}
             \centering
             \caption{energy balance}
-            \includegraphics[height=0.42\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2050/import-export-total-200.pdf}
+            \includegraphics[height=0.4\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2050/import-export-total-200.pdf}
             \label{fig:no-onw:io}
         \end{subfigure}
         }
-    \begin{subfigure}[t]{0.6\textwidth}
-        \centering
-        \caption{system cost}
-        \includegraphics[height=0.42\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2050.pdf}
-        \label{fig:no-onw:tsc}
-    \end{subfigure}
-    \caption{Maps of regional energy balance, hydrogen network and production sites, and spatial and technological distribution of total energy system costs for a scenario without onshore wind and without power grid expansion.}
+        \makebox[\textwidth][c]{
+            \begin{subfigure}[t]{0.67\textwidth}
+                \centering
+                \caption{system cost}
+                \includegraphics[height=0.38\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2050.pdf}
+                \label{fig:no-onw:tsc}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.53\textwidth}
+                \centering
+                \caption{hydrogen network flows}
+                \includegraphics[height=0.33\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2050/h2-flow-map-backbone.pdf}
+                \label{fig:no-onw:flow}
+            \end{subfigure}
+            }
+
+    \caption{ Maps of regional energy balance, hydrogen network and production
+        sites, the spatial and technological distribution of total energy system
+        costs, and hydrogen flows for a scenario without onshore wind and
+        without power grid expansion. }
     \label{fig:no-onw}
 \end{figure}
 
@@ -109,11 +121,6 @@ Southern and Central Europe (\cref{fig:no-onw:tsc}).  Without onshore wind, the
 potentials for rooftop solar PV and fixed-pole offshore wind in Europe are
 largely exhausted, such that in this self-sufficient scenario for Europe, the
 effect of installable potentials becomes critical.
-
-% Because offshore capacities are
-% concentrated near coastlines, and grid capacity is restricted, total spending on
-% hydrogen electrolysers and networks also increases to absorb the increased
-% offshore generation.
 
 Whereas with onshore wind, we observe both wind-backed electrolysis in
 Northwestern Europe and solar-backed hydrogen production in Southern Europe, the
@@ -240,7 +247,7 @@ hydrogen in the North Sea region.
 
 In this sensitivity analysis, we explore the cost benefit of a hydrogen network
 if all liquid hydrocarbons were imported from outside of Europe. We chose this
-case as it constitutes an import scenario that should be detrimental to the
+case as it constitutes an import scenario that should reduce the
 benefits of a hydrogen network. We assume uniform import costs of 115
 \euro/MWh\citeS{staissOptionenFuer2022,schornMethanolRenewable2021} for
 methanol and Fischer-Tropsch fuels, for a total import volume of 1573 TWh
@@ -260,8 +267,9 @@ domestic supply chain for fuel synthesis comprising wind and solar electricity
 generation, direct air capture, hydrogen storage and power-to-X processes
 (electrolysis, methanolisation, Fischer-Topsch). Since the domestic electrofuels
 can mostly use captured carbon dioxide from point-sources, whereas imported
-fuels rely on direct air capture as a carbon source, the costs for direct air
-capture cancel out the savings from utilising better renewable resources abroad.
+fuels rely on direct air capture as a carbon source, the higher costs for direct
+air capture cancel out the savings from utilising better renewable resources
+abroad.
 
 Regarding the spatial deployment of hydrogen infrastructure, as shown in
 \cref{fig:hydrogen-inframaps:imports}, we see fewer hydrogen pipelines built

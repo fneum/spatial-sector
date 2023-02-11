@@ -12,16 +12,16 @@ make it harder to reach greenhouse gas reduction targets in time or cause rising
 costs through the substitution with other technologies. In particular,
 electricity transmission network expansion has suffered many delays in Europe in
 recent decades, despite its importance for integrating large amounts of
-renewable electricity such that all energy sectors can be
-decarbonised.\cite{schlachtbergerBenefitsCooperation2017,trondleTradeOffsGeographic2020}
+renewable electricity and electrifying the transport, buildings and industry
+sectors.\cite{schlachtbergerBenefitsCooperation2017,trondleTradeOffsGeographic2020}
 
-Hydrogen will likely become a pivotal energy carrier in such a climate-neutral
-energy system,\cite{hanleyRoleHydrogen2018,staffellRoleHydrogen2019a} as it is
-needed in the industry to produce ammonia for fertilisers and can be used for
+Hydrogen has the potential to become a pivotal energy carrier in such a climate-neutral
+energy system.\cite{hanleyRoleHydrogen2018,staffellRoleHydrogen2019a} It is
+needed in industry to produce ammonia for fertilisers and can be used for
 direct reduced iron for
 steelmaking.\cite{wangGreeningAmmonia2018,voglPhasingOut2021} It is also a
 critical feedstock to produce synthetic methane and liquid hydrocarbons for use
-as aviation and shipping fuel, and as a precursor to high-value chemicals in
+as aviation and shipping fuels, and as a precursor to high-value chemicals in
 industrial production.\cite{lechtenbohmerDecarbonisingEnergy2016} Hydrogen could
 also be used for heavy-duty land transport and backup heat and power
 supply.\cite{kluschkeMarketDiffusion2019,doddsHydrogenFuel2015}
@@ -55,12 +55,14 @@ Europe could reduce system costs. The industry-oriented EHB reports do not
 include an assessment based on the co-optimisation of energy system components.
 \cite{gasforclimateEuropeanHydrogen2020,gasforclimateEuropeanHydrogen2021,gasforclimateExtendingEuropean2021,gasforclimateEuropeanHydrogen2022}
 Other sector-coupling studies have not included hydrogen networks at all,
-\cite{brownSynergiesSector2018,pickeringDiversityOptions2022,childFlexibleElectricity2019a,kendziorskiCentralizedDecentral2022}
+\cite{brownSynergiesSector2018,pickeringDiversityOptions2022,childFlexibleElectricity2019a,kendziorskiCentralizedDecentral2022a}
 or when they do, model Europe only at country-level resolution,
 \cite{europeancommission.directorategeneralforenergy.METISStudy2021,victoriaSpeedTechnological2022}
 have a country-specific focus with limited geographical scope or detail outside
-the focus area, \cite{gilsInteractionHydrogen2021} or neglect some energy
-sectors or non-energy demands that involve hydrogen.
+the focus area,\cite{gilsInteractionHydrogen2021} investigate the mid-term
+role rather than the long-term role of a hydrogen
+network,\cite{europeancommission.directorategeneralforenergy.METISStudy2021} or
+neglect some energy sectors or non-energy demands that involve hydrogen.
 \cite{gilsInteractionHydrogen2021,Caglayan2019,caglayanRobustDesign2021}
 However, high resolution at continental scope is needed to understand how a
 hydrogen network can relieve power grid bottlenecks, where the costs of hydrogen
@@ -73,22 +75,26 @@ between electricity grid expansion and a new hydrogen network in scenarios for a
 European energy system with net-zero carbon dioxide emissions, no energy imports
 and high shares of renewable electricity production. By leveraging recent
 computational advances, we resolve 181 regions to study what role hydrogen
-infrastructure can play in a future sector-coupled system. For the first time,
-such an investigation considers regional potentials for the repurposing of
-legacy gas pipelines and the geological storage of hydrogen in salt caverns. Our
-analysis covers four main scenarios to examine if a hydrogen network composed of
-new and retrofitted pipelines can compensate for a potential lack of power grid
-expansion. These scenarios differ based on whether or not electricity and
-hydrogen grids can be expanded. As supplementary sensitivity analyses, we also
-evaluate the impact of restricted onshore wind potentials (\cref{sec:si:onw}),
-more progressive technology assumptions
+infrastructure can play in a future sector-coupled system. This enables us to
+resolve network bottlenecks inside countries, see more precise locations of
+demand and supply in the network and capture the variability of renewable
+resources. For the first time, such an investigation also considers regional
+potentials for the repurposing of legacy gas pipelines and the geological
+storage of hydrogen in salt caverns.
+
+Our analysis covers four main scenarios to examine if a hydrogen network
+composed of new and retrofitted pipelines can compensate for a potential lack of
+power grid expansion. These scenarios differ based on whether or not electricity
+and hydrogen grids can be expanded. As supplementary sensitivity analyses, we
+also evaluate the impact of restricted onshore wind potentials
+(\cref{sec:si:onw}), more progressive technology assumptions
 (\cref{sec:si:sensitivity-costs}), the impact of importing most hydrogen
-derivatives on network benefits (\cref{sec:si:sensitivity-imports}), and the use
+derivatives from outside of Europe on network benefits (\cref{sec:si:sensitivity-imports}), and the use
 of alternative shipping fuels (\cref{sec:si:sensitivity-shipping}).
 
 For our analysis, we use an open capacity expansion model of the European energy
 system, PyPSA-Eur-Sec, which, in contrast to many previous studies,
-\cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,connollySmartEnergy2016,Loffler_2019,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020,ludererImpactDeclining2021}
+\cite{henningComprehensiveModel2014,mathiesenSmartEnergy2015,connollySmartEnergy2016,Loffler_2019,blancoPotentialHydrogen2018,brownSynergiesSector2018,in-depth_2018,victoria2020,ludererImpactDeclining2021,gea-bermudezRoleSector2021}
 combines a fully sector-coupled approach with a high spatio-temporal resolution
 and multi-carrier transmission infrastructure representation so that it can
 capture the various transport bottlenecks that constrain the cost-effective
@@ -99,7 +105,7 @@ single linear optimisation problem, covering 181 regions and a 3-hourly time
 resolution for a full year. A sensitivity analysis varying the model's
 spatio-temporal resolution is included in
 \cref{sec:si:sensitivity-time,sec:si:sensitivity-space}. The regional scope
-comprises the European Union without Cyprus and Malta plus the United Kingdom,
+comprises the European Union without Cyprus and Malta as well as the United Kingdom,
 Norway, Switzerland, Albania, Bosnia and Herzegovina, Montenegro, North
 Macedonia, Serbia and Kosovo. It incorporates spatially distributed demands of
 the electricity, industry, buildings, agriculture and transport sectors,
@@ -108,8 +114,8 @@ demands in the chemicals industry. Primary energy supply comes from wind, solar,
 biomass, hydro, and limited amounts of fossil oil and gas. The energy flows
 between the system's energy carriers are modelled by various technologies,
 including heat pumps, combined heat and power (CHP) plants, thermal storage,
-electric vehicles, batteries, power-to-X processes, fuel cells, and geological
-potentials of underground hydrogen storage. Data on electricity and gas
+electric vehicles, batteries, power-to-X processes, hydrogen fuel cells, and geological
+potentials of underground hydrogen storage. Data on existing electricity and gas
 transmission infrastructure is also included to determine grid expansion needs
 and retrofitting potentials. The model also features detailed management of
 carbon flows between capture, usage, sequestration and emissions to the
