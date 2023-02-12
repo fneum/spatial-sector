@@ -5,14 +5,110 @@
     \includegraphics[width=1.3\textwidth]{balance-h}
     } \caption{ Energy, hydrogen and carbon dioxide balances across all
     scenarios. Energy consumption includes final energy and non-energy demands
-    by carrier as well as conversion losses in electrofuel synthesis. The
-    ambient heat retrieved by heat pumps is counted as energy supply. A
-    breakdown of final energy and non-energy demands by sector is shown in
-    \cref{fig:demand-by-sector-carrier}. For technologies with carbon capture
+    by carrier as well as conversion losses in thermal storage and electrofuel
+    synthesis processes (e.g.~power-to-hydrogen, power-to-liquid). The ambient
+    heat retrieved by heat pumps is counted as energy supply. A breakdown of
+    final energy and non-energy demands by sector is shown by sector in
+    \cref{fig:demand-by-sector-carrier}, by time in \cref{fig:demand-time}, and
+    by region in \cref{fig:demand-space}. For technologies with carbon capture
     (CC) option, the carbon dioxide balance shows residual emissions due to
     imperfect capture rates. }
     \label{fig:balance}
 \end{figure}
+
+\section*{Energy, hydrogen and carbon balances show key technologies needed to satisfy European energy needs with net-zero emissions}
+\label{sec:balances}
+\addcontentsline{toc}{section}{\nameref{sec:balances}}
+
+First of all, with the energy balance in \cref{fig:balance}, we underline the
+central role of wind and solar electricity supply in all scenarios.
+Hydroelectricity, biomass and the recovery of ambient heat through heat pumps
+further support the energy supply, whereas fossil oil and gas only play a small
+role, since carbon dioxide removal options to offset their unabated emissions
+are limited by the assumed sequestration potentials. Electricity demand for
+industrial processes, electrified transport and the residential sector,
+alongside heat for hot water provision, space heating and industrial processes,
+dominate the energy consumption. Conversion losses of power-to-X processes are
+also shown in the energy balance and are most pronounced for electrolysis.
+Overall, differences between the scenarios are small. With restricted network
+expansion options, the energy supply shifts towards solar photovoltaics and the
+total increases slightly. This rise compensates for the higher heat losses in
+thermal energy storage and increased handling of added synthetic gas in these
+scenarios.
+
+\cref{fig:balance} also presents the balance of hydrogen consumption and supply.
+The supply-side is dominated by the production of large amounts of green
+electrolytic hydrogen between 2376~TWh/a and 2665~TWh/a depending on the
+scenario. We only observe a limited production of blue hydrogen from steam
+methane reforming with carbon capture in scenarios without hydrogen network
+expansion (\SI{\bluehydrogen}{\twh\per\year}). A glance at the demand-side
+reveals that, for the most part, hydrogen is only an intermediate product
+between electricity and derivative products. There are only a few direct uses of
+hydrogen, for instance, in the industry sector for producing ammonia and steel
+with hydrogen-based direct reduction of iron, as well as for heavy-duty land
+transport. Most hydrogen is used to produce derivatives like Fischer-Tropsch
+fuels, methane, ammonia and methanol, which are used for dense aviation and
+shipping fuels, fertilisers and as a feedstock for producing high-value
+chemicals.
+
+The production of liquid hydrocarbons consumes \ptlhydrogenusage~TWh/a of
+hydrogen, of which \ptlwasteheat~TWh/a is useable in the form of waste heat for
+district heating networks. Around \hydrogenlosses~TWh/a of hydrogen is lost
+during synthetic fuel production. A total of \hydrogentransportdemand~TWh/a is
+used in land transport, while the industry sector consumes
+\hydrogenindustrydemand~TWh/a for ammonia and steel production, excluding the
+consumption of hydrogen for other industry feedstocks (e.g.~for high-value
+chemicals).  If the electricity grid expansion is restricted, but hydrogen can
+be transported, some more hydrogen is produced to be re-electrified in fuel
+cells during critical phases of system operation
+(\hydrogenfuelcell~TWh$_{\ce{H2}}$). These fuel cells would mostly be built
+inland in Central Europe (see later section \nameref{sec:es}), where the lack of
+a strong grid connection requires local dispatchable heat and power supply as a
+backup for periods of low renewables feed-in and cold weather. However, in terms
+of energy consumed the reconversion of hydrogen to electricity only assumes a
+secondary role. In all scenarios with network expansion, no synthetic methane
+for process heat in some industrial applications and as a heating backup for
+power-to-heat units is produced. This is because the model prefers to use the
+full potential for biogas (\biogas~TWh/a) and limited amounts of fossil gas
+(\fossilgas~TWh/a), which are offset by sequestering biogenic carbon dioxide,
+over synthetic production.
+
+Only when neither hydrogen nor power network expansion were allowed, do we see
+methanation (\ce{H2}-to-\ce{CH4}, \SI{\hydrogenmethanation}{\twh} hydrogen). In
+this case, despite the associated conversion losses, synthetic methane is used
+as a transport medium for hydrogen to utilise the existing gas network to bypass
+the restricted transport options for hydrogen and electricity. Apart from
+imperfect capture rates of 90\% that requires supplementing some CO$_2$, the
+combination of carbon-capturing steam methane reforming creates a carbon cycle
+provided that the \co is returned to the methanation sites with an appropriate
+\co transport infrastructure.
+
+The atmospheric \co balance in \cref{fig:balance} shows that liquid hydrocarbons
+in shipping, aviation and the incineration or eventual decay of plastics
+constitute the major uncaptured carbon dioxide emissions in the system. Some
+additional \co is emitted through using unabated methane (natural gas, biogas or
+synthetic) in gas boilers and CHP plants in the heating sector during the
+challenging cold winter periods with low renewable energy supply and high space
+heating demand. Industrial process emissions are largely captured such that,
+owing to imperfect capture rates, only residual emissions are released into the
+atmosphere. Most carbon dioxide removal is achieved through biomass
+technologies. For instance, biogenic \co is captured in biomass CHP plants or
+industrial low-temperature heat applications. Direct air capture was used in all
+scenarios, but takes a much smaller part supplementing the \co available from
+biogenic or fossil sources once they are exhausted. Of the \co handled by the
+system for the synthesis of electrofuels and long-term sequestration, the
+largest share is of biogenic origin (62\%) followed by captured fossil \co
+emissions from fuel combustion and process emissions (25\%). Direct air capture
+has the smallest share with \SIrange{\mindac}{\maxdac}{\mega\tco\per\year}
+(13\%). The broad availability of captured \co from industrial processes and
+biofuel combustion is advantageous for the system, as it lowers the cost of fuel
+synthesis by avoiding costly and energy-intensive direct air capture.
+
+For a comprehensive overview of energy and carbon flows between carriers in each
+scenario see \cref{fig:si:sankey,fig:si:carbon-sankey} which can be
+interactively explored at
+\href{https://h2-network.streamlit.app}{h2-network.streamlit.app}.
+
 
 \begin{figure}
     \centering
@@ -28,110 +124,17 @@
         \includegraphics[width=.85\textwidth]{diff-internal-cost.pdf}
         \label{fig:sensitivity-h2-b}
     \end{subfigure}
-    \caption{Benefits of electricity and hydrogen network infrastructure.
-    \cref{fig:sensitivity-h2-a} compares four scenarios with and without
-    expansion of a hydrogen network (left to right) and the electricity grid
-    (top to bottom). Each bar depicts the total system cost of one scenario
-    alongside its cost composition. Arrows between the bars indicate absolute
-    and relative cost increases as network infrastructures are successively
-    restricted. \cref{fig:sensitivity-h2-b} shows how the model reacts to grid
-    expansion restrictions relative to the least-cost solution with full
-    hydrogen and power grid expansion.}
+    \caption{Cost reductions achieved by developing electricity and hydrogen
+    network infrastructure. \cref{fig:sensitivity-h2-a} compares four scenarios
+    with and without expansion of a hydrogen network (left to right) and the
+    electricity grid (top to bottom). Each bar depicts the total system cost of
+    one scenario alongside its cost composition. Arrows between the bars
+    indicate absolute and relative cost increases as network infrastructures are
+    successively restricted. \cref{fig:sensitivity-h2-b} shows in monetary terms
+    how the model reacts to grid expansion restrictions relative to the
+    least-cost solution with full hydrogen and power grid expansion.}
     \label{fig:sensitivity-h2}
 \end{figure}
-
-
-\section*{Energy and carbon balances are dominated by wind and solar supply, electricity and heat demand, emissions of hydrocarbons, and removal from biomass}
-\label{sec:balances}
-\addcontentsline{toc}{section}{\nameref{sec:balances}}
-
-First of all, we underline with the energy balance in \cref{fig:balance} the
-central role of wind and solar electricity supply in all scenarios.
-Hydroelectricity, biomass and the recovery of ambient heat through heat pumps
-further support the energy supply, whereas fossil oil and gas only play a
-marginal role, since carbon dioxide removal options to offset their unabated
-emissions are limited by the assumed sequestration potentials. Electricity
-demand for industrial processes, electrified transport and the residential
-sector, alongside heat for hot water provision, space heating and industrial
-processes, dominate the energy consumption. For the most part, hydrogen is only
-an intermediate product between electricity and derivative products. There are
-only a few direct uses of hydrogen, for instance, in the industry sector for
-producing steel with hydrogen-based direct reduction of iron, as well as for
-heavy-duty land transport. Most hydrogen is used to produce derivatives like
-Fischer-Tropsch fuels, methane, ammonia and methanol, which are used for dense
-aviation and shipping fuels, fertilisers and as a feedstock for high-value
-chemicals. These liquid hydrocarbons are the third largest consumer in the
-energy balance. In terms of energy, the reconversion of hydrogen to electricity
-only assumes a secondary role. Conversion losses are also shown and are most
-pronounced for electrolysis, since we assume that waste heat from other fuel
-synthesis plants can be injected into the local district heating networks.
-
-\cref{fig:balance}
-the production of large amounts of hydrogen (\hydrogenproduction~TWh/a) - almost
-all of it green electrolytic hydrogen
-
-Most of the hydrogen is used to produce methanol and Fischer-Tropsch fuels for
-organic chemicals and transport fuels in aviation and shipping
-(\ptlhydrogenusage~TWh/a), of which \ptlwasteheat~TWh/a is useable  in the form
-of waste heat for district heating networks. A total of
-\hydrogentransportdemand~TWh/a is used in land transport, while the industry
-sector consumes \hydrogenindustrydemand~TWh/a for ammonia and steel production,
-excluding the consumption of hydrogen for other industry feedstocks (e.g.~for
-high-value chemicals). Around \hydrogenlosses~TWh/a of hydrogen is lost during
-synthetic fuel production. If the electricity grid expansion is restricted, but
-hydrogen can be transported, even more hydrogen is produced to be re-electrified
-in fuel cells during critical phases of system operation
-(\hydrogenfuelcell~TWh$_{\ce{H2}}$). These fuel cells would mostly be built
-inland in Central Europe (see \nameref{sec:es}), where the lack of a strong grid
-connection requires local dispatchable heat and power supply as a backup for
-periods of low renewables feed-in and cold weather. In all scenarios with
-network expansion, no synthetic methane for process heat in some industrial
-applications and as a heating backup for power-to-heat units is produced. This
-is because the model prefers to use the full potential for biogas
-(\biogas~TWh/a) and limited amounts of fossil gas (\fossilgas~TWh/a), which are
-offset by sequestering biogenic carbon dioxide, over synthetic production.
-
-Only when neither hydrogen nor power network expansion were allowed, do we see
-methanation (\ce{H2}-to-\ce{CH4}, \SI{\hydrogenmethanation}{\twh}) and steam
-methane reforming with carbon capture (\ce{CH4}-to-\ce{H2},
-\SI{\bluehydrogen}{\twh}, cf.~\cref{fig:balance}). In this case, despite the
-associated conversion losses, synthetic methane is used as a transport medium
-for hydrogen to utilise the existing gas network to bypass the restricted
-transport options for hydrogen and electricity. Apart from imperfect capture
-rates of 90\% that requires supplementing some CO$_2$, this process creates a
-carbon cycle provided that the \co is returned to the methanation sites with an
-appropriate \co transport infrastructure.
-
-The atmospheric \co balance in \cref{fig:balance} shows that liquid hydrocarbons
-in shipping, aviation and the incineration or eventual decay of plastics
-constitute the major uncaptured carbon dioxide emissions in the system. Some
-additional \co is emitted through using unabated methane (natural gas, biogas or
-synthetic) in gas boilers and CHP plants in the heating sector during the
-challenging cold winter periods with low renewable energy supply and high space
-heating demand. Industrial process emissions are largely captured such that,
-owing to imperfect capture rates, only residual emissions are released into the
-atmosphere. Most carbon dioxide removal is achieved through biomass
-technologies. For instance, biogenic \co is captured in biomass CHP plants or
-industrial low-temperature heat applications. Direct air capture takes a much
-smaller supplementary part. Of the \co handled by the system for the synthesis
-of electrofuels and long-term sequestration, the largest share is of biogenic
-origin (62\%) followed by captured fossil \co emissions from fuel combustion and
-process emissions (25\%). Direct air capture has the smallest share with (13\%).
-The broad availability of captured \co from industrial processes and biofuel
-combustion is advantageous for the system, as it lowers the cost of fuel
-synthesis by avoiding costly and energy-intensive direct air capture.
-
-Direct air capture (\SIrange{\mindac}{\maxdac}{\mega\tco\per\year}) was used in
-all scenarios, supplementing carbon available from biogenic or fossil sources,
-while remaining within set sequestration limits.
-
-For a comprehensive overview of energy and carbon flows between carriers in each
-scenario see \cref{fig:si:sankey,fig:si:carbon-sankey}.
-
-\todo[inline]{ We have all 4 scenarios in graphic but don't discuss differences
-    can say "roughly same, but differences explained by Sabatier SMR for
-    transport, reelectrification of H2 in fuel cells" there's a paragraph later
-    that we could move up here }
 
 \section*{Cost benefit of hydrogen network is consistent, and strongest without power grid expansion}
 \label{sec:h2}
@@ -144,23 +147,24 @@ network based on new and retrofitted pipelines can be built. Across all
 scenarios, the total costs are dominated by investments in wind and solar
 capacities, power-to-heat applications (primarily heat pumps), electrolysers,
 and electrofuel synthesis plants (for transport fuels and as a feedstock for the
-chemicals industry). System costs vary between \minsystemcost~and
+chemicals industry). Total energy system costs vary between \minsystemcost~and
 \maxsystemcost~bn\euro/a, depending on available network expansion options.
 
 Overall, we find that energy system costs are not overly affected by
 restrictions on the development of electricity or hydrogen transmission
-infrastructure. The realisable cost savings are small compared to total costs,
-and systems without grid expansion appear as equally feasible alternatives. The
-combined net benefit of hydrogen and electricity grid expansion beyond today's
-levels is \gridbenefitabs~bn\euro/a; a system no further network expansion would
-be around \gridbenefitrel\% more expensive. This limited cost increase can be
-attributed to the high level of synthetic fuel production for industry,
-transport, and backup electricity and heating applications. The option for a
-flexible operation of conversion plants, inexpensive energy storage and low-cost
-energy transport as hydrocarbons between regions offer sufficient leeway to
-manage electricity and hydrogen transport restrictions effectively (see
-\nameref{sec:es}). However, regulatory changes would be needed in order to
-manage the network bottlenecks (see \nameref{sec:policy}).
+infrastructure, and systems without grid expansion appear as equally feasible
+alternatives. Nonetheless, realisable cost savings range in the order of tens of
+billions of euros per year. The combined net benefit of hydrogen and electricity
+grid expansion beyond today's levels is \gridbenefitabs~bn\euro/a; a system no
+further network expansion would be around \gridbenefitrel\% more expensive. This
+limited cost increase can be attributed to the high level of synthetic fuel
+production for industry, transport, and backup electricity and heating
+applications. The option for a flexible operation of conversion plants,
+inexpensive energy storage and low-cost energy transport as hydrocarbons between
+regions offer sufficient leeway to manage electricity and hydrogen transport
+restrictions effectively (see \nameref{sec:es}). However, regulatory changes
+would be needed in order to manage the network bottlenecks (see
+\nameref{sec:policy}).
 
 The total net benefit of power grid expansion is between
 \minacbenefitabs-\maxacbenefitabs~bn\euro/a
@@ -172,14 +176,15 @@ factors to be integrated from further away, resulting in lower capacity needs
 for solar and wind. The electricity grid also allows renewable variations to be
 smoothed in space and facilitates the integration of offshore wind, resulting in
 lower hydrogen demand for balancing power and heat and less hydrogen
-infrastructure (electrolysis, cavern storage, re-conversion, pipelines).
-Restrictions on power grid expansion conversely raise costs by forcing more
-local production from solar photovoltaics and increased hydrogen production. As
-a hydrogen network could compensate for the lack of grid capacity to transport
-energy over long distances, the benefit of electricity grid reinforcements is
-strongest if no hydrogen network can be developed. \cref{sec:si:lv} presents in
-more detail the progression of system cost changes between a doubling of power
-grid capacity and no grid expansion.
+infrastructure (comprising electrolysis, cavern storage, re-conversion,
+pipelines). Restrictions on power grid expansion conversely raise costs by
+forcing more local production from solar photovoltaics and increased hydrogen
+production. As a hydrogen network could compensate for the lack of grid capacity
+to transport energy over long distances, the benefit of electricity grid
+reinforcements is strongest if no hydrogen network can be developed.
+\cref{sec:si:lv} presents in more detail the progression of system cost changes
+in intermediate steps between a doubling of power grid capacity and no grid
+expansion.
 
 The presence of a new hydrogen network can reduce system costs by up to
 \maxhybenefitrel\%. The net benefit between
@@ -205,18 +210,19 @@ individual benefits sum up to a value that is only \additivebenefitrel\% higher
 Thus, offered cost reductions are mainly additive.
 
 This also means that a hydrogen network cannot substitute perfectly for power
-grid reinforcements. It can partially compensate for the lack of grid expansion,
-yielding \benefithyofac\% of the cost reductions achieved by electricity grid
-expansion. This is because electricity has versatile uses across transport,
-buildings and industry. Hydrogen can only be used directly in a few specialised
-sectors, and if it has to be re-electrified there are expensive efficiency
-losses. Our results show that energy transport as electrons and molecules seem
-to offer complementary strengths. From a system-level perspective, network
-expansion leads to small cost reductions. A system built exclusively around
-hydrogen network expansion is just \acvshycost\% more expensive than an
-alternative system that only allows electricity grid expansion.
+grid reinforcements. It can only partially compensate for the lack of grid
+expansion, yielding \benefithyofac\% of the cost reductions achieved by
+electricity grid expansion. This is because electricity has more versatile uses
+in the newly electrified transport, buildings and industry sectors. Hydrogen can
+only be used directly in a few specialised sectors, and if it has to be produced
+only to be re-electrified later there are expensive efficiency losses.  A system
+built exclusively around hydrogen network expansion is just \acvshycost\% more
+expensive than an alternative system that only allows electricity grid
+expansion. Overall, our results show that energy transport as electrons and
+molecules offer complementary strengths. From a system-level perspective,
+network expansion leads to small cost reductions.
 
-\section*{Common design features across four scenarios of European climate neutrality}
+\section*{Common design features in four net-zero carbon dioxide emission scenarios for Europe}
 \label{sec:es}
 \addcontentsline{toc}{section}{\nameref{sec:es}}
 
@@ -240,22 +246,23 @@ While solar capacities are found throughout Europe, especially in the South,
 onshore and offshore wind capacities are mostly found in the North Sea region
 and the British Isles. When allowed, new electricity transmission capacity is
 built where they help the integration of remote wind production and the
-transport to inland demand centres (see \nameref{sec:h2}). Consequently, most
-grid expansion is seen in and between Northwestern and Central Europe. Battery
-storage pairs with solar generation in Southern Europe, particularly when power
-grid reinforcement is limited. Besides their wider use overall, battery
-deployment also progresses northbound in this case.
+transport to inland demand centres. Consequently, most grid expansion is seen in
+and between Northwestern and Central Europe. Battery storage pairs with solar
+generation in Southern Europe, particularly when power grid reinforcement is
+limited. Besides their wider use overall, battery deployment also progresses
+northbound in this case.
 
-Furthermore, electrolyser capacities for power-to-hydrogen see a massive
-scale-up ranging from \SIrange{\minelectrolysis}{\maxelectrolysis}{\giga\watt}
-depending on the scenario. The capacities are lowest when the electricity grid
-can be expanded. In this case, their locations correlate strongly with wind and
-solar capacities (Pearson correlation coefficient $R^2=0.64$ for each,
-\cref{fig:tsc}). If no hydrogen or electricity transmission expansion is
-allowed, the electrolysis correlates more strongly with wind ($R^2=0.74$) than
-solar ($R^2=0.46$). The build-out of hydrogen production facilities is
-accompanied by a network of pipelines and hydrogen underground storage in Europe
-to help balance generation from renewables in time and space.
+Furthermore, electrolyser capacities for power-to-hydrogen conversion see a
+massive scale-up ranging from
+\SIrange{\minelectrolysis}{\maxelectrolysis}{\giga\watt} depending on the
+scenario. The capacities are lowest when the electricity grid can be expanded.
+In this case, their locations correlate strongly with wind and solar capacities
+(Pearson correlation coefficient $R^2=0.64$ for each, \cref{fig:tsc}). If no
+hydrogen or electricity transmission expansion is allowed, the electrolysis
+correlates more strongly with wind ($R^2=0.74$) than solar ($R^2=0.46$). The
+build-out of hydrogen production facilities is accompanied by a network of
+pipelines and hydrogen underground storage in Europe to help balance generation
+from renewables in time and space.
 
 In space, a new pipeline network transports hydrogen from preferred production
 sites to the rest of Europe, where hydrogen is consumed by industry (for
@@ -279,20 +286,20 @@ potentials are located in the periphery of Europe (\cref{fig:energy-density}),
 (iii) bottlenecks in the electricity transmission network give impetus to
 alternative energy transport options and re-electrification capacities as backup
 supply in weakly connected areas, and (iv) moving hydrogen from production sites
-to where the geological conditions allow for cheap underground storage
-(\cref{fig:clustered-caverns}) is significantly more cost-effective than local
-storage in steel tanks. Another subsidiary location factor for hydrogen network
-infrastructure is linked to the siting of electrofuel production. Because we
-assume that waste heat from these processes can be recovered for district
-heating networks, urban areas with attractive renewable potentials nearby are
-preferred sites for fuel synthesis to which the hydrogen needs to be
+to where the geological conditions allow for cheap underground storage is
+significantly more cost-effective than local storage in steel tanks
+(\cref{fig:clustered-caverns}). Another subsidiary location factor for hydrogen
+network infrastructure is linked to the siting of electrofuel production.
+Because we assume that waste heat from these processes can be recovered for
+district heating networks, urban areas with attractive renewable potentials
+nearby are preferred sites for fuel synthesis to which the hydrogen needs to be
 transferred. Since we assume no constraints for the transport of liquid
 hydrocarbons, the spatial distribution of hydrogen consumption for fuel
 synthesis is not a siting factor that is considered. Just like the positioning
 of hydrogen fuel cells, the location of hydrogen consumption for electrofuel
 production is endogenously optimised. Because we further assume sufficient
-infrastructure for the transport of captured \co, the location of carbon sources
-and sinks neither influences the siting of fuel synthesis plants.
+infrastructure for the transport of captured carbon dioxide, the location of
+carbon sources and sinks neither influences the siting of fuel synthesis plants.
 
 The flexible operation of electrolysers further supports the system integration
 of variable renewables in time. Hydrogen production leverages periods with
@@ -300,20 +307,21 @@ exceptionally high wind speeds across Europe by running the electrolysis with
 average utilisation rates between \mincfelectrolysis\% and \maxcfelectrolysis\%
 (see \cref{fig:output-ts-1,fig:output-ts-3}). The produced hydrogen is buffered
 in salt caverns which then allows for higher full load hours of fuel synthesis
-processes. For Fischer-Tropsch and methanolisation plants, we see average
-utilisation rates between \mincfFT\% and \maxcfFT\% which aligns with the higher
-upfront investment costs of these processes. Their operation is very steady in
-the summer months and mostly interrupted in winter periods with low wind speeds
-and low ambient temperatures to give way to backup heat and power supply options
-(see \cref{fig:output-ts-1,fig:output-ts-3}). By exploiting periods of peak
-generation and curbing production in periods of scarcity, large amounts of
-variable renewable power generation that serves the systems' abundant synthetic
-fuel demands can be incorporated into the system cost-effectively. This
-ultimately leads to little curtailment of renewables between 2\% and 3\%
-(\cref{fig:si:curtailment}) and low levels of firm capacity. In relation to a
-peak electricity consumption of 2626~GW\el, we observe OCGT and CHP plant
-capacities between 106 and 218~GW\el, most of which are gas CHP plants. The
-lowest values were attained when additional power transmission could be built.
+processes. For Fischer-Tropsch and methanolisation plants, we see combined
+average utilisation rates between \mincfFT\% and \maxcfFT\% which aligns with
+the higher upfront investment costs of these processes. Their operation is very
+steady in the summer months and mostly interrupted in winter periods with low
+wind speeds and low ambient temperatures to give way to backup heat and power
+supply options (see \cref{fig:output-ts-1,fig:output-ts-3}). By exploiting
+periods of peak generation and curbing production in periods of scarcity, large
+amounts of variable renewable power generation that serves the system's abundant
+synthetic fuel demands can be incorporated into the system cost-effectively.
+This ultimately leads to little curtailment of renewables between 2\% and 3\%
+(\cref{fig:si:curtailment}) even without grid reinforcements, and low levels of
+firm capacity. In relation to a peak electricity consumption of 2626~GW\el, we
+observe OCGT and CHP plant capacities between 106 and 218~GW\el, most of which
+are gas CHP plants. The lowest values were attained when additional power
+transmission could be built.
 
 Hydrogen storage is required to benefit from temporal balancing through flexible
 electrolyser operation. We find cost-optimal storage capacities between
@@ -326,7 +334,7 @@ Ireland, England and Denmark. We observe no storage in steel tanks unless both
 hydrogen and electricity networks cannot be expanded. In this case, we see up to
 1~TWh of steel tank capacity, which represents 5\% of the total hydrogen storage
 capacity. If the options for network development are restricted, more hydrogen
-storage is built to balance renewables in time rather than space.
+storage is built to balance renewables in time rather than in space.
 
 \begin{figure}
     \centering
@@ -359,7 +367,7 @@ storage is built to balance renewables in time rather than space.
         \end{subfigure}
     } \vspace{-.5cm} \makebox[1\textwidth][c]{
         \centering
-    \includegraphics[width=1\textwidth]{color_legend}
+    \includegraphics[width=1.1\textwidth]{color_legend}
     } \caption{ Regional distribution of system costs and electricity grid
     expansion for scenarios with and without electricity or hydrogen network
     expansion. The pie charts depict the annualised system cost alongside the
@@ -404,7 +412,7 @@ is obtained when the hydrogen network partially offsets the lack of electricity
 grid reinforcement. On the other hand, restricting hydrogen expansion only has a
 small effect on cost-optimal levels of power grid expansion. The length-weighted
 power grid capacity is more than doubled in the least-cost scenario; without a
-hydrogen network, the cost-optimal power grid capacity is \twkmhigher\% higher.
+hydrogen network, the cost-optimal power grid capacity is 7\% higher.
 
 When both hydrogen and electricity grid expansion is allowed, the hydrogen
 network transports approximately half the amount of energy transmitted via the
