@@ -2,6 +2,14 @@
 % \documentclass[12pt,1p]{elsarticle}
 % \documentclass[11pt]{article}
 
+\makeatletter
+\def\ps@pprintTitle{%
+ \let\@oddhead\@empty
+ \let\@evenhead\@empty
+ \def\@oddfoot{\centerline{\thepage}}%
+ \let\@evenfoot\@oddfoot}
+\makeatother
+
 \journal{Joule}
 
 % A typical research article will be
@@ -119,7 +127,6 @@
 \input{variables.tex}
 
 \begin{document}
-
 
 \begin{frontmatter}
 
