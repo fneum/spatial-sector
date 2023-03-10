@@ -10,11 +10,10 @@ to produce synthetic methane and liquid hydrocarbons (see
 \cref{sec:si:methane:supply} and \cref{sec:si:oil:supply}) which have multiple
 uses in industry and other sectors. For transport applications, the consumption
 of hydrogen is exogenously fixed. It is used in heavy-duty land transport (see
-\cref{sec:si:transport:land}) and as liquified hydrogen in the navigation sector
-(see \cref{sec:si:transport:shipping}). Furthermore, stationary fuel cells may
+\cref{sec:si:transport:land}). Furthermore, stationary fuel cells may
 re-electrify hydrogen (with waste heat as a byproduct) to balance renewable
-fluctuations. The regional distribution of hydrogen demands is shown in
-\cref{fig:demand-space:hydrogen}.
+fluctuations. The regional distribution of spatially-fixed final hydrogen
+demands is shown in \cref{fig:demand-space:hydrogen}.
 
 \subsection{Hydrogen Supply}
 \label{sec:si:h2:supply}
@@ -30,7 +29,7 @@ combined with a water-gas shift reaction
 \end{equation}
 We consider this route of production with and without carbon capture (CC),
 assuming a capture rate of 90\%. These routes are also referred to as blue and
-grey hydrogen. The methane input can be of fossil or synthetic origin.
+grey hydrogen. The methane input can be of fossil, biogenic, or synthetic origin.
 
 Furthermore, we consider water electrolysis (green hydrogen) which uses electric
 energy to split water into hydrogen and oxygen
@@ -38,9 +37,9 @@ energy to split water into hydrogen and oxygen
     \ce{2H2O -> 2 H2 + O2}.
 \end{equation}
 For the electrolysis, we assume alkaline electrolysers since they have lower
-cost\citeS{DEA} and higher cumulative installed capacity\citeS{staffellRoleHydrogen2019a} than polymer
-electrolyte membrane (PEM) electrolysers. Waste heat from electrolysis is not
-leveraged in the model.
+cost\citeS{DEA} and higher cumulative installed
+capacity\citeS{staffellRoleHydrogen2019a} than polymer electrolyte membrane
+(PEM) electrolysers. Waste heat from electrolysis is not leveraged in the model.
 
 The split between these three different technology
 options and their installed capacities are a result of the optimisation
@@ -117,28 +116,26 @@ Methane is used in individual and large-scale gas boilers, in CHP plants with
 and without carbon capture, in OCGT and CCGT power plants, and in some industry
 subsectors for the provision of high temperature heat (see
 \cref{sec:si:industry}) Methane is not used in the transport sector because of
-engine slippage.  The regional distribution of methane demands is shown in
-\cref{fig:demand-space:hydrogen}. However, the results shown in the main body of
-the paper relax all methane transmission costs and constraints.
+engine slippage. The regional distribution of methane demands is shown in
+\cref{fig:demand-space:hydrogen}.
 
 \subsection{Methane Supply}
 \label{sec:si:methane:supply}
 
 Besides methane from fossil origins, the model also considers biogenic and
-synthetic sources. If gas infrastructure is regionally resolved (see
-\cref{sec:si:methane:transport}), fossil gas can enter the system only at
-existing and planned LNG terminals, pipeline entry-points, and intra-European
-gas extraction sites (see \cref{fig:gas-raw}), which are retrieved from the
-SciGRID Gas IGGIELGN dataset\citeS{plutaSciGRIDGas2022a} and the GEM
+synthetic sources. Fossil gas can enter the European system at existing and
+planned LNG terminals, pipeline entry-points, and intra-European gas extraction
+sites (see \cref{fig:gas-raw}), which are retrieved from the SciGRID Gas
+IGGIELGN dataset\citeS{plutaSciGRIDGas2022a} and the GEM
 Wiki.\citeS{gemwikiLNGTerminals2021} Biogas can be upgraded to methane (see
 \cref{sec:si:bio:potentials}). Synthetic methane can be produced by processing
 hydrogen and captures \co in the Sabatier reaction
 \begin{equation}
     \ce{CO2 + 4H2 -> CH4 + 2H2O}.
 \end{equation}
-Direct power-to-methane conversion with efficient heat integration developed in
-the HELMETH project is also an option.\citeS{gruberPowertoGasThermal2018} The
-share of synthetic, biogenic and fossil methane is an optimisation result
+% Direct power-to-methane conversion with efficient heat integration developed in
+% the HELMETH project is also an option.\citeS{gruberPowertoGasThermal2018}
+The share of synthetic, biogenic and fossil methane is an optimisation result
 depending on the techno-economic assumptions listed in \cref{sec:si:costs}.
 
 \subsection{Methane Transport}
@@ -164,13 +161,13 @@ endogenously expanded or repurposed for hydrogen transport (see
 \cref{sec:si:h2:transport}). Gas flows are represented by a lossless transport
 model.
 
-The results presented in the main body of the article regard the gas
-transmission network only to determine the retofitting potentials for hydrogen
-pipelines. These assume methane to be transported without cost or capacity
-constraints, since future demand is predicted to be low compared to available
-transport capacities even if a certain share is repurposed for hydrogen
-transport such that no bottlenecks are expected. Selected runs with gas network
-infrastructure included are presented in \cref{sec:si:detailed}.
+The results shown regard the gas transmission network only to determine the
+retofitting potentials for hydrogen pipelines. These assume methane to be
+transported without cost or capacity constraints, since future demand is
+predicted to be low compared to available transport capacities even if a certain
+share is repurposed for hydrogen transport such that no bottlenecks are
+expected. This assumption has been verified in selected runs with
+spatially-resolved gas network infrastructure.
 
 \section{Oil-based Products}
 \label{sec:si:oil}
@@ -180,7 +177,8 @@ infrastructure included are presented in \cref{sec:si:detailed}.
 
 Naphtha is used as a feedstock in the chemicals industry (see
 \cref{sec:si:industry:chemicals}). Furthermore, kerosene is used as transport
-fuel in the aviation sector (see \cref{sec:si:transport:aviation}).
+fuel in the aviation sector (see \cref{sec:si:transport:aviation}). International
+and domestic shipping uses methanol as transport fuel.
 Non-electrified agriculture machinery also consumes gasoline. The regional
 distribution of the demand for oil-based products is shown in
 \cref{fig:demand-space:oil}. However, this carrier is copperplated in the model,
@@ -195,7 +193,14 @@ by processing hydrogen and captured \co in Fischer-Tropsch plants
     \ce{$n$CO + ($2n$ + 1)H2 -> C_$n$H_{2n+2} + $n$H2O}.
 \end{equation}
 with costs as included in \cref{sec:si:costs}. The waste heat from the
-Fischer-Tropsch process is supplied to district heating networks.
+Fischer-Tropsch process is supplied to district heating networks. Likewise,
+methanol can be synthesized from captured \co and hydrogen
+\begin{equation}
+    \ce{CO2 + 3H2 -> CH3OH + H2O}
+\end{equation}
+with an assumed consumption of 1.14 MWh hydrogen, 0.27 MWh electricity and
+\SI{0.25}{\tco} per MWh of methanol produced and costs as listed in
+\cref{sec:si:costs}.
 
 \subsection{Oil-based Product Transport}
 \label{sec:si:oil:transport}
@@ -214,24 +219,17 @@ and no bottlenecks are expected.
 
 \begin{figure}
     \centering
-    \makebox[\textwidth][c]{
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \caption{solid biomass potentials}
         \includegraphics[width=\textwidth]{biomass-solid biomass.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
+    \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \caption{biogas potentials}
         \includegraphics[width=\textwidth]{biomass-biogas.pdf}
     \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
-        \centering
-        \caption{potentials not included}
-        \includegraphics[width=\textwidth]{biomass-not included.pdf}
-    \end{subfigure}
-    }
-    \caption{Regional distribution of biomass potentials separated by solid biomass, biogas and potentials not included. Only residual biomass feedstocks are included. Potentials are based on the medium availability scenario for 2030 from the JRC ENSPRESO database.}
+    \caption{Regional distribution of biomass potentials separated by solid biomass and biogas. Only residual biomass feedstocks are included. Potentials are based on the medium availability scenario for 2030 from the JRC ENSPRESO database.}
     \label{fig:biomass-potentials}
 \end{figure}
 
@@ -274,8 +272,8 @@ and pellets, and grassy, willow and poplar energy crops.
         \toprule
         Application & Source & Potential [\si{\twh\per\year}] \\
         \midrule
-        solid biomass & primary agricultural residues; forest energy residue; secondary forestry residues: woodchips, sawdust; forestry residues from landscape care; biodegradable municipal waste & 1186 \\
-        biogas & wet and dry manure; biodegradable sludge & 346\\
+        solid biomass & primary agricultural residues; forest energy residue; secondary forestry residues: woodchips, sawdust; forestry residues from landscape care; biodegradable municipal waste & 1037 \\
+        biogas & wet and dry manure; biodegradable sludge & 336\\
         not used & energy crops: sugar beet bioethanol, rape seed and other oil crops, starchy crops, grassy, willow, poplar; roundwood fuelwood; roundwood chips and pellets & 1661 \\
         \bottomrule
     \end{tabularx}
@@ -298,6 +296,4 @@ The regional distribution of solid biomass demand is shown in
 \label{sec:si:bio:transport}
 
 Solid biomass is assumed to be transported freely among the modelled regions.
-Biogas can be upgraded and then transported via the methane network. While the
-methane network is neglected, biogas can also be moved without cost or
-constraints.
+Biogas can be upgraded and then transported via the methane network.

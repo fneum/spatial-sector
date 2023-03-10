@@ -26,7 +26,7 @@ For every country, heat demand is split between low and high population density
 areas. These country-level totals are then distributed to each region in
 proportion to their rural and urban populations respectively. Urban areas with
 dense heat demand can be supplied with large-scale district heating systems. We
-assume that by 2050, 60\% of urban heat demand is supplied by district heating
+assume that by mid-century, 60\% of urban heat demand is supplied by district heating
 networks. Lump-sum losses of 15\% are assumed in district heating systems.
 Cooling demand is supplied by electricity and included in the electricity
 demand. Cooling demand is assumed to remain at current levels.
@@ -36,8 +36,6 @@ The regional distribution of the total heat demand is depicted in
 demand is similar to the total electricity demand but features much more
 pronounced seasonal variations. The total building heating demand adds up to
 \SI{3084}{\twh\per\year} of which 78\% occurs in urban areas.
-
-% \citeS{kavvadiasDecarbonisingEU2019,fleiterBaselineScenario2017}
 
 \subsection{Heat Supply}
 \label{sec:si:heat:supply}
@@ -98,9 +96,10 @@ The spatial diversity of heat pump coefficients is shown in \cref{fig:cfs-maps}.
 \label{sec:si:heat:storage}
 
 Thermal energy storage (TES) is available in large water pits associated with
-district heating networks and small water tanks for individual, decentral
-applications. A thermal energy density 46.8~kWh$_{\text{th}}$/m$^3$ is assumed,
-corresponding to temperature difference of \SI{40}{\kelvin}. The decay of
-thermal energy $1-\exp(-\sfrac{1}{24\tau})$ is assumed to have a time constant
-of $\tau=180$ days for central TES and $\tau=3$ days for individual TES. The
-charging and discharging efficiencies are 90\% due to pipe losses.
+district heating networks for seasonal storage and small water tanks for
+decentral short-term storage. A thermal energy density
+46.8~kWh$_{\text{th}}$/m$^3$ is assumed, corresponding to temperature difference
+of \SI{40}{\kelvin}. The decay of thermal energy $1-\exp(-\sfrac{1}{24\tau})$ is
+assumed to have a time constant of $\tau=180$ days for central TES and $\tau=3$
+days for individual TES. The charging and discharging efficiencies are 90\% due
+to pipe losses.

@@ -5,12 +5,9 @@
 \subsection{Potentials}
 \label{sec:si:renewable-potentials}
 
-% \newgeometry{margin=2cm}
-% \begin{landscape}
 
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
     \begin{subfigure}[t]{0.48\textwidth}
             \centering
         \caption{solar land eligibility}
@@ -27,14 +24,10 @@
         \caption{offshore wind land eligibility}
         \includegraphics[width=\textwidth]{eligibility-offwind-250-20.pdf}
     \end{subfigure}
-    %}
     \caption{Land eligibility for the development of renewable generation capacities. Green color indicates
     areas eligible to build wind or utility-scale solar parks based on suitable land types, natural protection areas, and water depths.}
     \label{fig:eligibility}
 \end{figure}
-
-% \end{landscape}
-% \restoregeometry
 
 \begin{table}
     \caption{Land types considered suitable for every technology from Corine Land Cover database. Land type codes are referenced in brackets.}
@@ -85,37 +78,33 @@ al.~\citeS{mckennaHighresolutionLargescale2022} and Ryberg et
 al.~\citeS{rybergFutureEuropean2019}.
 
 
-
 \subsection{Time Series}
 \label{sec:si:renewable-ts}
 
-\begin{figure}
-    \centering
-    % \makebox[\textwidth][c]{
-        \begin{subfigure}[t]{0.49\textwidth}
-            \centering
-        \includegraphics[width=\textwidth]{windspeeds.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{irradiation.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{temperatures.png}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{runoff.png}
-    \end{subfigure}
-    % }
-    \caption{weather data}
-    \label{fig:weather-data}
-\end{figure}
+% \begin{figure}
+%     \centering
+%         \begin{subfigure}[t]{0.49\textwidth}
+%             \centering
+%         \includegraphics[width=\textwidth]{windspeeds.png}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{irradiation.png}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{temperatures.png}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{runoff.png}
+%     \end{subfigure}
+%     \caption{Extract of used weather data variables from ERA5 and SARAH-2, including mean wind speeds, ambient and soil temperatures, surface runoff and solar irradiation.}
+%     \label{fig:weather-data}
+% \end{figure}
 
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \caption{solar}
@@ -126,14 +115,12 @@ al.~\citeS{rybergFutureEuropean2019}.
         \caption{wind}
         \includegraphics[width=\textwidth]{wind-energy-density.pdf}
     \end{subfigure}
-    % }
     \caption{Available energy density for wind and utility-scale solar PV power generation.}
     \label{fig:energy-density}
 \end{figure}
 
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
         \begin{subfigure}[t]{0.49\textwidth}
             \centering
         \includegraphics[width=\textwidth]{cf-raw-ts-onshore wind.pdf}
@@ -158,23 +145,16 @@ al.~\citeS{rybergFutureEuropean2019}.
         \centering
         \includegraphics[width=\textwidth]{cop-ts-ground-sourced heat pump.pdf}
     \end{subfigure}
-    % }
     \caption{Spatially aggregated capacity factor time series of renewable energy sources.}
     \label{fig:cfs-ts}
 \end{figure}
 
 \begin{figure}
     \centering
-    % \makebox[\textwidth][c]{
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \caption{onshore wind}
         \includegraphics[width=\textwidth]{cf-onwind.pdf}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \caption{offshore wind}
-        \includegraphics[width=\textwidth]{cf-offwind-dc.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
@@ -183,8 +163,13 @@ al.~\citeS{rybergFutureEuropean2019}.
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
-        \caption{solar thermal}
-        \includegraphics[width=\textwidth]{cf-solar thermal.pdf}
+        \caption{offshore wind (DC-connected)}
+        \includegraphics[width=\textwidth]{cf-offwind-dc.pdf}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \caption{offshore wind (AC-connected)}
+        \includegraphics[width=\textwidth]{cf-offwind-ac.pdf}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
@@ -196,7 +181,6 @@ al.~\citeS{rybergFutureEuropean2019}.
         \caption{ground-sourced heat pump}
         \includegraphics[width=\textwidth]{cf-ground-sourced heat pump.pdf}
     \end{subfigure}
-    % }
     \caption{Regional distribution of average capacity factors of renewable energy sources.}
     \label{fig:cfs-maps}
 \end{figure}
@@ -205,7 +189,7 @@ al.~\citeS{rybergFutureEuropean2019}.
 
 
 The location-dependent renewables availability time series are generated based
-on two gridded historical weather datasets (\cref{fig:weather-data}). We
+on two gridded historical weather datasets. We
 retrieve wind sepeeds at \SI{100}{\metre}, surface roughness, soil and air
 temperatures, and surface run-off from rainfall or melting snow from the global
 ERA5 reanalysis dataset provided by the ECMWF \citeS{ecmwf}. It provides hourly

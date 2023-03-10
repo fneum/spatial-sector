@@ -37,15 +37,16 @@ electricity demands is shown in \cref{fig:demand-space:electricity}.
 
 For conventional electricity generators, PyPSA-Eur-Sec uses the open
 \textit{powerplantmatching} tool, which merges datasets from a variety of
-sources.\citeS{powerplantmatching} As shown in \cref{fig:powerplants}, it
+sources.\citeS{gotzensPerformingEnergy2019} As shown in \cref{fig:powerplants}, it
 provides data on the power plants about their location, technology and fuel
 type, age, and capacity, inlcuding hard coal, lignite, oil, open and combined
 cycle gas turbines (OCGT and CCGT), and nuclear generators. Furthermore,
 existing run-of-river, pumped-hydro storage plants, and hydro-electric dams, are
 also part of the dataset, for which inflow is modelled based on runoff data from
 reanalysis weather data and and scaled hydropower generation statistics (see
-\cref{sec:si:renewable-ts}). In general, we suppose these to be non-extendable due to assumed
-geographical constraints.
+\cref{sec:si:renewable-ts}). In general, we suppose these to be non-extendable
+due to assumed geographical constraints. The overnight scenarios in this study
+only take into account existing hydro-electricity plants.
 
 Expandable renewable generators include onshore and offshore wind, utility-scale
 and rooftop solar photovoltaics, biomass from multiple feedstocks. The model
@@ -64,17 +65,17 @@ costs, lifetimes and efficiencies are included in \cref{sec:si:costs}.
 
 Electric energy can be stored in batteries (home, utility-scale, electric
 vehicles), existing pumped-hydro storage (PHS), hydrogen storage and other
-synthetically produced energy carriers (like methane and oil). For stationary
-batteries we distinguish costs for inverters and for storage at home or
-utility-scale. With these assumptions, home battery storage is about 40\% more
-expensive than utility-scale battery storage (see \cref{sec:si:costs}). The
+synthetically produced energy carriers (like methane, methanol and oil). For
+stationary batteries we distinguish costs for inverters and for storage at home
+or utility-scale. With these assumptions, home battery storage is about 40\%
+more expensive than utility-scale battery storage (see \cref{sec:si:costs}). The
 batteries' energy and power capacities can be independently sized.
 
-To store electricity, hydrogen may be produced by water electrolysis (see \cref{sec:si:h2:supply}),
-stored in overground steel tanks or underground salt caverns (see see \cref{sec:si:h2:storage}), and
-re-electrified in a utility-scale fuel cell. Synthetic methane can be
-re-electrified through an open cycle gas turbine (OCGT) or a combined heat and
-power (CHP) plant.
+To store electricity, hydrogen may be produced by water electrolysis (see
+\cref{sec:si:h2:supply}), stored in overground steel tanks or underground salt
+caverns (see see \cref{sec:si:h2:storage}), and re-electrified in a
+utility-scale fuel cell. Synthetic methane can be re-electrified through an open
+cycle gas turbine (OCGT) or a combined heat and power (CHP) plant.
 
 \subsection{Electricity Transport}
 \label{sec:si:electricity:transport}
@@ -87,7 +88,7 @@ power (CHP) plant.
 
 \begin{SCfigure}
     \caption{Exemplary Voronoi cells of the transmission network's substations.}
-    \includegraphics[width=0.55\textwidth]{voronoi}
+    \includegraphics[width=0.55\textwidth]{voronoi.pdf}
     \label{fig:voronoi}
 \end{SCfigure}
 

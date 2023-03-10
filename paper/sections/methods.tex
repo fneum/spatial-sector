@@ -1,3 +1,36 @@
+\subsection*{Resource Availability}
+
+\subsubsection*{Lead Contact}
+
+Requests for further information, resources and materials should be directed to
+the lead contact, Fabian Neumann
+(\href{mailto:f.neumann@tu-berlin.de}{f.neumann@tu-berlin.de}).
+
+\subsubsection*{Materials availability}
+
+A dataset of the model results is available on Zenodo at
+\href{https://doi.org/10.5281/zenodo.6821257}{doi:10.5281/zenodo.6821257}. The
+code to reproduce the experiments is available on GitHub at
+\href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
+We also refer to the documentation of PyPSA
+(\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}), PyPSA-Eur
+(\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
+PyPSA-Eur-Sec
+(\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
+Technology data was taken from
+\href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data}
+(v0.4.0). An interactive scenario explorer can be found at
+\href{https://h2-network.streamlit.app}{h2-network.streamlit.app}.
+
+\subsubsection*{Data and Code Availability}
+
+A dataset of the model inputs and results has been deposited to Zenodo at
+\href{https://doi.org/10.5281/zenodo.6821257}{doi:10.5281/zenodo.6821257}. The
+code to reproduce the experiments is available on GitHub at
+\href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
+
+\subsection*{Modelling Setup}
+
 In this section the core characteristics and assumptions of the model
 PyPSA-Eur-Sec are presented. More detailed descriptions of specific sectors,
 energy carriers, renewable potentials, transmission infrastructure modelling,
@@ -10,14 +43,12 @@ subject to technical and physical constraints, assuming perfect competition and
 perfect foresight over one uninterrupted year of 3-hourly operation (see
 \cref{sec:si:math} for mathematical formulation). In this study, we used the
 historical year 2013 for weather-dependent inputs. Apart from existing
-electricity and gas transmission infrastructure and hydroelectric facilities, no
-other existing assets are assumed (\textit{greenfield optimisation} or
+electricity and gas transmission infrastructure and hydroelectric power plants,
+no other existing assets are assumed (\textit{greenfield optimisation} or
 \textit{overnight scenario}), so that the model assumes a long-term equilibrium
 in a market with perfect competition and foresight, and disregards pathway
-dependencies. Cost assumptions are taken, where possible, from predictions for
-the year 2030 by the Danish Energy Agency (see
-\cref{sec:si:costs}).\cite{DEA} The model is implemented in the free and open software
-framework Python for Power System Analysis (PyPSA).\cite{brownPyPSAPython2018}
+dependencies. The model is implemented in the free and open software framework
+Python for Power System Analysis (PyPSA).\cite{brownPyPSAPython2018}
 
 PyPSA-Eur-Sec builds upon the model from Brown et
 al.,~\cite{brownSynergiesSector2018} which covered electricity, heating in
@@ -26,36 +57,59 @@ PyPSA-Eur-Sec adds biomass on the supply side, industry, agriculture, aviation
 and shipping on the demand side, and higher spatial resolution to suitably
 assess infrastructure requirements. In this study, the European continent is
 divided into 181 regions. Unavoidable process emissions, feedstock demands in
-the chemicals industry and the need for dense fuels for aviation, also required
-the addition of a detailed representation of the carbon cycles, including carbon
-capture from industry processes, biomass combustion and directly from the air
-(DAC).
+the chemicals industry and the need for dense fuels for aviation and shipping,
+also required the addition of a detailed representation of the carbon cycles,
+including carbon capture from industry processes, biomass combustion and
+directly from the air (DAC).
 
 \cref{fig:multisector} gives an \textbf{overview} of the supply, transmission,
 storage and demand sectors implemented in the model. To render interactions in
 the sector-coupled energy system, we model the energy carriers electricity,
-heat, methane, hydrogen, carbon dioxide and liquid hydrocarbons (oil, naphtha)
-across the different energy sectors. Generator capacities (for onshore wind,
-offshore wind, utility-scale and rooftop solar photovoltaic (PV), biomass,
+heat, methane, hydrogen, carbon dioxide and liquid hydrocarbons (oil, methanol,
+naphtha) across the different energy sectors. Generator capacities (for onshore
+wind, offshore wind, utility-scale and rooftop solar photovoltaic (PV), biomass,
 hydroelectricity, oil and natural gas), heating capacities (for heat pumps,
 resistive heaters, gas boilers, combined heat and power (CHP) plants and solar
 thermal collector units), synthetic fuel production (electrolysers, methanation,
 Fischer-Tropsch, steam methane reforming, fuel cells), storage capacities
 (stationary and electric vehicle batteries, hydrogen storage in caverns and
 steel tanks, pit thermal energy storage, pumped-hydro and reservoirs, and
-carbon-based fuels like methane and oil), carbon capture (from industry process
-emissions, steam methane reforming, CHP plants and directly from the air), and
-transport capacities of electricity transmission lines, new hydrogen and
-repurposed natural gas pipelines are all subject to optimisation, as well as the
-operational dispatch of each unit in each represented hour.
+carbon-based fuels like methane, methanol, and Fischer-Tropsch fuels), carbon
+capture (from industry process emissions, steam methane reforming, CHP plants
+and directly from the air), and transport capacities of electricity transmission
+lines, new hydrogen and repurposed natural gas pipelines are all subject to
+optimisation, as well as the operational dispatch of each unit in each
+represented hour.
 
-\textbf{Exogenous assumptions} in the model include a constant demand for the
-different materials and energy carriers in each sector, the extent of land
-transport electrification, the use of liquified hydrogen as shipping fuel and
-kerosene in aviation, the ratio of district heating to decentralised heating in
-densely populated regions, efficiency gains due to building retrofitting,
-hydroelectricity capacities (for reservoir and run-of-river generators and
-pumped hydro storage).
+\textbf{Exogenous demand and supply assumptions} in the model include a fully
+price inelastic and spatially-fixed demand for the different materials and
+energy services in each sector, the extent of land transport electrification,
+the use of methanol as shipping fuel and kerosene in aviation, process switching
+in industry, the reuse and recycling rates of steel (70\%), aluminium (80\%) and
+plastics (55\%) manufacturing, the ratio of district heating to decentralised
+heating in densely populated regions, efficiency gains of 29\% due to building
+retrofitting, hydroelectricity capacities (for reservoir and run-of-river
+generators and pumped hydro storage).
+
+For the \textbf{technology and cost assumptions}, we take estimates for the year
+2030 for the main scenarios and run a sensitivity analysis with more progressive
+cost projections for the year 2050 in \cref{sec:si:sensitivity-costs}. We take
+technology projections for the year 2030 for the main scenarios to account for
+expected technology cost reductions in the near-term while acknowledging that
+the gradual transition to climate neutrality implies that much of the
+infrastructure must be built well in advance of reaching net-zero emissions.
+Many numbers come from the technology database published by the Danish Energy
+Agency (DEA).\citeS{DEA} A complete referenced list of techno-economic
+assumptions is compiled in \cref{tab:si:costs}. Among many other technologies,
+for overnight costs we assume 636~\euro/kW$_e$ for rooftop PV, 487 \euro/kW$_e$
+for utility-scale PV, 142~\euro/kWh and 160~\euro/kW for batteries,
+1035~\euro/kW for onshore wind, 1524 \euro/kW for offshore wind, 450
+\euro/kW$_e$ for electrolysers, 1100 \euro/kW$_e$ for fuel cell CHPs,
+2~\euro/kWh for underground hydrogen storage, 0.54~\euro/kWh for central pit
+thermal energy storage, 628-651~\euro/kW$_{out}$ for methanation,
+methanolisation and Fischer-Tropsch processes, 572~\euro/kW$_{CH_4}$ for steam
+methane reforming with carbon capture (i.e.~blue hydrogen), and 685~\euro/t for
+direct air capture with uninterrupted operation.
 
 The time series and potentials of variable renewable \textbf{energy supply}
 (wind, solar, hydro, ambient heat) are computed from historical weather data
@@ -71,27 +125,31 @@ considered.
 The full \textbf{transmission} network for European electricity transport is
 taken from the electricity-only model version,
 PyPSA-Eur,\cite{horschPyPSAEurOpen2018} and is clustered down to 181
-representative regions based on the methodology used in Hörsch and
-Brown\cite{Hoersch2017} and Frysztacki et al.~\cite{frysztackiStrongEffect2021}.
-This level of aggregation reflects, at the upper end, the computational limit to
-solve a temporally resolved sector-coupled energy system optimisation problem
-and, at the lower end, the requirements to preserve the most important
-transmission corridors that cause bottlenecks and limit the system integration
-of renewables. Power flows are modelled using a cycle-based load flow
-linearization from Hörsch et al.~\cite{horschLinearOptimal2018} that
-significantly improves computational performance. Hydrogen pipeline flows assume
-a simple transport model. This means that while incoming and outbound flows must
-balance for each region and pipes can transport hydrogen only within their
-capacity limits, no further physical gaseous flow constraints are applied. The
-potential for gas pipeline retrofitting is estimated based on consolidated
-network data from the SciGRID\_gas project \cite{plutaSciGRIDGas2022a} such that
-for every unit of gas pipeline decommissioned, 60\% of its capacity becomes
-available for hydrogen transport.\cite{gasforclimateEuropeanHydrogen2020}
+representative regions based on the k-means network clustering methodology used
+in Hörsch and Brown\cite{Hoersch2017} and Frysztacki et
+al.~\cite{frysztackiStrongEffect2021}. This level of aggregation reflects, at
+the upper end, the computational limit to solve a temporally resolved
+sector-coupled energy system optimisation problem and, at the lower end, the
+requirements to preserve the most important transmission corridors that cause
+bottlenecks and limit the system integration of renewables. The impacts of
+spatial aggregation are evaluated in \cref{sec:si:sensitivity-space}. Power
+flows are modelled using a cycle-based load flow linearization from Hörsch et
+al.~\cite{horschLinearOptimal2018} that significantly improves computational
+performance. The power flow linearisation implies that no transmission losses
+are considered. Hydrogen pipeline flows assume a simple transport model. This
+means that while incoming and outbound flows must balance for each region and
+pipes can transport hydrogen only within their capacity limits, no further
+physical gaseous flow constraints are applied. The potential for gas pipeline
+retrofitting is estimated based on consolidated network data from the
+SciGRID\_gas project \cite{plutaSciGRIDGas2022a} such that for every unit of gas
+pipeline decommissioned, 60\% of its capacity becomes available for hydrogen
+transport.\cite{gasforclimateEuropeanHydrogen2020}
 
 For \textbf{industry}, we assume that the demand for materials (such as steel,
-cement, and high-value chemicals) remain constant. The assumed industry
-transformation is characterised by electrification, process switching to
-low-emission alternatives (e.g. switching to hydrogen for direct reduction of
+cement, and high-value chemicals) remain constant, and disregard options for
+industry relocation.\cite{toktarovaInteractionElectrified2022} The assumed
+industry transformation is characterised by electrification, process switching
+to low-emission alternatives (e.g. switching to hydrogen for direct reduction of
 iron ore\cite{voglAssessmentHydrogen2018}), more recycling of steel, plastics
 and aluminium\cite{circular_economy}, fuel switching for high- and
 mid-temperature process heat to biomass and methane, use synthetic fuels for
@@ -103,26 +161,28 @@ through combustion or decay; this approach is stricter than other models.
 
 The \textbf{transport} sector comprises light and heavy road, rail, shipping and
 aviation transport. For road and rail, electrification and fuel cell vehicles
-are available. For shipping, liquid hydrogen is considered. Aviation consumes
-kerosene whose origin (fossil or synthetic) is endogenously determined. Half of
-the battery electric vehicle fleet for passenger transport is assumed to engage
-in demand response schemes as well as vehicle-to-grid operation.
+for heavy-duty transport are available. For shipping, methanol is considered.
+Aviation consumes kerosene whose origin (fossil or synthetic) is endogenously
+determined. Half of the battery electric vehicle fleet for passenger transport
+is assumed to engage in demand response schemes as well as vehicle-to-grid
+operation.
 
 The \textbf{buildings} sector includes decentral heat supply in individual
 housing as well as centralised district heating for urban areas. Heating demand
-can be met through air- and ground-sourced heat pumps, gas boilers, CHPs,
-resitive heaters as well as waste heat from synthetic fuel production in
-district heating networks. For district heating networks, seasonal heat storage
-options are also available. Efficiency gains from building retrofitting are
-exogenous to the model based on Zeyen et al.\cite{zeyenMitigatingHeat2021}
+can be met through air- and ground-sourced heat pumps, gas boilers,
+gas/biomass/hydrogen CHPs, resitive heaters as well as waste heat from synthetic
+fuel production in district heating networks. For district heating networks,
+seasonal heat storage options are also available. Efficiency gains from building
+retrofitting of 29\% are exogenous to the model based on Zeyen et
+al.\cite{zeyenMitigatingHeat2021}
 
 For \textbf{biomass}, only waste and residues from agriculture and forestry are
 permitted, using the medium potential estimates from the JRC ENSPRESO database.
-\cite{ruizENSPRESOOpen2019} This results in 347~TWh per year of biogas that can
-be upgraded and 1186~TWh per year of solid biomass residues and waste for the
+\cite{ruizENSPRESOOpen2019} This results in 336~TWh per year of biogas that can
+be upgraded and 1038~TWh per year of solid biomass residues and waste for the
 whole of Europe. Biomass can be used in combined electricity and heat generation
-with and without CCS, as well as to provide low- to medium-temperature process
-heat in industry.
+with and without carbon capture, as well as to provide low- to
+medium-temperature process heat in industry.
 
 \textbf{Carbon capture} is needed in the model both to capture and sequester
 process emissions with a fossil origin, such as those from calcination of fossil
@@ -130,7 +190,8 @@ limestone in the cement industry, as well as to use carbon for the production of
 hydrocarbons for dense transport fuels and as a chemical feedstock, for example
 to produce plastic. \co can be captured from exhaust gases (industry process
 emissions, steam methane reforming, CHP plants) or by direct air capture.
-Captured \co can be used to produce synthetic hydrocarbons via the Sabatier or
-Fischer-Tropsch process. Up to 200 Mt\co/a may be sequestered underground, which
-is sufficient to capture process emissions but limits the system's reliance on
-negative emission technologies.
+Captured \co can be used to produce synthetic hydrocarbons via Sabatier,
+Fischer-Tropsch or methanolisation processes. Up to 200 Mt\co/a may be
+sequestered underground, which is sufficient to capture process emissions but
+limits the system's reliance on negative emission technologies. Landfill of
+plastics is not considered as long-term sequestration option.

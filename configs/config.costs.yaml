@@ -7,7 +7,7 @@ retrieve_sector_databundle: true
 results_dir: results/
 summary_dir: results
 costs_dir: ../technology-data/outputs/
-run: 20221227-gas  # use this to keep track of runs with different settings
+run: 20221227-costs  # use this to keep track of runs with different settings
 foresight: overnight # options are overnight, myopic, perfect (perfect is not yet implemented)
 # if you use myopic or perfect foresight, set the investment years in "planning_horizons" below
 
@@ -266,7 +266,7 @@ sector:
   electricity_distribution_grid_cost_factor: 1.0  #multiplies cost in data/costs.csv
   electricity_grid_connection: true  # only applies to onshore wind and utility PV
   H2_network: true
-  gas_network: true
+  gas_network: false
   H2_retrofit: true  # if set to True existing gas pipes can be retrofitted to H2 pipes
   # according to hydrogen backbone strategy (April, 2020) p.10
   # https://gasforclimate2050.eu/wp-content/uploads/2020/07/2020_European-Hydrogen-Backbone_Report.pdf
@@ -337,7 +337,7 @@ industry:
   # Material Economics (2019): https://materialeconomics.com/latest-updates/industrial-transformation-2050
 
 costs:
-  year: 2030
+  year: 2050
   lifetime: 25 #default lifetime
   # From a Lion Hirth paper, also reflects average of Noothout et al 2016
   discountrate: 0.07
@@ -401,7 +401,7 @@ solving:
     #solutiontype: 2 # non basic solution, ie no crossover
     #barrier_convergetol: 1.e-5
     #feasopt_tolerance: 1.e-6
-  mem: 192000 #memory in MB; 20 GB enough for 50+B+I+H2; 100 GB for 181+B+I+H2
+  mem: 126000 #memory in MB; 20 GB enough for 50+B+I+H2; 100 GB for 181+B+I+H2
 
 
 plotting:

@@ -1,38 +1,37 @@
-\documentclass[12pt,preprint]{elsarticle}
+\documentclass[11pt,preprint]{elsarticle}
 % \documentclass[12pt,1p]{elsarticle}
 % \documentclass[11pt]{article}
 
+\makeatletter
+\def\ps@pprintTitle{%
+ \let\@oddhead\@empty
+ \let\@evenhead\@empty
+ \def\@oddfoot{\centerline{\thepage}}%
+ \let\@evenfoot\@oddfoot}
+\makeatother
+
 \journal{Joule}
-\widowpenalty10000
-\clubpenalty10000
-\abstracttitle{Summary}
 
 % A typical research article will be
 % 4000 words of text with
 % 3–5 figures and
 % 30 references.
 
-% open acess fee: 7500 Euros
+\widowpenalty10000
+\clubpenalty10000
+\hyphenpenalty100
+
+\abstracttitle{Summary}
 
 \bibliographystyle{elsarticle-num}
 \biboptions{numbers,sort&compress,super}
 
-% format hacks
 \usepackage{libertine}
 \usepackage{libertinust1math}
-
-% unused
-% \renewcommand*\familydefault{\sfdefault} % biolinum
-%\usepackage[pass]{geometry}
-% \usepackage[latin1]{inputenc}
-% \usepackage{amsfonts}
-% \usepackage{amssymb}
+\renewcommand{\ttdefault}{\sfdefault}
 
 \usepackage{geometry}
-% \geometry{
-% top=30mm,
-% bottom=35mm,
-% }
+\geometry{top=30mm, bottom=35mm}
 
 \usepackage{amsmath}
 \usepackage{bbold}
@@ -52,36 +51,19 @@
 \usepackage{subcaption}
 \usepackage{blindtext}
 \usepackage[parfill]{parskip}
-%\usepackage[clean]{svg}
-% \usepackage[toc,title,page]{appendix}
 
-
-% \newcommand{\executeiffilenewer}[3]{%
-% \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
-% {\pdffilemoddate{#2}}>0%
-% {\immediate\write18{#3}}\fi%
-% }
-% \newcommand{\includesvg}[1]{%
-% \executeiffilenewer{#1.svg}{#1.pdf}%
-% {inkscape -z -D --file=#1.svg %
-% --export-pdf=#1.pdf --export-latex}%
-% \input{#1.pdf_tex}%
-% }
 
 \usepackage[prependcaption,textsize=scriptsize]{todonotes}
 % \usepackage[prependcaption,textsize=scriptsize,disable]{todonotes}
 
 \usepackage{siunitx}
-\sisetup{
-	range-units = single,
-	per-mode = symbol
-}
+\sisetup{range-units=single, per-mode=symbol}
 \DeclareSIUnit\year{a}
-\DeclareSIUnit{\tco}{t_{\ce{CO2}}}
-\DeclareSIUnit{\sieuro}{\mbox{\euro}}
-\DeclareSIUnit{\twh}{{\tera\watt\hour}}
-\DeclareSIUnit{\mwh}{{\mega\watt\hour}}
-\DeclareSIUnit{\kwh}{{\kilo\watt\hour}}
+\DeclareSIUnit\tco{t_{\ce{CO2}}}
+\DeclareSIUnit\sieuro{\mbox{\euro}}
+\DeclareSIUnit\twh{TWh}
+\DeclareSIUnit\mwh{MWh}
+\DeclareSIUnit\kwh{kWh}
 
 \newcommand{\co}{\ce{CO2}~}
 
@@ -96,24 +78,28 @@
 \newcites{S}{Supplementary References}
 \bibliographystyleS{elsarticle-num}
 
-\graphicspath{{../results/graphics/}, {../../../playgrounds/pr/pypsa-eur-sec/results/}}
+\graphicspath{
+	{../results/graphics-20221227/},
+	{../workflows/pypsa-eur-sec/results/}
+}
 
-\newcommand{\onwrun}{20211218-181-onw}
-\newcommand{\gasrun}{20211218-181-gas}
-\newcommand{\decrun}{20211218-181-decentral}
-\newcommand{\lvrun}{20211218-181-lv}
-\newcommand{\hyrun}{20211218-181-h2}
-\newcommand{\gasrunscen}{20211218-181-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030}
-\newcommand{\runelec}{20211218-181-h2/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2030}
-\newcommand{\runhy}{20211218-181-lv/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2030}
+\newcommand{\onwrun}{20221227-onw}
+\newcommand{\gasrun}{20221227-gas}
+\newcommand{\decrun}{20221227-decentral}
+\newcommand{\lvrun}{20221227-lv}
+\newcommand{\costrun}{20221227-costs}
+\newcommand{\imprun}{20221227-import}
+\newcommand{\shprun}{20221227-shipping}
+\newcommand{\hyrun}{20221227-main}
+\newcommand{\gasrunscen}{20221227-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
+\newcommand{\runelec}{20221227-main/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2050}
+\newcommand{\runhy}{20221227-main/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
 
 % \usepackage[
 % 	type={CC},
 % 	modifier={by},
 % 	version={4.0},
 % ]{doclicense}
-%
-% \newcommand{\topic}[1]{\todo[color=green!40,noline]{#1}}
 
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -123,22 +109,11 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\N}{\mathbb{N}}
-% \def\cL{\mathcal{L}}
-% \def\cN{\mathcal{N}}
-% \def\cT{\mathcal{T}}
-% \def\cM{\mathcal{M}}
-% \def\cA{\mathcal{A}}
-% \def\ba{{\bm{\alpha}}}
-% \def\card{\text{card}\,}
-% \def\x{\boldsymbol{\mathsf{x}}}
-
 %\def\co{CO${}_2$}
 \def\el{${}_{\textrm{el}}$}
 \def\th{${}_{\textrm{th}}$}
 \def\hy{${}_{\textrm{H}_2}$}
 \def\deg{${}^\circ$}
-
-% \urlstyle{sf}
 
 \usepackage{xcolor}
 \usepackage{framed}
@@ -149,12 +124,13 @@
 
 \usepackage{orcidlink}
 
-\begin{document}
+\input{variables.tex}
 
+\begin{document}
 
 \begin{frontmatter}
 
-	\title{Benefits of a Hydrogen Network in Europe}
+	\title{The Potential Role of a Hydrogen Network in Europe}
 
 	\author[tubaddress]{Fabian Neumann\,\orcidlink{0000-0001-8551-1480}\corref{correspondingauthor}}
 	\ead{f.neumann@tu-berlin.de}
@@ -171,7 +147,7 @@
 	\end{abstract}
 
 	\begin{keyword}
-		hydrogen backbone, sector-coupling, retrofitting, energy systems, transmission expansion, Europe, climate-neutral, renewables
+		hydrogen network, sector-coupling, retrofitting, energy systems, transmission expansion, Europe, climate-neutral, renewables
 	\end{keyword}
 
 	% \begin{graphicalabstract}
@@ -181,18 +157,24 @@
 
 \section*{Graphical Abstract}
 
-\includegraphics[width=\textwidth]{graphics/graphical-abstract.png}
+% https://www.cell.com/pb/assets/raw/shared/figureguidelines/GA_guide.pdf
 
+\includegraphics[width=\textwidth]{graphics/graphical-abstract-v2-vector.pdf}
+
+\newpage
 \par\noindent\rule{\textwidth}{0.4pt}
 
 \section*{Highlights}
 
+% You may include up to four highlights.%
+% The length of each highlight cannot exceed 85 characters (including spaces).
+
 \begin{itemize}
-	\item examines benefit of a hydrogen network and gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables and no energy imports
+	\item examines cost benefit of a hydrogen network including gas pipeline retrofitting in net-zero \co scenarios for Europe with high shares of renewables and no energy imports
 	\item uses open energy system model PyPSA-Eur-Sec with 181 regions, 3-hourly resolution for a year and all energy sectors (electricity, buildings, transport, industry, agriculture) represented
-	\item hydrogen network reduces system costs by up to 6\%, with highest benefits when power grid expansion is restricted
-	\item between 58-66\% of hydrogen backbone uses retrofitted gas network pipelines
-	\item cost benefit of electricity grid expansion is higher than of hydrogen network (8\% versus 6\%), but both together reduce costs by up to 12\%
+	\item hydrogen network reduces energy system costs by up to \maxhybenefitrel\%, with highest cost reductions when power grid expansion is restricted
+	\item between \minretroshare-\maxretroshare\% of hydrogen network uses retrofitted gas network pipelines
+	\item cost benefit of electricity grid expansion is higher than of hydrogen network (\maxacbenefitrel\% versus \maxhybenefitrel\%), but both together reduce costs by up to \gridbenefitrel\%
 \end{itemize}
 
 \par\noindent\rule{\textwidth}{0.4pt}
@@ -203,8 +185,13 @@
 
 \par\noindent\rule{\textwidth}{0.4pt}
 
-\section*{Words}
-5746 (excl. preamble, captions, \nameref{sec:methods}, \nameref{sec:si})
+% \section*{eTOC Blurb}
+
+% TODO
+
+% % The eTOC blurb is a short summary that describes the context and significance
+% % of the findings for the broader readership. Please see the "in brief" links in
+% % the table of contents for examples. The blurb should be 80 words or less.
 
 \newpage
 \section*{Introduction}
@@ -236,16 +223,12 @@
 
 \section*{Acknowledgements}
 
-% F.N. and T.B. gratefully acknowledge funding from the Helmholtz
-% Association under grant no. VH-NG-1352.
-
-We are grateful for helpful comments by Johannes Hampp.
+We are grateful for helpful comments by Johannes Hampp. We thank the four
+reviewers for their valuable feedback and suggestions.
 
 \section*{Declaration of Interests}
 
-The authors declare that they have no known competing financial interests or
-personal relationships that could have appeared to influence the work reported
-in this paper.
+The authors declare no competing interests.
 
 % \section*{License}
 
@@ -294,17 +277,6 @@ Software --
 Supervision --
 Writing - original draft --
 Writing - review \& editing
-
-
-\section*{Data and Code Availability}
-
-A dataset of the model results is available on \textit{zenodo} at \href{https://doi.org/10.5281/zenodo.6821258}{doi:10.5281/zenodo.6821258}.
-The code to reproduce the experiments is available on \textit{Github} at \href{https://github.com/fneum/spatial-sector}{github.com/fneum/spatial-sector}.
-We also refer to the documentation of PyPSA (\href{https://pypsa.readthedocs.io}{pypsa.readthedocs.io}),
-PyPSA-Eur (\href{https://pypsa-eur.readthedocs.io}{pypsa-eur.readthedocs.io}), and
-PyPSA-Eur-Sec (\href{https://pypsa-eur-sec.readthedocs.io}{pypsa-eur-sec.readthedocs.io}).
-Technology data was taken from \href{https://github.com/pypsa/technology-data}{github.com/pypsa/technology-data} (v0.3.0).
-An interactive scenario explorer is under development at \href{https://share.streamlit.io/fneum/spatial-sector-dashboard}{share.streamlit.io/fneum/spatial-sector-dashboard}.
 
 % tidy with https://flamingtempura.github.io/bibtex-tidy/
 \addcontentsline{toc}{section}{References}
