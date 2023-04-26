@@ -109,7 +109,7 @@ solutions without a hydrogen network, which we find to be feasible as well.
 \subsection*{Limitations of the study and scope for future investigations}
 \label{sec:limitations}
 
-In our scenarios, Europe is largely energy self-sufficient. While limited
+In our main scenarios, Europe is largely energy self-sufficient. While limited
 amounts of fossil gas and oil imports are allowed, no imports of renewable
 electricity, chemical energy carriers or commodities from outside of Europe are
 considered. However, including green imports may change system needs for
@@ -118,8 +118,9 @@ import hubs might require different bulk transmission routes. The import of
 large amounts of carbon-based fuels and ammonia would furthermore diminish the
 demand for hydrogen overall, and hence also the need to transport it. This
 effect of wide-ranging imports of liquid hydrocarbon demand on infrastructure
-needs is demonstrated in \cref{sec:si:sensitivity-imports} and should be
-explored in more detail in future work.
+needs is demonstrated in a sensitivity analysis in
+\cref{sec:si:sensitivity-imports} and should be explored in more detail in
+future work.
 \cite{fasihiTechnoeconomicAssessment2019,heuserTechnoeconomicAnalysis2019,hamppImportOptions2023}
 
 Additionally, the very uneven distribution of energy supply in our results may
@@ -155,14 +156,36 @@ of power-to-X and carbon dioxide removal technologies to realise anticipated
 cost reductions,\cite{odenwellerProbabilisticFeasibility2022a} which we assume to
 be given by assuming fixed technology cost.
 
+The need for high spatial resolution to evaluate the competition between
+electricity and hydrogen networks required a compromise on the temporal
+resolution, owing to computational constraints. Even though hourly resolution
+would have been more desirable and generally viable with the available raw data,
+our analysis employs a 3-hourly resolution to be able to focus on spatial
+detail, which is important to resolve transmission bottlenecks and to examine
+what infrastructure options can cost-effectively integrate high-yield generation
+sites with demand clusters, synthetic fuel production and geological storage
+potentials. As quantified in the supplementary sensitivity analysis in
+\cref{sec:si:sensitivity-time}, the temporal aggregation however tends to
+underestimate demand peaks, as well as the expansion of offshore wind and
+battery storage for short-term balancing. Conversely, it will overestimate the
+development solar photovoltaics to some extent, as solar feed-in fluctuations
+are smoothed. Nevertheless, the coarser resolution still captures the dominant
+intraday, daily, weekly, and seasonal patterns, as well as the investment
+patterns and interactions of electricity and hydrogen transport which are focus
+of this study. Moreover, the sector-coupled system's numerous demand
+flexibilities (such as electrolysers, heat pumps, and electric vehicle
+batteries) provide a wide range of options for managing hour-to-hour variations
+partially.
+
 Further limitations include that heat demands and the availability of renewables
 vary considerably year by year such that our restriction to a single year may
 limit the robustness to interannual weather variability; we do not consider new
-nuclear power plants; we do not consider secondary benefits of grid expansion
-for the provision of ancillary services; and for the transport and industry
-sectors we make some exogenous assumptions about process switching, drive
-trains, alternative fuels for industry heat and recycling rates which may have
-turned out differently if they were endogenously optimised.
+nuclear power plants; we do not spatially resolve the \co resource and
+infrastructure; we do not consider secondary benefits of grid expansion for the
+provision of ancillary services; and for the transport and industry sectors we
+make some exogenous assumptions about process switching, drive trains,
+alternative fuels for industry heat and recycling rates which may have turned
+out differently if they were endogenously optimised.
 
 \subsection*{Derivation of policy implications from regional and operational insights}
 \label{sec:policy}
