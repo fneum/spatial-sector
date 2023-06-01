@@ -30,23 +30,26 @@ electricity demands is shown in \cref{fig:demand-space:electricity}.
 \subsection{Electricity Supply}
 
 \begin{SCfigure}
-    \caption{Existing conventional power plant capacities in Europe by technology. Marker size is proportional to nominal capacity.}
+    \caption{ Existing conventional power plant capacities in Europe by
+        technology. Marker size is proportional to nominal capacity. For this
+        study, only existing hydroelectric power stations are added to the
+        model.}
     \label{fig:powerplants}
     \includegraphics[width=0.7\textwidth]{powerplants.pdf}
 \end{SCfigure}
 
 For conventional electricity generators, PyPSA-Eur-Sec uses the open
 \textit{powerplantmatching} tool, which merges datasets from a variety of
-sources.\citeS{gotzensPerformingEnergy2019} As shown in \cref{fig:powerplants}, it
-provides data on the power plants about their location, technology and fuel
+sources.\citeS{gotzensPerformingEnergy2019} As shown in \cref{fig:powerplants},
+it provides data on the power plants about their location, technology and fuel
 type, age, and capacity, inlcuding hard coal, lignite, oil, open and combined
 cycle gas turbines (OCGT and CCGT), and nuclear generators. Furthermore,
 existing run-of-river, pumped-hydro storage plants, and hydro-electric dams, are
 also part of the dataset, for which inflow is modelled based on runoff data from
 reanalysis weather data and and scaled hydropower generation statistics (see
-\cref{sec:si:renewable-ts}). In general, we suppose these to be non-extendable
-due to assumed geographical constraints. The overnight scenarios in this study
-only take into account existing hydro-electricity plants.
+\cref{sec:si:renewable-ts}). The overnight scenarios in this study only take
+into account existing hydro-electricity plants, which we suppose to be
+non-extendable due to assumed geographical constraints.
 
 Expandable renewable generators include onshore and offshore wind, utility-scale
 and rooftop solar photovoltaics, biomass from multiple feedstocks. The model

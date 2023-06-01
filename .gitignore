@@ -1,3 +1,11 @@
+review
+slides
+production
+paper_arXiv
+notes
+diffs
+*diff.tex
+
 *__pycache__
 .snakemake
 .vscode
