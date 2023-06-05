@@ -1,4 +1,7 @@
-# The Potential Role of a Hydrogen Network in Europe
+# Code for the paper "The Potential Role of a Hydrogen Network in Europe"
+
+[![DOI](https://zenodo.org/badge/513162844.svg)](https://zenodo.org/badge/latestdoi/513162844)
+
 
 This repository contains the code and manuscript accompanying the paper "The Potential Role of a Hydrogen Network in Europe".
 
