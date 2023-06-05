@@ -1,0 +1,131 @@
+\documentclass[11pt,preprint]{elsarticle}
+
+\makeatletter
+\def\ps@pprintTitle{%
+ \let\@oddhead\@empty
+ \let\@evenhead\@empty
+ \def\@oddfoot{\centerline{\thepage}}%
+ \let\@evenfoot\@oddfoot}
+\makeatother
+
+\journal{Joule}
+
+\widowpenalty10000
+\clubpenalty10000
+\hyphenpenalty100
+
+\bibliographystyle{elsarticle-num}
+\biboptions{numbers,sort&compress,super}
+
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\renewcommand{\ttdefault}{\sfdefault}
+
+\usepackage{geometry}
+\geometry{top=30mm, bottom=35mm}
+
+\usepackage{amsmath}
+\usepackage{bbold}
+\usepackage{graphicx}
+\usepackage{eurosym}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{xfrac}
+\usepackage{tabularx}
+\usepackage[version=4]{mhchem}
+\usepackage{bm}
+\usepackage[colorlinks]{hyperref}
+\usepackage[nameinlink,sort&compress,capitalise,noabbrev]{cleveref}
+\usepackage[leftcaption,raggedright]{sidecap}
+\usepackage{subcaption}
+\usepackage[parfill]{parskip}
+
+\usepackage{siunitx}
+\sisetup{range-units=single, per-mode=symbol}
+\DeclareSIUnit\year{a}
+\DeclareSIUnit\tco{t_{\ce{CO2}}}
+\DeclareSIUnit\sieuro{\mbox{\euro}}
+\DeclareSIUnit\twh{TWh}
+\DeclareSIUnit\mwh{MWh}
+\DeclareSIUnit\kwh{kWh}
+
+\newcommand{\co}{\ce{CO2}~}
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{pdflscape}
+
+\usepackage[export]{adjustbox}
+
+\usepackage[resetlabels,labeled]{multibib}
+\newcites{S}{Supplementary References}
+\bibliographystyleS{elsarticle-num}
+
+\graphicspath{
+	{../results/graphics-20221227/},
+	{../workflows/pypsa-eur-sec/results/}
+}
+
+\newcommand{\onwrun}{20221227-onw}
+\newcommand{\gasrun}{20221227-gas}
+\newcommand{\decrun}{20221227-decentral}
+\newcommand{\lvrun}{20221227-lv}
+\newcommand{\costrun}{20221227-costs}
+\newcommand{\imprun}{20221227-import}
+\newcommand{\shprun}{20221227-shipping}
+\newcommand{\hyrun}{20221227-main}
+\newcommand{\gasrunscen}{20221227-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
+\newcommand{\runelec}{20221227-main/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2050}
+\newcommand{\runhy}{20221227-main/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+\def\cT{\mathcal{T}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\N}{\mathbb{N}}
+%\def\co{CO${}_2$}
+\def\el{${}_{\textrm{el}}$}
+\def\th{${}_{\textrm{th}}$}
+\def\hy{${}_{\textrm{H}_2}$}
+\def\deg{${}^\circ$}
+
+\usepackage{xcolor}
+\usepackage{framed}
+\definecolor{shadecolor}{rgb}{.95,.95,.95}
+
+% \usepackage{tocloft}
+% \cftsetindents{section}{1em}{2.75em}
+
+\usepackage{xr}
+\externaldocument{spatial-sector}
+
+\input{variables.tex}
+
+\begin{document}
+
+\makeatletter
+\renewcommand \thesection{S\@arabic\c@section}
+\renewcommand\thetable{S\@arabic\c@table}
+\renewcommand \thefigure{S\@arabic\c@figure}
+\makeatother
+
+\renewcommand{\citenumfont}[1]{S#1}
+
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{section}{0}
+
+\input{sections/supplementary.tex}
+
+\renewcommand{\ttdefault}{\sfdefault}
+%\bibliographyS{library}
+\bibliographyS{/home/fneum/zotero}
+
+\end{document}

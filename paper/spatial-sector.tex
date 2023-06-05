@@ -1,60 +1,20 @@
-\documentclass[11pt,preprint]{elsarticle}
-% \documentclass[12pt,1p]{elsarticle}
-% \documentclass[11pt]{article}
-
-\makeatletter
-\def\ps@pprintTitle{%
- \let\@oddhead\@empty
- \let\@evenhead\@empty
- \def\@oddfoot{\centerline{\thepage}}%
- \let\@evenfoot\@oddfoot}
-\makeatother
+\documentclass[3p]{elsarticle}
 
 \journal{Joule}
-
-% A typical research article will be
-% 4000 words of text with
-% 3–5 figures and
-% 30 references.
-
-\widowpenalty10000
-\clubpenalty10000
-\hyphenpenalty100
 
 \abstracttitle{Summary}
 
 \bibliographystyle{elsarticle-num}
 \biboptions{numbers,sort&compress,super}
 
-\usepackage{libertine}
-\usepackage{libertinust1math}
-\renewcommand{\ttdefault}{\sfdefault}
-
-\usepackage{geometry}
-\geometry{top=30mm, bottom=35mm}
-
 \usepackage{amsmath}
-\usepackage{bbold}
 \usepackage{graphicx}
 \usepackage{eurosym}
-\usepackage{mathtools}
 \usepackage{url}
-\usepackage{booktabs}
-\usepackage{epstopdf}
-\usepackage{xfrac}
-\usepackage{tabularx}
 \usepackage[version=4]{mhchem}
-\usepackage{bm}
 \usepackage[colorlinks]{hyperref}
 \usepackage[nameinlink,sort&compress,capitalise,noabbrev]{cleveref}
-\usepackage[leftcaption,raggedright]{sidecap}
-\usepackage{subcaption}
-\usepackage{blindtext}
 \usepackage[parfill]{parskip}
-
-
-\usepackage[prependcaption,textsize=scriptsize]{todonotes}
-% \usepackage[prependcaption,textsize=scriptsize,disable]{todonotes}
 
 \usepackage{siunitx}
 \sisetup{range-units=single, per-mode=symbol}
@@ -67,62 +27,8 @@
 
 \newcommand{\co}{\ce{CO2}~}
 
-\usepackage{longtable}
-\usepackage{multirow}
-\usepackage{threeparttable}
-\usepackage{pdflscape}
-
-\usepackage[export]{adjustbox}
-
-\usepackage[resetlabels,labeled]{multibib}
-\newcites{S}{Supplementary References}
-\bibliographystyleS{elsarticle-num}
-
-\graphicspath{
-	{../results/graphics-20221227/},
-	{../workflows/pypsa-eur-sec/results/}
-}
-
-\newcommand{\onwrun}{20221227-onw}
-\newcommand{\gasrun}{20221227-gas}
-\newcommand{\decrun}{20221227-decentral}
-\newcommand{\lvrun}{20221227-lv}
-\newcommand{\costrun}{20221227-costs}
-\newcommand{\imprun}{20221227-import}
-\newcommand{\shprun}{20221227-shipping}
-\newcommand{\hyrun}{20221227-main}
-\newcommand{\gasrunscen}{20221227-gas/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
-\newcommand{\runelec}{20221227-main/elec_s_181_lvopt__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-noH2network_2050}
-\newcommand{\runhy}{20221227-main/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10_2050}
-
-% \usepackage[
-% 	type={CC},
-% 	modifier={by},
-% 	version={4.0},
-% ]{doclicense}
-
-\newcommand{\abs}[1]{\left|#1\right|}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-\newcommand{\set}[1]{\left\{#1\right\}}
-\DeclareMathOperator*{\argmin}{\arg\!\min}
-\def\cT{\mathcal{T}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\B}{\mathbb{B}}
-\newcommand{\N}{\mathbb{N}}
-%\def\co{CO${}_2$}
-\def\el{${}_{\textrm{el}}$}
-\def\th{${}_{\textrm{th}}$}
-\def\hy{${}_{\textrm{H}_2}$}
-\def\deg{${}^\circ$}
-
-\usepackage{xcolor}
-\usepackage{framed}
-\definecolor{shadecolor}{rgb}{.95,.95,.95}
-
-\usepackage{tocloft}
-\cftsetindents{section}{1em}{2.75em}
-
-\usepackage{orcidlink}
+\usepackage{xr}
+\externaldocument{spatial-sector-si}
 
 \input{variables.tex}
 
@@ -132,15 +38,14 @@
 
 	\title{The Potential Role of a Hydrogen Network in Europe}
 
-	\author[tubaddress]{Fabian Neumann\,\orcidlink{0000-0001-8551-1480}\corref{correspondingauthor}}
+	\author[tubaddress]{Fabian Neumann\corref{correspondingauthor}}
 	\ead{f.neumann@tu-berlin.de}
-	\author[tubaddress]{Elisabeth Zeyen\,\orcidlink{0000-0002-7262-3296}}
-	\author[aarhus,aarhus2]{Marta Victoria\,\orcidlink{0000-0003-1665-1281}}
-	\author[tubaddress]{Tom Brown\,\orcidlink{0000-0001-5898-1911}}
-	% \cortext[correspondingauthor]{}
+	\author[tubaddress]{Elisabeth Zeyen}
+	\author[aarhus,aarhus2]{Marta Victoria}
+	\author[tubaddress]{Tom Brown}
 	\address[tubaddress]{Department of Digital Transformation in Energy Systems, Institute of Energy Technology, Technische Universität Berlin, Fakultät III, Einsteinufer 25 (TA 8), 10587 Berlin, Germany}
 	\address[aarhus]{Department of Mechanical and Production Engineering, Aarhus University, Inge Lehmanns Gade 10, 8000 Aarhus, Denmark}
-	\address[aarhus2]{Novo Nordisk Foundation CO$_2$ Research Center, Aarhus University, Aarhus, Denmark}
+	\address[aarhus2]{Novo Nordisk Foundation CO$_2$ Research Center, Gustav Wieds Vej 10, 8000 Aarhus, Denmark}
 
 	\begin{abstract}
 		\input{sections/abstract.tex}
@@ -150,170 +55,89 @@
 		hydrogen network, sector-coupling, retrofitting, energy systems, transmission expansion, Europe, climate-neutral, renewables
 	\end{keyword}
 
-	% \begin{graphicalabstract}
-	% \end{graphicalabstract}
-
 \end{frontmatter}
 
-\section*{Graphical Abstract}
-
-% https://www.cell.com/pb/assets/raw/shared/figureguidelines/GA_guide.pdf
-
-\includegraphics[width=\textwidth]{graphics/graphical-abstract-v2-vector.pdf}
-
-\newpage
-\par\noindent\rule{\textwidth}{0.4pt}
-
-\section*{Highlights}
-
-
-\begin{itemize}
-	\item examines cost benefit of a European hydrogen network in net-zero emission scenarios
-	\item H$_2$ network reduces system costs by up to 3.4\%, highest without power grid expansion
-	\item between 64\% and 69\% of hydrogen network uses retrofitted gas network pipelines
-	\item power grid expansion saves more than hydrogen network, but strongest savings together
-\end{itemize}
-
-\par\noindent\rule{\textwidth}{0.4pt}
-
-\section*{Context \& Scale}
-
-\input{sections/context.tex}
-
-\par\noindent\rule{\textwidth}{0.4pt}
-
-\section*{eTOC Blurb}
-
-We examine the interplay between a pan-continental hydrogen network and
-electricity grid expansion in Europe to support renewable energy integration. By
-repurposing gas pipelines, a hydrogen network can reduce energy system costs by
-up to 3.4\% and help balance variations in wind and solar energy. Although the
-cost benefit of electricity grid expansion is higher, combining both
-infrastructures maximizes savings at 9.9\%. Together, they offer cost-effective
-options for achieving a European energy system with net-zero \co emissions.
-
-\newpage
 \section*{Introduction}
 \label{sec:intro}
-\addcontentsline{toc}{section}{\nameref{sec:intro}}
 
 \input{sections/introduction.tex}
+
+\section*{Results}
 
 \input{sections/results.tex}
 
 
 \section*{Discussion}
 \label{sec:discussion}
-\addcontentsline{toc}{section}{\nameref{sec:discussion}}
 
 \input{sections/discussion.tex}
 
-\section*{Conclusion}
+\subsection*{Conclusion}
 \label{sec:conclusion}
-\addcontentsline{toc}{section}{\nameref{sec:conclusion}}
 
 \input{sections/conclusion.tex}
 
 \section*{Experimental Procedures}
 \label{sec:methods}
-\addcontentsline{toc}{section}{\nameref{sec:methods}}
 
 \input{sections/methods.tex}
-
-\section*{Supplemental Information}
-
-Supplemental information is included in \nameref{sec:si}.
 
 \section*{Acknowledgements}
 
 We are grateful for helpful comments by Johannes Hampp. We thank the
 reviewers for their valuable feedback and suggestions.
 
+
+\section*{Author Contributions}
+
+
+\textbf{F.N.}:
+conceptualization,
+data curation,
+formal analysis,
+investigation,
+methodology,
+software,
+validation,
+visualization,
+writing - original draft,
+writing - review \& editing,
+\textbf{E.Z.}:
+data curation,
+formal analysis,
+investigation,
+software,
+validation,
+writing - review \& editing,
+\textbf{M.V.}:
+formal analysis,
+investigation,
+methodology,
+software,
+writing - review \& editing,
+\textbf{T.B.}:
+conceptualization,
+data curation,
+formal analysis,
+funding acquisition,
+investigation,
+methodology,
+project administration,
+resources,
+software,
+supervision,
+writing - original draft,
+writing - review \& editing,
+
 \section*{Declaration of Interests}
 
 The authors declare no competing interests.
 
-% \section*{License}
+% \bibliography{/home/fneum/zotero}
+\bibliography{library}
 
-% \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0
-% International License (CC-BY-4.0)}
+\section*{Figure titles and legends}
 
-\section*{Author Contributions}
-
-% following https://casrai.org/credit/
-
-\textbf{F.N.}:
-Conceptualization --
-Data curation --
-Formal Analysis --
-Investigation --
-Methodology --
-Software --
-Supervision --
-Validation --
-Visualization --
-Writing - original draft --
-Writing - review \& editing
-\textbf{E.Z.}:
-Data curation --
-Formal Analysis --
-Investigation --
-Software --
-Validation --
-Writing - review \& editing
-\textbf{M.V.}:
-Formal Analysis --
-Investigation --
-Methodology --
-Software --
-Writing - review \& editing
-\textbf{T.B.}:
-Conceptualization --
-Data curation --
-Formal Analysis --
-Funding acquisition --
-Investigation --
-Methodology --
-Project administration --
-Resources --
-Software --
-Supervision --
-Writing - original draft --
-Writing - review \& editing
-
-% tidy with https://flamingtempura.github.io/bibtex-tidy/
-\addcontentsline{toc}{section}{References}
-\renewcommand{\ttdefault}{\sfdefault}
-%\bibliography{library}
-\bibliography{/home/fneum/zotero}
-
-% supplementary information
-
-\newpage
-
-\makeatletter
-\renewcommand \thesection{S\@arabic\c@section}
-\renewcommand\thetable{S\@arabic\c@table}
-\renewcommand \thefigure{S\@arabic\c@figure}
-\makeatother
-
-\renewcommand{\citenumfont}[1]{S#1}
-
-\setcounter{equation}{0}
-\setcounter{figure}{0}
-\setcounter{table}{0}
-\setcounter{section}{0}
-
-\input{sections/supplementary.tex}
-
-\addcontentsline{toc}{section}{Supplementary References}
-\renewcommand{\ttdefault}{\sfdefault}
-%\bibliographyS{library}
-\bibliographyS{/home/fneum/zotero}
-
-\newpage
-\begin{small}
-	\tableofcontents
-\end{small}
+\input{sections/captions.tex}
 
 \end{document}
