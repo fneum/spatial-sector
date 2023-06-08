@@ -39,7 +39,7 @@ volume: a line volume limit of 100\% means no new capacity is allowed beyond
 today's grid (since the model cannot remove existing lines); a limit of 125\%
 means the total grid capacity can grow by 25\% (25\% is similar to the planned
 extra capacity in the European network operators' Ten Year Network Development
-Plan (TYNDP)\citeS{tyndp2018}). For this investigation, a hydrogen network
+Plan (TYNDP) \citeS{tyndp2018}). For this investigation, a hydrogen network
 could be built.
 
 \cref{fig:lv-restriction} shows the composition of total annual energy system costs
@@ -55,7 +55,7 @@ corresponding to an expansion of 447 TWkm.
 \cref{fig:lv-restriction} also includes a scenario where today's electricity
 transmission infrastructure is completely removed from the model, similar to an
 electricity system study on geographic trade-offs by Tröndle et
-al.\citeS{trondleTradeOffsGeographic2020} While doubling the transmission grid
+al. \citeS{trondleTradeOffsGeographic2020}. While doubling the transmission grid
 yields a benefit of 46~bn\euro/a, removing what exists incurs a cost of
 108~bn\euro/a. The lack of electricity grid is mostly compensated by more solar
 PV generation, battery storage and re-electrified hydrogen.
@@ -66,13 +66,13 @@ PV generation, battery storage and re-electrified hydrogen.
 \begin{figure}
     \centering
     \makebox[\textwidth][c]{
-        \begin{subfigure}[t]{0.6\textwidth}
+        \begin{subfigure}[t]{0.58\textwidth}
             \centering
             \caption{hydrogen network}
             \includegraphics[height=0.39\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-h2_network_2050.pdf}
             \label{fig:no-onw:h2}
         \end{subfigure}
-        \begin{subfigure}[t]{0.6\textwidth}
+        \begin{subfigure}[t]{0.58\textwidth}
             \centering
             \caption{energy balance}
             \includegraphics[height=0.4\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2050/import-export-total-200.pdf}
@@ -80,13 +80,13 @@ PV generation, battery storage and re-electrified hydrogen.
         \end{subfigure}
         }
         \makebox[\textwidth][c]{
-            \begin{subfigure}[t]{0.67\textwidth}
+            \begin{subfigure}[t]{0.625\textwidth}
                 \centering
                 \caption{system cost}
                 \includegraphics[height=0.38\textheight]{\hyrun/maps/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0-costs-all_2050.pdf}
                 \label{fig:no-onw:tsc}
             \end{subfigure}
-            \begin{subfigure}[t]{0.53\textwidth}
+            \begin{subfigure}[t]{0.5\textwidth}
                 \centering
                 \caption{hydrogen network flows}
                 \includegraphics[height=0.33\textheight]{\hyrun/elec_s_181_lv1.0__Co2L0-3H-T-H-B-I-A-solar+p3-linemaxext10-onwind+p0_2050/h2-flow-map-backbone.pdf}
@@ -103,7 +103,7 @@ PV generation, battery storage and re-electrified hydrogen.
 
 Like building new power transmission lines, the deployment of onshore wind may
 not always be socially accepted, such that it may not be possible to leverage
-its full potential.\citeS{mckennaScenicnessAssessment2021,weinandImpactPublic2021,weinandExploringTrilemma2021} In the following additional sensitivity analysis, we explore
+its full potential \citeS{mckennaScenicnessAssessment2021,weinandImpactPublic2021,weinandExploringTrilemma2021}. In the following additional sensitivity analysis, we explore
 the hypothetical impact of restricting the installable potentials of onshore
 wind down to zero (\cref{fig:no-onw}).
 
@@ -166,12 +166,12 @@ In this case, system costs rise by 77~bn\euro/a (10\%)
 by restricting the installable potentials of onshore down to zero. Just as in
 the case of restricted line volumes, \cref{fig:onw-restriction} reveals a
 nonlinear rise in system costs: if we constrain the model to 25\% of the onshore
-potential (around 120~GW for Germany), costs rise by only 46~bn\euro/a (6\%).
+potential (around 120~GW for Germany), costs rise by only 31~bn\euro/a (4\%).
 Thereby, 25\% of the onshore wind potential may represent a social compromise
 between total system cost, and social concerns about onshore wind development.
 
 In comparison, Schlachtberger et al.~\citeS{schlachtbergerCostOptimal2018} found
-a similar change between 9\% and 12\% in system costs in an electricity-only
+a larger change between 9\% and 12\% in system costs in an electricity-only
 model when onshore wind potentials were restricted across various grid expansion
 limitations. The the biggest change was observed when the power grid could not
 be reinforced. Onshore wind was largely replaced with offshore wind in that
@@ -187,7 +187,7 @@ expansion from 25\% to none incurs another rise in system cost of an additional
 \label{sec:si:sensitivity-costs}
 
 In this sensitivity analysis, we investigate the impact of using more
-progressive technology cost projections.\citeS{wayEmpiricallyGrounded2022}
+progressive technology cost projections \citeS{wayEmpiricallyGrounded2022}.
 Rather than using assumptions for the year 2030, we use cost assumptions for
 2050 as outlined in \cref{tab:si:costs}. These assumptions include cost
 reductions of solar photovoltaics and power-to-liquid processes by 25\% beyond
@@ -249,13 +249,13 @@ In this sensitivity analysis, we explore the cost benefit of a hydrogen network
 if all liquid hydrocarbons were imported from outside of Europe. We chose this
 case as it constitutes an import scenario that should reduce the
 benefits of a hydrogen network. We assume uniform import costs of 115
-\euro/MWh\citeS{staissOptionenFuer2022,schornMethanolRenewable2021} for
+\euro/MWh \citeS{staissOptionenFuer2022,schornMethanolRenewable2021} for
 methanol and Fischer-Tropsch fuels, for a total import volume of 1573 TWh
 (roughly one-third methanol and two-thirds Fischer-Tropsch fuels). By replacing the
 domestic production of electrofuels with imports, 1903 TWh (80\%) of domestic
 hydrogen demand fall away, which is much more compared to the 333 TWh for
 domestic and foreign hydrogen supply each mentioned in the REPowerEU plans for
-2030.\citeS{europeancommissionRepowerEUPlan}
+2030 \citeS{europeancommissionRepowerEUPlan}.
 
 As \cref{fig:sensitivity-imports} shows, the relative cost benefits of network
 expansion do not change much (from 1.6-3.4\% to 1.9-2.8\%), while the overall
@@ -323,7 +323,7 @@ hydrogen network would likely be diverted to Italy and Spain.
 In this sensitivity analysis, we examined the impact of changing the primary
 fuel used in shipping from methanol to liquid hydrogen. The hydrogen demand for
 international shipping was geographically distributed based on trade volumes of
-international ports,\citeS{worldbankWorldBank} while the demand for domestic
+international ports \citeS{worldbankWorldBank}, while the demand for domestic
 shipping was distributed by population. The costs for hydrogen liquefaction were
 also included in our analysis (see \cref{tab:si:costs}).
 
@@ -345,7 +345,7 @@ no longer required. The higher energy efficiency of liquid hydrogen in shipping
 also lowers the requirements for wind and solar buildout. However, the cost
 differences should be viewed in the context that the costs of ships fueled by
 liquid hydrogen are likely to be considerably higher than those fueled by
-methanol.\citeS{johnstonShippingSunshine2022} The spatial patterns of hydrogen
+methanol \citeS{johnstonShippingSunshine2022}. The spatial patterns of hydrogen
 infrastructure buildout remain largely unchanged
 (\cref{fig:hydrogen-inframaps:lh2}).
 
@@ -449,7 +449,7 @@ Compared to the model with 181 regions, a one-node-per-country resolution
 underestimates system cost by 4.3\%, favouring remote offshore wind over more
 localised production with solar photovoltaics and batteries. The differences can
 be explained by a combination of two opposing
-effects.\citeS{frysztackiStrongEffect2021} The aggregation of the transmission
+effects \citeS{frysztackiStrongEffect2021}. The aggregation of the transmission
 networks lifts bottlenecks within clustered regions, lowering system costs. On
 the other hand, the aggregation of wind and solar capacity factors blur the most
 productive sites, increasing costs. In terms of system costs, the error induced

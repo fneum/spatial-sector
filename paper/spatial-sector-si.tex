@@ -1,4 +1,4 @@
-\documentclass[11pt,preprint]{elsarticle}
+\documentclass[11pt,3p]{elsarticle}
 
 \makeatletter
 \def\ps@pprintTitle{%
@@ -14,15 +14,18 @@
 \clubpenalty10000
 \hyphenpenalty100
 
-\bibliographystyle{elsarticle-num}
-\biboptions{numbers,sort&compress,super}
+% \bibliographystyle{elsarticle-num}
+\bibliographystyle{joule}
+\biboptions{numbers,sort&compress}
 
-\usepackage{libertine}
-\usepackage{libertinust1math}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[helvet]{sfmath}
 \renewcommand{\ttdefault}{\sfdefault}
 
-\usepackage{geometry}
-\geometry{top=30mm, bottom=35mm}
+% \usepackage{geometry}
+% \geometry{top=30mm, bottom=35mm}
 
 \usepackage{amsmath}
 \usepackage{bbold}
@@ -36,7 +39,7 @@
 \usepackage{tabularx}
 \usepackage[version=4]{mhchem}
 \usepackage{bm}
-\usepackage[colorlinks]{hyperref}
+\usepackage[colorlinks,pdfa]{hyperref}
 \usepackage[nameinlink,sort&compress,capitalise,noabbrev]{cleveref}
 \usepackage[leftcaption,raggedright]{sidecap}
 \usepackage{subcaption}
@@ -61,8 +64,8 @@
 \usepackage[export]{adjustbox}
 
 \usepackage[resetlabels,labeled]{multibib}
-\newcites{S}{Supplementary References}
-\bibliographystyleS{elsarticle-num}
+\newcites{S}{Supplemental References}
+\bibliographystyleS{joule}
 
 \graphicspath{
 	{../results/graphics-20221227/},
@@ -95,12 +98,14 @@
 \def\hy{${}_{\textrm{H}_2}$}
 \def\deg{${}^\circ$}
 
-\usepackage{xcolor}
-\usepackage{framed}
-\definecolor{shadecolor}{rgb}{.95,.95,.95}
+% \usepackage{xcolor}
+% \usepackage{framed}
+% \definecolor{shadecolor}{rgb}{.95,.95,.95}
 
-% \usepackage{tocloft}
-% \cftsetindents{section}{1em}{2.75em}
+\renewcommand{\contentsname}{Supplemental Information -- Contents}
+\usepackage{tocloft}
+\cftsetindents{section}{1em}{3em}
+\cftsetindents{subsection}{1em}{3em}
 
 \usepackage{xr}
 \externaldocument{spatial-sector}
@@ -124,8 +129,13 @@
 
 \input{sections/supplementary.tex}
 
+{\raggedright
 \renewcommand{\ttdefault}{\sfdefault}
-%\bibliographyS{library}
-\bibliographyS{/home/fneum/zotero}
+\bibliographyS{supplementary_library}
+% \bibliographyS{/home/fneum/zotero}
+}
+
+\newpage
+\tableofcontents
 
 \end{document}

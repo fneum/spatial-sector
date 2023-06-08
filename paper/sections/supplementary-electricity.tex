@@ -2,7 +2,7 @@
 \label{sec:si:electricity}
 
 Modelling of electricity supply and demand in Europe largely follows the open
-electricity generation and transmission model PyPSA-Eur.\citeS{horschPyPSAEurOpen2018} PyPSA-Eur processes publicly available data on
+electricity generation and transmission model PyPSA-Eur \citeS{horschPyPSAEurOpen2018}. PyPSA-Eur processes publicly available data on
 the topology of the power transmission network, historical time series of
 weather observations and electricity consumption, conventional power plants, and
 renewable potentials.
@@ -12,14 +12,14 @@ renewable potentials.
 
 Hourly electricity demand at country-level for the reference year 2013 published
 by ENTSO-E is retrieved via the interface of the Open Power System Data (OPSD)
-initiative.\citeS{muehlenpfordtTimeSeries2020} Existing electrified heating is subtracted from this
+initiative \citeS{muehlenpfordtTimeSeries2020}. Existing electrified heating is subtracted from this
 demand, so that power-to-heat options can be optimised separately. Furthermore,
 current industry electricity demand is subtracted and handled separately
 considering further electrification in the industry sector (see \cref{sec:si:industry}).
 
 For the distribution of electricity demand for industry we leverage geographical
-data from the industrial database developed within the Hotmaps project.
-\citeS{manzGeoreferencedIndustrial2018} The remaining
+data from the industrial database developed within the Hotmaps project
+\citeS{manzGeoreferencedIndustrial2018}. The remaining
 electricity demand for households and services is heuristically distributed
 inside each country to 40\% proportional to population density and to 60\%
 proportional to gross domestic product based on a regression performed by Hörsch
@@ -39,7 +39,7 @@ electricity demands is shown in \cref{fig:demand-space:electricity}.
 
 For conventional electricity generators, PyPSA-Eur-Sec uses the open
 \textit{powerplantmatching} tool, which merges datasets from a variety of
-sources.\citeS{gotzensPerformingEnergy2019} As shown in \cref{fig:powerplants},
+sources \citeS{gotzensPerformingEnergy2019}. As shown in \cref{fig:powerplants},
 it provides data on the power plants about their location, technology and fuel
 type, age, and capacity, inlcuding hard coal, lignite, oil, open and combined
 cycle gas turbines (OCGT and CCGT), and nuclear generators. Furthermore,
@@ -97,8 +97,8 @@ cycle gas turbine (OCGT) or a combined heat and power (CHP) plant.
 % topology
 
 The topology of the European electricity transmission network is represented at
-substation level based on maps released in the interactive \mbox{ENTSO-E} map\citeS{ENTSOE}
-using a modified version of the GridKit tool.\citeS{gridkit} As displayed in
+substation level based on maps released in the interactive \mbox{ENTSO-E} map \citeS{ENTSOE}
+using a modified version of the GridKit tool \citeS{gridkit}. As displayed in
 \cref{fig:base-network}, the dataset includes HVAC lines at and above 220 kV
 across the mulitple synchronous zones of the \mbox{ENTSO-E} area, but excludes Turkey
 and North-African countries which are also synchronised to the continental
@@ -106,8 +106,8 @@ European grid, interconnections to Russia, Belarus and Ukraine as well as small
 island networks with less than four nodes at transmission level, such as Cyprus,
 Crete and Malta. In total, the network encompasses around 3000 substations, 6600
 HVAC lines and around 70 HVDC links, some of which are planned projects from the
-Ten Year Network Development Plant (TYNDP) that are not yet in operation.
-\citeS{tyndp2018}
+Ten Year Network Development Plant (TYNDP) that are not yet in operation
+\citeS{tyndp2018}.
 
 % unclustered model regions
 
@@ -126,13 +126,13 @@ substations.
 
 Capacities and electrical characteristics of transmission lines and substations,
 such as impedances and thermal ratings, are
-inferred from standard types for each voltage level from Oeding and Oswald.\citeS{oedingElektrischeKraftwerke2011} For each HVAC
+inferred from standard types for each voltage level from Oeding and Oswald \citeS{oedingElektrischeKraftwerke2011}. For each HVAC
 line, we further restrict line loading to 70\% of the nominal rating to
 approximate $N-1$ security, which protects the system against overloading if any
 one transmission line fails. This conservative security margin is commonly
-applied in the industry.\citeS{ackermannOptimisingEuropean2016} Dynamic line rating is not considered. Power
+applied in the industry \citeS{ackermannOptimisingEuropean2016}. Dynamic line rating is not considered. Power
 flow is modelled through lossless linearised power flow equations using an
-efficient cycle-based formulation of Kirchhoff's voltage law.\citeS{horschLinearOptimal2018}
+efficient cycle-based formulation of Kirchhoff's voltage law \citeS{horschLinearOptimal2018}.
 
 % clustering
 
@@ -145,8 +145,8 @@ network to a uniform voltage level of \SI{380}{\kilo\volt}. We also aggregate
 generators of the same kind that connect to the same substation. Based on these
 initial simplification, the network resolution is further reduced to a variable
 number of nodes, in this case to 181 regions, by using a \textit{k-means}
-clustering algorithm, which uses regional electricity consumption as weights.
-\citeS{frysztackiStrongEffect2021, Hoersch2017} Only substations within the
+clustering algorithm, which uses regional electricity consumption as weights
+\citeS{frysztackiStrongEffect2021, Hoersch2017}. Only substations within the
 same country can be aggregated. The equivalent lines connecting the clustered
 regions are determined by the aggregated electro-technical characteristics of
 original transmission lines. Their weighted cost takes into consideration the

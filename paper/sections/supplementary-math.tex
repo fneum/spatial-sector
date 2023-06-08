@@ -137,7 +137,7 @@ impacts on performance. Here, we use linearised load flow assumptions, where the
 voltage angle difference around every closed cycle in the electricity
 transmission network must add up to zero. Using a cycle basis $C_{\ell c}$ of
 the network graph where the independent cycles $c$ are expressed as directed
-linear combinations of lines $\ell$,\citeS{horschLinearOptimal2018} we can write
+linear combinations of lines $\ell$ \citeS{horschLinearOptimal2018}, we can write
 KVL as
 \begin{align}
     \sum_\ell C_{\ell c} \cdot x_\ell \cdot p_{\ell,t} = 0 \qquad\forall c,t
@@ -166,4 +166,4 @@ sequences of investments), but searches for a cost-optimal layout corresponding
 to a given \co emission reduction level and assumes perfect foresight for
 the reference year based on which capacities are optimised. This optimisation
 problem is implemented in the open-source Python-based modelling framework
-PyPSA.\citeS{brownPyPSAPython2018}
+PyPSA \citeS{brownPyPSAPython2018}.

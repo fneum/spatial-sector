@@ -46,23 +46,23 @@
 
 Eligibile areas for developing renewable infrastructure are calculated per
 technology and substation's Voronoi cell using the
-\textit{atlite}\citeS{hofmannAtliteLightweight2021} tool and shown in
+\textit{atlite} tool \citeS{hofmannAtliteLightweight2021} and shown in
 \cref{fig:eligibility}.
 
 The land available for wind and utility-scale solar PV capacities in a
 particular region is constrained by eligible codes of the
-CORINE\citeS{europeanenvironmentagencyeeaCorineLand} land use database (100m
+CORINE  land use database \citeS{europeanenvironmentagencyeeaCorineLand} (100m
 resolution)  and is further restricted by distance criteria and the natural
 protection areas specified in the Natura
-2000\citeS{europeanenvironmentagencyeeaNatura2000} dataset. These criteria are
+2000 dataset \citeS{europeanenvironmentagencyeeaNatura2000}. These criteria are
 summarised in \cref{tab:eligibility}. The installable potentials for rooftop PV
 are included with an assumption of 1 kWp per person (0.1 kW/m$^2$ and 10
 m$^2$/person). A more sophisticated potential estimate can be found in Bódis et
 al.~\citeS{bodisHighresolutionGeospatial2019}. Moreover, offshore wind farms may
-not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO\citeS{gebcoGEBCO2014}
-bathymetry dataset. This currently disreagards the
-possibility of floating wind turbines.
-\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}
+not be built at sea depths exceeding \SI{50}{\metre}, as indicated by the GEBCO
+bathymetry dataset \citeS{gebcoGEBCO2014}. This currently disreagards the
+possibility of floating wind turbines
+\citeS{lerchSensitivityAnalysis2018,lauraLifecycleCost2014,myhrLevelisedCost2014,kauscheFloatingOffshore2018,castro-santosEconomicFeasibility2016}.
 For near-shore locations (less than 30 km off the shore) AC connections are
 considered, whereas for far-shore locations, DC connections including AC-DC
 converter costs are assumed. Reservoir hydropower and run-of-river capacities
@@ -215,7 +215,7 @@ factor of 88.55\% to the capacity factors \citeS{boschTemporallyExplicit2018}.
 The solar photovoltaic panels' output is calculated based on the incidence angle
 of solar irradiation, the panel's tilt angle, and conversion efficiency.
 Similarly, solar thermal generation is determined based on collector orientation
-and a clear-sky model based on \citeS{henningComprehensiveModel2014a}. The
+and a clear-sky model based on \citeS{henningComprehensiveModel2014}. The
 creation of heat pump time series follows regression analyses that map soil or
 air temperatures to the coefficient of performance (COP)
 \citeS{nouvelEuropeanMapping2015, staffellReviewDomestic2012}. Hydroelectric

@@ -187,7 +187,8 @@ when the expansion of transmission infrastructure is limited. As network
 expansion options are constrained, we see demand for local daily storage with
 batteries almost quadrupling (from 73 to 272 GW with a typical energy-to-power
 ratio of 6 hours) and doubling for weekly and seasonal storage with hydrogen and
-thermal storage (from 73 to 141~TWh, see \cref{fig:si:capacities}). For all
+thermal storage (from 73 to 141~TWh, see \cref{fig:si:capacities} and
+\cref{fig:si:soc} for state-of-charge profiles per technology). For all
 scenarios, the capacities of photovoltaics split on average into
 \meanrooftopshare\% rooftop PV and \meanutilityshare\% utility-scale PV. The
 offshore share of wind generation capacities varies between \minoffshoreshare\%
@@ -227,7 +228,7 @@ strongly depends on the potentials for cheap renewable electricity. If onshore
 wind potentials were restricted, e.g. due to limited social acceptance in
 Northern Europe, the network infrastructure would be tailored to deliver larger
 amounts of solar-based hydrogen from Southern Europe to Central Europe. We
-discuss this supplementary sensitivity analysis in
+discuss this supplemental sensitivity analysis in
 \cref{sec:si:onw,sec:si:onw-compromise}.
 
 The development of a hydrogen network is driven by the fact that (i)
@@ -257,7 +258,7 @@ The flexible operation of electrolysers further supports the system integration
 of variable renewables in time. Hydrogen production leverages periods with
 exceptionally high wind speeds across Europe by running the electrolysis with
 average utilisation rates between \mincfelectrolysis\% and \maxcfelectrolysis\%
-(see \cref{fig:output-ts-1,fig:output-ts-3}). The produced hydrogen is buffered
+(see \cref{fig:si:utilisation-rate-ts,fig:output-ts-1,fig:output-ts-3}). The produced hydrogen is buffered
 in salt caverns which then allows for higher full load hours of fuel synthesis
 processes. For Fischer-Tropsch and methanolisation plants, we see combined
 average utilisation rates between \mincfFT\% and \maxcfFT\% which aligns with
@@ -292,7 +293,7 @@ storage is built to balance renewables in time rather than in space.
 \label{sec:energy-moved}
 
 Depending on the level of power grid expansion, between 204 and 307~TWkm of
-hydrogen pipelines are built (\cref{fig:network-stats}-A). The higher value
+hydrogen pipelines are built (\cref{fig:network-stats}A). The higher value
 is obtained when the hydrogen network partially offsets the lack of electricity
 grid reinforcement. On the other hand, restricting hydrogen expansion only has a
 small effect on cost-optimal levels of power grid expansion. The length-weighted
@@ -301,9 +302,9 @@ hydrogen network, the cost-optimal power grid capacity is 7\% higher.
 
 When both hydrogen and electricity grid expansion is allowed, the hydrogen
 network transports approximately half the amount of energy transmitted via the
-electricity network (\cref{fig:network-stats}-B). This is striking because
+electricity network (\cref{fig:network-stats}B). This is striking because
 the hydrogen network capacity is little more than a quarter that of the power
-grid (\cref{fig:network-stats}-A). In consequence, the utilisation rate of
+grid (\cref{fig:network-stats}A). In consequence, the utilisation rate of
 \utilisationHy\% of the hydrogen network is much higher than the
 \utilisationAC\% of the electricity grid (\cref{fig:si:grid-utilisation}). One
 plausible explanation for this observation is that the buffering of produced
@@ -405,10 +406,10 @@ supply and demand in ascending order. If the annual sums of supply and demand
 are equal in each region, the Lorenz curve resides on the identity line.
 However, the more unequal the regional supply is relative to demand, the further
 the curves dent into the graph's bottom right corner. For the least-cost
-scenario, \cref{fig:io}-A highlights that supply and demand of hydrogen
+scenario, \cref{fig:io}A highlights that supply and demand of hydrogen
 is slightly more regionally imbalanced than electricity. Reduced power grid
 expansion causes more evenly distributed electricity supply
-(\cref{fig:io}-C/D), and when hydrogen transport is
-restricted (\cref{fig:io}-B/D), the production of
+(\cref{fig:io}C/D), and when hydrogen transport is
+restricted (\cref{fig:io}B/D), the production of
 liquid hydrocarbons is increased in regions with attractive renewable potentials
 because they can be transported at low cost.
